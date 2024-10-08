@@ -12,3 +12,17 @@ C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Vie
 C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Views.MainForm.resources
 C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Views.RegisterForm.resources
 C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App-Library.csproj.CopyComplete
+C:\Users\giaba\Source\Repos\App-Library\App-Library\bin\Debug\App-Library.exe.config
+C:\Users\giaba\Source\Repos\App-Library\App-Library\bin\Debug\App-Library.exe
+C:\Users\giaba\Source\Repos\App-Library\App-Library\bin\Debug\App-Library.pdb
+C:\Users\giaba\Source\Repos\App-Library\App-Library\bin\Debug\Guna.UI2.dll
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Library.csproj.AssemblyReference.cache
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App_Library.Properties.Resources.resources
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App_Library.Views.LoginForm.resources
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App_Library.Views.MainForm.resources
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App_Library.Views.RegisterForm.resources
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Library.csproj.GenerateResource.cache
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Library.csproj.CoreCompileInputs.cache
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Libr.588373D8.Up2Date
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Library.exe
+C:\Users\giaba\Source\Repos\App-Library\App-Library\obj\Debug\App-Library.pdb
