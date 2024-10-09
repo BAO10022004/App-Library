@@ -12,6 +12,8 @@ namespace App_Library.Views
 {
     public partial class SplashForm : Form
     {
+        LoginForm loginForm;
+        SignUpForm signUpForm;
         public SplashForm()
         {
             InitializeComponent();
@@ -42,27 +44,36 @@ namespace App_Library.Views
             {
                 lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
                 pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2* 250 / 37));
-                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+               
+                    btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
             {
+                btnSignUp.Location = new Point(120, 14);
                 pnFrameOption.Controls.Remove(button1);
-                    pnLogInContent.Location = new Point(0, 119);
+                pnLogInContent.Location = new Point(0, 119);
                  lbWellcome.Location = new Point(lbWellcome.Location.X + 60, lbWellcome.Location.Y);
                 timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN ";
-                 activeFormChild(new LoginForm(), sender);
+                loginForm = new LoginForm();
+                 activeFormChild(loginForm, sender);
                 return;
                 
             }
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            timerClickButonLogin.Start();
+            Y = lbWellcome.Location.Y;
+            if (loginForm == null)
+            {
+                timerClickButonLogin.Start();
+            }
+            else
+            {
+                timerClickButonLogin2.Start();
+            }
+           
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -103,15 +114,68 @@ namespace App_Library.Views
         {
 
         }
-
+        int Y;
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+            Y = lbWellcome.Location.Y;
+            if (loginForm == null)
+            {
+
+            }
+            else
+            {
+                timerSignUp.Start();
+            }
 
         }
 
         private void lbWellcome_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timerSignUp_Tick(object sender, EventArgs e)
+        {
+            if (lbWellcome.Location.Y <  50)
+            {
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
+                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+            }
+            else
+            {
+                lbWellcome.Location = new Point(lbWellcome.Location.X,Y);
+                lbWellcome.Text = "SIGN - UP ";
+                pnFrameOption.Controls.Remove(btnSignUp);
+                button1.Location = new Point(120, 14);
+                pnFrameOption.Controls.Add(button1);
+                signUpForm = new SignUpForm();
+                activeFormChild(signUpForm, sender);
+                timerSignUp.Stop();
+                return;
+
+            }
+        }
+
+        private void timerClickButonLogin2_Tick(object sender, EventArgs e)
+        {
+            if (lbWellcome.Location.Y < 50)
+            {
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
+                button1.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+            }
+            else
+            {
+                lbWellcome.Location = new Point(lbWellcome.Location.X, Y);
+                lbWellcome.Text = "SIGN - IN ";
+                pnFrameOption.Controls.Remove(button1);
+                btnSignUp.Location = new Point(120, 14);
+                pnFrameOption.Controls.Add(btnSignUp);
+                loginForm = new LoginForm();
+                activeFormChild(loginForm, sender);
+                timerClickButonLogin2.Stop();
+                return;
+
+            }
         }
     }
 }

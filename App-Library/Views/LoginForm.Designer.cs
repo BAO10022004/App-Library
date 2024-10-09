@@ -8,7 +8,7 @@ namespace App_Library.Views
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -33,9 +33,14 @@ namespace App_Library.Views
             this.components = new System.ComponentModel.Container();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnLogin = new System.Windows.Forms.Button();
             this.gnTxbUserName = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.pnContainTxbUserName = new System.Windows.Forms.Panel();
+            this.txbEmail = new System.Windows.Forms.TextBox();
             this.gnTxbPassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gnPanelInputPassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.pnContainTxbPassword = new System.Windows.Forms.Panel();
+            this.txbPassword = new System.Windows.Forms.TextBox();
             this.gnpnContainTxbPassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gnIconGif = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -43,30 +48,67 @@ namespace App_Library.Views
             this.gnebeginframe = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerClickButonLogin = new System.Windows.Forms.Timer(this.components);
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbCreateAccount = new System.Windows.Forms.Label();
-            this.pnContainTxbPassword = new System.Windows.Forms.Panel();
-            this.txbPassword = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pnContainTxbUserName = new System.Windows.Forms.Panel();
-            this.txbUserName = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pnMainContentLogin.SuspendLayout();
-            this.pnContainTxbPassword.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnContainTxbUserName.SuspendLayout();
+            this.pnContainTxbPassword.SuspendLayout();
+            this.pnMainContentLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // gnBtnLogin
             // 
             this.gnBtnLogin.BorderRadius = 40;
+            this.gnBtnLogin.TargetControl = this.btnLogin;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.Blue;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLogin.Location = new System.Drawing.Point(236, 451);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(150, 60);
+            this.btnLogin.TabIndex = 9;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
             // 
             // gnTxbUserName
             // 
             this.gnTxbUserName.BorderRadius = 30;
+            this.gnTxbUserName.TargetControl = this.pnContainTxbUserName;
+            // 
+            // pnContainTxbUserName
+            // 
+            this.pnContainTxbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnContainTxbUserName.Controls.Add(this.txbEmail);
+            this.pnContainTxbUserName.Location = new System.Drawing.Point(209, 193);
+            this.pnContainTxbUserName.Name = "pnContainTxbUserName";
+            this.pnContainTxbUserName.Size = new System.Drawing.Size(359, 54);
+            this.pnContainTxbUserName.TabIndex = 10;
+            // 
+            // txbEmail
+            // 
+            this.txbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbEmail.Location = new System.Drawing.Point(16, 15);
+            this.txbEmail.Name = "txbEmail";
+            this.txbEmail.Size = new System.Drawing.Size(298, 27);
+            this.txbEmail.TabIndex = 4;
             // 
             // gnTxbPassword
             // 
@@ -75,6 +117,27 @@ namespace App_Library.Views
             // gnPanelInputPassword
             // 
             this.gnPanelInputPassword.BorderRadius = 30;
+            this.gnPanelInputPassword.TargetControl = this.pnContainTxbPassword;
+            // 
+            // pnContainTxbPassword
+            // 
+            this.pnContainTxbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pnContainTxbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnContainTxbPassword.Controls.Add(this.txbPassword);
+            this.pnContainTxbPassword.Location = new System.Drawing.Point(209, 279);
+            this.pnContainTxbPassword.Name = "pnContainTxbPassword";
+            this.pnContainTxbPassword.Size = new System.Drawing.Size(359, 53);
+            this.pnContainTxbPassword.TabIndex = 11;
+            // 
+            // txbPassword
+            // 
+            this.txbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbPassword.Location = new System.Drawing.Point(15, 10);
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(313, 27);
+            this.txbPassword.TabIndex = 6;
             // 
             // gnpnContainTxbPassword
             // 
@@ -100,10 +163,14 @@ namespace App_Library.Views
             // pnMainContentLogin
             // 
             this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
+            this.pnMainContentLogin.Controls.Add(this.label1);
+            this.pnMainContentLogin.Controls.Add(this.pictureBox3);
+            this.pnMainContentLogin.Controls.Add(this.pictureBox2);
+            this.pnMainContentLogin.Controls.Add(this.pictureBox1);
+            this.pnMainContentLogin.Controls.Add(this.guna2CirclePictureBox1);
             this.pnMainContentLogin.Controls.Add(this.panel2);
             this.pnMainContentLogin.Controls.Add(this.lbCreateAccount);
             this.pnMainContentLogin.Controls.Add(this.pnContainTxbPassword);
-            this.pnMainContentLogin.Controls.Add(this.pictureBox3);
             this.pnMainContentLogin.Controls.Add(this.pnContainTxbUserName);
             this.pnMainContentLogin.Controls.Add(this.btnLogin);
             this.pnMainContentLogin.Controls.Add(this.lbForgotPassword);
@@ -113,6 +180,55 @@ namespace App_Library.Views
             this.pnMainContentLogin.Name = "pnMainContentLogin";
             this.pnMainContentLogin.Size = new System.Drawing.Size(606, 812);
             this.pnMainContentLogin.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(201, 132);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 23);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "_______________";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::App_Library.Properties.Resources.communication;
+            this.pictureBox3.Location = new System.Drawing.Point(346, 72);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 35);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::App_Library.Properties.Resources.twitter;
+            this.pictureBox2.Location = new System.Drawing.Point(278, 72);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::App_Library.Properties.Resources.google;
+            this.pictureBox1.Location = new System.Drawing.Point(201, 72);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(181, 302);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(8, 8);
+            this.guna2CirclePictureBox1.TabIndex = 12;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -126,73 +242,11 @@ namespace App_Library.Views
             this.lbCreateAccount.AutoSize = true;
             this.lbCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbCreateAccount.ForeColor = System.Drawing.Color.Black;
-            this.lbCreateAccount.Location = new System.Drawing.Point(362, 427);
+            this.lbCreateAccount.Location = new System.Drawing.Point(399, 375);
             this.lbCreateAccount.Name = "lbCreateAccount";
             this.lbCreateAccount.Size = new System.Drawing.Size(139, 20);
             this.lbCreateAccount.TabIndex = 8;
             this.lbCreateAccount.Text = "Create Account";
-            // 
-            // pnContainTxbPassword
-            // 
-            this.pnContainTxbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnContainTxbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnContainTxbPassword.Controls.Add(this.txbPassword);
-            this.pnContainTxbPassword.Location = new System.Drawing.Point(214, 354);
-            this.pnContainTxbPassword.Name = "pnContainTxbPassword";
-            this.pnContainTxbPassword.Size = new System.Drawing.Size(359, 42);
-            this.pnContainTxbPassword.TabIndex = 11;
-            // 
-            // txbPassword
-            // 
-            this.txbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbPassword.Location = new System.Drawing.Point(16, 3);
-            this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(313, 34);
-            this.txbPassword.TabIndex = 6;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::App_Library.Properties.Resources.IconLogin;
-            this.pictureBox3.Location = new System.Drawing.Point(196, 44);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(197, 193);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pnContainTxbUserName
-            // 
-            this.pnContainTxbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnContainTxbUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnContainTxbUserName.Controls.Add(this.txbUserName);
-            this.pnContainTxbUserName.Location = new System.Drawing.Point(214, 268);
-            this.pnContainTxbUserName.Name = "pnContainTxbUserName";
-            this.pnContainTxbUserName.Size = new System.Drawing.Size(359, 54);
-            this.pnContainTxbUserName.TabIndex = 10;
-            // 
-            // txbUserName
-            // 
-            this.txbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbUserName.Location = new System.Drawing.Point(16, 9);
-            this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(298, 34);
-            this.txbUserName.TabIndex = 4;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.Color.Blue;
-            this.btnLogin.FlatAppearance.BorderSize = 0;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLogin.Location = new System.Drawing.Point(243, 497);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(150, 60);
-            this.btnLogin.TabIndex = 9;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = false;
             // 
             // lbForgotPassword
             // 
@@ -200,7 +254,7 @@ namespace App_Library.Views
             this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbForgotPassword.ForeColor = System.Drawing.Color.Blue;
-            this.lbForgotPassword.Location = new System.Drawing.Point(89, 427);
+            this.lbForgotPassword.Location = new System.Drawing.Point(84, 375);
             this.lbForgotPassword.Name = "lbForgotPassword";
             this.lbForgotPassword.Size = new System.Drawing.Size(157, 20);
             this.lbForgotPassword.TabIndex = 7;
@@ -210,7 +264,7 @@ namespace App_Library.Views
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(50, 367);
+            this.label3.Location = new System.Drawing.Point(45, 292);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 29);
             this.label3.TabIndex = 5;
@@ -220,17 +274,17 @@ namespace App_Library.Views
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(50, 283);
+            this.label2.Location = new System.Drawing.Point(45, 208);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 29);
+            this.label2.Size = new System.Drawing.Size(93, 29);
             this.label2.TabIndex = 3;
-            this.label2.Text = "User Name: ";
+            this.label2.Text = "Email: ";
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 574);
+            this.ClientSize = new System.Drawing.Size(596, 574);
             this.Controls.Add(this.pnMainContentLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(300, 300);
@@ -238,13 +292,16 @@ namespace App_Library.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.pnMainContentLogin.ResumeLayout(false);
-            this.pnMainContentLogin.PerformLayout();
-            this.pnContainTxbPassword.ResumeLayout(false);
-            this.pnContainTxbPassword.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnContainTxbUserName.ResumeLayout(false);
             this.pnContainTxbUserName.PerformLayout();
+            this.pnContainTxbPassword.ResumeLayout(false);
+            this.pnContainTxbPassword.PerformLayout();
+            this.pnMainContentLogin.ResumeLayout(false);
+            this.pnMainContentLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,12 +323,16 @@ namespace App_Library.Views
         private Label lbCreateAccount;
         private Panel pnContainTxbPassword;
         private TextBox txbPassword;
-        private PictureBox pictureBox3;
         private Panel pnContainTxbUserName;
-        private TextBox txbUserName;
+        private TextBox txbEmail;
         private Button btnLogin;
         private Label lbForgotPassword;
         private Label label3;
         private Label label2;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox2;
+        private Label label1;
     }
 }

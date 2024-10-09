@@ -38,6 +38,7 @@ namespace App_Library.Views
             this.label1 = new System.Windows.Forms.Label();
             this.pnSubLogin = new System.Windows.Forms.Panel();
             this.pnFrameOption = new System.Windows.Forms.Panel();
+            this.pnLogInContent = new System.Windows.Forms.Panel();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lbWellcome = new System.Windows.Forms.Label();
@@ -45,7 +46,8 @@ namespace App_Library.Views
             this.timerClickButonLogin = new System.Windows.Forms.Timer(this.components);
             this.gneBtnSingIn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pnLogInContent = new System.Windows.Forms.Panel();
+            this.timerSignUp = new System.Windows.Forms.Timer(this.components);
+            this.timerClickButonLogin2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -126,6 +128,13 @@ namespace App_Library.Views
             this.pnFrameOption.TabIndex = 3;
             this.pnFrameOption.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFrameOption_Paint);
             // 
+            // pnLogInContent
+            // 
+            this.pnLogInContent.Location = new System.Drawing.Point(4, 239);
+            this.pnLogInContent.Name = "pnLogInContent";
+            this.pnLogInContent.Size = new System.Drawing.Size(576, 596);
+            this.pnLogInContent.TabIndex = 2;
+            // 
             // btnSignUp
             // 
             this.btnSignUp.FlatAppearance.BorderSize = 0;
@@ -185,12 +194,15 @@ namespace App_Library.Views
             this.gneBtnSingUp.BorderRadius = 40;
             this.gneBtnSingUp.TargetControl = this.btnSignUp;
             // 
-            // pnLogInContent
+            // timerSignUp
             // 
-            this.pnLogInContent.Location = new System.Drawing.Point(4, 239);
-            this.pnLogInContent.Name = "pnLogInContent";
-            this.pnLogInContent.Size = new System.Drawing.Size(576, 596);
-            this.pnLogInContent.TabIndex = 2;
+            this.timerSignUp.Interval = 10;
+            this.timerSignUp.Tick += new System.EventHandler(this.timerSignUp_Tick);
+            // 
+            // timerClickButonLogin2
+            // 
+            this.timerClickButonLogin2.Interval = 10;
+            this.timerClickButonLogin2.Tick += new System.EventHandler(this.timerClickButonLogin2_Tick);
             // 
             // SplashForm
             // 
@@ -229,5 +241,7 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Elipse gneBtnSingIn;
         private Guna.UI2.WinForms.Guna2Elipse gneBtnSingUp;
         private Panel pnLogInContent;
+        private Timer timerSignUp;
+        private Timer timerClickButonLogin2;
     }
 }
