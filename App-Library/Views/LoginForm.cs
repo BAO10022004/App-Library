@@ -28,20 +28,20 @@ namespace App_Library.Views
         }
 
 
-      
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            
-                        if (e.Button == MouseButtons.Left) // Chỉ di chuyển khi chuột trái được nhấn
+
+            if (e.Button == MouseButtons.Left) // Chỉ di chuyển khi chuột trái được nhấn
             {
-                this.Location = new Point(this.Location.X + e.X , this.Location.Y + e.Y );
+                this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
             }
         }
 
         private void panel1_DragDrop(object sender, DragEventArgs e)
         {
 
-            
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace App_Library.Views
 
         private void btnLogin_MouseMove(object sender, MouseEventArgs e)
         {
-           
+
         }
 
         private void btnLogin_MouseDown(object sender, MouseEventArgs e)
@@ -84,9 +84,9 @@ namespace App_Library.Views
 
         private void timerClickButonLogin_Tick(object sender, EventArgs e)
         {
-            
-            
-           
+
+
+
 
         }
 
@@ -166,6 +166,11 @@ namespace App_Library.Views
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
 
         }

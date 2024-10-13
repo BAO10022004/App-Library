@@ -1,4 +1,6 @@
-﻿using App_Library.Views;
+﻿using App_Library.Services;
+using App_Library.Services.Interfaces;
+using App_Library.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,13 @@ namespace App_Library
         [STAThread]
         static void Main()
         {
+
+            MongoDbContext context = new MongoDbContext("mongodb+srv://6351071034:1234567890@cluster1.yodnw.mongodb.net/","Library");
+            IUserService userService = new UserService(context);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashForm());
+            Application.Run(new MainForm(userService));
         }
     }
 }

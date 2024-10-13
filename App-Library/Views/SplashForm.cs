@@ -43,22 +43,22 @@ namespace App_Library.Views
             if (lbWellcome.Location.Y > 10)
             {
                 lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2* 250 / 37));
-               
-                    btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 250 / 37));
+
+                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
             {
                 btnSignUp.Location = new Point(120, 14);
                 pnFrameOption.Controls.Remove(button1);
                 pnLogInContent.Location = new Point(0, 119);
-                 lbWellcome.Location = new Point(lbWellcome.Location.X + 60, lbWellcome.Location.Y);
+                lbWellcome.Location = new Point(lbWellcome.Location.X + 60, lbWellcome.Location.Y);
                 timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN ";
                 loginForm = new LoginForm();
-                 activeFormChild(loginForm, sender);
+                activeFormChild(loginForm, sender);
                 return;
-                
+
             }
         }
 
@@ -73,7 +73,7 @@ namespace App_Library.Views
             {
                 timerClickButonLogin2.Start();
             }
-           
+
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -136,14 +136,14 @@ namespace App_Library.Views
 
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y <  50)
+            if (lbWellcome.Location.Y < 50)
             {
                 lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
                 btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X,Y);
+                lbWellcome.Location = new Point(lbWellcome.Location.X, Y);
                 lbWellcome.Text = "SIGN - UP ";
                 pnFrameOption.Controls.Remove(btnSignUp);
                 button1.Location = new Point(120, 14);
