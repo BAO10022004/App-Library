@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App_Library.Services;
+using App_Library.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +16,12 @@ namespace App_Library.Views
     {
         LoginForm loginForm;
         SignUpForm signUpForm;
-        public SplashForm()
+        private readonly MongoDbContext _context;
+        private readonly IAuthService _authService;
+        public SplashForm(MongoDbContext context)
         {
+            _context = context;
+            _authService = new AuthService(_context);
             InitializeComponent();
         }
         Form ActForm;
@@ -55,7 +61,7 @@ namespace App_Library.Views
                 lbWellcome.Location = new Point(lbWellcome.Location.X + 60, lbWellcome.Location.Y);
                 timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN ";
-                loginForm = new LoginForm();
+                loginForm = new LoginForm(_context);
                 activeFormChild(loginForm, sender);
                 return;
 
@@ -170,7 +176,7 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Remove(button1);
                 btnSignUp.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(btnSignUp);
-                loginForm = new LoginForm();
+                loginForm = new LoginForm(_context);
                 activeFormChild(loginForm, sender);
                 timerClickButonLogin2.Stop();
                 return;

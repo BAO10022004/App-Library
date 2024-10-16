@@ -16,17 +16,14 @@ namespace App_Library.Views
         {
             InitializeComponent();
         }
-
         private void SignUpForm_Load(object sender, EventArgs e)
         {
 
         }
-
         private void pnMainContentLogin_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
 

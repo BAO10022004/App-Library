@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace App_Library.Services
 {
-    internal class MongoDbContext
+    public class MongoDbContext
     {
         private readonly IMongoDatabase _database;
 

@@ -19,11 +19,10 @@ namespace App_Library
         {
 
             MongoDbContext context = new MongoDbContext("mongodb+srv://6351071034:1234567890@cluster1.yodnw.mongodb.net/","Library");
-            IUserService userService = new UserService(context);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(userService));
+            Application.Run(new SplashForm(context));
         }
     }
 }

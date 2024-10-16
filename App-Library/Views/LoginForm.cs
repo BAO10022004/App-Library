@@ -1,4 +1,7 @@
-﻿using System;
+﻿using App_Library.Services;
+using App_Library.Services.Interfaces;
+using DnsClient.Protocol;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,167 +15,29 @@ namespace App_Library.Views
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        private readonly MongoDbContext _context;
+        private readonly IAuthService _authService;
+        public LoginForm(MongoDbContext context)
         {
+            _context = context;
+            _authService = new AuthService(_context);
             InitializeComponent();
         }
-
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left) // Chỉ di chuyển khi chuột trái được nhấn
-            {
-                this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
-            }
-        }
-
-        private void panel1_DragDrop(object sender, DragEventArgs e)
-        {
-
-
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnLogin_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void btnLogin_MouseDown(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txbUserName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnMainContentLogin_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnFrameOption_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void timerClickButonLogin_Tick(object sender, EventArgs e)
         {
 
-
-
-
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private async void btnLogin_Click_1(object sender, EventArgs e)
         {
-            timerClickButonLogin.Start();
-        }
-
-        private void pnSubLogin_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbForgotPassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbCreateAccount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MyFormLogin_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnContentFormLogin_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lbWellcome_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnContainTxbPassword_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnContainTxbUserName_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLogin_Click_1(object sender, EventArgs e)
-        {
-
+            await _authService.LoginAsync(txbEmail.Text, txbPassword.Text);
+            // Chuyển hướng hoặc hiển thị màn hình chính của ứng dụng
+            this.Hide();
+            MainForm mainForm = new MainForm(_context);
+            mainForm.Show();
         }
     }
 }

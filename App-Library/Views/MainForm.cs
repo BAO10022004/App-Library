@@ -15,10 +15,12 @@ namespace App_Library.Views
 {
     public partial class MainForm : Form
     {
+        private readonly MongoDbContext _context;
         private readonly IUserService _userService;
-        public MainForm(IUserService userService)
+        public MainForm(MongoDbContext context)
         {
-            _userService = userService;
+            _context = context;
+            _userService = new UserService(_context);
             InitializeComponent();
             this.Load += UserListForm_Load;
         }
