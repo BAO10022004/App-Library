@@ -59,12 +59,21 @@ namespace App_Library.Services
             
         }
 
-        public async Task<string> SignUpAsync(SignUpRequest request)
+        public async Task<string> SignUpAsyn(SignUpRequest request)
         {
             var existingUser = await _context.Users.Find(u => u.Username == request.Username).FirstOrDefaultAsync();
             var existingEmail = await _context.Users.Find(u => u.Email == request.Email).FirstOrDefaultAsync();
-            if (existingUser != null) throw new InvalidOperationException("Username already exists");
-            if (existingEmail != null) throw new InvalidOperationException("Email already exists");
+
+            if (existingUser != null)
+            {
+                MessageBox.Show("Username already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
+            if (existingEmail != null)
+            {
+                MessageBox.Show("Email already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
             var user = new User
@@ -76,7 +85,7 @@ namespace App_Library.Services
             };
 
             await _context.Users.InsertOneAsync(user);
-            return GenerateJwtToken(user);
+            return "";
         }
 
         //public async Task<string> GoogleLoginAsync(GoogleLoginRequest request)
@@ -128,9 +137,9 @@ namespace App_Library.Services
         //    return new JwtSecurityTokenHandler().WriteToken(token);
         //}
 
-        //private string GenerateRandomPassword()
-        //{
-        //    return Guid.NewGuid().ToString("N").Substring(0, 8) + Guid.NewGuid().ToString("N").Substring(0, 8);
-        //}
+        private string GenerateRandomPassword()
+        {
+            return Guid.NewGuid().ToString("N").Substring(0, 8) + Guid.NewGuid().ToString("N").Substring(0, 8);
+        }
     }
 }

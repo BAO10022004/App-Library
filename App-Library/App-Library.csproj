@@ -179,6 +179,8 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookSold.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\GoogleLoginRequest.cs" />
+    <Compile Include="Models\SignUpRequest.cs" />
     <Compile Include="Models\StarsRating.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
