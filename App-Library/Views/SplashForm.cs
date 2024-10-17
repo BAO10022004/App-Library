@@ -155,6 +155,7 @@ namespace App_Library.Views
                 button1.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(button1);
                 signUpForm = new SignUpForm();
+                signUpForm.ShowDialog();
                 activeFormChild(signUpForm, sender);
                 timerSignUp.Stop();
                 return;
@@ -182,6 +183,10 @@ namespace App_Library.Views
                 return;
 
             }
+        }
+
+        private void SplashForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }

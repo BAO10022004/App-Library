@@ -54,30 +54,32 @@ namespace App_Library.Services
             }
 
             // Sau khi đăng nhập thành công, tạo một phiên hoặc lưu trữ thông tin người dùng tại đây
+
             MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            
+
+
         }
 
-        public async Task<string> SignUpAsync(SignUpRequest request)
-        {
-            var existingUser = await _context.Users.Find(u => u.Username == request.Username).FirstOrDefaultAsync();
-            var existingEmail = await _context.Users.Find(u => u.Email == request.Email).FirstOrDefaultAsync();
-            if (existingUser != null) throw new InvalidOperationException("Username already exists");
-            if (existingEmail != null) throw new InvalidOperationException("Email already exists");
+        //public async Task<string> SignUpAsync(SignUpRequest request)
+        //{
+        //    var existingUser = await _context.Users.Find(u => u.Username == request.Username).FirstOrDefaultAsync();
+        //    var existingEmail = await _context.Users.Find(u => u.Email == request.Email).FirstOrDefaultAsync();
+        //    if (existingUser != null) throw new InvalidOperationException("Username already exists");
+        //    if (existingEmail != null) throw new InvalidOperationException("Email already exists");
 
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            var user = new User
-            {
-                Email = request.Email,
-                Username = request.Username,
-                PasswordHash = hashedPassword,
-                IsActive = true
-            };
+        //    var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
+        //    var user = new User
+        //    {
+        //        Email = request.Email,
+        //        Username = request.Username,
+        //        PasswordHash = hashedPassword,
+        //        IsActive = true
+        //    };
 
-            await _context.Users.InsertOneAsync(user);
-            return GenerateJwtToken(user);
-        }
+        //    await _context.Users.InsertOneAsync(user);
+        //    return GenerateJwtToken(user);
+        //}
 
         //public async Task<string> GoogleLoginAsync(GoogleLoginRequest request)
         //{

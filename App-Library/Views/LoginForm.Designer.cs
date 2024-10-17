@@ -58,6 +58,7 @@ namespace App_Library.Views
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timerOpenMainForm = new System.Windows.Forms.Timer(this.components);
             this.pnContainTxbUserName.SuspendLayout();
             this.pnContainTxbPassword.SuspendLayout();
             this.pnMainContentLogin.SuspendLayout();
@@ -281,6 +282,11 @@ namespace App_Library.Views
             this.label2.TabIndex = 3;
             this.label2.Text = "Email: ";
             // 
+            // timerOpenMainForm
+            // 
+            this.timerOpenMainForm.Enabled = true;
+            this.timerOpenMainForm.Interval = 5;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -335,5 +341,6 @@ namespace App_Library.Views
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private Label label1;
+        private Timer timerOpenMainForm;
     }
 }

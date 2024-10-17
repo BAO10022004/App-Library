@@ -11,7 +11,8 @@ namespace App_Library
 {
     internal static class Program
     {
-        /// <summary>
+        static public  SplashForm sp ;
+        /// summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -22,7 +23,8 @@ namespace App_Library
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SplashForm(context));
+            sp = new SplashForm(context);
+            Application.Run(sp);
         }
     }
 }
