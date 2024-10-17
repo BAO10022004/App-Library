@@ -122,7 +122,7 @@ namespace App_Library.Views
             this.pnFrameOption.Controls.Add(this.pnLogInContent);
             this.pnFrameOption.Controls.Add(this.btnSignUp);
             this.pnFrameOption.Controls.Add(this.button1);
-            this.pnFrameOption.Location = new System.Drawing.Point(-1, 616);
+            this.pnFrameOption.Location = new System.Drawing.Point(-1, 617);
             this.pnFrameOption.Name = "pnFrameOption";
             this.pnFrameOption.Size = new System.Drawing.Size(580, 800);
             this.pnFrameOption.TabIndex = 3;
@@ -201,7 +201,7 @@ namespace App_Library.Views
             // 
             // timerClickButonLogin2
             // 
-            this.timerClickButonLogin2.Interval = 10;
+            this.timerClickButonLogin2.Interval = 1;
             this.timerClickButonLogin2.Tick += new System.EventHandler(this.timerClickButonLogin2_Tick);
             // 
             // SplashForm
@@ -215,6 +215,7 @@ namespace App_Library.Views
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
+            this.Load += new System.EventHandler(this.SplashForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -243,5 +244,8 @@ namespace App_Library.Views
         private Panel pnLogInContent;
         private Timer timerSignUp;
         private Timer timerClickButonLogin2;
+
+        public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
+        public PictureBox BtnExit { get => btnExit; set => btnExit = value; }
     }
 }

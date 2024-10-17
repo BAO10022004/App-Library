@@ -34,16 +34,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnEmail = new System.Windows.Forms.Panel();
-            this.txbUserName = new System.Windows.Forms.TextBox();
+            this.txbEmail = new System.Windows.Forms.TextBox();
             this.pnPassword = new System.Windows.Forms.Panel();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnName = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnConfirm = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txbConfirm = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -114,21 +114,21 @@
             // pnEmail
             // 
             this.pnEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnEmail.Controls.Add(this.txbUserName);
+            this.pnEmail.Controls.Add(this.txbEmail);
             this.pnEmail.Location = new System.Drawing.Point(204, 192);
             this.pnEmail.Name = "pnEmail";
             this.pnEmail.Size = new System.Drawing.Size(359, 54);
             this.pnEmail.TabIndex = 10;
             // 
-            // txbUserName
+            // txbEmail
             // 
-            this.txbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbUserName.Location = new System.Drawing.Point(16, 15);
-            this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(298, 27);
-            this.txbUserName.TabIndex = 4;
+            this.txbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbEmail.Location = new System.Drawing.Point(16, 15);
+            this.txbEmail.Name = "txbEmail";
+            this.txbEmail.Size = new System.Drawing.Size(298, 27);
+            this.txbEmail.TabIndex = 4;
             // 
             // pnPassword
             // 
@@ -173,21 +173,21 @@
             // pnName
             // 
             this.pnName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnName.Controls.Add(this.textBox1);
+            this.pnName.Controls.Add(this.txbName);
             this.pnName.Location = new System.Drawing.Point(204, 107);
             this.pnName.Name = "pnName";
             this.pnName.Size = new System.Drawing.Size(359, 54);
             this.pnName.TabIndex = 18;
             // 
-            // textBox1
+            // txbName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox1.Location = new System.Drawing.Point(16, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(298, 27);
-            this.textBox1.TabIndex = 4;
+            this.txbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbName.Location = new System.Drawing.Point(16, 15);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(298, 27);
+            this.txbName.TabIndex = 4;
             // 
             // label5
             // 
@@ -202,21 +202,21 @@
             // pnConfirm
             // 
             this.pnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnConfirm.Controls.Add(this.textBox2);
+            this.pnConfirm.Controls.Add(this.txbConfirm);
             this.pnConfirm.Location = new System.Drawing.Point(204, 360);
             this.pnConfirm.Name = "pnConfirm";
             this.pnConfirm.Size = new System.Drawing.Size(359, 54);
             this.pnConfirm.TabIndex = 20;
             // 
-            // textBox2
+            // txbConfirm
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox2.Location = new System.Drawing.Point(16, 15);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(298, 27);
-            this.textBox2.TabIndex = 4;
+            this.txbConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbConfirm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbConfirm.Location = new System.Drawing.Point(16, 15);
+            this.txbConfirm.Name = "txbConfirm";
+            this.txbConfirm.Size = new System.Drawing.Size(298, 27);
+            this.txbConfirm.TabIndex = 4;
             // 
             // pictureBox1
             // 
@@ -342,16 +342,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Panel pnEmail;
-        private System.Windows.Forms.TextBox txbUserName;
+        private System.Windows.Forms.TextBox txbEmail;
         private System.Windows.Forms.Panel pnPassword;
         private System.Windows.Forms.TextBox txbPassword;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnConfirm;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbConfirm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;

@@ -54,12 +54,14 @@ namespace App_Library.Services
             }
 
             // Sau khi đăng nhập thành công, tạo một phiên hoặc lưu trữ thông tin người dùng tại đây
+
             MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            
+
+
         }
 
-        public async Task<string> SignUpAsyn(SignUpRequest request)
+        public async Task<bool> SignUpAsyn(SignUpRequest request)
         {
             var existingUser = await _context.Users.Find(u => u.Username == request.Username).FirstOrDefaultAsync();
             var existingEmail = await _context.Users.Find(u => u.Email == request.Email).FirstOrDefaultAsync();
@@ -67,12 +69,12 @@ namespace App_Library.Services
             if (existingUser != null)
             {
                 MessageBox.Show("Username already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return "";
+                return false;
             }
             if (existingEmail != null)
             {
                 MessageBox.Show("Email already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return "";
+                return false;
             }
 
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
@@ -85,7 +87,8 @@ namespace App_Library.Services
             };
 
             await _context.Users.InsertOneAsync(user);
-            return "";
+            MessageBox.Show("SignUp successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
         }
 
         //public async Task<string> GoogleLoginAsync(GoogleLoginRequest request)

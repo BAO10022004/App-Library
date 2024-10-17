@@ -17,11 +17,11 @@ namespace App_Library.Views
         LoginForm loginForm;
         SignUpForm signUpForm;
         private readonly MongoDbContext _context;
-        private readonly IAuthService _authService;
+        //private readonly IAuthService _authService;
         public SplashForm(MongoDbContext context)
         {
             _context = context;
-            _authService = new AuthService(_context);
+            //_authService = new AuthService(_context);
             InitializeComponent();
         }
         Form ActForm;
@@ -50,7 +50,6 @@ namespace App_Library.Views
             {
                 lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
                 pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 250 / 37));
-
                 btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
@@ -64,7 +63,6 @@ namespace App_Library.Views
                 loginForm = new LoginForm(_context);
                 activeFormChild(loginForm, sender);
                 return;
-
             }
         }
 
@@ -142,9 +140,10 @@ namespace App_Library.Views
 
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y < 50)
+            if (lbWellcome.Location.Y > 10)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 250 / 37));
                 btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
@@ -154,7 +153,8 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Remove(btnSignUp);
                 button1.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(button1);
-                signUpForm = new SignUpForm();
+                signUpForm = new SignUpForm(_context);
+                signUpForm.ShowDialog();
                 activeFormChild(signUpForm, sender);
                 timerSignUp.Stop();
                 return;
@@ -180,8 +180,11 @@ namespace App_Library.Views
                 activeFormChild(loginForm, sender);
                 timerClickButonLogin2.Stop();
                 return;
-
             }
+        }
+
+        private void SplashForm_Load(object sender, EventArgs e)
+        {
         }
     }
 }
