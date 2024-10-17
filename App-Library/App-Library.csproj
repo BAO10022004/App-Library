@@ -265,6 +265,7 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\magnifying-glass %281%29.png" />
     <None Include="Resources\communication.png" />
     <None Include="Resources\facebook.png" />
     <None Include="Resources\twitter.png" />

@@ -53,12 +53,14 @@ namespace App_Library.Views
             Program.sp.PnSubLogin.Controls.Add(form);
             Program.sp.PnSubLogin.Tag = form;
             Program.sp.Location = new Point(0, 0);
+            Program.sp.BtnExit.Location = new Point(1540-35, 1);
             form.BringToFront();
             form.Show();
         }
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
-            Size newSize = (new Size(1920, 1080));
+            
+            Size newSize = (new Size(1536, 864));
             if (Program.sp.Location.X > 0)
             {
                 int y = Program.sp.Location.Y - 5;
@@ -67,7 +69,8 @@ namespace App_Library.Views
             else
             {
                 timerOpenMainForm.Stop();
-                Program.sp.Size = newSize;
+                Program.sp.WindowState = FormWindowState.Maximized;
+                MessageBox.Show(Program.sp.Size.Width +" " + Program.sp.Size.Height);
                 Program.sp.PnSubLogin.Controls.Clear();
                 activeFormChild(new MainForm(_context), sender);      
             }

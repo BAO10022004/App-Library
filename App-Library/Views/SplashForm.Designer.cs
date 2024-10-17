@@ -246,5 +246,6 @@ namespace App_Library.Views
         private Timer timerClickButonLogin2;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
+        public PictureBox BtnExit { get => btnExit; set => btnExit = value; }
     }
 }
