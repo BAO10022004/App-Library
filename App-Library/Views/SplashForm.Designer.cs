@@ -48,6 +48,7 @@ namespace App_Library.Views
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerSignUp = new System.Windows.Forms.Timer(this.components);
             this.timerClickButonLogin2 = new System.Windows.Forms.Timer(this.components);
+            this.timer2SignUp = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -140,7 +141,7 @@ namespace App_Library.Views
             this.btnSignUp.FlatAppearance.BorderSize = 0;
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSignUp.Location = new System.Drawing.Point(152, 110);
+            this.btnSignUp.Location = new System.Drawing.Point(152, 117);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(285, 73);
             this.btnSignUp.TabIndex = 1;
@@ -172,6 +173,7 @@ namespace App_Library.Views
             this.lbWellcome.Size = new System.Drawing.Size(355, 83);
             this.lbWellcome.TabIndex = 2;
             this.lbWellcome.Text = "WELLCOME BACK";
+            this.lbWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbWellcome.Click += new System.EventHandler(this.lbWellcome_Click);
             // 
             // gneContentLogin
@@ -196,13 +198,18 @@ namespace App_Library.Views
             // 
             // timerSignUp
             // 
-            this.timerSignUp.Interval = 10;
+            this.timerSignUp.Interval = 5;
             this.timerSignUp.Tick += new System.EventHandler(this.timerSignUp_Tick);
             // 
             // timerClickButonLogin2
             // 
             this.timerClickButonLogin2.Interval = 1;
             this.timerClickButonLogin2.Tick += new System.EventHandler(this.timerClickButonLogin2_Tick);
+            // 
+            // timer2SignUp
+            // 
+            this.timer2SignUp.Interval = 5;
+            this.timer2SignUp.Tick += new System.EventHandler(this.timerSignUp2_Tick);
             // 
             // SplashForm
             // 
@@ -244,6 +251,7 @@ namespace App_Library.Views
         private Panel pnLogInContent;
         private Timer timerSignUp;
         private Timer timerClickButonLogin2;
+        private Timer timer2SignUp;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
         public PictureBox BtnExit { get => btnExit; set => btnExit = value; }
