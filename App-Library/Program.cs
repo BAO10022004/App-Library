@@ -23,8 +23,8 @@ namespace App_Library
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             sp = new SplashForm(context);
-            Application.Run(sp);
-            //Application.Run(new TestSignUpForm(context));
+            //Application.Run(sp);
+            Application.Run(new Test(context));
         }
     }
 }

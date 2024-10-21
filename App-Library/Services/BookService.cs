@@ -7,18 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unidecode.NET;
 
 namespace App_Library.Services
 {
     public class BookService : IBookService
     {
         private readonly MongoDbContext _context;
-        //private readonly IHttpContextAccessor _httpContextAccessor;
 
         public BookService(MongoDbContext context)
         {
             _context = context;
-            //_httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<List<Book>> GetAllBooksAsync()
@@ -26,11 +25,6 @@ namespace App_Library.Services
             return await _context.Books.Find(FilterDefinition<Book>.Empty)
                                         .SortByDescending(book => book.CreatedAt)
                                         .ToListAsync();
-        }
-
-        public async Task<Book> GetBookBySlugAsync(string slug)
-        {
-            return await _context.Books.Find(b => b.Slug == slug).FirstOrDefaultAsync();
         }
 
         public async Task<bool> AddBookAsync(Book newBook, string currentUsername)
@@ -41,10 +35,10 @@ namespace App_Library.Services
                 return false;
             }
 
-            if (string.IsNullOrEmpty(newBook.Title) || string.IsNullOrEmpty(newBook.Content))
-            {
-                throw new ArgumentException("Please provide all required fields!");
-            }
+            //if (string.IsNullOrEmpty(newBook.Title) || string.IsNullOrEmpty(newBook.Content))
+            //{
+            //    throw new ArgumentException("Please provide all required fields!");
+            //}
 
             var existingBook = await _context.Books.Find(b => b.Title == newBook.Title).FirstOrDefaultAsync();
             if (existingBook != null)
@@ -52,14 +46,14 @@ namespace App_Library.Services
                 throw new InvalidOperationException("A book with this title already exists.");
             }
 
-            //newBook.Slug = newBook.Title.Unidecode().ToLower().Replace(" ", "-").Replace("[^a-zA-Z0-9-]", "");
+            newBook.Slug = newBook.Title.Unidecode().ToLower().Replace(" ", "-").Replace("[^a-zA-Z0-9-]", "");
             newBook.Username = currentUsername;
 
             await _context.Books.InsertOneAsync(newBook);
             return true;
         }
 
-        //public async Task<SearchResult<Book>> SearchBooksAsync(string searchTerm, string sort, string genre, int startIndex, int limit)
+        //public async Task<List<Book>> SearchBooksAsync(string searchTerm, string sort, string genre, int startIndex, int limit)
         //{
         //    var filterBuilder = Builders<Book>.Filter;
         //    var filters = filterBuilder.Empty;
@@ -88,42 +82,80 @@ namespace App_Library.Services
         //        .Limit(limit)
         //        .ToListAsync();
 
-        //    var totalBooks = await _context.Books.CountDocumentsAsync(filters);
+        //    //var totalBooks = await _context.Books.CountDocumentsAsync(filters);
 
-        //    return new SearchResult<Book> { Books = books, TotalCount = totalBooks };
+        //    return books;
         //}
 
-        //public async Task<bool> UpdateBookAsync(string id, UpdateBookDTO updateBookDTO, string currentUsername)
-        //{
-        //    var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
-        //    if (user == null || !user.IsAdmin)
-        //    {
-        //        return false;
-        //    }
+        public async Task<bool> UpdateBookAsync(string id, UpdateBookDTO updateBookDTO, string currentUsername)
+        {
+            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            if (user == null || !user.IsAdmin)
+            {
+                return false;
+            }
 
-        //    var filter = Builders<Book>.Filter.Eq("_id", new ObjectId(id));
-        //    var updateDefinition = new List<UpdateDefinition<Book>>();
+            var filter = Builders<Book>.Filter.Eq("_id", new ObjectId(id));
+            var updateDefinition = new List<UpdateDefinition<Book>>();
 
-        //    if (!string.IsNullOrEmpty(updateBookDTO.Title))
-        //    {
-        //        updateDefinition.Add(Builders<Book>.Update.Set(b => b.Title, updateBookDTO.Title));
-        //    }
+            if (!string.IsNullOrEmpty(updateBookDTO.Title))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Title, updateBookDTO.Title));
+            }
 
-        //    // Continue adding other fields similar to above...
+            if (!string.IsNullOrEmpty(updateBookDTO.Author))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Author, updateBookDTO.Author));
+            }
 
-        //    if (!updateDefinition.Any())
-        //    {
-        //        throw new ArgumentException("No fields to update");
-        //    }
+            if (updateBookDTO.PublishedYear >= 0)
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.PublishedYear, updateBookDTO.PublishedYear));
+            }
 
-        //    var update = Builders<Book>.Update.Combine(updateDefinition);
-        //    var result = await _context.Books.FindOneAndUpdateAsync(filter, update, new FindOneAndUpdateOptions<Book>
-        //    {
-        //        ReturnDocument = ReturnDocument.After
-        //    });
+            if (!string.IsNullOrEmpty(updateBookDTO.Genre))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Genre, updateBookDTO.Genre));
+            }
 
-        //    return result != null;
-        //}
+            if (updateBookDTO.Price >= 0)
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Price, updateBookDTO.Price));
+            }
+
+            if (!string.IsNullOrEmpty(updateBookDTO.Content))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Content, updateBookDTO.Content));
+            }
+
+            if (!string.IsNullOrEmpty(updateBookDTO.Username))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Username, updateBookDTO.Username));
+            }
+
+            if (!string.IsNullOrEmpty(updateBookDTO.Image))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.Image, updateBookDTO.Image));
+            }
+
+            if (!string.IsNullOrEmpty(updateBookDTO.PdfUrl))
+            {
+                updateDefinition.Add(Builders<Book>.Update.Set(b => b.PdfUrl, updateBookDTO.PdfUrl));
+            }
+
+            if (!updateDefinition.Any())
+            {
+                throw new ArgumentException("No fields to update");
+            }
+
+            var update = Builders<Book>.Update.Combine(updateDefinition);
+            var result = await _context.Books.FindOneAndUpdateAsync(filter, update, new FindOneAndUpdateOptions<Book>
+            {
+                ReturnDocument = ReturnDocument.After
+            });
+
+            return result != null;
+        }
 
         public async Task<bool> DeleteBookAsync(string id, string currentUsername)
         {
