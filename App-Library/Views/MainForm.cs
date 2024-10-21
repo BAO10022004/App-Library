@@ -76,72 +76,79 @@ namespace App_Library.Views
         {
 
         }
-        public Panel CreateBookPanel(Book book, int index )
+        public Panel CreateBookPanel(Book book, int index, int rating = 4)
         {
-            // Tạo panel mới
+            // Tạo panel mới với kích thước cố định
             Panel panel = new Panel();
-            panel.Size = new Size(300, 150);
-            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.Size = new Size(200, 350); // Kích thước giữ nguyên
+            panel.BorderStyle = BorderStyle.None;
+            panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
 
-            // Thêm hình ảnh sách (nếu có)
-            if (!string.IsNullOrEmpty(book.Image))
+            // Thêm hình ảnh sách (tăng kích thước)
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Size = new Size(180, 270); // Tăng kích thước ảnh lớn hơn
+            pictureBox.Location = new Point(10, 10);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Load hình ảnh từ URL (hoặc từ file nếu có đường dẫn cục bộ)
+            try
             {
-                PictureBox pictureBox = new PictureBox();
-                pictureBox.Size = new Size(100, 150);
-                pictureBox.Location = new Point(10, 10);
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
-                // Load hình ảnh từ URL (hoặc từ file nếu có đường dẫn cục bộ)
-                try
-                {
-                    pictureBox.Load(book.Image); // Đường dẫn hoặc URL của ảnh
-                }
-                catch (Exception)
-                {
-                }
-
-                panel.Controls.Add(pictureBox);
+                pictureBox.Load(book.Image); // Đường dẫn hoặc URL của ảnh
+            }
+            catch (Exception)
+            {
+                return null;
             }
 
-            // Tạo nhãn tên sách
+            panel.Controls.Add(pictureBox);
+
+            // Thêm nhãn số sao đánh giá
+            Label ratingLabel = new Label();
+            ratingLabel.Text = $"{rating} ★"; // Hiển thị số sao và biểu tượng ngôi sao
+            ratingLabel.Location = new Point(75, 285); // Giảm kích thước thông tin
+            ratingLabel.AutoSize = true;
+            ratingLabel.Font = new Font("Arial", 9, FontStyle.Bold); // Giảm kích thước font chữ
+            panel.Controls.Add(ratingLabel);
+
+            // Tạo nhãn tên sách (giảm kích thước hiển thị)
             Label titleLabel = new Label();
-            titleLabel.Text = $"Title: {book.Title}";
-            titleLabel.Location = new Point(120, 10);
+            titleLabel.Text = book.Title;
+            titleLabel.Location = new Point(10, 305); // Giảm kích thước hiển thị của nhãn sách
             titleLabel.AutoSize = true;
-            titleLabel.Font = new Font("Arial", 10, FontStyle.Bold);
+            titleLabel.Font = new Font("Arial", 10, FontStyle.Bold); // Giảm kích thước font chữ
 
             panel.Controls.Add(titleLabel);
 
-            // Tạo nhãn tên tác giả
+            // Tạo nhãn tên tác giả (giảm kích thước hiển thị)
             Label authorLabel = new Label();
-            authorLabel.Text = $"Author: {book.Author}";
-            authorLabel.Location = new Point(120, 40);
+            authorLabel.Text = book.Author;
+            authorLabel.Location = new Point(10, 325);
             authorLabel.AutoSize = true;
-            authorLabel.Font = new Font("Arial", 10);
+            authorLabel.Font = new Font("Arial", 9); // Giảm kích thước font chữ
 
             panel.Controls.Add(authorLabel);
-
-            // Tạo nhãn năm xuất bản
-            Label yearLabel = new Label();
-            yearLabel.Text = $"Published Year: {book.PublishedYear}";
-            yearLabel.Location = new Point(120, 70);
-            yearLabel.AutoSize = true;
-            yearLabel.Font = new Font("Arial", 9);
-
-            panel.Controls.Add(yearLabel);
-            panel.TabIndex =index;
+            panel.TabIndex = index;
             return panel;
         }
         private async void MainForm_Load(object sender, EventArgs e)
         {
             var books = await _bookService.GetAllBooksAsync();
-            for(int i=0; i< 4; i++)
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight; // Dòng di chuyển từ trái sang phải
+            flowLayoutPanel1.WrapContents = false; // Không tự động xuống dòng, sẽ tiếp tục tạo thanh cuộn ngang
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel2.FlowDirection = FlowDirection.LeftToRight; // Dòng di chuyển từ trái sang phải
+            flowLayoutPanel2.WrapContents = false; // Không tự động xuống dòng, sẽ tiếp tục tạo thanh cuộn ngang
+            flowLayoutPanel2.AutoScroll = true;
+            for (int i=0; i<books.Count/2; i++)
             {
-                flowLayoutPanel1.Controls.Add(CreateBookPanel( books[i], i));
-                flowLayoutPanel2.Controls.Add(CreateBookPanel(books[i+4], i));
-                flowLayoutPanel3.Controls.Add(CreateBookPanel(books[i + 8], i));
+                if(CreateBookPanel(books[i], i) != null)
+                {
+                    flowLayoutPanel1.Controls.Add(CreateBookPanel(books[i], i));
+                    flowLayoutPanel2.Controls.Add(CreateBookPanel(books[books.Count / 2 + i], i));
+                }
             }
-
+               
+            
 
         }
 
