@@ -15,11 +15,11 @@ namespace App_Library.Services
         private readonly MongoDbContext _context;
         //private readonly IHttpContextAccessor _httpContextAccessor;
 
-        //public BookService(MongoDbContext context, IHttpContextAccessor httpContextAccessor)
-        //{
-        //    _context = context;
-        //    _httpContextAccessor = httpContextAccessor;
-        //}
+        public BookService(MongoDbContext context)
+        {
+            _context = context;
+            //_httpContextAccessor = httpContextAccessor;
+        }
 
         public async Task<List<Book>> GetAllBooksAsync()
         {
