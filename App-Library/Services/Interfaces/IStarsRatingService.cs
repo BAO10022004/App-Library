@@ -9,11 +9,11 @@ namespace App_Library.Services.Interfaces
 {
     public interface IStarsRatingService
     {
-        //Task<StarsRating> CreateRating(StarsRating rating);
-        //Task<StarsRating> GetRatingById(string id);
-        //Task UpdateRating(string id, StarsRating updatedRating);
-        //Task DeleteRating(string id);
-        //Task<List<BookRatingSummary>> GetHotBooks();
-        //Task<BookRatingSummary> GetBookRating(string bookId);
+        Task<bool> CreateRating(StarsRating rating, string currentUsername);
+        Task<StarsRating> GetRatingById(string id, string currentUsername);
+        Task<bool> UpdateRating(string id, StarsRating updatedRating, string currentUsername);
+        Task<bool> DeleteRating(string id, string currentUsername);
+        Task<List<BookRatingSummary>> GetHotBooks();
+        Task<object> GetBookRating(string bookId);
     }
 }
