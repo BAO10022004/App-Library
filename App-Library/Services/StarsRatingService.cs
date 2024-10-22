@@ -20,9 +20,9 @@ namespace App_Library.Services
             _context = context;
         }
 
-        public async Task<bool> CreateRating(StarsRating rating, string currentUsername)
+        public async Task<bool> CreateRating(StarsRating rating)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -48,9 +48,9 @@ namespace App_Library.Services
             return true; 
         }
 
-        public async Task<StarsRating> GetRatingById(string id, string currentUsername)
+        public async Task<StarsRating> GetRatingById(string id)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -65,9 +65,9 @@ namespace App_Library.Services
             return rating;
         }
 
-        public async Task<bool> UpdateRating(string id, StarsRating updatedRating, string currentUsername)
+        public async Task<bool> UpdateRating(string id, StarsRating updatedRating)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -89,9 +89,9 @@ namespace App_Library.Services
             return true; 
         }
 
-        public async Task<bool> DeleteRating(string id, string currentUsername)
+        public async Task<bool> DeleteRating(string id)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {

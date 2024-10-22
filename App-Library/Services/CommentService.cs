@@ -19,9 +19,9 @@ namespace App_Library.Services
             _context = context;
         }
 
-        public async Task<bool> CreateCommentAsync(Comment comment, string currentUsername)
+        public async Task<bool> CreateCommentAsync(Comment comment)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -41,7 +41,7 @@ namespace App_Library.Services
                 .ToListAsync();
         }
 
-        public async Task<bool> LikeCommentAsync(string commentId, string userId)
+        public async Task<bool> LikeCommentAsync(string commentId)
         {
             var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
             if (comment == null)
@@ -49,25 +49,25 @@ namespace App_Library.Services
                 throw new KeyNotFoundException("Comment not found!");
             }
 
-            if (string.IsNullOrEmpty(userId))
+            if (string.IsNullOrEmpty(SessionManager.CurrentUserId))
             {
                 throw new UnauthorizedAccessException("You need to log in to like comment.");
             }
 
-            var userIndex = Array.IndexOf(comment.Likes, userId);
+            var userIndex = Array.IndexOf(comment.Likes, SessionManager.CurrentUserId);
 
             if (userIndex == -1)
             {
                 comment.NumberOfLikes += 1;
                 var newLikes = comment.Likes?.ToList() ?? new List<string>();
-                newLikes.Add(userId);
+                newLikes.Add(SessionManager.CurrentUserId);
                 comment.Likes = newLikes.ToArray();
             }
             else
             {
                 comment.NumberOfLikes -= 1;
                 var updatedLikes = comment.Likes?.ToList() ?? new List<string>();
-                updatedLikes.Remove(userId);
+                updatedLikes.Remove(SessionManager.CurrentUserId);
                 comment.Likes = updatedLikes.ToArray();
             }
 
@@ -75,7 +75,7 @@ namespace App_Library.Services
             return true;
         }
 
-        public async Task<bool> EditCommentAsync(string commentId, UpdateCommentDTO editCommentDto, string currentUsername)
+        public async Task<bool> EditCommentAsync(string commentId, UpdateCommentDTO editCommentDto)
         {
             var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
             if (comment == null)
@@ -83,7 +83,7 @@ namespace App_Library.Services
                 throw new KeyNotFoundException("Comment not found!");
             }
 
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -97,7 +97,7 @@ namespace App_Library.Services
             return true;
         }
 
-        public async Task<bool> DeleteCommentAsync(string commentId, string userId, string currentUsername)
+        public async Task<bool> DeleteCommentAsync(string commentId)
         {
             var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
             if (comment == null)
@@ -105,9 +105,9 @@ namespace App_Library.Services
                 throw new KeyNotFoundException("Comment not found!");
             }
 
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
-            if (comment.UserId != userId && !user.IsAdmin)
+            if (comment.UserId != SessionManager.CurrentUserId && !user.IsAdmin)
             {
                 throw new UnauthorizedAccessException("You are not allowed to delete this comment.");
             }
@@ -116,9 +116,9 @@ namespace App_Library.Services
             return true;
         }
 
-        public async Task<(List<Comment> comments, long totalComments, long lastMonthComments)> GetCommentsAsync(int startIndex, int limit, string sort, string currentUsername)
+        public async Task<(List<Comment> comments, long totalComments, long lastMonthComments)> GetCommentsAsync(int startIndex, int limit, string sort)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
 
             if (user == null && !user.IsAdmin)
             {

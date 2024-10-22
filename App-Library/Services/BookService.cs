@@ -27,9 +27,9 @@ namespace App_Library.Services
                                         .ToListAsync();
         }
 
-        public async Task<bool> AddBookAsync(Book newBook, string currentUsername)
+        public async Task<bool> AddBookAsync(Book newBook)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
             if (user == null || !user.IsAdmin)
             {
                 return false;
@@ -47,7 +47,7 @@ namespace App_Library.Services
             }
 
             newBook.Slug = newBook.Title.Unidecode().ToLower().Replace(" ", "-").Replace("[^a-zA-Z0-9-]", "");
-            newBook.Username = currentUsername;
+            newBook.Username = SessionManager.CurrentUsername;
 
             await _context.Books.InsertOneAsync(newBook);
             return true;
@@ -87,9 +87,9 @@ namespace App_Library.Services
         //    return books;
         //}
 
-        public async Task<bool> UpdateBookAsync(string id, UpdateBookDTO updateBookDTO, string currentUsername)
+        public async Task<bool> UpdateBookAsync(string id, UpdateBookDTO updateBookDTO)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
             if (user == null || !user.IsAdmin)
             {
                 return false;
@@ -157,9 +157,9 @@ namespace App_Library.Services
             return result != null;
         }
 
-        public async Task<bool> DeleteBookAsync(string id, string currentUsername)
+        public async Task<bool> DeleteBookAsync(string id)
         {
-            var user = await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
             if (user == null || !user.IsAdmin)
             {
                 return false;

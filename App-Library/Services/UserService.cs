@@ -25,36 +25,30 @@ namespace App_Library.Services
             return await _context.Users.Find(FilterDefinition<User>.Empty).ToListAsync();
         }
 
-        //public async Task<UserStatistics> GetUserStatisticsAsync(string sort, int startIndex, int limit)
-        //{
-        //    // Tính toán và trả về thông tin thống kê người dùng
-        //    var sortDirection = sort == "desc" ? -1 : 1;
-        //    var users = await _context.Users
-        //        .Find(_ => true)
-        //        .Sort(sortDirection == 1 ? Builders<User>.Sort.Ascending(u => u.CreatedAt) : Builders<User>.Sort.Descending(u => u.CreatedAt))
-        //        .Skip(startIndex)
-        //        .Limit(limit)
-        //        .ToListAsync();
+        public async Task<(List<User>, long totalUser, long lastMonthUser)> GetUserStatisticsAsync(string sort, int startIndex, int limit)
+        {
+            // Tính toán và trả về thông tin thống kê người dùng
+            var sortDirection = sort == "desc" ? -1 : 1;
+            var users = await _context.Users
+                .Find(_ => true)
+                .Sort(sortDirection == 1 ? Builders<User>.Sort.Ascending(u => u.CreatedAt) : Builders<User>.Sort.Descending(u => u.CreatedAt))
+                .Skip(startIndex)
+                .Limit(limit)
+                .ToListAsync();
 
-        //    var totalUsers = await _context.Users.CountDocumentsAsync(_ => true);
-        //    var now = DateTime.UtcNow;
-        //    var oneMonthAgo = now.AddMonths(-1);
-        //    var lastMonthUsers = await _context.Users.CountDocumentsAsync(u => u.CreatedAt >= oneMonthAgo);
+            var totalUsers = await _context.Users.CountDocumentsAsync(_ => true);
+            var now = DateTime.UtcNow;
+            var oneMonthAgo = now.AddMonths(-1);
+            var lastMonthUsers = await _context.Users.CountDocumentsAsync(u => u.CreatedAt >= oneMonthAgo);
 
-        //    return new UserStatistics
-        //    {
-        //        TotalUsers = totalUsers,
-        //        LastMonthUsers = lastMonthUsers,
-        //        Users = users
-        //    };
-        //}
+            return (users, totalUsers, lastMonthUsers);
+        }
 
-        //public async Task<User> GetCurrentUserAsync()
-        //{
-        //    // Lấy thông tin người dùng hiện tại
-        //    var currentUsername = //... (lấy từ context hoặc session)
-        //return await _context.Users.Find(u => u.Username == currentUsername).FirstOrDefaultAsync();
-        //}
+        public async Task<User> GetCurrentUserAsync()
+        {
+            // Lấy thông tin người dùng hiện tại
+            return await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
+        }
 
         public async Task<User> GetUserByIdAsync(string id)
         {

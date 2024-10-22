@@ -10,8 +10,8 @@ namespace App_Library.Services.Interfaces
     public interface IUserService
     {
         Task<List<User>> GetUsersAsync();
-        //Task<UserStatistics> GetUserStatisticsAsync(string sort, int startIndex, int limit);
-        //Task<User> GetCurrentUserAsync();
+        Task<(List<User>, long totalUser, long lastMonthUser)> GetUserStatisticsAsync(string sort, int startIndex, int limit);
+        Task<User> GetCurrentUserAsync();
         Task<User> GetUserByIdAsync(string id);
         //Task<User> UpdateUserAsync(string id, UpdateUserDto updatedUser);
         Task<bool> SoftDeleteUserAsync(string id);
