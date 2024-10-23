@@ -204,11 +204,17 @@
     <Compile Include="Services\MongoDbContext.cs" />
     <Compile Include="Services\StarsRatingService.cs" />
     <Compile Include="Services\UserService.cs" />
-    <Compile Include="Views\Form1.cs">
+    <Compile Include="Views\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ShopForm.Designer.cs">
+      <DependentUpon>ShopForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
@@ -244,8 +250,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShopForm.resx">
+      <DependentUpon>ShopForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

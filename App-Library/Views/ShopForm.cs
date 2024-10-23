@@ -1,7 +1,5 @@
-﻿using App_Library.Models;
+﻿using App_Library.Services.Interfaces;
 using App_Library.Services;
-using App_Library.Services.Interfaces;
-using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,37 +9,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Guna.UI2.Native.WinApi;
+using App_Library.Models;
+using DnsClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace App_Library.Views
 {
-    public partial class MainForm : Form
+    public partial class ShopForm : Form
     {
         private readonly MongoDbContext _context;
+        private readonly IAuthService _authService;
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
-        private readonly IStarsRatingService _starsRating;
-        private bool isDragging = false;
-        private Point dragStartPoint;
-        private Control draggedControl;
-        public MainForm(MongoDbContext context)
+        List<Book> books;    
+        public ShopForm(MongoDbContext context)
         {
-            
             _context = context;
             _userService = new UserService(_context);
             _bookService = new BookService(_context);
-            _starsRating = new StarsRatingService(_context);
+            books = new List<Book>();
             InitializeComponent();
-          
+            flowLayoutPanel1.AutoScroll = true;
         }
-        
-        
-        public Panel CreateBookPanel(Book book, int index, int rating)
+
+        private async void HomeForm_Load(object sender, EventArgs e)
         {
-            // Tạo panel mới với kích thước cố định
+            timer1.Start();
+            flowLayoutPanel1.Size = new Size((new MainForm(_context).Size.Width), flowLayoutPanel1.Height);
+            books = (await _bookService.GetAllBooksAsync()).ToList();
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.WrapContents = false;
+            pbLoadDB.Maximum= books.Count-1;
+            bgwLoadData.RunWorkerAsync();
+        }
+
+        private Control CreateBookPanel(Book book, int index , int rating)
+        {
             Panel panel = new Panel();
-            panel.Size = new Size(200, 350); // Kích thước giữ nguyên
+            panel.Size = new Size((new MainForm(_context).Size.Width), flowLayoutPanel1.Height); // Kích thước giữ nguyên
             panel.BorderStyle = BorderStyle.None;
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
 
@@ -100,97 +105,82 @@ namespace App_Library.Views
             panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
             return panel;
         }
-        private async void MainForm_Load(object sender, EventArgs e)
-        {
-           
-            foreach (Control item in pnListsButton.Controls)
-            {
-                item.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
-                item.MouseHover += new System.EventHandler(this.lbShop_MouseHover);
-            }
-            activeFormChild(new HomeForm(_context), e);
-        }
 
-        private Point mouseDownLocation;
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             isDragging = true;
-            mouseDownLocation = e.Location;
         }
 
+        private Point mouseDownLocation;
+        private bool isDragging = false;
+        private Point dragStartPoint;
+        private Control draggedControl;
         private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
         {
-            
+            if (isDragging)
+            {
+                // Tính toán thay đổi vị trí chuột khi kéo
+                int dx = mouseDownLocation.X - e.X;
+                int dy = mouseDownLocation.Y - e.Y;
+
+                flowLayoutPanel1.AutoScrollPosition = new Point(
+                    flowLayoutPanel1.HorizontalScroll.Value + dx,
+                    flowLayoutPanel1.VerticalScroll.Value + dy
+                );
+            }
         }
 
         private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
         }
-      
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            flowLayoutPanel1.AutoScrollPosition = new Point(
+                flowLayoutPanel1.HorizontalScroll.Value + flowLayoutPanel1.Size.Width,
+                flowLayoutPanel1.VerticalScroll.Value 
+            );
         }
-        Form ActForm;
-        public void activeFormChild(Form form, object obj)
+
+        private  void BgwLoadDB_DoWorkAsync(object sender, DoWorkEventArgs e)
         {
-            if (ActForm != null)
+            
+            //var listBook = books.OrderBy(o => o.PublishedYear).ToList();
+
+            for (int i = 0; i < books.Count; i++)
             {
-                ActForm.Close();
+                var bookPanel = CreateBookPanel(books[i], i, 4);
+                if (bookPanel != null)
+                {
+                    bgwLoadData.ReportProgress(0, bookPanel);
+                }
             }
-            ActForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            this.pnContent.Controls.Add(form);
-            this.pnContent.Tag = form;
-            form.BringToFront();
-            form.Show();
         }
 
-       
-
-      
-
-        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        private void bgwLoadDB_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
+            pbLoadDB.Value = pbLoadDB.Value+1;
+            var bookPanel = e.UserState as Control;
+                flowLayoutPanel1.Controls.Add(bookPanel);
+            
         }
 
-        private void lbShop_MouseHover(object sender, EventArgs e)
+        private void bgwLoadDB_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var _lbShop = (Label)sender;
-            _lbShop.BackColor = Color.MidnightBlue;
-            _lbShop.ForeColor = Color.White;
-        }
-
-        private void lbShop_MouseLeave(object sender, EventArgs e)
-        {
-            var _lbShop = (Label)sender;
-            _lbShop.BackColor = Color.DeepSkyBlue;
-            _lbShop.ForeColor = Color.Black;
-        }
-
-        private void lbHome_Click(object sender, EventArgs e)
-        {
-            activeFormChild(new HomeForm(_context), e);
-        }
-
-     
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbShop_Click(object sender, EventArgs e)
-        {
-            activeFormChild(new ShopForm(_context), e);
-        }
-
-        private void lbLogOut_Click(object sender, EventArgs e)
-        {
-
+            if (e.Cancelled)
+            {
+                MessageBox.Show("Công việc đã bị hủy.");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + e.Error.Message);
+            }
+            else
+            {
+                //pbLoadDB.Value = pbLoadDB.Maximum;
+            }
+            this.Controls.Remove(pbLoadDB);
         }
 
     }

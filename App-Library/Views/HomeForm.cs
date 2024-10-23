@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace App_Library.Views
 {
-    public partial class Form1 : Form
+    public partial class HomeForm : Form
     {
         private readonly MongoDbContext _context;
         private readonly IAuthService _authService;
-        public Form1(MongoDbContext context)
+        public HomeForm(MongoDbContext context)
         {
             _context = context;
             this.Size = (new MainForm(context)).Size;
