@@ -54,7 +54,6 @@ namespace App_Library.Views
             Program.sp.PnSubLogin.Tag = form;
             Program.sp.Location = new Point(0, 0);
             Program.sp.BtnExit.Location = new Point(1540 - 35, 1);
-            form.BringToFront();
             form.Show();
         }
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
@@ -72,6 +71,7 @@ namespace App_Library.Views
                 Program.sp.WindowState = FormWindowState.Maximized;
                 Program.sp.PnSubLogin.Controls.Clear();
                 activeFormChild(new MainForm(_context), sender);
+                
             }
             if (Program.sp.Size.Height < 1080 && Program.sp.Size.Width < 1920)
             {

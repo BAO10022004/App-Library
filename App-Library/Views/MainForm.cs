@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Guna.UI2.Native.WinApi;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace App_Library.Views
@@ -20,13 +21,22 @@ namespace App_Library.Views
         private readonly MongoDbContext _context;
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
+        private readonly IStarsRatingService _starsRating;
+        private bool isDragging = false;
+        private Point dragStartPoint;
+        private Control draggedControl;
         public MainForm(MongoDbContext context)
         {
+            
             _context = context;
             _userService = new UserService(_context);
             _bookService = new BookService(_context);
+            _starsRating = new StarsRatingService(_context);
             InitializeComponent();
-            //this.Load += UserListForm_Load;
+            // timer1.Start();
+            MessageBox.Show(pnContent.Size.Height + "" + pnContent.Size.Width);
+          
+      //      //this.Load += UserListForm_Load;
         }
         //private async void UserListForm_Load(object sender, EventArgs e)
         //{
@@ -76,7 +86,7 @@ namespace App_Library.Views
         {
 
         }
-        public Panel CreateBookPanel(Book book, int index, int rating = 4)
+        public Panel CreateBookPanel(Book book, int index, int rating)
         {
             // Tạo panel mới với kích thước cố định
             Panel panel = new Panel();
@@ -128,29 +138,42 @@ namespace App_Library.Views
 
             panel.Controls.Add(authorLabel);
             panel.TabIndex = index;
+            foreach(Control items in panel.Controls)
+            {
+                items.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
+                items.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
+                items.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
+            }
+            panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
+            panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
+            panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
             return panel;
         }
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            flowLayoutPanel1.Size = new Size(pnContent.Size.Width, flowLayoutPanel1.Height);
             var books = await _bookService.GetAllBooksAsync();
-            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight; // Dòng di chuyển từ trái sang phải
-            flowLayoutPanel1.WrapContents = false; // Không tự động xuống dòng, sẽ tiếp tục tạo thanh cuộn ngang
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel2.FlowDirection = FlowDirection.LeftToRight; // Dòng di chuyển từ trái sang phải
-            flowLayoutPanel2.WrapContents = false; // Không tự động xuống dòng, sẽ tiếp tục tạo thanh cuộn ngang
-            flowLayoutPanel2.AutoScroll = true;
-            for (int i=0; i<books.Count/2; i++)
-            {
-                if(CreateBookPanel(books[i], i) != null)
-                {
-                    flowLayoutPanel1.Controls.Add(CreateBookPanel(books[i], i));
-                    flowLayoutPanel2.Controls.Add(CreateBookPanel(books[books.Count / 2 + i], i));
-                }
-            }
-               
-            
 
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.WrapContents = false;
+         
+       
+
+            await Task.Run(async () =>
+            {
+                foreach (var book in books)
+                {
+                    // var start = await _starsRating.GetBookRating(book.Id);
+                    var bookPanel = CreateBookPanel(book, books.IndexOf(book), 4);
+
+                    if (bookPanel != null)
+                    {
+                        flowLayoutPanel1.Invoke(new Action(() => flowLayoutPanel1.Controls.Add(bookPanel)));
+                    }
+                }
+            });
         }
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -160,6 +183,121 @@ namespace App_Library.Views
         private void label2_Click_1(object sender, EventArgs e)
         {
 
+        }
+        private Point mouseDownLocation;
+        private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDragging = true;
+            mouseDownLocation = e.Location;
+        }
+
+        private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                // Tính toán thay đổi vị trí chuột khi kéo
+                int dx = mouseDownLocation.X - e.X;
+                int dy = mouseDownLocation.Y - e.Y;
+
+                // Thay đổi vị trí cuộn của panel theo sự thay đổi của vị trí chuột
+                flowLayoutPanel1.AutoScrollPosition = new Point(
+                    flowLayoutPanel1.HorizontalScroll.Value + dx,
+                    flowLayoutPanel1.VerticalScroll.Value + dy
+                );
+            }
+        }
+
+        private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+        private void AutoScrollIfNeeded(MouseEventArgs e)
+        {
+            int scrollMargin = 20; // Khu vực gần rìa panel để bắt đầu autoscroll
+
+            // Scroll lên trên
+            if (e.Y < scrollMargin && panel1.VerticalScroll.Value > 0)
+            {
+                panel1.VerticalScroll.Value -= 5;
+                panel1.PerformLayout();
+            }
+
+            // Scroll xuống dưới
+            if (e.Y > panel1.Height - scrollMargin && panel1.VerticalScroll.Value < panel1.VerticalScroll.Maximum)
+            {
+                panel1.VerticalScroll.Value += 5;
+                panel1.PerformLayout();
+            }
+
+            // Scroll sang trái
+            if (e.X < scrollMargin && panel1.HorizontalScroll.Value > 0)
+            {
+                panel1.HorizontalScroll.Value -= 5;
+                panel1.PerformLayout();
+            }
+
+            // Scroll sang phải
+            if (e.X > panel1.Width - scrollMargin && panel1.HorizontalScroll.Value < panel1.HorizontalScroll.Maximum)
+            {
+                panel1.HorizontalScroll.Value += 5;
+                panel1.PerformLayout();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+
+            // Thay đổi vị trí cuộn của panel theo sự thay đổi của vị trí chuột
+            flowLayoutPanel1.AutoScrollPosition = new Point(
+                flowLayoutPanel1.HorizontalScroll.Value + 500,
+                flowLayoutPanel1.VerticalScroll.Value + 500
+            );
+        }
+        Form ActForm;
+        public void activeFormChild(Form form, object obj)
+        {
+            if (ActForm != null)
+            {
+                ActForm.Close();
+            }
+            ActForm = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            this.pnContent.Controls.Add(form);
+            this.pnContent.Tag = form;
+            form.BringToFront();
+            form.Show();
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pn1_Click(object sender, EventArgs e)
+        {
+            activeFormChild(new Form1(_context), e);
+        }
+
+        private void pn2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pn3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pn4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pn5_Click(object sender, EventArgs e)
+        {
         }
     }
 }
