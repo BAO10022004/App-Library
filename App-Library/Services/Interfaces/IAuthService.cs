@@ -9,7 +9,7 @@ namespace App_Library.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task LoginAsync(string username, string password);
+        Task<bool> LoginAsync(string username, string password);
         Task<bool> SignUpAsyn(SignUpRequest request);
         //Task<string> GoogleLoginAsync(GoogleLoginRequest request);
     }

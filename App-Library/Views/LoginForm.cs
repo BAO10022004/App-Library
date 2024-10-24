@@ -1,6 +1,8 @@
-﻿using App_Library.Services;
+﻿using App_Library.Models;
+using App_Library.Services;
 using App_Library.Services.Interfaces;
 using DnsClient.Protocol;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
-
+// $2a$10$eITLrNBDrQ5zvpaAToD2GO20B5hYEzKY2gtvvpirHIeJiXUECnAf2
 namespace App_Library.Views
 {
     public partial class LoginForm : Form
@@ -34,10 +36,19 @@ namespace App_Library.Views
         }
         private async void btnLogin_Click_1(object sender, EventArgs e)
         {
-            await _authService.LoginAsync(txbEmail.Text, txbPassword.Text);
-            timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
-            timerOpenMainForm.Start();
-
+            bool checkLoginSuccess = (await _authService.LoginAsync(txbEmail.Text, txbPassword.Text));
+            if(checkLoginSuccess)
+            {
+                SessionManager.CurrentUsername = txbEmail.Text;
+                var list = await _context.Users.Find(u => u.PasswordHash == txbPassword.Text).ToListAsync();
+                foreach(var item in list )
+                {
+                    SessionManager.CurrentUserId = item.Id;
+                    break;
+                }
+                timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
+                timerOpenMainForm.Start();
+            }
         }
         Form ActForm;
         public void activeFormChild(Form form, object obj)

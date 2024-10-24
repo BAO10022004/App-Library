@@ -379,3 +379,4 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-3\App-Library\obj\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-3\App-Library\obj\Debug\App-Library.pdb
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-3\App-Library\obj\Debug\App_Library.Views.HomeForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-3\App-Library\obj\Debug\App_Library.Views.ShopForm.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-3\App-Library\obj\Debug\App_Library.Views.PropertiesBookForm.resources

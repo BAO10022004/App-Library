@@ -21,20 +21,20 @@ namespace App_Library.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task LoginAsync(string username, string password)
+        public async Task<bool> LoginAsync(string username, string password)
         {
             // Giả sử _context là đối tượng bạn đang sử dụng để kết nối MongoDB
             var user = await _context.Users.Find(u => u.Username == username).FirstOrDefaultAsync();
             if (user == null)
             {
                 MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false; 
             }
 
             if (!user.IsActive)
             {
                 MessageBox.Show("User is deleted", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             // Kiểm tra mật khẩu hash
@@ -49,14 +49,16 @@ namespace App_Library.Services
                 else
                 {
                     MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    return false;
                 }
             }
 
             // Sau khi đăng nhập thành công, tạo một phiên hoặc lưu trữ thông tin người dùng tại đây
 
             MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
 
+            return true;
 
         }
 

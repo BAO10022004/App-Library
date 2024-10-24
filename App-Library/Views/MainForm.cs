@@ -32,8 +32,9 @@ namespace App_Library.Views
             _userService = new UserService(_context);
             _bookService = new BookService(_context);
             _starsRating = new StarsRatingService(_context);
+
             InitializeComponent();
-          
+           
         }
         
         
@@ -102,7 +103,8 @@ namespace App_Library.Views
         }
         private async void MainForm_Load(object sender, EventArgs e)
         {
-           
+            lbName.Text = SessionManager.CurrentUsername;
+
             foreach (Control item in pnListsButton.Controls)
             {
                 item.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
@@ -130,7 +132,7 @@ namespace App_Library.Views
       
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            
         }
         Form ActForm;
         public void activeFormChild(Form form, object obj)
@@ -188,10 +190,15 @@ namespace App_Library.Views
             activeFormChild(new ShopForm(_context), e);
         }
 
-        private void lbLogOut_Click(object sender, EventArgs e)
+      
+        private void txbSearch_Click(object sender, EventArgs e)
         {
-
+            txbSearch.Enabled = true;
         }
 
+        private void pnSearchMain_Click(object sender, EventArgs e)
+        {
+            txbSearch.Enabled = true;
+        }
     }
 }

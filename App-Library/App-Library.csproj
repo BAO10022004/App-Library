@@ -210,6 +210,12 @@
     <Compile Include="Views\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PropertiesBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PropertiesBookForm.Designer.cs">
+      <DependentUpon>PropertiesBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShopForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </Compile>
     <EmbeddedResource Include="Views\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PropertiesBookForm.resx">
+      <DependentUpon>PropertiesBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ShopForm.resx">
       <DependentUpon>ShopForm.cs</DependentUpon>

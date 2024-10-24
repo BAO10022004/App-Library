@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using App_Library.Models;
 using DnsClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using SharpCompress.Compressors.PPMd;
 
 namespace App_Library.Views
 {
@@ -21,7 +22,12 @@ namespace App_Library.Views
         private readonly IAuthService _authService;
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
-        List<Book> books;    
+        List<Book> books;
+        public const int WITH = 450;
+        public const int HEIGHT =831;
+        List<Panel> listBookAd;
+        int indexCurrentBookAd =0;
+        bool revier = false;
         public ShopForm(MongoDbContext context)
         {
             _context = context;
@@ -34,19 +40,20 @@ namespace App_Library.Views
 
         private async void HomeForm_Load(object sender, EventArgs e)
         {
-            timer1.Start();
+            
             flowLayoutPanel1.Size = new Size((new MainForm(_context).Size.Width), flowLayoutPanel1.Height);
             books = (await _bookService.GetAllBooksAsync()).ToList();
-            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            //flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel1.WrapContents = false;
             pbLoadDB.Maximum= books.Count-1;
             bgwLoadData.RunWorkerAsync();
+            
         }
 
         private Control CreateBookPanel(Book book, int index , int rating)
         {
             Panel panel = new Panel();
-            panel.Size = new Size((new MainForm(_context).Size.Width), flowLayoutPanel1.Height); // Kích thước giữ nguyên
+            panel.Size = new Size(flowLayoutPanel1.Width, flowLayoutPanel1.Height); // Kích thước giữ nguyên
             panel.BorderStyle = BorderStyle.None;
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
 
@@ -103,6 +110,7 @@ namespace App_Library.Views
             panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
             panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
             panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
+            panel.Click += new EventHandler(this.book_Click);
             return panel;
         }
 
@@ -133,21 +141,32 @@ namespace App_Library.Views
         private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            flowLayoutPanel1.AutoScrollPosition = new Point(
-                flowLayoutPanel1.HorizontalScroll.Value + flowLayoutPanel1.Size.Width,
-                flowLayoutPanel1.VerticalScroll.Value 
-            );
+                indexCurrentBookAd++;
+                if (indexCurrentBookAd != listBookAd.Count)
+                {                
+                    flowLayoutPanel1.Controls.Remove(listBookAd[indexCurrentBookAd - 1]);
+                    flowLayoutPanel1.Controls.Add(listBookAd[indexCurrentBookAd]);
+                }
+                else
+                {
+                    flowLayoutPanel1.Controls.Remove(listBookAd[indexCurrentBookAd - 1]);
+                    indexCurrentBookAd = 0;
+                    flowLayoutPanel1.Controls.Add(listBookAd[indexCurrentBookAd]);
+            }
+
+                  
         }
 
         private  void BgwLoadDB_DoWorkAsync(object sender, DoWorkEventArgs e)
         {
-            
-            //var listBook = books.OrderBy(o => o.PublishedYear).ToList();
 
+            //var listBook = books.OrderBy(o => o.PublishedYear).ToList();
+            listBookAd = new List<Panel>();
             for (int i = 0; i < books.Count; i++)
             {
                 var bookPanel = CreateBookPanel(books[i], i, 4);
@@ -162,7 +181,7 @@ namespace App_Library.Views
         {
             pbLoadDB.Value = pbLoadDB.Value+1;
             var bookPanel = e.UserState as Control;
-                flowLayoutPanel1.Controls.Add(bookPanel);
+                listBookAd.Add((Panel)bookPanel);
             
         }
 
@@ -180,8 +199,44 @@ namespace App_Library.Views
             {
                 //pbLoadDB.Value = pbLoadDB.Maximum;
             }
-            this.Controls.Remove(pbLoadDB);
+            pnShopMain.Controls.Remove(pbLoadDB);
+            timer1.Start();
+            flowLayoutPanel1.Controls.Add(listBookAd[indexCurrentBookAd]);
+        }
+        Form ActForm;
+        public void activeFormChild(Form form, object obj)
+        {
+            if (ActForm != null)
+            {
+                ActForm.Close();
+            }
+            ActForm = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            pnProperties.Controls.Add(form);
+            pnProperties.Tag = form;
+            
+            form.Show();
+        }
+        private void book_Click(object sender, EventArgs e)
+        {
+            pnShopMain.Size = new Size(this.Size.Width-WITH, this.Size.Height);
+            pnProperties.Size = new Size (WITH, this.Height);
+            //pnProperties.BackColor = Color.Black;
+            pnProperties.Location = new Point (this.Size.Width + 300 - pnShopMain.Width, 0);
+            //MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
+            activeFormChild(new PropertiesBookForm(), e);
         }
 
+        private void pnShopMain_Click(object sender, EventArgs e)
+        {
+            pnShopMain.Size = new Size(this.Size.Width, this.Size.Height);
+            pnProperties.Size = new Size(0, 1);
+            ////pnProperties.BackColor = Color.Black;
+            //pnProperties.Location = new Point(this.Size.Width + 300 - pnShopMain.Width, 0);
+            ////MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
+            //activeFormChild(new PropertiesBookForm(), e);
+        }
     }
 }

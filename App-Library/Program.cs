@@ -13,6 +13,7 @@ namespace App_Library
     internal static class Program
     {
         static public SplashForm sp;
+        static public User user;
         /// summary>
         /// The main entry point for the application.
         /// </summary>
