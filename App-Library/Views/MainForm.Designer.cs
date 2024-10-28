@@ -47,6 +47,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnContent = new System.Windows.Forms.Panel();
+            this.pbLoadBook = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
+            this.bgwLoadBook = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.pnSideBar.SuspendLayout();
             this.pnListsButton.SuspendLayout();
@@ -54,6 +56,7 @@
             this.pnSearchMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.pnContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -219,11 +222,30 @@
             // pnContent
             // 
             this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
+            this.pnContent.Controls.Add(this.pbLoadBook);
             this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContent.Location = new System.Drawing.Point(325, 0);
             this.pnContent.Name = "pnContent";
             this.pnContent.Size = new System.Drawing.Size(1259, 826);
             this.pnContent.TabIndex = 2;
+            // 
+            // pbLoadBook
+            // 
+            this.pbLoadBook.AutoStart = true;
+            this.pbLoadBook.BackColor = System.Drawing.Color.Transparent;
+            this.pbLoadBook.Location = new System.Drawing.Point(629, 425);
+            this.pbLoadBook.Name = "pbLoadBook";
+            this.pbLoadBook.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.pbLoadBook.Size = new System.Drawing.Size(90, 90);
+            this.pbLoadBook.TabIndex = 1;
+            // 
+            // bgwLoadBook
+            // 
+            this.bgwLoadBook.WorkerReportsProgress = true;
+            this.bgwLoadBook.WorkerSupportsCancellation = true;
+            this.bgwLoadBook.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgwLoadDB_DoWorkAsync);
+            this.bgwLoadBook.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwLoadDB_ProgressChanged);
+            this.bgwLoadBook.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwLoadDB_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -246,6 +268,7 @@
             this.pnSearchMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.pnContent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -269,5 +292,7 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.Panel pnContent;
+        private System.ComponentModel.BackgroundWorker bgwLoadBook;
+        private Guna.UI2.WinForms.Guna2WinProgressIndicator pbLoadBook;
     }
 }

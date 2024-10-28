@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
 using App_Library.Services.Interfaces;
+using App_Library.Views.ToolerForm;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +18,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace App_Library.Views
 {
-    public partial class MainForm : Form
+    public partial class MainForm : FormHelper
     {
         private readonly MongoDbContext _context;
         private readonly IUserService _userService;
@@ -25,6 +27,11 @@ namespace App_Library.Views
         private bool isDragging = false;
         private Point dragStartPoint;
         private Control draggedControl;
+        private HomeForm homeForm;
+        private ShopForm shopForm;
+        // compunent shop 
+        List<Panel> listBookAd;
+        List<Book> books;
         public MainForm(MongoDbContext context)
         {
             
@@ -32,7 +39,8 @@ namespace App_Library.Views
             _userService = new UserService(_context);
             _bookService = new BookService(_context);
             _starsRating = new StarsRatingService(_context);
-
+            books = new List<Book>();
+            listBookAd = new List<Panel>();
             InitializeComponent();
            
         }
@@ -104,15 +112,59 @@ namespace App_Library.Views
         private async void MainForm_Load(object sender, EventArgs e)
         {
             lbName.Text = SessionManager.CurrentUsername;
-
+            homeForm = new HomeForm(_context);
+            shopForm = new ShopForm(_context, listBookAd, books);
+            books = (await _bookService.GetAllBooksAsync()).ToList();
+           
+            //pbLoadBook.Start();
+            bgwLoadBook.RunWorkerAsync();
+            
             foreach (Control item in pnListsButton.Controls)
             {
                 item.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
                 item.MouseHover += new System.EventHandler(this.lbShop_MouseHover);
             }
-            activeFormChild(new HomeForm(_context), e);
+            activeFormChild(pnContent,homeForm, e);
+        }
+        private void BgwLoadDB_DoWorkAsync(object sender, DoWorkEventArgs e)
+        {
+
+            //var listBook = books.OrderBy(o => o.PublishedYear).ToList();
+           
+            for (int i = 0; i < books.Count; i++)
+            {
+                var bookPanel = CreateBookPanel(books[i], i, 4);
+                if (bookPanel != null)
+                {
+                    bgwLoadBook.ReportProgress(0, bookPanel);
+                }
+            }
         }
 
+        private void bgwLoadDB_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+            var bookPanel = e.UserState as Control;
+            listBookAd.Add((Panel)bookPanel);
+        }
+
+        private void bgwLoadDB_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                MessageBox.Show("Công việc đã bị hủy.");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + e.Error.Message);
+            }
+            else
+            {
+                MessageBox.Show(listBookAd.Count + "");
+                //pbLoadBook.Stop();
+            }
+          
+        }
         private Point mouseDownLocation;
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -134,26 +186,7 @@ namespace App_Library.Views
         {
             
         }
-        Form ActForm;
-        public void activeFormChild(Form form, object obj)
-        {
-            if (ActForm != null)
-            {
-                ActForm.Close();
-            }
-            ActForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            this.pnContent.Controls.Add(form);
-            this.pnContent.Tag = form;
-            form.BringToFront();
-            form.Show();
-        }
 
-       
-
-      
 
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
@@ -176,7 +209,8 @@ namespace App_Library.Views
 
         private void lbHome_Click(object sender, EventArgs e)
         {
-            activeFormChild(new HomeForm(_context), e);
+            homeForm = new HomeForm(_context);
+            activeFormChild(pnContent, homeForm, e);
         }
 
      
@@ -187,7 +221,8 @@ namespace App_Library.Views
 
         private void lbShop_Click(object sender, EventArgs e)
         {
-            activeFormChild(new ShopForm(_context), e);
+            shopForm = new ShopForm(_context, listBookAd, books);
+            activeFormChild(pnContent, shopForm, e);
         }
 
       

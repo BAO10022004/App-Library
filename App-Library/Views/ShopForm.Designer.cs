@@ -36,7 +36,6 @@ namespace App_Library.Views
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bgwLoadData = new System.ComponentModel.BackgroundWorker();
             this.pnShopMain = new System.Windows.Forms.Panel();
-            this.pbLoadDB = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnProperties = new System.Windows.Forms.Panel();
             this.pnShopMain.SuspendLayout();
@@ -47,31 +46,14 @@ namespace App_Library.Views
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bgwLoadData
-            // 
-            this.bgwLoadData.WorkerReportsProgress = true;
-            this.bgwLoadData.WorkerSupportsCancellation = true;
-            this.bgwLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgwLoadDB_DoWorkAsync);
-            this.bgwLoadData.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwLoadDB_ProgressChanged);
-            this.bgwLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwLoadDB_RunWorkerCompleted);
-            // 
             // pnShopMain
             // 
-            this.pnShopMain.Controls.Add(this.pbLoadDB);
             this.pnShopMain.Controls.Add(this.flowLayoutPanel1);
             this.pnShopMain.Location = new System.Drawing.Point(1, 9);
             this.pnShopMain.Name = "pnShopMain";
             this.pnShopMain.Size = new System.Drawing.Size(1259, 829);
             this.pnShopMain.TabIndex = 3;
             this.pnShopMain.Click += new System.EventHandler(this.pnShopMain_Click);
-            // 
-            // pbLoadDB
-            // 
-            this.pbLoadDB.Location = new System.Drawing.Point(194, 379);
-            this.pbLoadDB.Maximum = 4;
-            this.pbLoadDB.Name = "pbLoadDB";
-            this.pbLoadDB.Size = new System.Drawing.Size(378, 40);
-            this.pbLoadDB.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
@@ -109,7 +91,6 @@ namespace App_Library.Views
         private System.Windows.Forms.Timer timer1;
         private BackgroundWorker bgwLoadData;
         private Panel pnShopMain;
-        private ProgressBar pbLoadDB;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel pnProperties;
     }

@@ -1,5 +1,6 @@
 ﻿using App_Library.Services;
 using App_Library.Services.Interfaces;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,41 +13,32 @@ using System.Windows.Forms;
 
 namespace App_Library.Views
 {
-    public partial class SplashForm : Form
+    public partial class SplashForm : Views.ToolerForm.FormHelper
     {
-        LoginForm loginForm;
+        LoginForm loginForm ;
         SignUpForm signUpForm;
         Point pointLbWelcome;
-        private readonly MongoDbContext _context;
-        //private readonly IAuthService _authService;
+        internal readonly MongoDbContext _context;
+        internal readonly AuthService _authService;
+        //Check Login dang duoc mo chua????
+        bool checkOpenLogin =false;
+        //Check sign-up dang duoc mo chua????
+        bool checkOpenSignUp =false;
+        //Check page nao dang duoc hien
+        bool checkPageLogin = false;
         public SplashForm(MongoDbContext context)
         {
             _context = context;
-            //_authService = new AuthService(_context);
+            _context = context;
+            _authService = new AuthService(_context);
+            
             InitializeComponent();
         }
-        Form ActForm;
-        public void activeFormChild(Form form, object obj)
-        {
-            if (ActForm != null)
-            {
-                ActForm.Close();
-            }
-            ActForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            this.pnLogInContent.Controls.Add(form);
-            this.pnLogInContent.Tag = form;
-            form.BringToFront();
-            form.Show();
-        }
+        
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-     
-        
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -90,47 +82,63 @@ namespace App_Library.Views
         Button btnSaveButtonRemove;
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (signUpForm == null)
+            if (loginForm == null && signUpForm == null)
             {
-                timerSignUp.Start();  
+                loginForm = new LoginForm(_context);
+                signUpForm = new SignUpForm(_context);
+                timerSignUp.Start();
+                checkOpenLogin = true;
+                checkPageLogin = false;
             }
             else
             {
+                    signUpForm = new SignUpForm(_context);
                 timer2SignUp.Start();
+                checkOpenSignUp = true;
+                checkPageLogin = false;
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
             Y = lbWellcome.Location.Y;
             
-            if (loginForm == null)
+            if (loginForm == null && signUpForm == null)
             {
+                loginForm = new LoginForm(_context);
+                signUpForm = new SignUpForm(_context);
                 timerClickButonLogin.Start();
+                checkOpenLogin =true;
+                checkPageLogin=true;
             }
             else
             {
-                timerClickButonLogin2.Start();
+                if(!checkPageLogin && checkOpenLogin == true)
+                {
+                    loginForm = new LoginForm(_context);
+                    timerClickButonLogin2.Start();                  
+                    checkOpenLogin = true;
+                    checkPageLogin = true;
+                }          
             }
-
         }
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
             if (lbWellcome.Location.Y > 10)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 250 / 37));
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 410 / 37);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 550 / 37));
                 btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
             {
+                timerSignUp.Stop();
+                pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
                 lbWellcome.Text = "SIGN - UP ";
                 pnFrameOption.Controls.Remove(btnSignUp);
                 button1.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(button1);
-                signUpForm = new SignUpForm(_context);
-                activeFormChild(signUpForm, sender);
-                timerSignUp.Stop();
+                this.activeFormChild(this.pnLogInContent, signUpForm,  sender);
                 return;
             }
         }
@@ -143,15 +151,15 @@ namespace App_Library.Views
             }
             else
             {
+                timer2SignUp.Stop();
                 btnSignUp.Location = new Point(120, 14);
                 pnFrameOption.Controls.Remove(btnSignUp);
                 pnFrameOption.Controls.Add(button1);
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
-                timer2SignUp.Stop();
+                
                 lbWellcome.Text = "SIGN - UP";
-                loginForm = new LoginForm(_context);
-                activeFormChild(loginForm, sender);
+                this.activeFormChild(this.pnLogInContent, signUpForm, sender);
                 return;
             }
         }
@@ -163,21 +171,20 @@ namespace App_Library.Views
         {
             if (lbWellcome.Location.Y > 10)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 210 / 37);
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 250 / 37));
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 410 / 37);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 550 / 37));
                 btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
             }
             else
             {
+                timerClickButonLogin.Stop();
                 btnSignUp.Location = new Point(120, 14);
                 btnSaveButtonRemove = new Button();
                 pnFrameOption.Controls.Remove(button1);
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
-                timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN ";
-                loginForm = new LoginForm(_context);
-                activeFormChild(loginForm, sender);
+                this.activeFormChild(this.pnLogInContent,loginForm,  sender);
                 return;
             }
         }
@@ -190,15 +197,14 @@ namespace App_Library.Views
             }
             else
             {
+                timerClickButonLogin2.Stop();
                 btnSignUp.Location = new Point(120, 14);
                 pnFrameOption.Controls.Remove(button1);
                 pnFrameOption.Controls.Add(btnSignUp);
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
-                timerClickButonLogin2.Stop();
                 lbWellcome.Text = "SIGN - IN";
-                loginForm = new LoginForm(_context);
-                activeFormChild(loginForm, sender);
+                this.activeFormChild(this.pnLogInContent, loginForm, sender);
                 return;
             }
         }

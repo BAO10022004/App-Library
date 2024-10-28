@@ -1,8 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using App_Library.Views.ToolerForm;
+using System.Windows.Forms;
 
 namespace App_Library.Views
 {
-    partial class SplashForm
+    partial class SplashForm : FormHelper
     {
         /// <summary>
         /// Required designer variable.
@@ -183,7 +184,7 @@ namespace App_Library.Views
             // 
             // timerClickButonLogin
             // 
-            this.timerClickButonLogin.Interval = 5;
+            this.timerClickButonLogin.Interval = 1;
             this.timerClickButonLogin.Tick += new System.EventHandler(this.timerClickButonLogin_Tick);
             // 
             // gneBtnSingIn
@@ -203,7 +204,7 @@ namespace App_Library.Views
             // 
             // timerClickButonLogin2
             // 
-            this.timerClickButonLogin2.Interval = 1;
+            this.timerClickButonLogin2.Interval = 5;
             this.timerClickButonLogin2.Tick += new System.EventHandler(this.timerClickButonLogin2_Tick);
             // 
             // timer2SignUp
