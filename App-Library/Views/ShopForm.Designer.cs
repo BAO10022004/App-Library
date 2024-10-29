@@ -33,18 +33,26 @@ namespace App_Library.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerAd = new System.Windows.Forms.Timer(this.components);
             this.bgwLoadData = new System.ComponentModel.BackgroundWorker();
+            this.pnProperties = new System.Windows.Forms.Panel();
             this.pnShopMain = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnProperties = new System.Windows.Forms.Panel();
             this.pnShopMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // timer1
+            // timerAd
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerAd.Interval = 1;
+            this.timerAd.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pnProperties
+            // 
+            this.pnProperties.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pnProperties.Location = new System.Drawing.Point(1237, 823);
+            this.pnProperties.Name = "pnProperties";
+            this.pnProperties.Size = new System.Drawing.Size(10, 815);
+            this.pnProperties.TabIndex = 5;
             // 
             // pnShopMain
             // 
@@ -63,14 +71,6 @@ namespace App_Library.Views
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1259, 353);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // pnProperties
-            // 
-            this.pnProperties.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pnProperties.Location = new System.Drawing.Point(1237, 823);
-            this.pnProperties.Name = "pnProperties";
-            this.pnProperties.Size = new System.Drawing.Size(10, 815);
-            this.pnProperties.TabIndex = 5;
-            // 
             // ShopForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -88,7 +88,7 @@ namespace App_Library.Views
 
         #endregion
         BackgroundWorker bgwLoadDB = new BackgroundWorker();
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerAd;
         private BackgroundWorker bgwLoadData;
         private Panel pnShopMain;
         private FlowLayoutPanel flowLayoutPanel1;

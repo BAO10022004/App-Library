@@ -1,7 +1,9 @@
 ﻿using App_Library.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -41,13 +43,19 @@ namespace App_Library.Views.ToolerForm
                 foreach (var c in item.Controls)
                 {
                     var itemControl  = (System.Windows.Forms.Control)c; 
-                    if(itemControl.Text.Equals(control.Text))
+                    if(itemControl.Name.Equals(control.Name))
                     {
                         result = item;
                     }
                 }
             }
             return result;
+        }
+        public Image GetImageFromResources(string imageName)
+        {
+            ResourceManager rm = Properties.Resources.ResourceManager;
+            object image = rm.GetObject(imageName);
+            return image as Image;
         }
     }
     

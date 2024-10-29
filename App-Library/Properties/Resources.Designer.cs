@@ -123,9 +123,9 @@ namespace App_Library.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HomeNomal {
+        internal static System.Drawing.Bitmap HomeOrigin1 {
             get {
-                object obj = ResourceManager.GetObject("HomeNomal", resourceCulture);
+                object obj = ResourceManager.GetObject("HomeOrigin1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +156,36 @@ namespace App_Library.Properties {
         internal static System.Drawing.Bitmap OIP {
             get {
                 object obj = ResourceManager.GetObject("OIP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShopHover {
+            get {
+                object obj = ResourceManager.GetObject("ShopHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShopOrigin {
+            get {
+                object obj = ResourceManager.GetObject("ShopOrigin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShopOrigin1 {
+            get {
+                object obj = ResourceManager.GetObject("ShopOrigin1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

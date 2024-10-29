@@ -1,4 +1,7 @@
-﻿namespace App_Library.Views
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace App_Library.Views
 {
     partial class MainForm
     {
@@ -29,6 +32,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnListsButton = new System.Windows.Forms.FlowLayoutPanel();
@@ -53,6 +57,8 @@
             this.pnContent = new System.Windows.Forms.Panel();
             this.pbLoadBook = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
             this.bgwLoadBook = new System.ComponentModel.BackgroundWorker();
+            this.timerPicHome = new System.Windows.Forms.Timer(this.components);
+            this.timerPicShop = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnSideBar.SuspendLayout();
             this.pnListsButton.SuspendLayout();
@@ -98,7 +104,6 @@
             // 
             // pnHome
             // 
-            this.pnHome.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.pnHome.Controls.Add(this.picHome);
             this.pnHome.Controls.Add(this.lbHome);
             this.pnHome.Location = new System.Drawing.Point(3, 3);
@@ -108,23 +113,25 @@
             // 
             // picHome
             // 
-            this.picHome.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.picHome.BackColor = System.Drawing.Color.Transparent;
+            this.picHome.Image = ((System.Drawing.Image)(resources.GetObject("picHome.Image")));
             this.picHome.Location = new System.Drawing.Point(27, 20);
             this.picHome.Name = "picHome";
             this.picHome.Size = new System.Drawing.Size(32, 32);
+            this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picHome.TabIndex = 1;
             this.picHome.TabStop = false;
             // 
             // lbHome
             // 
             this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbHome.Location = new System.Drawing.Point(85, 0);
+            this.lbHome.Location = new System.Drawing.Point(111, 0);
             this.lbHome.Margin = new System.Windows.Forms.Padding(0);
             this.lbHome.Name = "lbHome";
-            this.lbHome.Size = new System.Drawing.Size(234, 73);
+            this.lbHome.Size = new System.Drawing.Size(208, 73);
             this.lbHome.TabIndex = 0;
             this.lbHome.Text = "Home";
-            this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbHome.Click += new System.EventHandler(this.lbHome_Click);
             // 
             // pnShop
@@ -138,9 +145,11 @@
             // 
             // picShop
             // 
+            this.picShop.Image = ((System.Drawing.Image)(resources.GetObject("picShop.Image")));
             this.picShop.Location = new System.Drawing.Point(27, 21);
             this.picShop.Name = "picShop";
             this.picShop.Size = new System.Drawing.Size(32, 32);
+            this.picShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picShop.TabIndex = 1;
             this.picShop.TabStop = false;
             // 
@@ -148,13 +157,13 @@
             // 
             this.lbShop.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lbShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbShop.Location = new System.Drawing.Point(91, 0);
+            this.lbShop.Location = new System.Drawing.Point(117, 0);
             this.lbShop.Margin = new System.Windows.Forms.Padding(0);
             this.lbShop.Name = "lbShop";
-            this.lbShop.Size = new System.Drawing.Size(225, 73);
+            this.lbShop.Size = new System.Drawing.Size(199, 73);
             this.lbShop.TabIndex = 1;
             this.lbShop.Text = "Shop";
-            this.lbShop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbShop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbShop.Click += new System.EventHandler(this.lbShop_Click);
             // 
             // lbLogOut
@@ -222,7 +231,6 @@
             this.lbName.Size = new System.Drawing.Size(82, 29);
             this.lbName.TabIndex = 3;
             this.lbName.Text = "Name";
-            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // lbEmail
             // 
@@ -291,6 +299,16 @@
             this.bgwLoadBook.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwLoadDB_ProgressChanged);
             this.bgwLoadBook.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwLoadDB_RunWorkerCompleted);
             // 
+            // timerPicHome
+            // 
+            this.timerPicHome.Interval = 5;
+            this.timerPicHome.Tick += new System.EventHandler(this.timerPicHome_Tick);
+            // 
+            // timerPicShop
+            // 
+            this.timerPicShop.Interval = 5;
+            this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -346,5 +364,7 @@
         private System.Windows.Forms.Panel pnHome;
         private System.Windows.Forms.Panel pnShop;
         private System.Windows.Forms.PictureBox picShop;
+        private Timer timerPicHome;
+        private Timer timerPicShop;
     }
 }

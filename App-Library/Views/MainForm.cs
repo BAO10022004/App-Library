@@ -32,6 +32,8 @@ namespace App_Library.Views
         // compunent shop 
         List<Panel> listBookAd;
         List<Book> books;
+        Dictionary<Control, Form> formDictionary;
+        Form currentForm;
         public MainForm(MongoDbContext context)
         {
             
@@ -42,7 +44,7 @@ namespace App_Library.Views
             books = new List<Book>();
             listBookAd = new List<Panel>();
             InitializeComponent();
-           
+            
         }
         
         
@@ -50,7 +52,7 @@ namespace App_Library.Views
         {
             // Tạo panel mới với kích thước cố định
             Panel panel = new Panel();
-            panel.Size = new Size(200, 350); // Kích thước giữ nguyên
+            panel.Size = new Size(1259, 350); // Kích thước giữ nguyên
             panel.BorderStyle = BorderStyle.None;
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
 
@@ -98,15 +100,14 @@ namespace App_Library.Views
 
             panel.Controls.Add(authorLabel);
             panel.TabIndex = index;
+            
             foreach (Control items in panel.Controls)
             {
           
                     items.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
-                    items.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
                     items.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);   
             }
             panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
-            panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
             panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
             return panel;
         }
@@ -116,9 +117,10 @@ namespace App_Library.Views
             homeForm = new HomeForm(_context);
             shopForm = new ShopForm(_context, listBookAd, books);
             books = (await _bookService.GetAllBooksAsync()).ToList();
-            this.picHome.Image = global::App_Library.Properties.Resources.HomeNomal;
+           
+            //this.picHome.Image = global::App_Library.Properties.Resources.HomeNomal;
             pbLoadBook.Start();
-           bgwLoadBook.RunWorkerAsync();
+            bgwLoadBook.RunWorkerAsync();
             
            
         }
@@ -126,27 +128,41 @@ namespace App_Library.Views
         {
             var _lbShop = (Control)sender;
             _lbShop.BackColor = Color.MidnightBlue;
-            _lbShop.ForeColor = Color.White;
+            _lbShop.ForeColor = Color.Red;
             var panel = FindControlContainer(pnListsButton.Controls, _lbShop);
             panel.BackColor = Color.MidnightBlue;
-            panel.ForeColor = Color.White;
+            panel.ForeColor = Color.Red;
+            foreach (var item in panel.Controls)
+            {
+                if (item is PictureBox)
+                {
+                    var pictureBox = (PictureBox)item;
+
+                    pictureBox.Image = GetImageFromResources(_lbShop.Name.Substring(2) + "Hover");
+                    //MessageBox.Show(_lbShop.Name.Substring(2) + "Hover");
+                    pictureBox.BackColor = panel.BackColor;
+                }
+            }
         }
 
         private void lbShop_MouseLeave(object sender, EventArgs e)
         {
-            //var _lbShop = (Control)sender;
-            //_lbShop.BackColor = Color.DeepSkyBlue;
-            //_lbShop.ForeColor = Color.Black;
-            //var panel = (Panel)_lbShop.GetContainerControl();
-            //panel.BackColor = Color.DeepSkyBlue;
-            //panel.ForeColor = Color.Black;
-
             var _lbShop = (Control)sender;
             _lbShop.BackColor = Color.DeepSkyBlue;
             _lbShop.ForeColor = Color.Black;
             var panel = FindControlContainer(pnListsButton.Controls, _lbShop);
             panel.BackColor = Color.DeepSkyBlue;
             panel.ForeColor = Color.Black;
+            foreach (var item in panel.Controls)
+            {
+                if (item is PictureBox)
+                {
+                    var pictureBox = (PictureBox)item;
+
+                    pictureBox.Image = GetImageFromResources(_lbShop.Name.Substring(2) + "Origin1");
+                    pictureBox.BackColor = panel.BackColor;
+                }
+            }
         }
         private void BgwLoadDB_DoWorkAsync(object sender, DoWorkEventArgs e)
         {
@@ -184,8 +200,8 @@ namespace App_Library.Views
             {
                 pbLoadBook.Stop();
                 MessageBox.Show(listBookAd.Count + "");
-                
-            
+                formDictionary = new Dictionary<Control, Form>();
+
                 foreach (Control item in pnListsButton.Controls)
                 {
                     if (item is Panel)
@@ -193,18 +209,14 @@ namespace App_Library.Views
                         var controls = item.Controls;
                         foreach (Control control in controls)
                         {
-
                             control.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
-                            control.MouseHover += new System.EventHandler(this.lbShop_MouseHover);
+                            control.MouseHover += new System.EventHandler(this.lbShop_MouseHover);  
                         }
-                        
                     }
-                    
-                       
                 }
                 activeFormChild(pnContent, homeForm, e);
+                currentForm = homeForm;
             }
-          
         }
         private Point mouseDownLocation;
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -213,48 +225,10 @@ namespace App_Library.Views
             mouseDownLocation = e.Location;
         }
         
-        private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
-
         private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
         }
-      
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
-        private void lbHome_Click(object sender, EventArgs e)
-        {
-            homeForm = new HomeForm(_context);
-            activeFormChild(pnContent, homeForm, e);
-        }
-
-     
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbShop_Click(object sender, EventArgs e)
-        {
-            shopForm = new ShopForm(_context, listBookAd, books);
-            activeFormChild(pnContent, shopForm, e);
-        }
-
-      
         private void txbSearch_Click(object sender, EventArgs e)
         {
             txbSearch.Enabled = true;
@@ -264,5 +238,67 @@ namespace App_Library.Views
         {
             txbSearch.Enabled = true;
         }
+        Point pointSave;
+        private void lbHome_Click(object sender, EventArgs e)
+        {
+
+            pointSave =picHome.Location;
+            lbHome.Text = "";
+            timerPicHome.Start();
+        }
+       
+        private void lbShop_Click(object sender, EventArgs e)
+        {
+            pointSave = picHome.Location;
+            lbShop.Text = "";
+            timerPicShop.Start();
+        }
+        int deltaX = 5;
+        
+        private void timerPicHome_Tick(object sender, EventArgs e)
+        {
+            
+            if (picHome.Location.X < lbHome.Location.X)
+            {
+                picHome.Location= new Point(picHome.Location.X +deltaX,picHome.Location.Y );
+            }
+            else
+            {
+                timerPicHome.Stop();
+                picHome.Location = pointSave;
+                lbHome.Text = lbHome.Name.Substring(2);
+                
+                if(!(currentForm is HomeForm))
+                {
+                    homeForm = new HomeForm(_context);
+                    activeFormChild(pnContent, homeForm, e);
+                    currentForm = homeForm;
+                }
+                
+            }
+
+        }
+
+        private void timerPicShop_Tick(object sender, EventArgs e)
+        {
+            if (picShop.Location.X < lbShop.Location.X)
+            {
+                picShop.Location = new Point(picShop.Location.X + deltaX, picShop.Location.Y);
+            }
+            else
+            {
+                timerPicShop.Stop();
+                picShop.Location = pointSave;
+                lbShop.Text = lbShop.Name.Substring(2);
+                
+                if(!(currentForm is ShopForm))
+                {
+                    shopForm = new ShopForm(_context, listBookAd, books);
+                    activeFormChild(pnContent, shopForm, e);
+                    currentForm = shopForm;
+                }
+            }
+        }
+        public Form getCurrentForm() => currentForm;
     }
 }

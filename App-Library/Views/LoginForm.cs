@@ -20,6 +20,7 @@ namespace App_Library.Views
     {
         private readonly MongoDbContext _context;
         private readonly IAuthService _authService;
+        internal MainForm mainform; 
         public LoginForm(MongoDbContext context)
         {
             _context = context;
@@ -81,8 +82,8 @@ namespace App_Library.Views
                 timerOpenMainForm.Stop();
                 Program.sp.WindowState = FormWindowState.Maximized;
                 Program.sp.PnSubLogin.Controls.Clear();
+                mainform = new MainForm(_context);
                 activeFormChild(new MainForm(_context), sender);
-                
             }
             if (Program.sp.Size.Height < 1080 && Program.sp.Size.Width < 1920)
             {

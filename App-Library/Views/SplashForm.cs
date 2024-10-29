@@ -15,8 +15,8 @@ namespace App_Library.Views
 {
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
-        LoginForm loginForm ;
-        SignUpForm signUpForm;
+        internal LoginForm loginForm ;
+        internal SignUpForm signUpForm;
         Point pointLbWelcome;
         internal readonly MongoDbContext _context;
         internal readonly AuthService _authService;

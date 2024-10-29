@@ -303,8 +303,13 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\ShopOrigin1.png" />
+    <None Include="Resources\ShopOrigin.png" />
+    <None Include="Resources\ShopHover.png" />
+    <None Include="Resources\HomeHover2.png" />
     <None Include="Resources\HomeHover1.png" />
-    <None Include="Resources\HomeNomal1.png" />
+    <None Include="Resources\HomeOrigin2.png" />
+    <None Include="Resources\HomeOrigin1.png" />
     <None Include="Resources\home %282%29.png" />
     <None Include="Resources\magnifying-glass %281%29.png" />
     <None Include="Resources\communication.png" />

@@ -50,8 +50,9 @@ namespace App_Library.Views
            
             //flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel1.WrapContents = false;
-            timer1.Start();
-            flowLayoutPanel1.Controls.Add(listBookAd[indexCurrentBookAd]);
+           
+            timerAd.Start();
+            
 
         }
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -86,7 +87,9 @@ namespace App_Library.Views
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-                indexCurrentBookAd++;
+            if (timerAd.Interval ==1) timerAd.Interval = 10000;
+
+            indexCurrentBookAd++;
                 if (indexCurrentBookAd != listBookAd.Count)
                 {                
                     flowLayoutPanel1.Controls.Remove(listBookAd[indexCurrentBookAd - 1]);
@@ -94,10 +97,10 @@ namespace App_Library.Views
                 }
                 else
                 {
-                    flowLayoutPanel1.Controls.Remove(listBookAd[indexCurrentBookAd - 1]);
-                    indexCurrentBookAd = 0;
-                    flowLayoutPanel1.Controls.Add(listBookAd[indexCurrentBookAd]);
-            }
+                flowLayoutPanel1.Controls.Remove(listBookAd[indexCurrentBookAd - 1]);
+                indexCurrentBookAd = 0;
+                timer1_Tick(sender, e);
+                }
 
                   
         }
