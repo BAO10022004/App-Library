@@ -32,7 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnListsButton = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnHome = new System.Windows.Forms.Panel();
+            this.picHome = new System.Windows.Forms.PictureBox();
             this.lbHome = new System.Windows.Forms.Label();
+            this.pnShop = new System.Windows.Forms.Panel();
+            this.picShop = new System.Windows.Forms.PictureBox();
             this.lbShop = new System.Windows.Forms.Label();
             this.lbLogOut = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -52,6 +56,10 @@
             this.panel1.SuspendLayout();
             this.pnSideBar.SuspendLayout();
             this.pnListsButton.SuspendLayout();
+            this.pnHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
+            this.pnShop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShop)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnSearchMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,33 +89,69 @@
             // 
             // pnListsButton
             // 
-            this.pnListsButton.Controls.Add(this.lbHome);
-            this.pnListsButton.Controls.Add(this.lbShop);
+            this.pnListsButton.Controls.Add(this.pnHome);
+            this.pnListsButton.Controls.Add(this.pnShop);
             this.pnListsButton.Location = new System.Drawing.Point(3, 3);
             this.pnListsButton.Name = "pnListsButton";
             this.pnListsButton.Size = new System.Drawing.Size(322, 582);
             this.pnListsButton.TabIndex = 3;
             // 
+            // pnHome
+            // 
+            this.pnHome.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.pnHome.Controls.Add(this.picHome);
+            this.pnHome.Controls.Add(this.lbHome);
+            this.pnHome.Location = new System.Drawing.Point(3, 3);
+            this.pnHome.Name = "pnHome";
+            this.pnHome.Size = new System.Drawing.Size(319, 73);
+            this.pnHome.TabIndex = 2;
+            // 
+            // picHome
+            // 
+            this.picHome.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.picHome.Location = new System.Drawing.Point(27, 20);
+            this.picHome.Name = "picHome";
+            this.picHome.Size = new System.Drawing.Size(32, 32);
+            this.picHome.TabIndex = 1;
+            this.picHome.TabStop = false;
+            // 
             // lbHome
             // 
             this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbHome.Location = new System.Drawing.Point(0, 0);
+            this.lbHome.Location = new System.Drawing.Point(85, 0);
             this.lbHome.Margin = new System.Windows.Forms.Padding(0);
             this.lbHome.Name = "lbHome";
-            this.lbHome.Size = new System.Drawing.Size(319, 62);
+            this.lbHome.Size = new System.Drawing.Size(234, 73);
             this.lbHome.TabIndex = 0;
             this.lbHome.Text = "Home";
             this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbHome.Click += new System.EventHandler(this.lbHome_Click);
             // 
+            // pnShop
+            // 
+            this.pnShop.Controls.Add(this.picShop);
+            this.pnShop.Controls.Add(this.lbShop);
+            this.pnShop.Location = new System.Drawing.Point(3, 82);
+            this.pnShop.Name = "pnShop";
+            this.pnShop.Size = new System.Drawing.Size(319, 73);
+            this.pnShop.TabIndex = 3;
+            // 
+            // picShop
+            // 
+            this.picShop.Location = new System.Drawing.Point(27, 21);
+            this.picShop.Name = "picShop";
+            this.picShop.Size = new System.Drawing.Size(32, 32);
+            this.picShop.TabIndex = 1;
+            this.picShop.TabStop = false;
+            // 
             // lbShop
             // 
             this.lbShop.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lbShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbShop.Location = new System.Drawing.Point(0, 62);
+            this.lbShop.Location = new System.Drawing.Point(91, 0);
             this.lbShop.Margin = new System.Windows.Forms.Padding(0);
             this.lbShop.Name = "lbShop";
-            this.lbShop.Size = new System.Drawing.Size(319, 62);
+            this.lbShop.Size = new System.Drawing.Size(225, 73);
             this.lbShop.TabIndex = 1;
             this.lbShop.Text = "Shop";
             this.lbShop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,6 +306,10 @@
             this.panel1.ResumeLayout(false);
             this.pnSideBar.ResumeLayout(false);
             this.pnListsButton.ResumeLayout(false);
+            this.pnHome.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picHome)).EndInit();
+            this.pnShop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picShop)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnSearchMain.ResumeLayout(false);
@@ -294,5 +342,9 @@
         private System.Windows.Forms.Panel pnContent;
         private System.ComponentModel.BackgroundWorker bgwLoadBook;
         private Guna.UI2.WinForms.Guna2WinProgressIndicator pbLoadBook;
+        private System.Windows.Forms.PictureBox picHome;
+        private System.Windows.Forms.Panel pnHome;
+        private System.Windows.Forms.Panel pnShop;
+        private System.Windows.Forms.PictureBox picShop;
     }
 }

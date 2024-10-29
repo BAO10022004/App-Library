@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace App_Library.Views.ToolerForm
@@ -11,7 +12,7 @@ namespace App_Library.Views.ToolerForm
     public class FormHelper : Form
     {
          Form ActForm;
-        public  void activeFormChild(Control ctrlSource,Form formDes,object obj)
+        public  void activeFormChild(System.Windows.Forms.Control ctrlSource,Form formDes,object obj)
         {
             // Kiểm tra nếu ActForm khác null và đã tồn tại, đóng nó
             if (ActForm != null && !ActForm.IsDisposed)
@@ -30,6 +31,23 @@ namespace App_Library.Views.ToolerForm
             ctrlSource.Tag = formDes;
             formDes.BringToFront();
             formDes.Show();
+        }
+        public System.Windows.Forms.Control FindControlContainer(System.Windows.Forms.Control.ControlCollection listControl, System.Windows.Forms.Control control)
+        {
+            System.Windows.Forms.Control result = new System.Windows.Forms.Control();
+            foreach (System.Windows.Forms.Control panel in listControl)
+            {
+                var item = (Panel)panel;
+                foreach (var c in item.Controls)
+                {
+                    var itemControl  = (System.Windows.Forms.Control)c; 
+                    if(itemControl.Text.Equals(control.Text))
+                    {
+                        result = item;
+                    }
+                }
+            }
+            return result;
         }
     }
     

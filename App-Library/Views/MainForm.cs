@@ -100,9 +100,10 @@ namespace App_Library.Views
             panel.TabIndex = index;
             foreach (Control items in panel.Controls)
             {
-                items.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
-                items.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
-                items.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);
+          
+                    items.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
+                    items.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
+                    items.MouseUp += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseUp);   
             }
             panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseDown);
             panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
@@ -115,16 +116,37 @@ namespace App_Library.Views
             homeForm = new HomeForm(_context);
             shopForm = new ShopForm(_context, listBookAd, books);
             books = (await _bookService.GetAllBooksAsync()).ToList();
-           
-            //pbLoadBook.Start();
-            bgwLoadBook.RunWorkerAsync();
+            this.picHome.Image = global::App_Library.Properties.Resources.HomeNomal;
+            pbLoadBook.Start();
+           bgwLoadBook.RunWorkerAsync();
             
-            foreach (Control item in pnListsButton.Controls)
-            {
-                item.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
-                item.MouseHover += new System.EventHandler(this.lbShop_MouseHover);
-            }
-            activeFormChild(pnContent,homeForm, e);
+           
+        }
+        private void lbShop_MouseHover(object sender, EventArgs e)
+        {
+            var _lbShop = (Control)sender;
+            _lbShop.BackColor = Color.MidnightBlue;
+            _lbShop.ForeColor = Color.White;
+            var panel = FindControlContainer(pnListsButton.Controls, _lbShop);
+            panel.BackColor = Color.MidnightBlue;
+            panel.ForeColor = Color.White;
+        }
+
+        private void lbShop_MouseLeave(object sender, EventArgs e)
+        {
+            //var _lbShop = (Control)sender;
+            //_lbShop.BackColor = Color.DeepSkyBlue;
+            //_lbShop.ForeColor = Color.Black;
+            //var panel = (Panel)_lbShop.GetContainerControl();
+            //panel.BackColor = Color.DeepSkyBlue;
+            //panel.ForeColor = Color.Black;
+
+            var _lbShop = (Control)sender;
+            _lbShop.BackColor = Color.DeepSkyBlue;
+            _lbShop.ForeColor = Color.Black;
+            var panel = FindControlContainer(pnListsButton.Controls, _lbShop);
+            panel.BackColor = Color.DeepSkyBlue;
+            panel.ForeColor = Color.Black;
         }
         private void BgwLoadDB_DoWorkAsync(object sender, DoWorkEventArgs e)
         {
@@ -160,8 +182,27 @@ namespace App_Library.Views
             }
             else
             {
+                pbLoadBook.Stop();
                 MessageBox.Show(listBookAd.Count + "");
-                //pbLoadBook.Stop();
+                
+            
+                foreach (Control item in pnListsButton.Controls)
+                {
+                    if (item is Panel)
+                    {
+                        var controls = item.Controls;
+                        foreach (Control control in controls)
+                        {
+
+                            control.MouseLeave += new System.EventHandler(this.lbShop_MouseLeave);
+                            control.MouseHover += new System.EventHandler(this.lbShop_MouseHover);
+                        }
+                        
+                    }
+                    
+                       
+                }
+                activeFormChild(pnContent, homeForm, e);
             }
           
         }
@@ -171,7 +212,7 @@ namespace App_Library.Views
             isDragging = true;
             mouseDownLocation = e.Location;
         }
-
+        
         private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             
@@ -193,19 +234,7 @@ namespace App_Library.Views
 
         }
 
-        private void lbShop_MouseHover(object sender, EventArgs e)
-        {
-            var _lbShop = (Label)sender;
-            _lbShop.BackColor = Color.MidnightBlue;
-            _lbShop.ForeColor = Color.White;
-        }
-
-        private void lbShop_MouseLeave(object sender, EventArgs e)
-        {
-            var _lbShop = (Label)sender;
-            _lbShop.BackColor = Color.DeepSkyBlue;
-            _lbShop.ForeColor = Color.Black;
-        }
+       
 
         private void lbHome_Click(object sender, EventArgs e)
         {

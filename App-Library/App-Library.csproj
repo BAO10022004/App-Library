@@ -183,6 +183,11 @@
     <Compile Include="Models\BookSold.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\GoogleLoginRequest.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Models\SignUpRequest.cs" />
     <Compile Include="Models\StarsRating.cs" />
@@ -251,14 +256,9 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Views\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -303,6 +303,9 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\HomeHover1.png" />
+    <None Include="Resources\HomeNomal1.png" />
+    <None Include="Resources\home %282%29.png" />
     <None Include="Resources\magnifying-glass %281%29.png" />
     <None Include="Resources\communication.png" />
     <None Include="Resources\facebook.png" />
