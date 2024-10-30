@@ -303,6 +303,9 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\book-fair.png" />
+    <None Include="Resources\gradient.png" />
+    <None Include="Resources\shopping-cart.png" />
     <None Include="Resources\ShopOrigin1.png" />
     <None Include="Resources\ShopOrigin.png" />
     <None Include="Resources\ShopHover.png" />

@@ -14,6 +14,8 @@ namespace App_Library
     {
         static public SplashForm sp;
         static public User user;
+        static public List<Panel> ListBookAd;
+        static public List<Book> books;
         /// summary>
         /// The main entry point for the application.
         /// </summary>

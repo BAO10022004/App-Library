@@ -32,7 +32,6 @@ namespace App_Library.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnListsButton = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,11 +53,9 @@ namespace App_Library.Views
             this.gnePnContainContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pnContent = new System.Windows.Forms.Panel();
-            this.pbLoadBook = new Guna.UI2.WinForms.Guna2WinProgressIndicator();
-            this.bgwLoadBook = new System.ComponentModel.BackgroundWorker();
             this.timerPicHome = new System.Windows.Forms.Timer(this.components);
             this.timerPicShop = new System.Windows.Forms.Timer(this.components);
+            this.pnContent = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnSideBar.SuspendLayout();
             this.pnListsButton.SuspendLayout();
@@ -70,11 +67,11 @@ namespace App_Library.Views
             this.pnSearchMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            this.pnContent.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.pnSideBar);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -104,6 +101,7 @@ namespace App_Library.Views
             // 
             // pnHome
             // 
+            this.pnHome.BackColor = System.Drawing.Color.White;
             this.pnHome.Controls.Add(this.picHome);
             this.pnHome.Controls.Add(this.lbHome);
             this.pnHome.Location = new System.Drawing.Point(3, 3);
@@ -114,7 +112,7 @@ namespace App_Library.Views
             // picHome
             // 
             this.picHome.BackColor = System.Drawing.Color.Transparent;
-            this.picHome.Image = ((System.Drawing.Image)(resources.GetObject("picHome.Image")));
+            this.picHome.Image = global::App_Library.Properties.Resources.HomeHover;
             this.picHome.Location = new System.Drawing.Point(27, 20);
             this.picHome.Name = "picHome";
             this.picHome.Size = new System.Drawing.Size(32, 32);
@@ -145,7 +143,7 @@ namespace App_Library.Views
             // 
             // picShop
             // 
-            this.picShop.Image = ((System.Drawing.Image)(resources.GetObject("picShop.Image")));
+            this.picShop.Image = global::App_Library.Properties.Resources.book_fair;
             this.picShop.Location = new System.Drawing.Point(27, 21);
             this.picShop.Name = "picShop";
             this.picShop.Size = new System.Drawing.Size(32, 32);
@@ -155,7 +153,7 @@ namespace App_Library.Views
             // 
             // lbShop
             // 
-            this.lbShop.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbShop.BackColor = System.Drawing.Color.White;
             this.lbShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbShop.Location = new System.Drawing.Point(117, 0);
             this.lbShop.Margin = new System.Windows.Forms.Padding(0);
@@ -178,7 +176,7 @@ namespace App_Library.Views
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.pnSearchMain);
             this.panel4.Controls.Add(this.lbName);
             this.panel4.Controls.Add(this.lbEmail);
@@ -191,7 +189,7 @@ namespace App_Library.Views
             // 
             // pnSearchMain
             // 
-            this.pnSearchMain.BackColor = System.Drawing.Color.White;
+            this.pnSearchMain.BackColor = System.Drawing.Color.LightGray;
             this.pnSearchMain.Controls.Add(this.pictureBox1);
             this.pnSearchMain.Controls.Add(this.txbSearch);
             this.pnSearchMain.Location = new System.Drawing.Point(12, 116);
@@ -212,7 +210,7 @@ namespace App_Library.Views
             // 
             // txbSearch
             // 
-            this.txbSearch.BackColor = System.Drawing.Color.White;
+            this.txbSearch.BackColor = System.Drawing.Color.LightGray;
             this.txbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSearch.Enabled = false;
             this.txbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -271,34 +269,6 @@ namespace App_Library.Views
             this.guna2Elipse1.BorderRadius = 40;
             this.guna2Elipse1.TargetControl = this.pnSearchMain;
             // 
-            // pnContent
-            // 
-            this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
-            this.pnContent.Controls.Add(this.pbLoadBook);
-            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContent.Location = new System.Drawing.Point(325, 0);
-            this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1259, 826);
-            this.pnContent.TabIndex = 2;
-            // 
-            // pbLoadBook
-            // 
-            this.pbLoadBook.AutoStart = true;
-            this.pbLoadBook.BackColor = System.Drawing.Color.Transparent;
-            this.pbLoadBook.Location = new System.Drawing.Point(629, 425);
-            this.pbLoadBook.Name = "pbLoadBook";
-            this.pbLoadBook.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.pbLoadBook.Size = new System.Drawing.Size(90, 90);
-            this.pbLoadBook.TabIndex = 1;
-            // 
-            // bgwLoadBook
-            // 
-            this.bgwLoadBook.WorkerReportsProgress = true;
-            this.bgwLoadBook.WorkerSupportsCancellation = true;
-            this.bgwLoadBook.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgwLoadDB_DoWorkAsync);
-            this.bgwLoadBook.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwLoadDB_ProgressChanged);
-            this.bgwLoadBook.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwLoadDB_RunWorkerCompleted);
-            // 
             // timerPicHome
             // 
             this.timerPicHome.Interval = 5;
@@ -309,10 +279,18 @@ namespace App_Library.Views
             this.timerPicShop.Interval = 5;
             this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
             // 
+            // pnContent
+            // 
+            this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
+            this.pnContent.Location = new System.Drawing.Point(331, 0);
+            this.pnContent.Name = "pnContent";
+            this.pnContent.Size = new System.Drawing.Size(1251, 826);
+            this.pnContent.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1584, 826);
             this.Controls.Add(this.pnContent);
             this.Controls.Add(this.panel1);
@@ -334,7 +312,6 @@ namespace App_Library.Views
             this.pnSearchMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            this.pnContent.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -357,14 +334,13 @@ namespace App_Library.Views
         private System.Windows.Forms.FlowLayoutPanel pnListsButton;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Label lbEmail;
-        private System.Windows.Forms.Panel pnContent;
-        private System.ComponentModel.BackgroundWorker bgwLoadBook;
-        private Guna.UI2.WinForms.Guna2WinProgressIndicator pbLoadBook;
+
         private System.Windows.Forms.PictureBox picHome;
         private System.Windows.Forms.Panel pnHome;
         private System.Windows.Forms.Panel pnShop;
         private System.Windows.Forms.PictureBox picShop;
         private Timer timerPicHome;
         private Timer timerPicShop;
+        private Panel pnContent;
     }
 }
