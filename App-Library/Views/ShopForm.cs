@@ -428,22 +428,7 @@ namespace App_Library.Views
                     }
                 }
                 LPHotDeal.ResumeLayout();
-                async Task<Book> getBookFromPanelHotDealAsync(Panel panel1)
-                {
-                    var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
-                                        .SortBy(book => book.Price)
-                                        .ToListAsync();
-                    String titlePanel = null;
-                        foreach(var item2 in panel1.Controls)
-                        {
-                            if (item2 is Label && (item2 as Label).Location == new Point(10, 305))
-                            {
-                            titlePanel = (item2 as Label).Text;
-                            }
-                        }
-                    return ListBookForThisF.Where(book => book.Title.Equals(titlePanel)).FirstOrDefault();
-
-                }
+                
                 pnContainHotDeal.BackColor = Color.Transparent;
                 foreach(Panel pn in pnShopMain.Controls)
                 {
