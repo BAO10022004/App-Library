@@ -16,6 +16,7 @@ using SharpCompress.Compressors.PPMd;
 using App_Library.Views.ToolerForm;
 using MongoDB.Driver;
 using Guna.UI2.WinForms;
+using System.Net.Http;
 
 
 namespace App_Library.Views
@@ -239,12 +240,12 @@ namespace App_Library.Views
                 timer1_Tick(sender, e);
             }
         }
-        public Panel CreateBookPanel(Book book, int index, int rating = 4)
+        public async Task<Panel> CreateBookPanelAsync(Book book, int index, int rating = 4)
         {
             // Tạo panel mới với kích thước cố định
             Guna2Panel panel = new Guna2Panel();
             panel.Size = new Size(200, 350); // Kích thước giữ nguyên
-            
+
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
 
             // Thêm hình ảnh sách (tăng kích thước)
@@ -253,10 +254,17 @@ namespace App_Library.Views
             pictureBox.Location = new Point(10, 10);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            // Load hình ảnh từ URL (hoặc từ file nếu có đường dẫn cục bộ)
+            // Load hình ảnh từ URL không đồng bộ
             try
             {
-                pictureBox.Load(book.Image); // Đường dẫn hoặc URL của ảnh
+                using (HttpClient client = new HttpClient())
+                {
+                    var imageBytes = await client.GetByteArrayAsync(book.Image);
+                    using (var ms = new System.IO.MemoryStream(imageBytes))
+                    {
+                        pictureBox.Image = Image.FromStream(ms);
+                    }
+                }
             }
             catch (Exception)
             {
@@ -279,7 +287,6 @@ namespace App_Library.Views
             titleLabel.Location = new Point(10, 305); // Giảm kích thước hiển thị của nhãn sách
             titleLabel.AutoSize = true;
             titleLabel.Font = new Font("Arial", 10, FontStyle.Bold); // Giảm kích thước font chữ
-
             panel.Controls.Add(titleLabel);
 
             // Tạo nhãn tên tác giả (giảm kích thước hiển thị)
@@ -288,10 +295,11 @@ namespace App_Library.Views
             authorLabel.Location = new Point(10, 325);
             authorLabel.AutoSize = true;
             authorLabel.Font = new Font("Arial", 9); // Giảm kích thước font chữ
-
             panel.Controls.Add(authorLabel);
+
             panel.TabIndex = index;
             panel.Click += new EventHandler(this.bookHotDeal_Click);
+
             return panel;
         }
 
@@ -402,19 +410,24 @@ namespace App_Library.Views
                                         .SortBy(book => book.Price)
                                         .ToListAsync();
                 int sizeBookHotDeal = 5;
-                Panel panel;
+                var tasks = new List<Task<Panel>>();
                 for (int i = 0; i < sizeBookHotDeal; i++)
                 {
-                    panel = CreateBookPanel(listBooks[i], i, 4);
+                    tasks.Add(CreateBookPanelAsync(listBooks[i], i, 4));
+                }
+
+                var panels = await Task.WhenAll(tasks);
+
+                LPHotDeal.SuspendLayout();
+                foreach (var panel in panels)
+                {
                     if (panel != null)
                     {
-                        getBookFromPanelHotDeal[panel] = listBooks[i];
+                        getBookFromPanelHotDeal[panel] = listBooks[Array.IndexOf(panels, panel)];
                         LPHotDeal.Controls.Add(panel);
-                        
                     }
-                   
-                   
                 }
+                LPHotDeal.ResumeLayout();
                 async Task<Book> getBookFromPanelHotDealAsync(Panel panel1)
                 {
                     var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
