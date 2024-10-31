@@ -2,6 +2,7 @@
 using App_Library.Services;
 using App_Library.Services.Interfaces;
 using App_Library.Views.ToolerForm;
+using Guna.UI2.WinForms;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -128,10 +129,10 @@ namespace App_Library.Views
         }
         void setIsClick(object sender)
         {
-            Panel panel = new Panel();
+            Guna2Panel panel = new Guna2Panel();
             foreach (var item in pnListsButton.Controls)
             {
-                 panel = item as Panel;
+                 panel = item as Guna2Panel;
                 foreach (Control control in panel.Controls)
                 {
                     if (control is Label)
@@ -143,7 +144,7 @@ namespace App_Library.Views
             isClick[sender as Control] = true;
             foreach (var item in pnListsButton.Controls)
             {
-                panel = item as Panel;
+                panel = item as Guna2Panel;
                 foreach (Control control in panel.Controls)
                 {
                     if(control is Label)
@@ -151,7 +152,8 @@ namespace App_Library.Views
                         if (isClick[control])
                         {
                             panel.BackColor = Color.DeepSkyBlue;
-                            control.BackColor = Color.DeepSkyBlue;  
+                            control.BackColor = Color.DeepSkyBlue;
+                            
                         }
                         else
                         {

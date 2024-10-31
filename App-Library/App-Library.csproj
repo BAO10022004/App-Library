@@ -254,6 +254,12 @@
     <Compile Include="Views\ToolerForm\FormHelper.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\ToolerForm\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\ToolerForm\TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -303,6 +309,9 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\gradient %283%29.png" />
+    <None Include="Resources\gradient %282%29.png" />
+    <None Include="Resources\gradient %281%29.png" />
     <None Include="Resources\book-fair.png" />
     <None Include="Resources\gradient.png" />
     <None Include="Resources\shopping-cart.png" />
@@ -326,6 +335,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\FormTest\" />
+    <Folder Include="Views\ToolerForm\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MongoDB.Libmongocrypt.1.12.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('packages\MongoDB.Libmongocrypt.1.12.0\build\MongoDB.Libmongocrypt.targets')" />

@@ -27,7 +27,7 @@ namespace App_Library.Views.ToolerForm
             formDes.TopLevel = false;
             formDes.FormBorderStyle = FormBorderStyle.None;
             formDes.Dock = DockStyle.Fill;
-
+            //formDes.BackColor = Color.Blue;
             // Thêm form vào Control và hiển thị
             ctrlSource.Controls.Add(formDes);
             ctrlSource.Tag = formDes;
@@ -39,6 +39,7 @@ namespace App_Library.Views.ToolerForm
             System.Windows.Forms.Control result = new System.Windows.Forms.Control();
             foreach (System.Windows.Forms.Control panel in listControl)
             {
+
                 var item = (Panel)panel;
                 foreach (var c in item.Controls)
                 {

@@ -51,5 +51,10 @@ namespace App_Library.Views
         {
 
         }
+
+        private void pnBuy_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

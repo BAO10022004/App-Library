@@ -14,6 +14,8 @@ using DnsClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using SharpCompress.Compressors.PPMd;
 using App_Library.Views.ToolerForm;
+using MongoDB.Driver;
+using Guna.UI2.WinForms;
 
 
 namespace App_Library.Views
@@ -31,6 +33,7 @@ namespace App_Library.Views
         List<Book> books;
         int indexCurrentBookAd = 0;
         Dictionary<Control, Book> getBookFromPanelAd;
+        Dictionary<Control, Book> getBookFromPanelHotDeal;
         bool revier = false;
         public ShopForm(MongoDbContext context, List<Panel> panels = null)
         {
@@ -42,18 +45,48 @@ namespace App_Library.Views
             _userService = new UserService(_context);
             _bookService = new BookService(_context);
             InitializeComponent();
-            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.AutoScroll = false;
+            this.AutoScroll = true;
         }
 
         private async void HomeForm_Load(object sender, EventArgs e)
         {
 
-            flowLayoutPanel1.Size = new Size((new MainForm(_context).Size.Width), flowLayoutPanel1.Height);
             books = await _bookService.GetAllBooksAsync();
             //flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel1.WrapContents = false;
             listBookAd = new List<Panel>();
             getBookFromPanelAd = new Dictionary<Control, Book>();
+            getBookFromPanelHotDeal = new Dictionary<Control, Book>();
+            pnShopMain.BackColor = Color.Transparent;
+            guna2Panel1.BackColor = Color.Transparent;
+            guna2Panel2.BackColor = Color.Transparent;
+            pnContainHotDeal.BackColor = Color.Transparent;
+            //pnContainHotDeal.BackColor = Color.Transparent;
+            //flowLayoutPanel2.BackColor = Color.Transparent;
+            //pnContainHotDeal.BackColor = Color.Transparent;
+            var boos = await _bookService.GetAllBooksAsync();
+            //books.Select(x =>
+            //{
+            //    PictureBox pictureBox = new PictureBox();
+            //    pictureBox.Size = new Size(150, 190); // Kích thước cố định cho hình ảnh
+            //    pictureBox.SizeMode = PictureBoxSizeMode.Zoom; // Hiển thị ảnh đúng tỷ lệ mà không bị méo
+
+            //    // Tải hình ảnh từ URL
+            //    try
+            //    {
+            //        pictureBox.Load(x.Image); // Đường dẫn hoặc URL của ảnh
+            //    }
+            //    catch (Exception)
+            //    {
+            //        // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
+            //        return null; // Ảnh trống kích thước 300x335
+            //    }
+                
+            //    LPHotDeal.Controls.Add(pictureBox);
+
+            //    return pictureBox;
+            //});
             pbLoadData.Start();
             BWLoadData.RunWorkerAsync();
 
@@ -62,7 +95,7 @@ namespace App_Library.Views
         {
             // Tạo Panel với kích thước cố định 1259 x 335
             Panel panel = new Panel();
-            panel.Size = new Size(1259, 335);
+            panel.Size = new Size(1037, 294);
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.BackColor = Color.FromArgb(245, 245, 245); // Màu nền nhẹ nhàng
 
@@ -206,6 +239,66 @@ namespace App_Library.Views
                 timer1_Tick(sender, e);
             }
         }
+        public Panel CreateBookPanel(Book book, int index, int rating = 4)
+        {
+            // Tạo panel mới với kích thước cố định
+            Guna2Panel panel = new Guna2Panel();
+            panel.Size = new Size(200, 350); // Kích thước giữ nguyên
+            
+            panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
+
+            // Thêm hình ảnh sách (tăng kích thước)
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Size = new Size(180, 270); // Tăng kích thước ảnh lớn hơn
+            pictureBox.Location = new Point(10, 10);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            // Load hình ảnh từ URL (hoặc từ file nếu có đường dẫn cục bộ)
+            try
+            {
+                pictureBox.Load(book.Image); // Đường dẫn hoặc URL của ảnh
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            panel.Controls.Add(pictureBox);
+
+            // Thêm nhãn số sao đánh giá
+            Label ratingLabel = new Label();
+            ratingLabel.Text = $"{rating} ★"; // Hiển thị số sao và biểu tượng ngôi sao
+            ratingLabel.Location = new Point(75, 285); // Giảm kích thước thông tin
+            ratingLabel.AutoSize = true;
+            ratingLabel.Font = new Font("Arial", 9, FontStyle.Bold); // Giảm kích thước font chữ
+            panel.Controls.Add(ratingLabel);
+
+            // Tạo nhãn tên sách (giảm kích thước hiển thị)
+            Label titleLabel = new Label();
+            titleLabel.Text = book.Title;
+            titleLabel.Location = new Point(10, 305); // Giảm kích thước hiển thị của nhãn sách
+            titleLabel.AutoSize = true;
+            titleLabel.Font = new Font("Arial", 10, FontStyle.Bold); // Giảm kích thước font chữ
+
+            panel.Controls.Add(titleLabel);
+
+            // Tạo nhãn tên tác giả (giảm kích thước hiển thị)
+            Label authorLabel = new Label();
+            authorLabel.Text = book.Author;
+            authorLabel.Location = new Point(10, 325);
+            authorLabel.AutoSize = true;
+            authorLabel.Font = new Font("Arial", 9); // Giảm kích thước font chữ
+
+            panel.Controls.Add(authorLabel);
+            panel.TabIndex = index;
+            panel.Click += new EventHandler(this.bookHotDeal_Click);
+            return panel;
+        }
+
+        private void Panel_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         private void book_Click(object sender, EventArgs e)
         {
@@ -214,10 +307,47 @@ namespace App_Library.Views
             //pnProperties.BackColor = Color.Black;
             pnProperties.Location = new Point(this.Size.Width + 300 - pnShopMain.Width, 0);
             //MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
-
+          
             activeFormChild(pnProperties, new PropertiesBookForm(getBookFromPanelAd[FindControlContainer(flowLayoutPanel1.Controls, sender as Control)]), e);
+            foreach(Panel pn in guna2Panel2.Controls)
+            {
+                pn.BackColor = Color.Transparent;
+            }
+            pnContainHotDeal.BackColor = Color.Transparent;
+            pnHotDeal.BackColor = Color.Transparent;
         }
+        async Task<Book> getBookFromPanelHotDealAsync(Panel panel1)
+        {
+            var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
+                                .SortBy(book => book.Price)
+                                .ToListAsync();
+            String titlePanel = null;
+            foreach (var item2 in panel1.Controls)
+            {
+                if (item2 is Label && (item2 as Label).Location == new Point(10, 305))
+                {
+                    titlePanel = (item2 as Label).Text;
+                }
+            }
+            return ListBookForThisF.Where(book => book.Title.Equals(titlePanel)).FirstOrDefault();
 
+        }
+        private async void bookHotDeal_Click(object sender, EventArgs e)
+        {
+            pnShopMain.Size = new Size(this.Size.Width - WITH, this.Size.Height);
+            pnProperties.Size = new Size(WITH, this.Height);
+            //pnProperties.BackColor = Color.Black;
+            pnProperties.Location = new Point(this.Size.Width + 300 - pnShopMain.Width, 0);
+            //MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
+
+            activeFormChild(pnProperties, new PropertiesBookForm(await getBookFromPanelHotDealAsync(sender as Panel)), e);
+            foreach (Panel pn in guna2Panel2.Controls)
+            {
+                pn.BackColor = Color.Transparent;
+            }
+            pnContainHotDeal.BackColor = Color.Transparent;
+            pnHotDeal.BackColor = Color.Transparent;
+        }
         private void pnShopMain_Click(object sender, EventArgs e)
         {
             pnShopMain.Size = new Size(this.Size.Width, this.Size.Height);
@@ -227,7 +357,7 @@ namespace App_Library.Views
             ////MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
             //activeFormChild(new PropertiesBookForm(), e);
         }
-
+       
         private void BWLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
             
@@ -237,6 +367,7 @@ namespace App_Library.Views
                 if (bookPanel != null)
                 {
                     getBookFromPanelAd[bookPanel] = books[i];
+
                     BWLoadData.ReportProgress(0, bookPanel);
 
                 }
@@ -249,7 +380,7 @@ namespace App_Library.Views
             listBookAd.Add(bookPanel);
         }
 
-        private void BWLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private async void BWLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -261,11 +392,52 @@ namespace App_Library.Views
             }
             else
             {
-                
+                flowLayoutPanel1.Visible = true;
                 pbLoadData.Stop();
                 pbLoadData.Visible = false;
                 this.Controls.Remove(pbLoadData);
+                //activeFormChild(pnContainHotDeal, new PanelListBookHotSale(await _bookService.GetAllBooksAsync()), e);
+               
+                var listBooks = await _context.Books.Find(FilterDefinition<Book>.Empty)
+                                        .SortBy(book => book.Price)
+                                        .ToListAsync();
+                int sizeBookHotDeal = 5;
+                Panel panel;
+                for (int i = 0; i < sizeBookHotDeal; i++)
+                {
+                    panel = CreateBookPanel(listBooks[i], i, 4);
+                    if (panel != null)
+                    {
+                        getBookFromPanelHotDeal[panel] = listBooks[i];
+                        LPHotDeal.Controls.Add(panel);
+                        
+                    }
+                   
+                   
+                }
+                async Task<Book> getBookFromPanelHotDealAsync(Panel panel1)
+                {
+                    var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
+                                        .SortBy(book => book.Price)
+                                        .ToListAsync();
+                    String titlePanel = null;
+                        foreach(var item2 in panel1.Controls)
+                        {
+                            if (item2 is Label && (item2 as Label).Location == new Point(10, 305))
+                            {
+                            titlePanel = (item2 as Label).Text;
+                            }
+                        }
+                    return ListBookForThisF.Where(book => book.Title.Equals(titlePanel)).FirstOrDefault();
+
+                }
+                pnContainHotDeal.BackColor = Color.Transparent;
+                foreach(Panel pn in pnShopMain.Controls)
+                {
+                  pn.BackColor = Color.Transparent;
+                }
                 timerAd.Start();
+               
             }
         }
 
@@ -283,6 +455,26 @@ namespace App_Library.Views
 
         private void pnShopMain_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void pbLoadData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+            Graphics g = e.Graphics;
+            Pen pen = new Pen(Color.Black, 2);
+            g.DrawLine(pen, 10, 50, 380, 50);
+            pen.Dispose();
 
         }
     }

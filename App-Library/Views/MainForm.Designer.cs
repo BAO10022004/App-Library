@@ -35,10 +35,10 @@ namespace App_Library.Views
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.FlowLayoutPanel();
             this.pnListsButton = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnHome = new System.Windows.Forms.Panel();
+            this.pnHome = new Guna.UI2.WinForms.Guna2Panel();
             this.picHome = new System.Windows.Forms.PictureBox();
             this.lbHome = new System.Windows.Forms.Label();
-            this.pnShop = new System.Windows.Forms.Panel();
+            this.pnShop = new Guna.UI2.WinForms.Guna2Panel();
             this.picShop = new System.Windows.Forms.PictureBox();
             this.lbShop = new System.Windows.Forms.Label();
             this.lbLogOut = new System.Windows.Forms.Label();
@@ -336,8 +336,8 @@ namespace App_Library.Views
         private System.Windows.Forms.Label lbEmail;
 
         private System.Windows.Forms.PictureBox picHome;
-        private System.Windows.Forms.Panel pnHome;
-        private System.Windows.Forms.Panel pnShop;
+        private Guna.UI2.WinForms.Guna2Panel pnHome;
+        private Guna.UI2.WinForms.Guna2Panel pnShop;
         private System.Windows.Forms.PictureBox picShop;
         private Timer timerPicHome;
         private Timer timerPicShop;

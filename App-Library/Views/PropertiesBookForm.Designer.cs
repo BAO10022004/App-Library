@@ -29,27 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbNameBook = new System.Windows.Forms.Label();
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.lbAuthor = new System.Windows.Forms.Label();
             this.lbPublishedYear = new System.Windows.Forms.Label();
             this.lbCategory = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pnBuy = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
+            this.pnBuy = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // guna2Elipse1
+            // 
+            this.guna2Elipse1.BorderRadius = 60;
+            this.guna2Elipse1.TargetControl = this;
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 30;
+            this.guna2Elipse2.TargetControl = this.pnBuy;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(420, 442);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -70,14 +89,9 @@
             this.lbNameBook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbNameBook.Click += new System.EventHandler(this.lbNameBook_Click);
             // 
-            // guna2Elipse1
-            // 
-            this.guna2Elipse1.BorderRadius = 60;
-            this.guna2Elipse1.TargetControl = this;
-            // 
             // lbAuthor
             // 
-            this.lbAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbAuthor.ForeColor = System.Drawing.Color.Black;
             this.lbAuthor.Location = new System.Drawing.Point(195, 546);
             this.lbAuthor.Name = "lbAuthor";
@@ -88,7 +102,7 @@
             // 
             // lbPublishedYear
             // 
-            this.lbPublishedYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbPublishedYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbPublishedYear.ForeColor = System.Drawing.Color.Black;
             this.lbPublishedYear.Location = new System.Drawing.Point(199, 592);
             this.lbPublishedYear.Name = "lbPublishedYear";
@@ -98,7 +112,7 @@
             // 
             // lbCategory
             // 
-            this.lbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbCategory.ForeColor = System.Drawing.Color.Black;
             this.lbCategory.Location = new System.Drawing.Point(203, 637);
             this.lbCategory.Name = "lbCategory";
@@ -107,67 +121,11 @@
             this.lbCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbCategory.Click += new System.EventHandler(this.lbCategory_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Red;
-            this.panel3.Location = new System.Drawing.Point(285, 719);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(141, 48);
-            this.panel3.TabIndex = 7;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 30;
-            this.guna2Elipse2.TargetControl = this.pnBuy;
-            // 
-            // pnBuy
-            // 
-            this.pnBuy.BackColor = System.Drawing.Color.Yellow;
-            this.pnBuy.BackgroundImage = global::App_Library.Properties.Resources.gradient;
-            this.pnBuy.Controls.Add(this.label2);
-            this.pnBuy.Controls.Add(this.pictureBox2);
-            this.pnBuy.ForeColor = System.Drawing.Color.Navy;
-            this.pnBuy.Location = new System.Drawing.Point(44, 719);
-            this.pnBuy.Name = "pnBuy";
-            this.pnBuy.Size = new System.Drawing.Size(141, 48);
-            this.pnBuy.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label2.Location = new System.Drawing.Point(63, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 32);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "BUY";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::App_Library.Properties.Resources.shopping_cart;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(62, 39);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(420, 442);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(43, 546);
+            this.label1.Location = new System.Drawing.Point(36, 546);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 33);
             this.label1.TabIndex = 8;
@@ -176,9 +134,9 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(40, 594);
+            this.label3.Location = new System.Drawing.Point(36, 594);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 33);
             this.label3.TabIndex = 9;
@@ -187,9 +145,9 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(43, 637);
+            this.label4.Location = new System.Drawing.Point(36, 637);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 33);
             this.label4.TabIndex = 10;
@@ -200,24 +158,58 @@
             // 
             this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbPrice.ForeColor = System.Drawing.Color.Red;
-            this.lbPrice.Location = new System.Drawing.Point(45, 447);
+            this.lbPrice.Location = new System.Drawing.Point(42, 478);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(383, 68);
             this.lbPrice.TabIndex = 12;
             this.lbPrice.Text = "Price: ";
             this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pnBuy
+            // 
+            this.pnBuy.BackgroundImage = global::App_Library.Properties.Resources.gradient;
+            this.pnBuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnBuy.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.pnBuy.BorderRadius = 15;
+            this.pnBuy.BorderThickness = 5;
+            this.pnBuy.Controls.Add(this.label2);
+            this.pnBuy.Controls.Add(this.pictureBox2);
+            this.pnBuy.Location = new System.Drawing.Point(138, 691);
+            this.pnBuy.Name = "pnBuy";
+            this.pnBuy.Size = new System.Drawing.Size(170, 74);
+            this.pnBuy.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(79, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 36);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "BUY";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::App_Library.Properties.Resources.shopping_cart;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 14);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(62, 39);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
             // PropertiesBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(464, 831);
+            this.Controls.Add(this.pnBuy);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.pnBuy);
             this.Controls.Add(this.lbCategory);
             this.Controls.Add(this.lbPublishedYear);
             this.Controls.Add(this.lbAuthor);
@@ -226,33 +218,32 @@
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PropertiesBookForm";
+            this.Opacity = 0.6D;
             this.Text = "PropertiesBookForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnBuy.ResumeLayout(false);
             this.pnBuy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lbNameBook;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private System.Windows.Forms.Label lbAuthor;
-        private System.Windows.Forms.Label lbPublishedYear;
-        private System.Windows.Forms.Label lbCategory;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel pnBuy;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private System.Windows.Forms.Label lbPrice;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbPrice;
+        private System.Windows.Forms.Label lbCategory;
+        private System.Windows.Forms.Label lbPublishedYear;
+        private System.Windows.Forms.Label lbAuthor;
+        private System.Windows.Forms.Label lbNameBook;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel pnBuy;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
