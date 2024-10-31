@@ -49,4 +49,10 @@ namespace App_Library.Models
         public int FourStars { get; set; }
         public int FiveStars { get; set; }
     }
+    public class BookRating
+    {
+        public string BookId { get; set; }
+        public double AverageStars { get; set; }
+        public int TotalRatings { get; set; }
+    }
 }

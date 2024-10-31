@@ -50,4 +50,9 @@ namespace App_Library.Models
         [BsonElement("pdfUrl")]
         public string PdfUrl { get; set; } // Có thể để nullable nếu cần, dùng kiểu string thông thường
     }
+    public class SearchBooksResponse
+    {
+        public List<Book> Books { get; set; }
+        public long TotalBooks { get; set; }
+    }
 }

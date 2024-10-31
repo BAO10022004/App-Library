@@ -50,4 +50,10 @@ namespace App_Library.Models
         [BsonElement("slug")]
         public string Slug { get; set; }  // Loại bỏ nullable reference
     }
+    public class SoldBooksResponse
+    {
+        public long TotalSoldBooks { get; set; }
+        public long TotalSoldBooksTotal { get; set; }
+        public List<User> Users { get; set; }
+    }
 }

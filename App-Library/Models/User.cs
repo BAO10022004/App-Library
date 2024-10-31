@@ -35,4 +35,10 @@ namespace App_Library.Models
         [BsonElement("photoURL")]
         public string PhotoURL { get; set; }  // Loại bỏ nullable reference
     }
+    public class UserResponse
+    {
+        public long TotalUsers { get; set; }
+        public long LastMonthUsers { get; set; }
+        public List<User> Users { get; set; }
+    }
 }

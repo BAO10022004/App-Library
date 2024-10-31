@@ -183,11 +183,19 @@
     <Compile Include="Models\BookSold.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\GoogleLoginRequest.cs" />
+    <Compile Include="Models\UpdateUserDTO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\APIService\AuthService.cs" />
+    <Compile Include="Services\APIService\BookService.cs" />
+    <Compile Include="Services\APIService\BookSoldService.cs" />
+    <Compile Include="Services\APIService\CommentService.cs" />
+    <Compile Include="Services\APIService\Session.cs" />
+    <Compile Include="Services\APIService\StarsRatingService.cs" />
+    <Compile Include="Services\APIService\UserService.cs" />
     <Compile Include="Services\SessionManager.cs" />
     <Compile Include="Models\SignUpRequest.cs" />
     <Compile Include="Models\StarsRating.cs" />

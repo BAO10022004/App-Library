@@ -611,3 +611,6 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-7\App-Library\obj\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-7\App-Library\obj\Debug\App-Libr.588373D8.Up2Date
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-7\App-Library\obj\Debug\App-Library.exe
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-7\App-Library\obj\Debug\App-Library.pdb
+C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Views.HomeForm.resources
+C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Views.PropertiesBookForm.resources
+C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\obj\Debug\App_Library.Views.ShopForm.resources
