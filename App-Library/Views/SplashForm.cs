@@ -1,5 +1,6 @@
-﻿using App_Library.Services;
-using App_Library.Services.Interfaces;
+﻿//using App_Library.Services;
+//using App_Library.Services.Interfaces;
+//using App_Library.APIService;
 using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
@@ -15,26 +16,33 @@ namespace App_Library.Views
 {
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
-        internal LoginForm loginForm ;
+        internal LoginForm loginForm;
         internal SignUpForm signUpForm;
         Point pointLbWelcome;
-        internal readonly MongoDbContext _context;
-        internal readonly AuthService _authService;
+
+        //internal readonly MongoDbContext _context;
+        //internal readonly AuthService _authService;
         //Check Login dang duoc mo chua????
-        bool checkOpenLogin =false;
+        bool checkOpenLogin = false;
         //Check sign-up dang duoc mo chua????
-        bool checkOpenSignUp =false;
+        bool checkOpenSignUp = false;
         //Check page nao dang duoc hien
         bool checkPageLogin = false;
-        public SplashForm(MongoDbContext context)
+        public SplashForm()
         {
-            _context = context;
-            _context = context;
-            _authService = new AuthService(_context);
-            
+            //_context = context;
+            //_context = context;
+            //_authService = new AuthService();
+
             InitializeComponent();
         }
-        
+
+        private void SplashForm_Load(object sender, EventArgs e)
+        {
+            pointLbWelcome = new Point((this.Size.Width - lbWellcome.Size.Width) / 2, 0);
+        }
+
+        // Nút thoát
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -49,78 +57,54 @@ namespace App_Library.Views
             }
         }
 
-        private void pnSubLogin_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnFrameOption_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnLogInContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         int Y;
         Button btnSaveButtonRemove;
+        // Bấm Sign Up
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (loginForm == null && signUpForm == null)
             {
-                loginForm = new LoginForm(_context);
-                signUpForm = new SignUpForm(_context);
+                loginForm = new LoginForm();
+                signUpForm = new SignUpForm();
                 timerSignUp.Start();
                 checkOpenLogin = true;
                 checkPageLogin = false;
             }
             else
             {
-                    signUpForm = new SignUpForm(_context);
+                signUpForm = new SignUpForm();
                 timer2SignUp.Start();
                 checkOpenSignUp = true;
                 checkPageLogin = false;
             }
         }
+
+        // Bấm Sign In
         private void button1_Click(object sender, EventArgs e)
         {
             Y = lbWellcome.Location.Y;
-            
+
             if (loginForm == null && signUpForm == null)
             {
-                loginForm = new LoginForm(_context);
-                signUpForm = new SignUpForm(_context);
+                loginForm = new LoginForm();
+                signUpForm = new SignUpForm();
                 timerClickButonLogin.Start();
-                checkOpenLogin =true;
-                checkPageLogin=true;
+                checkOpenLogin = true;
+                checkPageLogin = true;
             }
             else
             {
-                if(!checkPageLogin && checkOpenLogin == true)
+                if (!checkPageLogin && checkOpenLogin == true)
                 {
-                    loginForm = new LoginForm(_context);
-                    timerClickButonLogin2.Start();                  
+                    loginForm = new LoginForm();
+                    timerClickButonLogin2.Start();
                     checkOpenLogin = true;
                     checkPageLogin = true;
-                }          
+                }
             }
         }
+
+        // Timer chạy khi bấm Sign Up lần đầu
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
             if (lbWellcome.Location.Y > 10)
@@ -138,10 +122,12 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Remove(btnSignUp);
                 button1.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(button1);
-                this.activeFormChild(this.pnLogInContent, signUpForm,  sender);
+                this.activeFormChild(this.pnLogInContent, signUpForm, sender);
                 return;
             }
         }
+
+        // Timer chạy khi bấm Sign Up lần 2
         private void timerSignUp2_Tick(object sender, EventArgs e)
         {
             if (lbWellcome.Location.Y < 50)
@@ -157,16 +143,14 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Add(button1);
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
-                
+
                 lbWellcome.Text = "SIGN - UP";
                 this.activeFormChild(this.pnLogInContent, signUpForm, sender);
                 return;
             }
         }
-        private void lbWellcome_Click(object sender, EventArgs e)
-        {
 
-        }
+        // Timer chạy khi bấm Sign In lần đầu
         private void timerClickButonLogin_Tick(object sender, EventArgs e)
         {
             if (lbWellcome.Location.Y > 10)
@@ -184,10 +168,12 @@ namespace App_Library.Views
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
                 lbWellcome.Text = "SIGN - IN ";
-                this.activeFormChild(this.pnLogInContent,loginForm,  sender);
+                this.activeFormChild(this.pnLogInContent, loginForm, sender);
                 return;
             }
         }
+
+        // Timer chạy khi bấm Sign In lần 2
         private void timerClickButonLogin2_Tick(object sender, EventArgs e)
         {
             if (lbWellcome.Location.Y < 50)
@@ -207,10 +193,6 @@ namespace App_Library.Views
                 this.activeFormChild(this.pnLogInContent, loginForm, sender);
                 return;
             }
-        }
-        private void SplashForm_Load(object sender, EventArgs e)
-        {
-            pointLbWelcome = new Point((this.Size.Width-lbWellcome.Size.Width)/2,0);
         }
     }
 }

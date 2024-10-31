@@ -36,7 +36,7 @@ namespace App_Library.Views
             this.btnLogin = new System.Windows.Forms.Button();
             this.gnTxbUserName = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnContainTxbUserName = new System.Windows.Forms.Panel();
-            this.txbEmail = new System.Windows.Forms.TextBox();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.gnTxbPassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gnPanelInputPassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnContainTxbPassword = new System.Windows.Forms.Panel();
@@ -96,21 +96,21 @@ namespace App_Library.Views
             // pnContainTxbUserName
             // 
             this.pnContainTxbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnContainTxbUserName.Controls.Add(this.txbEmail);
+            this.pnContainTxbUserName.Controls.Add(this.txbUserName);
             this.pnContainTxbUserName.Location = new System.Drawing.Point(209, 193);
             this.pnContainTxbUserName.Name = "pnContainTxbUserName";
             this.pnContainTxbUserName.Size = new System.Drawing.Size(359, 54);
             this.pnContainTxbUserName.TabIndex = 10;
             // 
-            // txbEmail
+            // txbUserName
             // 
-            this.txbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbEmail.Location = new System.Drawing.Point(16, 15);
-            this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(298, 27);
-            this.txbEmail.TabIndex = 4;
+            this.txbUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbUserName.Location = new System.Drawing.Point(16, 15);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(298, 27);
+            this.txbUserName.TabIndex = 4;
             // 
             // gnTxbPassword
             // 
@@ -278,9 +278,9 @@ namespace App_Library.Views
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.Location = new System.Drawing.Point(45, 208);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 29);
+            this.label2.Size = new System.Drawing.Size(151, 29);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Email: ";
+            this.label2.Text = "UserName: ";
             // 
             // timerOpenMainForm
             // 
@@ -331,7 +331,7 @@ namespace App_Library.Views
         private Panel pnContainTxbPassword;
         private TextBox txbPassword;
         private Panel pnContainTxbUserName;
-        private TextBox txbEmail;
+        private TextBox txbUserName;
         private Button btnLogin;
         private Label lbForgotPassword;
         private Label label3;

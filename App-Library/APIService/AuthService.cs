@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 
-namespace App_Library.Services.APIService
+namespace App_Library.APIService
 {
     internal class AuthService
     {
@@ -35,7 +35,7 @@ namespace App_Library.Services.APIService
         }
 
         // Gọi API đăng ký
-        public async Task<string> SignUpAsync(string username, string email, string password)
+        public async Task<bool> SignUpAsync(string username, string email, string password)
         {
             var request = new SignUpRequest { Username = username, Email = email, Password = password };
             var response = await _httpClient.PostAsJsonAsync("api/auth/signup", request);
@@ -43,9 +43,10 @@ namespace App_Library.Services.APIService
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return result?.Token;
+                Session.Token = result.Token;
+                return true;
             }
-            return "";
+            return false;
         }
 
         // Gọi API đăng nhập bằng Google

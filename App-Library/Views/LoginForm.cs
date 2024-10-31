@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
-using App_Library.Services;
+//using App_Library.Services;
 using App_Library.Services.Interfaces;
+using App_Library.APIService;
 using DnsClient.Protocol;
 using MongoDB.Driver;
 using System;
@@ -18,13 +19,13 @@ namespace App_Library.Views
 {
     public partial class LoginForm : Form
     {
-        private readonly MongoDbContext _context;
-        private readonly IAuthService _authService;
+        //private readonly MongoDbContext _context;
+        private readonly AuthService _authService;
         internal MainForm mainform; 
-        public LoginForm(MongoDbContext context)
+        public LoginForm()
         {
-            _context = context;
-            _authService = new AuthService(_context);
+            //_context = context;
+            _authService = new AuthService();
             InitializeComponent();
         }
         private void LoginForm_Load(object sender, EventArgs e)
@@ -37,20 +38,23 @@ namespace App_Library.Views
         }
         private async void btnLogin_Click_1(object sender, EventArgs e)
         {
-            bool checkLoginSuccess = (await _authService.LoginAsync(txbEmail.Text, txbPassword.Text));
+            bool checkLoginSuccess = (await _authService.LoginAsync(txbUserName.Text, txbPassword.Text));
             if(checkLoginSuccess)
             {
-                SessionManager.CurrentUsername = txbEmail.Text;
-                var list = await _context.Users.Find(u => u.PasswordHash == txbPassword.Text).ToListAsync();
-                foreach(var item in list )
-                {
-                    SessionManager.CurrentUserId = item.Id;
-                    break;
-                }
+                MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //SessionManager.CurrentUsername = txbEmail.Text;
+                //var list = await _context.Users.Find(u => u.PasswordHash == txbPassword.Text).ToListAsync();
+                //foreach(var item in list )
+                //{
+                //    SessionManager.CurrentUserId = item.Id;
+                //    break;
+                //}
                 timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
                 timerOpenMainForm.Start();
             }
         }
+
+        // Chạy form con
         Form ActForm;
         public void activeFormChild(Form form, object obj)
         {
@@ -68,6 +72,8 @@ namespace App_Library.Views
             Program.sp.BtnExit.Location = new Point(1540 - 35, 1);
             form.Show();
         }
+
+        // Timer chạy khi đăng nhập thành công để mở form chính
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
         
@@ -82,8 +88,8 @@ namespace App_Library.Views
                 timerOpenMainForm.Stop();
                 Program.sp.WindowState = FormWindowState.Maximized;
                 Program.sp.PnSubLogin.Controls.Clear();
-                mainform = new MainForm(_context);
-                activeFormChild(new MainForm(_context), sender);
+                //mainform = new MainForm();
+                activeFormChild(new MainForm(), sender);
             }
             if (Program.sp.Size.Height < 1080 && Program.sp.Size.Width < 1920)
             {

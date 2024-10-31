@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 using System.Net.Http.Json;
 
-namespace App_Library.Services.APIService
+namespace App_Library.APIService
 {
     internal class CommentService
     {

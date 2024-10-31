@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
 
-namespace App_Library.Services.APIService
+namespace App_Library.APIService
 {
     internal class StarsRatingService
     {
