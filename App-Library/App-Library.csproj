@@ -189,14 +189,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\APIService\AuthService.cs" />
-    <Compile Include="Services\APIService\BookService.cs" />
-    <Compile Include="Services\APIService\BookSoldService.cs" />
-    <Compile Include="Services\APIService\CommentService.cs" />
-    <Compile Include="Services\APIService\Session.cs" />
-    <Compile Include="Services\APIService\StarsRatingService.cs" />
-    <Compile Include="Services\APIService\UserService.cs" />
-    <Compile Include="Services\SessionManager.cs" />
+    <Compile Include="APIService\AuthService.cs" />
+    <Compile Include="APIService\BookService.cs" />
+    <Compile Include="APIService\BookSoldService.cs" />
+    <Compile Include="APIService\CommentService.cs" />
+    <Compile Include="APIService\Session.cs" />
+    <Compile Include="APIService\StarsRatingService.cs" />
+    <Compile Include="APIService\UserService.cs" />
     <Compile Include="Models\SignUpRequest.cs" />
     <Compile Include="Models\StarsRating.cs" />
     <Compile Include="Models\UpdateBookDTO.cs" />
@@ -218,6 +217,7 @@
     <Compile Include="Services\StarsRatingService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Views\Main\CollectionHome\HomeForm.cs">
+    <Compile Include="Views\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Main\CollectionHome\HomeForm.Designer.cs">

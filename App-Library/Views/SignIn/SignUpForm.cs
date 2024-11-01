@@ -1,5 +1,4 @@
-﻿using App_Library.Services.Interfaces;
-using App_Library.Services;
+﻿using App_Library.APIService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,31 +15,23 @@ namespace App_Library.Views
 {
     public partial class SignUpForm : Form
     {
-        private readonly MongoDbContext _context;
-        private readonly IAuthService _authService;
-        public SignUpForm(MongoDbContext context)
+        private readonly AuthService _authService;
+        public SignUpForm()
         {
-            _context = context;
-            _authService = new AuthService(context);
+            _authService = new AuthService();
             InitializeComponent();
         }
         private void SignUpForm_Load(object sender, EventArgs e)
         {
 
         }
-        private void pnMainContentLogin_Paint(object sender, PaintEventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-
-        }
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            var signUp = new SignUpRequest
+           var checkSignUpSuccess = await _authService.SignUpAsync(txbName.Text,txbEmail.Text,txbPassword.Text);
+            if (checkSignUpSuccess)
             {
-                Email = txbEmail.Text,
-                Username = txbName.Text,
-                Password = txbPassword.Text
-            };
-            _authService.SignUpAsyn(signUp);
+                MessageBox.Show("Signup successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

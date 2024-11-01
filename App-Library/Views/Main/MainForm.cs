@@ -2,6 +2,9 @@
 using App_Library.Services;
 using App_Library.Services.Interfaces;
 using App_Library.Views.Main.CollectionShop;
+//using App_Library.Services;
+//using App_Library.Services.Interfaces;
+using App_Library.APIService;
 using App_Library.Views.ToolerForm;
 using Guna.UI2.WinForms;
 using MongoDB.Driver;
@@ -22,10 +25,10 @@ namespace App_Library.Views
 {
     public partial class MainForm : FormHelper
     {
-        private readonly MongoDbContext _context;
-        private readonly IUserService _userService;
-        private readonly IBookService _bookService;
-        private readonly IStarsRatingService _starsRating;
+        //private readonly MongoDbContext _context;
+        private readonly UserService _userService;
+        private readonly BookService _bookService;
+        private readonly StarsRatingService _starsRating;
         private bool isDragging = false;
         private Point dragStartPoint;
         private Control draggedControl;
@@ -37,13 +40,13 @@ namespace App_Library.Views
         Dictionary<Control, Form> formDictionary;
         Form currentForm;
         Dictionary<Control, bool> isClick;
-        public MainForm(MongoDbContext context)
+        public MainForm()
         {
             
-            _context = context;
-            _userService = new UserService(_context);
-            _bookService = new BookService(_context);
-            _starsRating = new StarsRatingService(_context);
+            //_context = context;
+            _userService = new UserService();
+            _bookService = new BookService();
+            _starsRating = new StarsRatingService();
             books = new List<Book>();
             listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
@@ -54,9 +57,9 @@ namespace App_Library.Views
         private async void MainForm_Load(object sender, EventArgs e)
         {
             lbName.Text = SessionManager.CurrentUsername;
-            homeForm = new HomeForm(_context);
-            shopForm = new ShopForm(_context);
-            books = (await _bookService.GetAllBooksAsync()).ToList();
+            homeForm = new HomeForm();
+            shopForm = new ShopForm();
+            books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnListsButton.Controls)
             {
@@ -214,7 +217,7 @@ namespace App_Library.Views
                 
                 if(!(currentForm is HomeForm))
                 {
-                    homeForm = new HomeForm(_context);
+                    homeForm = new HomeForm();
                     activeFormChildForMainForm(homeForm, e);
                     currentForm = homeForm;
                 }  
@@ -235,7 +238,7 @@ namespace App_Library.Views
                 
                 if(!(currentForm is ShopForm))
                 {
-                    activeFormChildForMainForm(new ShopForm(_context), e);
+                    activeFormChildForMainForm(new ShopForm(), e);
                     currentForm = shopForm;
                 }
             }

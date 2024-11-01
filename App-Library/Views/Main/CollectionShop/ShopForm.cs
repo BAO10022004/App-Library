@@ -1,5 +1,6 @@
-﻿using App_Library.Services.Interfaces;
-using App_Library.Services;
+﻿//using App_Library.Services.Interfaces;
+//using App_Library.Services;
+using App_Library.APIService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,11 @@ namespace App_Library.Views
         private readonly IUserService _userService;
         private readonly IBookService _bookService;
         Guna2ProgressIndicator guna2ProgressIndicator;
+        //private readonly MongoDbContext _context;
+        private readonly AuthService _authService;
+        private readonly UserService _userService;
+        private readonly BookService _bookService;
+
         public const int WITH = 450;
         public const int HEIGHT = 831;
         List<System.Windows.Forms.Panel> listBookAd;
@@ -39,15 +45,15 @@ namespace App_Library.Views
         Dictionary<Control, Book> getBookFromPanelAd;
         Dictionary<Control, Book> getBookFromPanelHotDeal;
         bool revier = false;
-        public ShopForm(MongoDbContext context, List<Panel> panels = null)
+        public ShopForm(List<Panel> panels = null)
         {
-            if(panels!= null)
+            if (panels != null)
             {
                 listBookAd = panels.ToList();
             }
-            _context = context;
-            _userService = new UserService(_context);
-            _bookService = new BookService(_context);
+            //_context = context;
+            _userService = new UserService();
+            _bookService = new BookService();
             InitializeComponent();
             gnpGroupBookForCategory.BackColor = Color.FromArgb(50, Color.Gray);
             flowLayoutPanel1.AutoScroll = false;
@@ -87,6 +93,8 @@ namespace App_Library.Views
                 this.Controls.Add(guna2ProgressIndicator);
             }
             books = await _bookService.GetAllBooksAsync();
+
+            books = await _bookService.GetBooksAsync();
             //flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel1.WrapContents = false;
             listBookAd = new List<Panel>();
@@ -99,10 +107,36 @@ namespace App_Library.Views
             pnContainHotDeal.BackColor = Color.Transparent;
             setEventButtonGuna(gnpContainCaterogyBook.Controls);
             
+            //pnContainHotDeal.BackColor = Color.Transparent;
+            //flowLayoutPanel2.BackColor = Color.Transparent;
+            //pnContainHotDeal.BackColor = Color.Transparent;
+            var boos = await _bookService.GetBooksAsync();
+            //books.Select(x =>
+            //{
+            //    PictureBox pictureBox = new PictureBox();
+            //    pictureBox.Size = new Size(150, 190); // Kích thước cố định cho hình ảnh
+            //    pictureBox.SizeMode = PictureBoxSizeMode.Zoom; // Hiển thị ảnh đúng tỷ lệ mà không bị méo
+
+            //    // Tải hình ảnh từ URL
+            //    try
+            //    {
+            //        pictureBox.Load(x.Image); // Đường dẫn hoặc URL của ảnh
+            //    }
+            //    catch (Exception)
+            //    {
+            //        // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
+            //        return null; // Ảnh trống kích thước 300x335
+            //    }
+
+            //    LPHotDeal.Controls.Add(pictureBox);
+
+            //    return pictureBox;
+            //});
+            pbLoadData.Start();
             BWLoadData.RunWorkerAsync();
 
         }
-        public Panel CreateBookAdPanel(Book book , int index, int rank =4)
+        public Panel CreateBookAdPanel(Book book, int index, int rank = 4)
         {
             // Tạo Panel với kích thước cố định 1259 x 335
             Panel panel = new Panel();
@@ -186,7 +220,7 @@ namespace App_Library.Views
             descriptionLabel.TextAlign = ContentAlignment.TopLeft;
             descriptionLabel.MaximumSize = new Size(900, 100); // Giới hạn chiều cao mô tả
             panel.Controls.Add(descriptionLabel);
-            panel.Cursor= System.Windows.Forms.Cursors.Hand;
+            panel.Cursor = System.Windows.Forms.Cursors.Hand;
             foreach (Control items in panel.Controls)
             {
 
@@ -201,8 +235,8 @@ namespace App_Library.Views
             panel.Name = book.Username;
             return panel;
         }
-        
-       
+
+
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             isDragging = true;
@@ -339,9 +373,9 @@ namespace App_Library.Views
             //pnProperties.BackColor = Color.Black;
             pnProperties.Location = new Point(this.Size.Width + 300 - pnShopMain.Width, 0);
             //MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
-          
+
             activeFormChild(pnProperties, new PropertiesBookForm(getBookFromPanelAd[FindControlContainer(flowLayoutPanel1.Controls, sender as Control)]), e);
-            foreach(Panel pn in guna2Panel2.Controls)
+            foreach (Panel pn in guna2Panel2.Controls)
             {
                 pn.BackColor = Color.Transparent;
             }
@@ -350,9 +384,11 @@ namespace App_Library.Views
         }
         async Task<Book> getBookFromPanelHotDealAsync(Panel panel1)
         {
-            var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
-                                .SortBy(book => book.Price)
-                                .ToListAsync();
+            //var ListBookForThisF = await _context.Books.Find(FilterDefinition<Book>.Empty)
+            //                    .SortBy(book => book.Price)
+            //                    .ToListAsync();
+            var ListBookForThisF = await _bookService.GetBooksAsync();
+            ListBookForThisF = ListBookForThisF.OrderBy(book => book.Price).ToList();
             String titlePanel = null;
             foreach (var item2 in panel1.Controls)
             {
@@ -397,9 +433,10 @@ namespace App_Library.Views
             ////MessageBox.Show(pnProperties.Size.Width + " " + pnProperties.Size.Height + "\n" + pnProperties.Location.X + " " + pnProperties.Location.Y);
             //activeFormChild(new PropertiesBookForm(), e);
         }
-       
+
         private void BWLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
+
             for (int i = 0; i < 6; i++)
             {
                 var bookPanel = CreateBookAdPanel(books[i], i, 4);
@@ -452,6 +489,14 @@ namespace App_Library.Views
                                         .SortBy(book => book.Price)
                                         .ToListAsync();
                 int sizeBookHotDeal = 13;
+
+                //var listBooks = await _context.Books.Find(FilterDefinition<Book>.Empty)
+                //                        .SortBy(book => book.Price)
+                //                        .ToListAsync();
+
+                var listBooks = await _bookService.GetBooksAsync();
+                listBooks = listBooks.OrderBy(book => book.Price).ToList();
+                int sizeBookHotDeal = 5;
                 var tasks = new List<Task<Panel>>();
                 var tasksThisform = new List<Task<Panel>>();
                 
@@ -475,9 +520,9 @@ namespace App_Library.Views
                     LPHotDeal.ResumeLayout();
                     pnContainHotDeal.BackColor = Color.Transparent;
                 foreach(Panel pn in pnShopMain.Controls)
-                {
-                  pn.BackColor = Color.Transparent;
-                }
+                LPHotDeal.ResumeLayout();
+
+                
                 int wightHotDeal = 0;
                 foreach(Control pn in LPHotDeal.Controls)
                 {
@@ -490,7 +535,7 @@ namespace App_Library.Views
                // LPHotDeal.Size = new Size(wightHotDeal,400);
                 gnpContainFpHotDeal.Size = new Size(wightHotDeal, 370);
                 timerAd.Start();
-               
+
             }
         }
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
