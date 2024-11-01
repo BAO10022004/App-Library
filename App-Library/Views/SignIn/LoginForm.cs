@@ -1,6 +1,4 @@
 ﻿using App_Library.Models;
-//using App_Library.Services;
-//using App_Library.Services.Interfaces;
 using App_Library.APIService;
 using DnsClient.Protocol;
 using MongoDB.Driver;
@@ -14,17 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
-// $2a$10$eITLrNBDrQ5zvpaAToD2GO20B5hYEzKY2gtvvpirHIeJiXUECnAf2
+
 namespace App_Library.Views
 {
     public partial class LoginForm : Form
     {
-        //private readonly MongoDbContext _context;
         private readonly AuthService _authService;
-        internal MainForm mainform; 
+        internal MainForm mainform;
         public LoginForm()
         {
-            //_context = context;
             _authService = new AuthService();
             InitializeComponent();
         }
@@ -39,16 +35,9 @@ namespace App_Library.Views
         private async void btnLogin_Click_1(object sender, EventArgs e)
         {
             bool checkLoginSuccess = (await _authService.LoginAsync(txbUserName.Text, txbPassword.Text));
-            if(checkLoginSuccess)
+            if (checkLoginSuccess)
             {
                 MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //SessionManager.CurrentUsername = txbEmail.Text;
-                //var list = await _context.Users.Find(u => u.PasswordHash == txbPassword.Text).ToListAsync();
-                //foreach(var item in list )
-                //{
-                //    SessionManager.CurrentUserId = item.Id;
-                //    break;
-                //}
                 timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
                 timerOpenMainForm.Start();
             }
@@ -76,7 +65,7 @@ namespace App_Library.Views
         // Timer chạy khi đăng nhập thành công để mở form chính
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
-        
+
             Size newSize = (new Size(1536, 864));
             if (Program.sp.Location.X > 0)
             {
@@ -88,7 +77,6 @@ namespace App_Library.Views
                 timerOpenMainForm.Stop();
                 Program.sp.WindowState = FormWindowState.Maximized;
                 Program.sp.PnSubLogin.Controls.Clear();
-                //mainform = new MainForm();
                 activeFormChild(new MainForm(), sender);
             }
             if (Program.sp.Size.Height < 1080 && Program.sp.Size.Width < 1920)

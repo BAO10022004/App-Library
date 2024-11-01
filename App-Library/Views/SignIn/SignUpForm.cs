@@ -27,7 +27,7 @@ namespace App_Library.Views
         }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-           var checkSignUpSuccess = await _authService.SignUpAsync(txbName.Text,txbEmail.Text,txbPassword.Text);
+            var checkSignUpSuccess = await _authService.SignUpAsync(txbName.Text, txbEmail.Text, txbPassword.Text);
             if (checkSignUpSuccess)
             {
                 MessageBox.Show("Signup successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

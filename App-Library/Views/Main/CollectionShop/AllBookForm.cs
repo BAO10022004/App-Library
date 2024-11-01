@@ -1,5 +1,4 @@
 ﻿using App_Library.Models;
-//using App_Library.Services;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -34,25 +33,25 @@ namespace App_Library.Views.Main.CollectionShop
             this.listPanelBook = listPanelBook;
             this.shopForm = shopForm;
             // Genegate Book
-            
+
             if (listPanelBook.Count > 10)
             {
                 count = 10;
             }
             else
             {
-                count = listPanelBook.Count; 
+                count = listPanelBook.Count;
             }
-            
-            for (index =0; index < count; index++)
+
+            for (index = 0; index < count; index++)
             {
-                if(index == listPanelBook.Count)
+                if (index == listPanelBook.Count)
                 {
                     break;
                 }
                 //Book book = ;
                 Panel panel = listPanelBook[index];
-                if(panel == null)
+                if (panel == null)
                 {
                     count++;
                     countGenerateFail++;
@@ -60,9 +59,9 @@ namespace App_Library.Views.Main.CollectionShop
                 }
                 LPGroupAllBook.Controls.Add(panel);
             }
-           
+
         }
-        public  Guna2Panel CreateBookPanelForThis(Book book, int index, int rating = 4)
+        public Guna2Panel CreateBookPanelForThis(Book book, int index, int rating = 4)
         {
             // Tạo panel mới với kích thước cố định
             Guna2Panel panel = new Guna2Panel();
@@ -135,7 +134,7 @@ namespace App_Library.Views.Main.CollectionShop
 
         }
 
-        
+
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
@@ -189,7 +188,7 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     break;
                 }
-                Book book  ;
+                Book book;
                 Panel panel = listPanelBook[index];
                 if (panel == null)
                 {

@@ -20,8 +20,6 @@ namespace App_Library.Views
         internal SignUpForm signUpForm;
         Point pointLbWelcome;
 
-        //internal readonly MongoDbContext _context;
-        //internal readonly AuthService _authService;
         //Check Login dang duoc mo chua????
         bool checkOpenLogin = false;
         //Check sign-up dang duoc mo chua????
@@ -30,10 +28,6 @@ namespace App_Library.Views
         bool checkPageLogin = false;
         public SplashForm()
         {
-            //_context = context;
-            //_context = context;
-            //_authService = new AuthService();
-
             InitializeComponent();
         }
 

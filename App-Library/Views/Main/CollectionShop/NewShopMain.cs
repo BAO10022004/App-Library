@@ -1,7 +1,5 @@
 ﻿using App_Library.APIService;
 using App_Library.Models;
-//using App_Library.Services;
-//using App_Library.Services.Interfaces;
 using App_Library.Views.ToolerForm;
 using Guna.UI2.WinForms;
 using System;
@@ -36,7 +34,6 @@ namespace App_Library.Views.Main.CollectionShop
         Dictionary<Control, Book> getBookFromPanelHotDeal;
         public NewShopMain()
         {
-            //dbContext = context;
             _bookService = new BookService();
             InitializeComponent();
         }
@@ -50,7 +47,7 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     control.Visible = false;
                 }
-               
+
             }
             guna2ProgressIndicator = new Guna2ProgressIndicator();
             guna2ProgressIndicator.Start();
@@ -85,7 +82,7 @@ namespace App_Library.Views.Main.CollectionShop
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             var bookPanel = e.UserState as Panel;
-            if(listPanelBookAd.Count < 6)
+            if (listPanelBookAd.Count < 6)
             {
                 listPanelBookAd.Add(bookPanel);
             }
@@ -109,20 +106,20 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     control.Visible = true;
                 }
-               // activeFormChild(pnHotDeal, new HotDealForm(listPanelBookAd), e);
-               activeFormChild(pnAd, new AdForm(listPanelBookAd), e);
+                // activeFormChild(pnHotDeal, new HotDealForm(listPanelBookAd), e);
+                activeFormChild(pnAd, new AdForm(listPanelBookAd), e);
                 //bwkCreateHotDeal.RunWorkerAsync();
-                
+
 
             }
 
-         }
+        }
 
         private void bwkCreateHotDeal_DoWork(object sender, DoWorkEventArgs e)
         {
             for (int i = 0; i < listBook.Count; i++)
             {
-                var TaskBook =CreateBookPanelAsync(listBook[i], i, 4);
+                var TaskBook = CreateBookPanelAsync(listBook[i], i, 4);
                 if (TaskBook != null)
                 {
                     bwkCreateHotDeal.ReportProgress(0, TaskBook);
@@ -149,7 +146,7 @@ namespace App_Library.Views.Main.CollectionShop
             {
                 var panels = (await Task.WhenAll(listTaskPanelAllBook)).ToList();
                 listPanelAllBook = (await Task.WhenAll(listTaskPanelAllBook)).ToList();
-                
+
 
 
             }
