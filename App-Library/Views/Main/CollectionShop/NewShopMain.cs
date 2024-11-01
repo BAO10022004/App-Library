@@ -1,6 +1,7 @@
-﻿using App_Library.Models;
-using App_Library.Services;
-using App_Library.Services.Interfaces;
+﻿using App_Library.APIService;
+using App_Library.Models;
+//using App_Library.Services;
+//using App_Library.Services.Interfaces;
 using App_Library.Views.ToolerForm;
 using Guna.UI2.WinForms;
 using System;
@@ -26,17 +27,17 @@ namespace App_Library.Views.Main.CollectionShop
         List<Book> listBook;
         List<Task<Panel>> listTaskPanelHotDealBook;
         List<Task<Panel>> listTaskPanelAllBook;
-        private readonly MongoDbContext dbContext;
-        private readonly IBookService _bookService;
+        //private readonly MongoDbContext dbContext;
+        private readonly BookService _bookService;
         //Process Bar
         Guna2ProgressIndicator guna2ProgressIndicator;
         // Get Book form panel clicked
         Dictionary<Control, Book> getBookFromPanelAd;
         Dictionary<Control, Book> getBookFromPanelHotDeal;
-        public NewShopMain(MongoDbContext context)
+        public NewShopMain()
         {
-            dbContext = context;
-            _bookService = new BookService(dbContext);
+            //dbContext = context;
+            _bookService = new BookService();
             InitializeComponent();
         }
 
@@ -62,7 +63,7 @@ namespace App_Library.Views.Main.CollectionShop
             listPanelAllBook = new List<Panel>();
             listTaskPanelAllBook = new List<Task<Panel>>();
             // Create Data for book
-            listBook = await _bookService.GetAllBooksAsync();
+            listBook = await _bookService.GetBooksAsync();
             activeFormChild(pnHotDeal, new HotDealForm(listPanelAllBook), e);
             backgroundWorker1.RunWorkerAsync();
         }

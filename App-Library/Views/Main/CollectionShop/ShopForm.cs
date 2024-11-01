@@ -26,10 +26,10 @@ namespace App_Library.Views
 {
     public partial class ShopForm : FormHelper
     {
-        private readonly MongoDbContext _context;
-        private readonly IAuthService _authService;
-        private readonly IUserService _userService;
-        private readonly IBookService _bookService;
+        //private readonly MongoDbContext _context;
+        //private readonly IAuthService _authService;
+        //private readonly IUserService _userService;
+        //private readonly IBookService _bookService;
         Guna2ProgressIndicator guna2ProgressIndicator;
         //private readonly MongoDbContext _context;
         private readonly AuthService _authService;
@@ -92,7 +92,7 @@ namespace App_Library.Views
                 guna2ProgressIndicator.Location = new Point(this.Size.Width/2 , this.Size.Height/2);
                 this.Controls.Add(guna2ProgressIndicator);
             }
-            books = await _bookService.GetAllBooksAsync();
+            //books = await _bookService.GetAllBooksAsync();
 
             books = await _bookService.GetBooksAsync();
             //flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
@@ -132,7 +132,7 @@ namespace App_Library.Views
 
             //    return pictureBox;
             //});
-            pbLoadData.Start();
+            //pbLoadData.Start();
             BWLoadData.RunWorkerAsync();
 
         }
@@ -485,9 +485,9 @@ namespace App_Library.Views
                 this.Controls.Remove(guna2ProgressIndicator);
                 //activeFormChild(pnContainHotDeal, new PanelListBookHotSale(await _bookService.GetAllBooksAsync()), e);
                
-                var listBooks = await _context.Books.Find(FilterDefinition<Book>.Empty)
-                                        .SortBy(book => book.Price)
-                                        .ToListAsync();
+                //var listBooks = await _context.Books.Find(FilterDefinition<Book>.Empty)
+                //                        .SortBy(book => book.Price)
+                //                        .ToListAsync();
                 int sizeBookHotDeal = 13;
 
                 //var listBooks = await _context.Books.Find(FilterDefinition<Book>.Empty)
@@ -496,7 +496,7 @@ namespace App_Library.Views
 
                 var listBooks = await _bookService.GetBooksAsync();
                 listBooks = listBooks.OrderBy(book => book.Price).ToList();
-                int sizeBookHotDeal = 5;
+                //int sizeBookHotDeal = 5;
                 var tasks = new List<Task<Panel>>();
                 var tasksThisform = new List<Task<Panel>>();
                 

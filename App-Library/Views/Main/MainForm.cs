@@ -1,6 +1,6 @@
 ﻿using App_Library.Models;
-using App_Library.Services;
-using App_Library.Services.Interfaces;
+//using App_Library.Services;
+//using App_Library.Services.Interfaces;
 using App_Library.Views.Main.CollectionShop;
 //using App_Library.Services;
 //using App_Library.Services.Interfaces;
@@ -56,7 +56,7 @@ namespace App_Library.Views
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            lbName.Text = SessionManager.CurrentUsername;
+            //lbName.Text = SessionManager.CurrentUsername;
             homeForm = new HomeForm();
             shopForm = new ShopForm();
             books = await _bookService.GetBooksAsync();
@@ -238,7 +238,8 @@ namespace App_Library.Views
                 
                 if(!(currentForm is ShopForm))
                 {
-                    activeFormChildForMainForm(new ShopForm(), e);
+                    //activeFormChildForMainForm(new ShopForm(), e);
+                    activeFormChildForMainForm(new NewShopMain(), e);
                     currentForm = shopForm;
                 }
             }
