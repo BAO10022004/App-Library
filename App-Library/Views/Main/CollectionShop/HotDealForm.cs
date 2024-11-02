@@ -13,13 +13,14 @@ namespace App_Library.Views.Main.CollectionShop
     public partial class HotDealForm : Form
     {
         List<Panel> ListPanelHotDealBook = new List<Panel>();
-        
+        Form formParent;
 
-        public HotDealForm(List<Panel> listPanelHotDealBook)
+        public HotDealForm(List<Panel> listPanelHotDealBook, NewShopMain FormParent )
         {
+            formParent = FormParent;
             ListPanelHotDealBook = listPanelHotDealBook;
             InitializeComponent();
-            //fpHotDealBook.Controls.Add(ListPanelHotDealBook[0]);
+            fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size((listPanelHotDealBook.Count-1) * listPanelHotDealBook[0].Width , 0);
         }
 
         private void HotDealForm_Load(object sender, EventArgs e)

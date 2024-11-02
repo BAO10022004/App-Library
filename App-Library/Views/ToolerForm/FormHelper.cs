@@ -168,6 +168,10 @@ namespace App_Library.Views.ToolerForm
             panel.Cursor = System.Windows.Forms.Cursors.Hand;
             panel.BorderStyle = BorderStyle.None;
             panel.Name = book.Username;
+            foreach (System.Windows.Forms.Control control in panel.Controls)
+            {
+                control.Name = "Book" + control.Name + index;
+            }
             return panel;
         }
         public async Task<Panel> CreateBookPanelAsync(Book book, int index, int rating = 4)
@@ -232,8 +236,11 @@ namespace App_Library.Views.ToolerForm
             panel.Margin = new Padding(5);
             panel.Name = "itemHotDeal" + index;
             panel.TabIndex = index;
-
-            
+            panel.BackColor = Color.White;
+            //foreach(System.Windows.Forms.Control control in panel.Controls)
+            //{
+            //    control.Name = "Book" + control.Name + index;
+            //}
             return panel;
         }
 

@@ -34,10 +34,23 @@ namespace App_Library.Views.Main.CollectionShop
         // Get Book form panel clicked
         Dictionary<Control, Book> getBookFromPanelAd;
         Dictionary<Control, Book> getBookFromPanelHotDeal;
+        //Control
+        Form formAd;
+        Form formHotDeal;
+        // Control.Collection 
+        Control.ControlCollection collectionPanelAd;
+        Control.ControlCollection collectionPanelHotDeal;
+        Control.ControlCollection collectionPanelAll;
+        // size properties
+        public const int WITH = 450;
+        public const int HEIGHT = 831;
         public NewShopMain(MongoDbContext context)
         {
             dbContext = context;
             _bookService = new BookService(dbContext);
+            collectionPanelAd = new Control.ControlCollection(new Panel());
+            collectionPanelHotDeal = new Control.ControlCollection(new Panel());
+            collectionPanelHotDeal = new Control.ControlCollection(new Panel());
             InitializeComponent();
         }
 
@@ -76,7 +89,8 @@ namespace App_Library.Views.Main.CollectionShop
                 if (bookPanel != null)
                 {
                     getBookFromPanelAd[bookPanel] = listBook[i];
-
+                    foreach(Control control in bookPanel.Controls)
+                        control.Click += new EventHandler(this.bookAd_Click);
                     backgroundWorker1.ReportProgress(0, bookPanel);
                 }
             }
@@ -88,7 +102,9 @@ namespace App_Library.Views.Main.CollectionShop
             if(listPanelBookAd.Count < 6)
             {
                 listPanelBookAd.Add(bookPanel);
+                collectionPanelAd.Add(bookPanel);
             }
+            
         }
        
         private async void backgroundWorker1_RunWorkerCompletedAsync(object sender, RunWorkerCompletedEventArgs e)
@@ -108,7 +124,8 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     control.Visible = true;
                 }
-                activeFormChild(pnAd, new AdForm(listPanelBookAd), null, ref actForm1);
+                formAd = new AdForm(listPanelBookAd, this);
+                activeFormChild(pnAd, formAd, null, ref actForm1);
                 List<Task<Panel>> tasks = new List<Task<Panel>>();
 
                 for (int i = 0; i < listBook.Count; i++)
@@ -118,7 +135,9 @@ namespace App_Library.Views.Main.CollectionShop
                 }
 
                 listPanelAllBook = ((await Task.WhenAll(tasks)).ToList());
-                activeFormChild(pnHotDeal, new HotDealForm(listPanelAllBook), null, ref actForm2);
+                collectionPanelHotDeal.AddRange(listPanelAllBook.ToArray());
+                formHotDeal = new HotDealForm(listPanelAllBook, this);
+                activeFormChild(pnHotDeal, formHotDeal, null, ref actForm2);
             }
 
          }
@@ -150,6 +169,18 @@ namespace App_Library.Views.Main.CollectionShop
 
 
             }
+        }
+        private void bookAd_Click(object sender, EventArgs e)
+        {
+            pnMainForm.Size = new Size(this.Size.Width - WITH, this.Size.Height);
+            pnProperties.Size = new Size(WITH, this.Height);
+            //pnProperties.BackColor = Color.Black;
+            pnProperties.Location = new Point(this.Size.Width + 300 - pnMainForm.Width, 0);
+            //foreach(Control control in FindControlContainer(collectionPanelAd, sender as Control).Controls)
+            //{
+            //    MessageBox.Show(control.Text);
+            //}
+           activeFormChild(pnProperties, new PropertiesBookForm(getBookFromPanelAd[FindControlContainer(collectionPanelAd, sender as Control)]), e);    
         }
     }
 }

@@ -359,6 +359,7 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\search.png" />
     <None Include="Resources\right-arrow.png" />
     <None Include="Resources\left-arrow.png" />
     <None Include="Resources\deal.png" />

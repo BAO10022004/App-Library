@@ -13,15 +13,17 @@ namespace App_Library.Views.Main.CollectionShop
     public partial class AdForm : Form
     {
         List<Panel> ListPanelAd;
+        Form FormParent;
         // index Book in Ad
         int indexCurrentBookAd = 0;
 
-        public AdForm(List<Panel> listPanelAd)
+        public AdForm(List<Panel> listPanelAd, Form formParent)
         {
             ListPanelAd = listPanelAd;
             InitializeComponent();
             this.timerAd.Tick += new System.EventHandler(this.timer1_Tick);
             timerAd.Start();
+            FormParent = formParent;
         }
 
         private void AdForm_Load(object sender, EventArgs e)

@@ -71,7 +71,8 @@
             // fpHotDealBook
             // 
             this.fpHotDealBook.AutoScroll = true;
-            this.fpHotDealBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size(3000, 0);
+            this.fpHotDealBook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fpHotDealBook.Location = new System.Drawing.Point(0, 52);
             this.fpHotDealBook.Name = "fpHotDealBook";
             this.fpHotDealBook.Size = new System.Drawing.Size(1170, 379);
@@ -80,7 +81,8 @@
             // HotDealForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1170, 431);
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.ClientSize = new System.Drawing.Size(1170, 413);
             this.Controls.Add(this.fpHotDealBook);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
