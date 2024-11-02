@@ -1,98 +1,74 @@
 ﻿using App_Library.Models;
-using App_Library.Services.Interfaces;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Net.Http.Json;
 
 namespace App_Library.Services
 {
-    internal class UserService : IUserService
+    internal class UserService
     {
-        private readonly MongoDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public UserService(MongoDbContext context)
+        public UserService()
         {
-            _context = context;
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("https://books-webapplication-plh6.onrender.com/");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
         }
-
+        // Lấy danh sách tất cẩ người dùng
         public async Task<List<User>> GetUsersAsync()
         {
-            // Lấy danh sách người dùng từ cơ sở dữ liệu
-            return await _context.Users.Find(FilterDefinition<User>.Empty).ToListAsync();
+            var response = await _httpClient.GetAsync("api/users");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<User>>();
         }
-
-        public async Task<(List<User>, long totalUser, long lastMonthUser)> GetUserStatisticsAsync(string sort, int startIndex, int limit)
+        // Thống kê người dùng đã đăng ký tháng trước
+        public async Task<UserResponse> GetUsersStatisticAsync(string sort = "asc", int startIndex = 0, int limit = 10)
         {
-            // Tính toán và trả về thông tin thống kê người dùng
-            var sortDirection = sort == "desc" ? -1 : 1;
-            var users = await _context.Users
-                .Find(_ => true)
-                .Sort(sortDirection == 1 ? Builders<User>.Sort.Ascending(u => u.CreatedAt) : Builders<User>.Sort.Descending(u => u.CreatedAt))
-                .Skip(startIndex)
-                .Limit(limit)
-                .ToListAsync();
-
-            var totalUsers = await _context.Users.CountDocumentsAsync(_ => true);
-            var now = DateTime.UtcNow;
-            var oneMonthAgo = now.AddMonths(-1);
-            var lastMonthUsers = await _context.Users.CountDocumentsAsync(u => u.CreatedAt >= oneMonthAgo);
-
-            return (users, totalUsers, lastMonthUsers);
+            var response = await _httpClient.GetAsync($"api/users/statistic?sort={sort}&startIndex={startIndex}&limit={limit}");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            var userResponse = JsonSerializer.Deserialize<UserResponse>(responseBody);
+            return userResponse;
         }
-
+        // Lay nguoi dung hien tai
         public async Task<User> GetCurrentUserAsync()
         {
-            // Lấy thông tin người dùng hiện tại
-            return await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
+            var response = await _httpClient.GetAsync("api/users/me");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<User>();
         }
-
+        // Lay nguoi dung theo ID
         public async Task<User> GetUserByIdAsync(string id)
         {
-            return await _context.Users.Find(u => u.Id == id).FirstOrDefaultAsync();
+            var response = await _httpClient.GetAsync($"api/users/{id}");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<User>();
         }
-
-        //public async Task<User> UpdateUserAsync(string id, UpdateUserDto updatedUser)
-        //{
-        //    var filter = Builders<User>.Filter.Eq("_id", new ObjectId(id));
-        //    var updateDefinition = new List<UpdateDefinition<User>>();
-
-        //    if (!string.IsNullOrEmpty(updatedUser.Email))
-        //    {
-        //        updateDefinition.Add(Builders<User>.Update.Set(u => u.Email, updatedUser.Email));
-        //    }
-
-        //    // ... thêm các thuộc tính khác
-
-        //    if (!updateDefinition.Any())
-        //    {
-        //        throw new InvalidOperationException("No fields to update");
-        //    }
-
-        //    var update = Builders<User>.Update.Combine(updateDefinition);
-        //    return await _context.Users.FindOneAndUpdateAsync(filter, update, new FindOneAndUpdateOptions<User>
-        //    {
-        //        ReturnDocument = ReturnDocument.After
-        //    });
-        //}
-
+        // Cap nhat nguoi dung theo ID
+        public async Task<User> UpdateUserAsync(string id, UpdateUserDTO updatedUser)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/users/update/{id}", updatedUser);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<User>();
+        }
+        // Tắc người dùng
         public async Task<bool> SoftDeleteUserAsync(string id)
         {
-            var filter = Builders<User>.Filter.Eq("_id", new ObjectId(id));
-            var update = Builders<User>.Update.Set("IsActive", false);
-            var result = await _context.Users.UpdateOneAsync(filter, update);
-            return result.MatchedCount > 0;
+            var response = await _httpClient.DeleteAsync($"api/users/delete/{id}");
+            return response.IsSuccessStatusCode;
         }
-
+        // Kích hoạt người dùng
         public async Task<bool> ActivateUserAsync(string id)
         {
-            var filter = Builders<User>.Filter.Eq("_id", new ObjectId(id));
-            var update = Builders<User>.Update.Set("IsActive", true);
-            var result = await _context.Users.UpdateOneAsync(filter, update);
-            return result.MatchedCount > 0;
+            var response = await _httpClient.PutAsync($"api/users/activate/{id}", null);
+            return response.IsSuccessStatusCode;
         }
     }
 }

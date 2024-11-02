@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 
-namespace App_Library.Services.APIService
+namespace App_Library.Services
 {
     internal class AuthService
     {

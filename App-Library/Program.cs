@@ -1,6 +1,4 @@
 ﻿using App_Library.Models;
-using App_Library.Services;
-using App_Library.Services.Interfaces;
 using App_Library.Views;
 using System;
 using System.Collections.Generic;
@@ -22,13 +20,9 @@ namespace App_Library
         [STAThread]
         static void Main()
         {
-            MongoDbContext context = new MongoDbContext("mongodb+srv://6351071034:1234567890@cluster1.yodnw.mongodb.net/", "Library");
-            SessionManager.CurrentUsername = "";
-            SessionManager.CurrentUserId = "";
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            sp = new SplashForm(context);
+            sp = new SplashForm();
             Application.Run(sp);
             //Application.Run(new Test(context));
         }

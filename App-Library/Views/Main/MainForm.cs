@@ -1,6 +1,5 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
-using App_Library.Services.Interfaces;
 using App_Library.Views.Main.CollectionShop;
 using App_Library.Views.ToolerForm;
 using Guna.UI2.WinForms;
@@ -22,10 +21,9 @@ namespace App_Library.Views
 {
     public partial class MainForm : FormHelper
     {
-        private readonly MongoDbContext _context;
-        private readonly IUserService _userService;
-        private readonly IBookService _bookService;
-        private readonly IStarsRatingService _starsRating;
+        private readonly UserService _userService;
+        private readonly BookService _bookService;
+        private readonly StarsRatingService _starsRating;
         private bool isDragging = false;
         private Point dragStartPoint;
         private Control draggedControl;
@@ -37,26 +35,27 @@ namespace App_Library.Views
         Dictionary<Control, Form> formDictionary;
         Form currentForm;
         Dictionary<Control, bool> isClick;
-        public MainForm(MongoDbContext context)
+        public MainForm()
         {
-            
-            _context = context;
-            _userService = new UserService(_context);
-            _bookService = new BookService(_context);
-            _starsRating = new StarsRatingService(_context);
+            _userService = new UserService();
+            _bookService = new BookService();
+            _starsRating = new StarsRatingService();
             books = new List<Book>();
             listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
             InitializeComponent();
-            
+
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            lbName.Text = SessionManager.CurrentUsername;
-            homeForm = new HomeForm(_context);
-            shopForm = new ShopForm(_context);
-            books = (await _bookService.GetAllBooksAsync()).ToList();
+            var currentUser = await _userService.GetCurrentUserAsync();
+            lbName.Text = currentUser.Username;
+            lbEmail.Text = currentUser.Email;
+
+            homeForm = new HomeForm();
+            shopForm = new ShopForm();
+            books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnListsButton.Controls)
             {
@@ -96,8 +95,8 @@ namespace App_Library.Views
         {
             var _lbShop = (Control)sender;
             var panel = FindControlContainer(pnListsButton.Controls, _lbShop);
-            
-           if(sender is Label)
+
+            if (sender is Label)
             {
                 if (!isClick[sender as Control])
                 {
@@ -105,16 +104,16 @@ namespace App_Library.Views
                     _lbShop.BackColor = Color.White;
                 }
             }
-           
+
         }
-        
+
         private Point mouseDownLocation;
         private void flowLayoutPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             isDragging = true;
             mouseDownLocation = e.Location;
         }
-        
+
         private void flowLayoutPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
@@ -133,7 +132,7 @@ namespace App_Library.Views
             Guna2Panel panel = new Guna2Panel();
             foreach (var item in pnListsButton.Controls)
             {
-                 panel = item as Guna2Panel;
+                panel = item as Guna2Panel;
                 foreach (Control control in panel.Controls)
                 {
                     if (control is Label)
@@ -148,21 +147,21 @@ namespace App_Library.Views
                 panel = item as Guna2Panel;
                 foreach (Control control in panel.Controls)
                 {
-                    if(control is Label)
+                    if (control is Label)
                     {
                         if (isClick[control])
                         {
                             panel.BackColor = Color.DeepSkyBlue;
                             control.BackColor = Color.DeepSkyBlue;
-                            
+
                         }
                         else
                         {
                             panel.BackColor = Color.White;
-                            control.BackColor =(Color)Color.White;
+                            control.BackColor = (Color)Color.White;
                         }
                     }
-                   
+
                 }
             }
 
@@ -171,11 +170,11 @@ namespace App_Library.Views
         private void lbHome_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            pointSave =picHome.Location;
+            pointSave = picHome.Location;
             lbHome.Text = "";
             timerPicHome.Start();
         }
-       
+
         private void lbShop_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
@@ -204,20 +203,20 @@ namespace App_Library.Views
         {
             if (picHome.Location.X < lbHome.Location.X)
             {
-                picHome.Location= new Point(picHome.Location.X +deltaX,picHome.Location.Y );
+                picHome.Location = new Point(picHome.Location.X + deltaX, picHome.Location.Y);
             }
             else
             {
                 timerPicHome.Stop();
                 picHome.Location = pointSave;
                 lbHome.Text = lbHome.Name.Substring(2);
-                
-                if(!(currentForm is HomeForm))
+
+                if (!(currentForm is HomeForm))
                 {
-                    homeForm = new HomeForm(_context);
+                    homeForm = new HomeForm();
                     activeFormChildForMainForm(homeForm, e);
                     currentForm = homeForm;
-                }  
+                }
             }
         }
 
@@ -232,10 +231,10 @@ namespace App_Library.Views
                 timerPicShop.Stop();
                 picShop.Location = pointSave;
                 lbShop.Text = lbShop.Name.Substring(2);
-                
-                if(!(currentForm is ShopForm))
+
+                if (!(currentForm is ShopForm))
                 {
-                    activeFormChildForMainForm(new NewShopMain(_context), e);
+                    activeFormChildForMainForm(new NewShopMain(), e);
                     currentForm = shopForm;
                 }
             }

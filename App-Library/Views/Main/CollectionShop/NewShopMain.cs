@@ -1,6 +1,5 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
-using App_Library.Services.Interfaces;
 using App_Library.Views.ToolerForm;
 using Guna.UI2.WinForms;
 using System;
@@ -27,8 +26,7 @@ namespace App_Library.Views.Main.CollectionShop
         List<Panel> listHotDeal;
         List<Task<Panel>> listTaskPanelHotDealBook;
         List<Task<Panel>> listTaskPanelAllBook;
-        private readonly MongoDbContext dbContext;
-        private readonly IBookService _bookService;
+        private readonly BookService _bookService;
         //Process Bar
         Guna2ProgressIndicator guna2ProgressIndicator;
         // Get Book form panel clicked
@@ -44,10 +42,9 @@ namespace App_Library.Views.Main.CollectionShop
         // size properties
         public const int WITH = 450;
         public const int HEIGHT = 831;
-        public NewShopMain(MongoDbContext context)
+        public NewShopMain()
         {
-            dbContext = context;
-            _bookService = new BookService(dbContext);
+            _bookService = new BookService();
             collectionPanelAd = new Control.ControlCollection(new Panel());
             collectionPanelHotDeal = new Control.ControlCollection(new Panel());
             collectionPanelHotDeal = new Control.ControlCollection(new Panel());
@@ -63,7 +60,7 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     control.Visible = false;
                 }
-               
+
             }
             guna2ProgressIndicator = new Guna2ProgressIndicator();
             guna2ProgressIndicator.Start();
@@ -76,8 +73,8 @@ namespace App_Library.Views.Main.CollectionShop
             listPanelAllBook = new List<Panel>();
             listTaskPanelAllBook = new List<Task<Panel>>();
             // Create Data for book
-            listBook = await _bookService.GetAllBooksAsync();
-            
+            listBook = await _bookService.GetBooksAsync();
+
             backgroundWorker1.RunWorkerAsync();
         }
 
@@ -89,7 +86,7 @@ namespace App_Library.Views.Main.CollectionShop
                 if (bookPanel != null)
                 {
                     getBookFromPanelAd[bookPanel] = listBook[i];
-                    foreach(Control control in bookPanel.Controls)
+                    foreach (Control control in bookPanel.Controls)
                         control.Click += new EventHandler(this.bookAd_Click);
                     backgroundWorker1.ReportProgress(0, bookPanel);
                 }
@@ -99,14 +96,14 @@ namespace App_Library.Views.Main.CollectionShop
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             var bookPanel = e.UserState as Panel;
-            if(listPanelBookAd.Count < 6)
+            if (listPanelBookAd.Count < 6)
             {
                 listPanelBookAd.Add(bookPanel);
                 collectionPanelAd.Add(bookPanel);
             }
-            
+
         }
-       
+
         private async void backgroundWorker1_RunWorkerCompletedAsync(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled)
@@ -131,7 +128,7 @@ namespace App_Library.Views.Main.CollectionShop
                 for (int i = 0; i < listBook.Count; i++)
                 {
                     tasks.Add(CreateBookPanelAsync(listBook[i], i, 4));
-                    
+
                 }
 
                 listPanelAllBook = ((await Task.WhenAll(tasks)).ToList());
@@ -140,11 +137,11 @@ namespace App_Library.Views.Main.CollectionShop
                 activeFormChild(pnHotDeal, formHotDeal, null, ref actForm2);
             }
 
-         }
+        }
 
         private void bwkCreateHotDeal_DoWork(object sender, DoWorkEventArgs e)
         {
-           
+
         }
 
         private void bwkCreateHotDeal_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -165,7 +162,7 @@ namespace App_Library.Views.Main.CollectionShop
             }
             else
             {
-                
+
 
 
             }
@@ -180,7 +177,7 @@ namespace App_Library.Views.Main.CollectionShop
             //{
             //    MessageBox.Show(control.Text);
             //}
-           activeFormChild(pnProperties, new PropertiesBookForm(getBookFromPanelAd[FindControlContainer(collectionPanelAd, sender as Control)]), e);    
+            activeFormChild(pnProperties, new PropertiesBookForm(getBookFromPanelAd[FindControlContainer(collectionPanelAd, sender as Control)]), e);
         }
     }
 }

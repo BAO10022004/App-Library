@@ -1,142 +1,90 @@
 ﻿using App_Library.Models;
-using App_Library.Services.Interfaces;
-using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
+using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
+using System.Net.Http.Json;
 
 namespace App_Library.Services
 {
-    public class CommentService : ICommentService
+    internal class CommentService
     {
-        private readonly MongoDbContext _context;
+        private readonly HttpClient _httpClient;
 
-        public CommentService(MongoDbContext context)
+        public CommentService()
         {
-            _context = context;
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri("https://books-webapplication-plh6.onrender.com/");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
         }
 
-        public async Task<bool> CreateCommentAsync(Comment comment)
+        // Tạo comment
+        public async Task<Comment> CreateCommentAsync(Comment comment)
         {
-            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
-
-            if (user == null)
+            var response = await _httpClient.PostAsJsonAsync("api/comments", comment);
+            if (response.IsSuccessStatusCode)
             {
-                throw new UnauthorizedAccessException("You are not allowed to create this comment.");
-            }
-
-            comment.CreatedAt = DateTime.UtcNow;
-            await _context.Comment.InsertOneAsync(comment);
-            return true;
-        }
-
-        public async Task<List<Comment>> GetBookCommentsAsync(string bookId)
-        {
-            return await _context.Comment
-                .Find(c => c.BookId == bookId)
-                .SortByDescending(c => c.CreatedAt)
-                .ToListAsync();
-        }
-
-        public async Task<bool> LikeCommentAsync(string commentId)
-        {
-            var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
-            if (comment == null)
-            {
-                throw new KeyNotFoundException("Comment not found!");
-            }
-
-            if (string.IsNullOrEmpty(SessionManager.CurrentUserId))
-            {
-                throw new UnauthorizedAccessException("You need to log in to like comment.");
-            }
-
-            var userIndex = Array.IndexOf(comment.Likes, SessionManager.CurrentUserId);
-
-            if (userIndex == -1)
-            {
-                comment.NumberOfLikes += 1;
-                var newLikes = comment.Likes?.ToList() ?? new List<string>();
-                newLikes.Add(SessionManager.CurrentUserId);
-                comment.Likes = newLikes.ToArray();
+                return await response.Content.ReadFromJsonAsync<Comment>();
             }
             else
             {
-                comment.NumberOfLikes -= 1;
-                var updatedLikes = comment.Likes?.ToList() ?? new List<string>();
-                updatedLikes.Remove(SessionManager.CurrentUserId);
-                comment.Likes = updatedLikes.ToArray();
+                throw new Exception($"Failed to create comment: {await response.Content.ReadAsStringAsync()}");
             }
-
-            await _context.Comment.ReplaceOneAsync(c => c.Id == commentId, comment);
-            return true;
         }
 
-        public async Task<bool> EditCommentAsync(string commentId, UpdateCommentDTO editCommentDto)
+        // Lấy comment của một sách
+        public async Task<List<Comment>> GetBookCommentsAsync(string bookId)
         {
-            var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
-            if (comment == null)
-            {
-                throw new KeyNotFoundException("Comment not found!");
-            }
-
-            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
-
-            if (user == null)
-            {
-                throw new UnauthorizedAccessException("You do not have permission to edit the comment.");
-            }
-
-            comment.Content = editCommentDto.Content ?? comment.Content;
-            comment.UpdatedAt = DateTime.UtcNow;
-
-            await _context.Comment.ReplaceOneAsync(c => c.Id == commentId, comment);
-            return true;
+            var response = await _httpClient.GetAsync($"api/comments/book/{bookId}");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<List<Comment>>(responseBody);
         }
 
+        // Thích hoặc bỏ thích comment
+        public async Task<Comment> LikeCommentAsync(string commentId)
+        {
+            var response = await _httpClient.PostAsync($"api/comments/{commentId}/likes", null);
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<Comment>(responseBody);
+        }
+
+        // Chỉnh sửa comment
+        public async Task<Comment> EditCommentAsync(string commentId, string newContent)
+        {
+            var editDto = new UpdateCommentDTO { Content = newContent };
+            var content = new StringContent(JsonSerializer.Serialize(editDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"api/comments/{commentId}", content);
+
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<Comment>(responseBody);
+        }
+
+        // Xóa comment
         public async Task<bool> DeleteCommentAsync(string commentId)
         {
-            var comment = await _context.Comment.Find(c => c.Id == commentId).FirstOrDefaultAsync();
-            if (comment == null)
-            {
-                throw new KeyNotFoundException("Comment not found!");
-            }
-
-            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
-
-            if (comment.UserId != SessionManager.CurrentUserId && !user.IsAdmin)
-            {
-                throw new UnauthorizedAccessException("You are not allowed to delete this comment.");
-            }
-
-            await _context.Comment.DeleteOneAsync(c => c.Id == commentId);
-            return true;
+            var response = await _httpClient.DeleteAsync($"api/comments/{commentId}");
+            return response.IsSuccessStatusCode;
         }
 
-        public async Task<(List<Comment> comments, long totalComments, long lastMonthComments)> GetCommentsAsync(int startIndex, int limit, string sort)
+        // Lấy tất cả comments với phân trang
+        public async Task<(List<Comment>, int, int)> GetCommentsAsync(int startIndex = 0, int limit = 10, string sort = "asc")
         {
-            var user = await _context.Users.Find(u => u.Username == SessionManager.CurrentUsername).FirstOrDefaultAsync();
+            var response = await _httpClient.GetAsync($"api/comments?startIndex={startIndex}&limit={limit}&sort={sort}");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
 
-            if (user == null && !user.IsAdmin)
-            {
-                throw new UnauthorizedAccessException("You do not have permission to get all comments.");
-            }
-
-            var sortDirection = sort == "desc" ? -1 : 1;
-            var comments = await _context.Comment
-                .Find(_ => true)
-                .Sort(sortDirection == 1 ? Builders<Comment>.Sort.Ascending(c => c.CreatedAt) : Builders<Comment>.Sort.Descending(c => c.CreatedAt))
-                .Skip(startIndex)
-                .Limit(limit)
-                .ToListAsync();
-
-            var totalComments = await _context.Comment.CountDocumentsAsync(_ => true);
-            var now = DateTime.UtcNow;
-            var oneMonthAgo = now.AddMonths(-1);
-            var lastMonthComments = await _context.Comment.CountDocumentsAsync(c => c.CreatedAt >= oneMonthAgo);
+            var jsonDocument = JsonDocument.Parse(responseBody);
+            var comments = JsonSerializer.Deserialize<List<Comment>>(jsonDocument.RootElement.GetProperty("comments").GetRawText());
+            var totalComments = jsonDocument.RootElement.GetProperty("totalComments").GetInt32();
+            var lastMonthComments = jsonDocument.RootElement.GetProperty("lastMonthComments").GetInt32();
 
             return (comments, totalComments, lastMonthComments);
         }

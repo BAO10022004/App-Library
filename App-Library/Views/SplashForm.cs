@@ -1,6 +1,4 @@
-﻿using App_Library.Services;
-using App_Library.Services.Interfaces;
-using App_Library.Views.ToolerForm;
+﻿using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,26 +13,20 @@ namespace App_Library.Views
 {
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
-        internal LoginForm loginForm ;
+        internal LoginForm loginForm;
         internal SignUpForm signUpForm;
         Point pointLbWelcome;
-        internal readonly MongoDbContext _context;
-        internal readonly AuthService _authService;
         //Check Login dang duoc mo chua????
-        bool checkOpenLogin =false;
+        bool checkOpenLogin = false;
         //Check sign-up dang duoc mo chua????
-        bool checkOpenSignUp =false;
+        bool checkOpenSignUp = false;
         //Check page nao dang duoc hien
         bool checkPageLogin = false;
-        public SplashForm(MongoDbContext context)
+        public SplashForm()
         {
-            _context = context;
-            _context = context;
-            _authService = new AuthService(_context);
-            
             InitializeComponent();
         }
-        
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -84,15 +76,15 @@ namespace App_Library.Views
         {
             if (loginForm == null && signUpForm == null)
             {
-                loginForm = new LoginForm(_context);
-                signUpForm = new SignUpForm(_context);
+                loginForm = new LoginForm();
+                signUpForm = new SignUpForm();
                 timerSignUp.Start();
                 checkOpenLogin = true;
                 checkPageLogin = false;
             }
             else
             {
-                    signUpForm = new SignUpForm(_context);
+                signUpForm = new SignUpForm();
                 timer2SignUp.Start();
                 checkOpenSignUp = true;
                 checkPageLogin = false;
@@ -101,24 +93,24 @@ namespace App_Library.Views
         private void button1_Click(object sender, EventArgs e)
         {
             Y = lbWellcome.Location.Y;
-            
+
             if (loginForm == null && signUpForm == null)
             {
-                loginForm = new LoginForm(_context);
-                signUpForm = new SignUpForm(_context);
+                loginForm = new LoginForm();
+                signUpForm = new SignUpForm();
                 timerClickButonLogin.Start();
-                checkOpenLogin =true;
-                checkPageLogin=true;
+                checkOpenLogin = true;
+                checkPageLogin = true;
             }
             else
             {
-                if(!checkPageLogin && checkOpenLogin == true)
+                if (!checkPageLogin && checkOpenLogin == true)
                 {
-                    loginForm = new LoginForm(_context);
-                    timerClickButonLogin2.Start();                  
+                    loginForm = new LoginForm();
+                    timerClickButonLogin2.Start();
                     checkOpenLogin = true;
                     checkPageLogin = true;
-                }          
+                }
             }
         }
         private void timerSignUp_Tick(object sender, EventArgs e)
@@ -138,7 +130,7 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Remove(btnSignUp);
                 button1.Location = new Point(120, 14);
                 pnFrameOption.Controls.Add(button1);
-                this.activeFormChild(this.pnLogInContent, signUpForm,  sender);
+                this.activeFormChild(this.pnLogInContent, signUpForm, sender);
                 return;
             }
         }
@@ -157,7 +149,7 @@ namespace App_Library.Views
                 pnFrameOption.Controls.Add(button1);
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
-                
+
                 lbWellcome.Text = "SIGN - UP";
                 this.activeFormChild(this.pnLogInContent, signUpForm, sender);
                 return;
@@ -184,7 +176,7 @@ namespace App_Library.Views
                 pnLogInContent.Location = new Point(0, 119);
                 lbWellcome.Location = pointLbWelcome;
                 lbWellcome.Text = "SIGN - IN ";
-                this.activeFormChild(this.pnLogInContent,loginForm,  sender);
+                this.activeFormChild(this.pnLogInContent, loginForm, sender);
                 return;
             }
         }
@@ -210,7 +202,7 @@ namespace App_Library.Views
         }
         private void SplashForm_Load(object sender, EventArgs e)
         {
-            pointLbWelcome = new Point((this.Size.Width-lbWellcome.Size.Width)/2,0);
+            pointLbWelcome = new Point((this.Size.Width - lbWellcome.Size.Width) / 2, 0);
         }
     }
 }

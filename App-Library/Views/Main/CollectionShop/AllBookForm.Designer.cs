@@ -30,12 +30,12 @@
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.gnpGruopAllBook = new Guna.UI2.WinForms.Guna2Panel();
+            this.LPGroupAllBook = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbPage = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.LPGroupAllBook = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbPage = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.gnpGruopAllBook.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -63,6 +63,14 @@
             this.gnpGruopAllBook.Size = new System.Drawing.Size(1097, 800);
             this.gnpGruopAllBook.TabIndex = 1;
             // 
+            // LPGroupAllBook
+            // 
+            this.LPGroupAllBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LPGroupAllBook.Location = new System.Drawing.Point(0, 0);
+            this.LPGroupAllBook.Name = "LPGroupAllBook";
+            this.LPGroupAllBook.Size = new System.Drawing.Size(1097, 800);
+            this.LPGroupAllBook.TabIndex = 0;
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
@@ -74,6 +82,16 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1097, 50);
             this.guna2Panel2.TabIndex = 0;
+            // 
+            // lbPage
+            // 
+            this.lbPage.AutoSize = true;
+            this.lbPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbPage.Location = new System.Drawing.Point(551, 15);
+            this.lbPage.Name = "lbPage";
+            this.lbPage.Size = new System.Drawing.Size(63, 25);
+            this.lbPage.TabIndex = 2;
+            this.lbPage.Text = "Trên ";
             // 
             // guna2Button2
             // 
@@ -90,7 +108,6 @@
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(55, 45);
             this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -107,30 +124,11 @@
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(55, 45);
             this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            // 
-            // LPGroupAllBook
-            // 
-            this.LPGroupAllBook.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LPGroupAllBook.Location = new System.Drawing.Point(0, 0);
-            this.LPGroupAllBook.Name = "LPGroupAllBook";
-            this.LPGroupAllBook.Size = new System.Drawing.Size(1097, 800);
-            this.LPGroupAllBook.TabIndex = 0;
-            // 
-            // lbPage
-            // 
-            this.lbPage.AutoSize = true;
-            this.lbPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbPage.Location = new System.Drawing.Point(551, 15);
-            this.lbPage.Name = "lbPage";
-            this.lbPage.Size = new System.Drawing.Size(63, 25);
-            this.lbPage.TabIndex = 2;
-            this.lbPage.Text = "Trên ";
             // 
             // AllBookForm
             // 
@@ -144,7 +142,6 @@
             this.Name = "AllBookForm";
             this.Opacity = 0D;
             this.Text = "AllBookForm";
-            this.Load += new System.EventHandler(this.guna2Button1_Click);
             this.guna2Panel1.ResumeLayout(false);
             this.gnpGruopAllBook.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);

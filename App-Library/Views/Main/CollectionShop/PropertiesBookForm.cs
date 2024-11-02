@@ -28,33 +28,15 @@ namespace App_Library.Views
             catch (Exception)
             {
                 // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
-                
+
             }
-            lbPrice.Text += book.Price +"$";
+            lbPrice.Text += book.Price + "$";
             lbNameBook.Text += book.Title;
-            lbPublishedYear.Text += "" +book.PublishedYear;
+            lbPublishedYear.Text += "" + book.PublishedYear;
             lbAuthor.Text += "" + book.Author;
             lbCategory.Text += "" + book.Genre;
         }
 
-        private void lbNameBook_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void lbCategory_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbAuthor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnBuy_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

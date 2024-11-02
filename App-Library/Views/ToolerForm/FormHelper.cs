@@ -1,5 +1,4 @@
 ﻿using App_Library.Models;
-using App_Library.Services;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -16,15 +15,15 @@ namespace App_Library.Views.ToolerForm
 {
     public class FormHelper : Form
     {
-         Form ActForm;
-        public  void activeFormChild(System.Windows.Forms.Control ctrlSource,Form formDes,object obj)
+        Form ActForm;
+        public void activeFormChild(System.Windows.Forms.Control ctrlSource, Form formDes, object obj)
         {
             // Kiểm tra nếu ActForm khác null và đã tồn tại, đóng nó
             if (ActForm != null && !ActForm.IsDisposed)
             {
                 ActForm.Close();
             }
-            
+
             // Thiết lập form mới vào ActForm
             ActForm = formDes;
             formDes.TopLevel = false;
@@ -56,7 +55,7 @@ namespace App_Library.Views.ToolerForm
             ctrlSource.Tag = formDes;
             formDes.BringToFront();
             formDes.Show();
-        
+
         }
         public System.Windows.Forms.Control FindControlContainer(System.Windows.Forms.Control.ControlCollection listControl, System.Windows.Forms.Control control)
         {
@@ -66,8 +65,8 @@ namespace App_Library.Views.ToolerForm
                 var item = (Panel)panel;
                 foreach (var c in item.Controls)
                 {
-                    var itemControl  = (System.Windows.Forms.Control)c; 
-                    if(itemControl.Name.Equals(control.Name))
+                    var itemControl = (System.Windows.Forms.Control)c;
+                    if (itemControl.Name.Equals(control.Name))
                     {
                         return panel;
                     }

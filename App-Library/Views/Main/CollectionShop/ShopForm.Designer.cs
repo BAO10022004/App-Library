@@ -173,7 +173,6 @@ namespace App_Library.Views
             this.gnpContainFpHotDeal.Name = "gnpContainFpHotDeal";
             this.gnpContainFpHotDeal.Size = new System.Drawing.Size(1181, 396);
             this.gnpContainFpHotDeal.TabIndex = 3;
-            this.gnpContainFpHotDeal.Paint += new System.Windows.Forms.PaintEventHandler(this.gnpContainFpHotDeal_Paint);
             // 
             // LPHotDeal
             // 
@@ -215,7 +214,6 @@ namespace App_Library.Views
             this.gnpContainCaterogyBook.Name = "gnpContainCaterogyBook";
             this.gnpContainCaterogyBook.Size = new System.Drawing.Size(1069, 850);
             this.gnpContainCaterogyBook.TabIndex = 4;
-            this.gnpContainCaterogyBook.Paint += new System.Windows.Forms.PaintEventHandler(this.gnpContainCaterogyBook_Paint);
             this.gnpContainCaterogyBook.MouseHover += new System.EventHandler(this.gnpContainCaterogyBook_MouseHover);
             // 
             // gnpGroupBookForCategory
@@ -251,7 +249,6 @@ namespace App_Library.Views
             this.gnpButtonAll.Size = new System.Drawing.Size(102, 47);
             this.gnpButtonAll.TabIndex = 0;
             this.gnpButtonAll.Click += new System.EventHandler(this.gnpButtonAll_Click);
-            this.gnpButtonAll.Paint += new System.Windows.Forms.PaintEventHandler(this.gnpButtonAll_Paint);
             this.gnpButtonAll.MouseLeave += new System.EventHandler(this.gnpButtonAll_MouseLeave);
             this.gnpButtonAll.MouseHover += new System.EventHandler(this.gnpButtonAll_MouseHover);
             // 
@@ -273,7 +270,6 @@ namespace App_Library.Views
             this.pnContainHotDeal.Size = new System.Drawing.Size(1220, 486);
             this.pnContainHotDeal.TabIndex = 0;
             this.pnContainHotDeal.Click += new System.EventHandler(this.pnShopMain_Click);
-            this.pnContainHotDeal.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContainHotDeal_Paint);
             // 
             // guna2Panel1
             // 
@@ -284,7 +280,6 @@ namespace App_Library.Views
             this.guna2Panel1.Size = new System.Drawing.Size(1247, 335);
             this.guna2Panel1.TabIndex = 1;
             this.guna2Panel1.Click += new System.EventHandler(this.pnShopMain_Click);
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // ShopForm
             // 
