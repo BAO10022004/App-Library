@@ -1,4 +1,5 @@
-﻿using App_Library.APIService;
+﻿using App_Library.Services.Interfaces;
+using App_Library.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,14 @@ namespace App_Library.Views
 {
     public partial class HomeForm : Form
     {
-        private readonly AuthService _authService;
-        public HomeForm()
+        private readonly MongoDbContext _context;
+        private readonly IAuthService _authService;
+        public HomeForm(MongoDbContext context)
         {
-            this.Size = (new MainForm()).Size;
+            _context = context;
+            this.Size = (new MainForm(context)).Size;
             InitializeComponent();
-
+            
         }
     }
 }

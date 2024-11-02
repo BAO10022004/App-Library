@@ -279,6 +279,7 @@
             this.pnMainContentLogin.Name = "pnMainContentLogin";
             this.pnMainContentLogin.Size = new System.Drawing.Size(588, 696);
             this.pnMainContentLogin.TabIndex = 5;
+            this.pnMainContentLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMainContentLogin_Paint);
             // 
             // gneNAme
             // 

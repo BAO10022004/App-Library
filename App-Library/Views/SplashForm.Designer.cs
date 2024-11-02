@@ -69,6 +69,7 @@ namespace App_Library.Views
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(580, 38);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // pictureBox1
@@ -80,6 +81,7 @@ namespace App_Library.Views
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnExit
             // 
@@ -101,6 +103,7 @@ namespace App_Library.Views
             this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Login Frame";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnSubLogin
             // 
@@ -113,6 +116,7 @@ namespace App_Library.Views
             this.pnSubLogin.Name = "pnSubLogin";
             this.pnSubLogin.Size = new System.Drawing.Size(580, 812);
             this.pnSubLogin.TabIndex = 5;
+            this.pnSubLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSubLogin_Paint);
             // 
             // pnFrameOption
             // 
@@ -124,6 +128,7 @@ namespace App_Library.Views
             this.pnFrameOption.Name = "pnFrameOption";
             this.pnFrameOption.Size = new System.Drawing.Size(580, 800);
             this.pnFrameOption.TabIndex = 3;
+            this.pnFrameOption.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFrameOption_Paint);
             // 
             // pnLogInContent
             // 
@@ -170,6 +175,7 @@ namespace App_Library.Views
             this.lbWellcome.TabIndex = 2;
             this.lbWellcome.Text = "WELLCOME BACK";
             this.lbWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbWellcome.Click += new System.EventHandler(this.lbWellcome_Click);
             // 
             // gneContentLogin
             // 

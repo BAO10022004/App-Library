@@ -21,7 +21,7 @@ namespace App_Library.Views.Main.CollectionShop
             ListPanelAd = listPanelAd;
             InitializeComponent();
             this.timerAd.Tick += new System.EventHandler(this.timer1_Tick);
-            //timerAd.Start();
+            timerAd.Start();
         }
 
         private void AdForm_Load(object sender, EventArgs e)

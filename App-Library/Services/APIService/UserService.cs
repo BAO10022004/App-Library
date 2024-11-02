@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
 
-namespace App_Library.APIService
+namespace App_Library.Services.APIService
 {
     internal class UserService
     {

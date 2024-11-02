@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_Library.APIService
+namespace App_Library.Services.APIService
 {
     internal class Session
     {
