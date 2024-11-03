@@ -20,7 +20,7 @@ namespace App_Library.Views.Main.CollectionShop
             formParent = FormParent;
             ListPanelHotDealBook = listPanelHotDealBook;
             InitializeComponent();
-            fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size((listPanelHotDealBook.Count - 1) * listPanelHotDealBook[0].Width, 0);
+            fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size((listPanelHotDealBook.Count + 1) * listPanelHotDealBook[0].Width, 0);
         }
 
         private void HotDealForm_Load(object sender, EventArgs e)

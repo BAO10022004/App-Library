@@ -16,50 +16,25 @@ namespace App_Library.Views.Main.CollectionShop
 {
     public partial class AllBookForm : Form
     {
-        ShopForm shopForm;
+        NewShopMain shopForm;
         List<Panel> listPanelBook;
         int count;
         int index = 0;
         int countGenerateFail = 0;
         int currentPage = 1;
-        public AllBookForm()
-        {
-            InitializeComponent();
-        }
-
-        public AllBookForm(List<Panel> listPanelBook, ShopForm shopForm)
+       
+        public AllBookForm(List<Panel> listPanelBook, NewShopMain  shopForm)
         {
             InitializeComponent();
             this.listPanelBook = listPanelBook;
             this.shopForm = shopForm;
             // Genegate Book
-
-            if (listPanelBook.Count > 10)
+            //pnViewAllBook.AutoScroll = true;
+            foreach (var item in listPanelBook)
             {
-                count = 10;
+                pnViewAllBook.Controls.Add(item as Panel);
             }
-            else
-            {
-                count = listPanelBook.Count;
-            }
-
-            for (index = 0; index < count; index++)
-            {
-                if (index == listPanelBook.Count)
-                {
-                    break;
-                }
-                //Book book = ;
-                Panel panel = listPanelBook[index];
-                if (panel == null)
-                {
-                    count++;
-                    countGenerateFail++;
-                    continue;
-                }
-                LPGroupAllBook.Controls.Add(panel);
-            }
-
+            
         }
         public Guna2Panel CreateBookPanelForThis(Book book, int index, int rating = 4)
         {
@@ -139,55 +114,6 @@ namespace App_Library.Views.Main.CollectionShop
         {
 
         }
-        void UpdateNumberPage()
-        {
-
-            if (index - countGenerateFail <= listPanelBook.Count)
-            {
-                lbPage.Text = "1 Trên 1";
-            }
-            else
-            {
-                if (listPanelBook.Count % (index - countGenerateFail) == 0)
-                {
-                    lbPage.Text = currentPage + " Trên " + listPanelBook.Count / (index - countGenerateFail);
-                }
-                else
-                {
-                    lbPage.Text = currentPage + " Trên " + listPanelBook.Count / (index - countGenerateFail + 1);
-                }
-            }
-        }
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            currentPage++;
-            gnpGruopAllBook.Controls.Clear();
-            if (listPanelBook.Count > 10)
-            {
-                count += 10;
-            }
-            else
-            {
-                count += listPanelBook.Count;
-            }
-
-            for (; index < count; index++)
-            {
-                if (index == listPanelBook.Count)
-                {
-                    break;
-                }
-                Book book;
-                Panel panel = listPanelBook[index];
-                if (panel == null)
-                {
-                    count++;
-                    countGenerateFail++;
-                    continue;
-                }
-                LPGroupAllBook.Controls.Add(panel);
-            }
-            UpdateNumberPage();
-        }
+        
     }
 }

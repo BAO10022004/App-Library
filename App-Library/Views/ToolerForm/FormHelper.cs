@@ -183,7 +183,7 @@ namespace App_Library.Views.ToolerForm
 
             // Thêm hình ảnh sách (tăng kích thước)
             PictureBox pictureBox = new PictureBox();
-            pictureBox.Size = new Size(180, 270); // Tăng kích thước ảnh lớn hơn
+            pictureBox.Size = new Size(180, 270); // Tăng kích thước ảnh lớn    hơn
             pictureBox.Location = new Point(10, 10);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.Name = "pictureBox" + index;
@@ -223,7 +223,7 @@ namespace App_Library.Views.ToolerForm
             titleLabel.Font = new Font("Arial", 10, FontStyle.Bold); // Giảm kích thước font chữ
             titleLabel.Name = "titleLabel" + index;
             panel.Controls.Add(titleLabel);
-
+            titleLabel.ForeColor = Color.Blue;
             // Tạo nhãn tên tác giả (giảm kích thước hiển thị)
             Label authorLabel = new Label();
             authorLabel.Text = book.Author;

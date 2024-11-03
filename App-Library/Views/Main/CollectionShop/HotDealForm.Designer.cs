@@ -71,7 +71,6 @@
             // fpHotDealBook
             // 
             this.fpHotDealBook.AutoScroll = true;
-            this.fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size(3000, 0);
             this.fpHotDealBook.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fpHotDealBook.Location = new System.Drawing.Point(0, 52);
             this.fpHotDealBook.Name = "fpHotDealBook";

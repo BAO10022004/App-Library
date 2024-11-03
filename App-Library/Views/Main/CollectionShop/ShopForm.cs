@@ -647,7 +647,7 @@ namespace App_Library.Views
 
         private void gnpButtonAll_Click(object sender, EventArgs e)
         {
-            activeFormChild(gnpGroupBookForCategory, new AllBookForm(listPanelAllBook, this), e);
+            //activeFormChild(gnpGroupBookForCategory, new AllBookForm(listPanelAllBook, this), e);
 
             gnpGroupBookForCategory.BackColor = Color.Transparent;
         }

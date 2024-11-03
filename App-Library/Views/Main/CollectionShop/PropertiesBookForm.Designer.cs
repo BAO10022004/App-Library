@@ -69,7 +69,7 @@
             this.pnBuy.BorderThickness = 5;
             this.pnBuy.Controls.Add(this.label2);
             this.pnBuy.Controls.Add(this.pictureBox2);
-            this.pnBuy.Location = new System.Drawing.Point(138, 691);
+            this.pnBuy.Location = new System.Drawing.Point(111, 655);
             this.pnBuy.Name = "pnBuy";
             this.pnBuy.Size = new System.Drawing.Size(170, 74);
             this.pnBuy.TabIndex = 13;
@@ -108,7 +108,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(28, -1);
+            this.panel1.Location = new System.Drawing.Point(7, -3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(420, 442);
             this.panel1.TabIndex = 0;
@@ -117,9 +117,9 @@
             // 
             this.lbNameBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbNameBook.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lbNameBook.Location = new System.Drawing.Point(23, 394);
+            this.lbNameBook.Location = new System.Drawing.Point(47, 392);
             this.lbNameBook.Name = "lbNameBook";
-            this.lbNameBook.Size = new System.Drawing.Size(425, 53);
+            this.lbNameBook.Size = new System.Drawing.Size(350, 53);
             this.lbNameBook.TabIndex = 1;
             this.lbNameBook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -127,7 +127,7 @@
             // 
             this.lbAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbAuthor.ForeColor = System.Drawing.Color.Black;
-            this.lbAuthor.Location = new System.Drawing.Point(195, 546);
+            this.lbAuthor.Location = new System.Drawing.Point(164, 460);
             this.lbAuthor.Name = "lbAuthor";
             this.lbAuthor.Size = new System.Drawing.Size(269, 33);
             this.lbAuthor.TabIndex = 2;
@@ -137,7 +137,7 @@
             // 
             this.lbPublishedYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbPublishedYear.ForeColor = System.Drawing.Color.Black;
-            this.lbPublishedYear.Location = new System.Drawing.Point(199, 592);
+            this.lbPublishedYear.Location = new System.Drawing.Point(172, 506);
             this.lbPublishedYear.Name = "lbPublishedYear";
             this.lbPublishedYear.Size = new System.Drawing.Size(265, 36);
             this.lbPublishedYear.TabIndex = 3;
@@ -147,7 +147,7 @@
             // 
             this.lbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbCategory.ForeColor = System.Drawing.Color.Black;
-            this.lbCategory.Location = new System.Drawing.Point(203, 637);
+            this.lbCategory.Location = new System.Drawing.Point(172, 556);
             this.lbCategory.Name = "lbCategory";
             this.lbCategory.Size = new System.Drawing.Size(245, 33);
             this.lbCategory.TabIndex = 5;
@@ -157,7 +157,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(36, 546);
+            this.label1.Location = new System.Drawing.Point(12, 460);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 33);
             this.label1.TabIndex = 8;
@@ -168,7 +168,7 @@
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(36, 594);
+            this.label3.Location = new System.Drawing.Point(12, 509);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 33);
             this.label3.TabIndex = 9;
@@ -179,7 +179,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(36, 637);
+            this.label4.Location = new System.Drawing.Point(16, 556);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 33);
             this.label4.TabIndex = 10;
@@ -190,18 +190,18 @@
             // 
             this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbPrice.ForeColor = System.Drawing.Color.Red;
-            this.lbPrice.Location = new System.Drawing.Point(42, 478);
+            this.lbPrice.Location = new System.Drawing.Point(20, 584);
             this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(383, 68);
+            this.lbPrice.Size = new System.Drawing.Size(413, 68);
             this.lbPrice.TabIndex = 12;
             this.lbPrice.Text = "Price: ";
-            this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PropertiesBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(464, 831);
+            this.ClientSize = new System.Drawing.Size(464, 741);
             this.Controls.Add(this.pnBuy);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.label4);
