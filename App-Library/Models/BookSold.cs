@@ -56,4 +56,5 @@ namespace App_Library.Models
         public long TotalSoldBooksTotal { get; set; }
         public List<User> Users { get; set; }
     }
+
 }

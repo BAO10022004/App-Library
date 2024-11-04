@@ -97,7 +97,7 @@ namespace App_Library.Views.Main.CollectionShop
         {
             for (int i = 0; i < 5; i++)
             {
-                var bookPanel = CreateBookAdPanel(listBook[i], i, 4);
+                var bookPanel = listBook[i].CreateBookAdPanel(i, 4);
                 if (bookPanel != null)
                 {
                     getBookFromPanelAd[bookPanel] = listBook[i];
@@ -145,7 +145,7 @@ namespace App_Library.Views.Main.CollectionShop
                 var listBookSorted = listBook.OrderBy(b => b.Price).ToList();
                 for (int i = 0; i < 10; i++)
                 {
-                    var tack = CreateBookPanelAsync(listBook[i], i, 4);
+                    var tack = listBook[i].CreateBookPanelAsync(i, 4);
                     if(await tack != null)
                     {
                         tasks.Add(tack);

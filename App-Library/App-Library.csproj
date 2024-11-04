@@ -220,12 +220,6 @@
     <Compile Include="Views\Main\CollectionShop\AllBookForm.Designer.cs">
       <DependentUpon>AllBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Main\CollectionShop\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Main\CollectionShop\HotDealForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,12 +237,6 @@
     </Compile>
     <Compile Include="Views\Main\CollectionShop\PropertiesBookForm.Designer.cs">
       <DependentUpon>PropertiesBookForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Main\CollectionShop\ShopForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Main\CollectionShop\ShopForm.Designer.cs">
-      <DependentUpon>ShopForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn\LoginForm.cs">
       <SubType>Form</SubType>
@@ -294,9 +282,6 @@
     <EmbeddedResource Include="Views\Main\CollectionShop\AllBookForm.resx">
       <DependentUpon>AllBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\CollectionShop\HotDealForm.resx">
       <DependentUpon>HotDealForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -305,9 +290,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\CollectionShop\PropertiesBookForm.resx">
       <DependentUpon>PropertiesBookForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\ShopForm.resx">
-      <DependentUpon>ShopForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SignIn\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
