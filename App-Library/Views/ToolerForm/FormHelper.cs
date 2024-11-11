@@ -16,6 +16,26 @@ namespace App_Library.Views.ToolerForm
     public class FormHelper : Form
     {
         Form ActForm;
+        public void activeFormChild(System.Windows.Forms.Control ctrlSource, Form formDes)
+        {
+            // Kiểm tra nếu ActForm khác null và đã tồn tại, đóng nó
+            if (ActForm != null && !ActForm.IsDisposed)
+            {
+                ActForm.Close();
+            }
+
+            // Thiết lập form mới vào ActForm
+            ActForm = formDes;
+            formDes.TopLevel = false;
+            formDes.FormBorderStyle = FormBorderStyle.None;
+            formDes.Dock = DockStyle.Fill;
+            // formDes.BackColor = Color.Blue;
+            // Thêm form vào Control và hiển thị
+            ctrlSource.Controls.Add(formDes);
+            ctrlSource.Tag = formDes;
+            formDes.BringToFront();
+            formDes.Show();
+        }
         public void activeFormChild(System.Windows.Forms.Control ctrlSource, Form formDes, object obj)
         {
             // Kiểm tra nếu ActForm khác null và đã tồn tại, đóng nó
@@ -80,8 +100,8 @@ namespace App_Library.Views.ToolerForm
             object image = rm.GetObject(imageName);
             return image as Image;
         }
-       
-       
+
+
 
     }
 

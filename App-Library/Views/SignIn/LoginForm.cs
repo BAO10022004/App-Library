@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.SignIn;
 using DnsClient.Protocol;
 using MongoDB.Driver;
 using System;
@@ -15,71 +16,84 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 // $2a$10$eITLrNBDrQ5zvpaAToD2GO20B5hYEzKY2gtvvpirHIeJiXUECnAf2
 namespace App_Library.Views
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Views.ToolerForm.FormHelper
     {
+        private SplashForm _splashForm;
         private readonly AuthService _authService;
         internal MainForm mainform;
-        public LoginForm()
+        public LoginForm(SplashForm splashForm)
         {
-            _authService = new AuthService();
             InitializeComponent();
+            _splashForm = splashForm;
+            _authService = new AuthService();
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }
-        private void timerClickButonLogin_Tick(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-
-        }
-        private async void btnLogin_Click_1(object sender, EventArgs e)
-        {
-            bool checkLoginSuccess = (await _authService.LoginAsync(txbEmail.Text, txbPassword.Text));
+            bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text);
             if (checkLoginSuccess)
             {
                 MessageBox.Show("Success");
-                timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
-                timerOpenMainForm.Start();
+                _splashForm.OpenMainForm();
             }
         }
-        Form ActForm;
-        public void activeFormChild(Form form, object obj)
+        private async void btnSignInGG_Click(object sender, EventArgs e)
         {
-            if (ActForm != null)
+            var googleLoginForm = new GoogleLoginForm();
+            bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync();
+            if (checkLoginSuccess)
             {
-                ActForm.Close();
+                MessageBox.Show("Success");
+                _splashForm.OpenMainForm();
             }
-            ActForm = form;
-            form.TopLevel = false;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            Program.sp.PnSubLogin.Controls.Add(form);
-            Program.sp.PnSubLogin.Tag = form;
-            Program.sp.Location = new Point(0, 0);
-            Program.sp.BtnExit.Location = new Point(1540 - 35, 1);
-            form.Show();
         }
-        private void timerOpenMainForm_Tick(object sender, EventArgs e)
-        {
 
-            Size newSize = (new Size(1536, 864));
-            if (Program.sp.Location.X > 0)
+        private void lbCreateAccount_Click(object sender, EventArgs e)
+        {
+            _splashForm.OpentSignup();
+        }
+
+        private void txbUserName_Click(object sender, EventArgs e)
+        {
+            if (txbUserName.Text == "Username")
             {
-                int y = Program.sp.Location.Y - 5;
-                Program.sp.Location = new Point((550 / 62 * y), y);
-            }
-            else
-            {
-                timerOpenMainForm.Stop();
-                Program.sp.WindowState = FormWindowState.Maximized;
-                Program.sp.PnSubLogin.Controls.Clear();
-                activeFormChild(new MainForm(), sender);
-            }
-            if (Program.sp.Size.Height < 1080 && Program.sp.Size.Width < 1920)
-            {
-                Program.sp.Size = new Size(Program.sp.Size.Width + 150, Program.sp.Size.Height);
-                Program.sp.Size = new Size(Program.sp.Size.Width, Program.sp.Size.Height + 30);
+                txbUserName.Text = string.Empty;
+                txbUserName.ForeColor = Color.Black;
             }
         }
+
+        private void txbUserName_Leave(object sender, EventArgs e)
+        {
+            if (txbUserName.Text == string.Empty)
+            {
+                txbUserName.Text = "Username";
+                txbUserName.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txbPassword_Click(object sender, EventArgs e)
+        {
+            if (txbPassword.Text == "Password")
+            {
+                txbPassword.Text = string.Empty;
+                txbPassword.PasswordChar = '*';
+                txbPassword.ForeColor = Color.Black;
+            }
+        }
+
+        private void txbPassword_Leave(object sender, EventArgs e)
+        {
+            if (txbPassword.Text == string.Empty)
+            {
+                txbPassword.Text = "Password";
+                txbPassword.PasswordChar = '\0';
+                txbPassword.ForeColor = Color.DarkGray;
+            }
+        }
+
+
     }
 }

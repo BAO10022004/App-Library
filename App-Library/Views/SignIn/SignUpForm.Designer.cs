@@ -29,338 +29,295 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.pnEmail = new System.Windows.Forms.Panel();
-            this.txbEmail = new System.Windows.Forms.TextBox();
-            this.pnPassword = new System.Windows.Forms.Panel();
-            this.txbPassword = new System.Windows.Forms.TextBox();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pnName = new System.Windows.Forms.Panel();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pnConfirm = new System.Windows.Forms.Panel();
-            this.txbConfirm = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
-            this.gneNAme = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.gneEmail = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.gnePassword = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.gneConfirm = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.gneSignUpButton = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.pnEmail.SuspendLayout();
-            this.pnPassword.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            this.pnName.SuspendLayout();
-            this.pnConfirm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.lbOr = new System.Windows.Forms.Label();
+            this.gnPanelConfirmPassword = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbConfirmPassword = new System.Windows.Forms.TextBox();
+            this.gnPanelUsername = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbUsername = new System.Windows.Forms.TextBox();
+            this.gnPanelPassword = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbPassword = new System.Windows.Forms.TextBox();
+            this.gnPanelEmail = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbEmail = new System.Windows.Forms.TextBox();
+            this.btnSignUp = new System.Windows.Forms.Button();
+            this.btnSignInGG = new System.Windows.Forms.Button();
+            this.lbLogin1 = new System.Windows.Forms.Label();
+            this.lbLogin2 = new System.Windows.Forms.Label();
+            this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnMainContentLogin.SuspendLayout();
+            this.gnPanelConfirmPassword.SuspendLayout();
+            this.gnPanelUsername.SuspendLayout();
+            this.gnPanelPassword.SuspendLayout();
+            this.gnPanelEmail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPassword)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.AutoSize = false;
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(193, 174);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(462, 71);
-            this.guna2HtmlLabel1.TabIndex = 1;
-            this.guna2HtmlLabel1.Text = "Main Form";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(40, 207);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 29);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Email";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(40, 291);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 29);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Password: ";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.Color.Blue;
-            this.btnLogin.FlatAppearance.BorderSize = 0;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLogin.Location = new System.Drawing.Point(220, 492);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(150, 60);
-            this.btnLogin.TabIndex = 9;
-            this.btnLogin.Text = "Sign - Up";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // pnEmail
-            // 
-            this.pnEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnEmail.Controls.Add(this.txbEmail);
-            this.pnEmail.Location = new System.Drawing.Point(204, 192);
-            this.pnEmail.Name = "pnEmail";
-            this.pnEmail.Size = new System.Drawing.Size(359, 54);
-            this.pnEmail.TabIndex = 10;
-            // 
-            // txbEmail
-            // 
-            this.txbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbEmail.Location = new System.Drawing.Point(16, 15);
-            this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(298, 27);
-            this.txbEmail.TabIndex = 4;
-            // 
-            // pnPassword
-            // 
-            this.pnPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnPassword.Controls.Add(this.txbPassword);
-            this.pnPassword.Location = new System.Drawing.Point(204, 278);
-            this.pnPassword.Name = "pnPassword";
-            this.pnPassword.Size = new System.Drawing.Size(359, 53);
-            this.pnPassword.TabIndex = 11;
-            // 
-            // txbPassword
-            // 
-            this.txbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbPassword.Location = new System.Drawing.Point(15, 12);
-            this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(313, 27);
-            this.txbPassword.TabIndex = 6;
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(176, 301);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(8, 8);
-            this.guna2CirclePictureBox1.TabIndex = 12;
-            this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.Location = new System.Drawing.Point(40, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 29);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Name: ";
-            // 
-            // pnName
-            // 
-            this.pnName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnName.Controls.Add(this.txbName);
-            this.pnName.Location = new System.Drawing.Point(204, 107);
-            this.pnName.Name = "pnName";
-            this.pnName.Size = new System.Drawing.Size(359, 54);
-            this.pnName.TabIndex = 18;
-            // 
-            // txbName
-            // 
-            this.txbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbName.Location = new System.Drawing.Point(16, 15);
-            this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(298, 27);
-            this.txbName.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(40, 375);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 29);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Confirm: ";
-            // 
-            // pnConfirm
-            // 
-            this.pnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnConfirm.Controls.Add(this.txbConfirm);
-            this.pnConfirm.Location = new System.Drawing.Point(204, 360);
-            this.pnConfirm.Name = "pnConfirm";
-            this.pnConfirm.Size = new System.Drawing.Size(359, 54);
-            this.pnConfirm.TabIndex = 20;
-            // 
-            // txbConfirm
-            // 
-            this.txbConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txbConfirm.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbConfirm.Location = new System.Drawing.Point(16, 15);
-            this.txbConfirm.Name = "txbConfirm";
-            this.txbConfirm.Size = new System.Drawing.Size(298, 27);
-            this.txbConfirm.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::App_Library.Properties.Resources.google;
-            this.pictureBox1.Location = new System.Drawing.Point(177, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::App_Library.Properties.Resources.twitter;
-            this.pictureBox2.Location = new System.Drawing.Point(254, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::App_Library.Properties.Resources.communication;
-            this.pictureBox3.Location = new System.Drawing.Point(322, 12);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 35);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 23;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(185, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(185, 23);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "_______________";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnMainContentLogin
             // 
             this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
-            this.pnMainContentLogin.Controls.Add(this.label6);
-            this.pnMainContentLogin.Controls.Add(this.pictureBox3);
-            this.pnMainContentLogin.Controls.Add(this.pictureBox2);
-            this.pnMainContentLogin.Controls.Add(this.pictureBox1);
-            this.pnMainContentLogin.Controls.Add(this.pnConfirm);
-            this.pnMainContentLogin.Controls.Add(this.label5);
-            this.pnMainContentLogin.Controls.Add(this.pnName);
-            this.pnMainContentLogin.Controls.Add(this.label4);
-            this.pnMainContentLogin.Controls.Add(this.guna2CirclePictureBox1);
-            this.pnMainContentLogin.Controls.Add(this.pnPassword);
-            this.pnMainContentLogin.Controls.Add(this.pnEmail);
-            this.pnMainContentLogin.Controls.Add(this.btnLogin);
-            this.pnMainContentLogin.Controls.Add(this.label3);
-            this.pnMainContentLogin.Controls.Add(this.label2);
-            this.pnMainContentLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMainContentLogin.Controls.Add(this.lbOr);
+            this.pnMainContentLogin.Controls.Add(this.gnPanelConfirmPassword);
+            this.pnMainContentLogin.Controls.Add(this.gnPanelUsername);
+            this.pnMainContentLogin.Controls.Add(this.gnPanelPassword);
+            this.pnMainContentLogin.Controls.Add(this.gnPanelEmail);
+            this.pnMainContentLogin.Controls.Add(this.btnSignUp);
+            this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
+            this.pnMainContentLogin.Controls.Add(this.lbLogin1);
+            this.pnMainContentLogin.Controls.Add(this.lbLogin2);
             this.pnMainContentLogin.Location = new System.Drawing.Point(0, 0);
             this.pnMainContentLogin.Name = "pnMainContentLogin";
-            this.pnMainContentLogin.Size = new System.Drawing.Size(588, 696);
+            this.pnMainContentLogin.Size = new System.Drawing.Size(580, 620);
             this.pnMainContentLogin.TabIndex = 5;
-            this.pnMainContentLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMainContentLogin_Paint);
             // 
-            // gneNAme
+            // lbOr
             // 
-            this.gneNAme.BorderRadius = 30;
-            this.gneNAme.TargetControl = this.pnName;
+            this.lbOr.AutoSize = true;
+            this.lbOr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbOr.ForeColor = System.Drawing.Color.Black;
+            this.lbOr.Location = new System.Drawing.Point(278, 444);
+            this.lbOr.Name = "lbOr";
+            this.lbOr.Size = new System.Drawing.Size(24, 20);
+            this.lbOr.TabIndex = 18;
+            this.lbOr.Text = "or";
             // 
-            // gneEmail
+            // gnPanelConfirmPassword
             // 
-            this.gneEmail.BorderRadius = 30;
-            this.gneEmail.TargetControl = this.pnEmail;
+            this.gnPanelConfirmPassword.BorderColor = System.Drawing.Color.DarkGray;
+            this.gnPanelConfirmPassword.BorderRadius = 10;
+            this.gnPanelConfirmPassword.BorderThickness = 2;
+            this.gnPanelConfirmPassword.Controls.Add(this.txbConfirmPassword);
+            this.gnPanelConfirmPassword.Location = new System.Drawing.Point(85, 288);
+            this.gnPanelConfirmPassword.Name = "gnPanelConfirmPassword";
+            this.gnPanelConfirmPassword.Size = new System.Drawing.Size(410, 56);
+            this.gnPanelConfirmPassword.TabIndex = 17;
             // 
-            // gnePassword
+            // txbConfirmPassword
             // 
-            this.gnePassword.BorderRadius = 30;
-            this.gnePassword.TargetControl = this.pnPassword;
+            this.txbConfirmPassword.BackColor = System.Drawing.Color.White;
+            this.txbConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbConfirmPassword.ForeColor = System.Drawing.Color.DarkGray;
+            this.txbConfirmPassword.Location = new System.Drawing.Point(30, 17);
+            this.txbConfirmPassword.Name = "txbConfirmPassword";
+            this.txbConfirmPassword.Size = new System.Drawing.Size(350, 21);
+            this.txbConfirmPassword.TabIndex = 4;
+            this.txbConfirmPassword.Text = "Confirm Password";
+            this.txbConfirmPassword.Click += new System.EventHandler(this.txbConfirmPassword_Click);
+            this.txbConfirmPassword.Leave += new System.EventHandler(this.txbConfirmPassword_Leave);
             // 
-            // gneConfirm
+            // gnPanelUsername
             // 
-            this.gneConfirm.BorderRadius = 30;
-            this.gneConfirm.TargetControl = this.pnConfirm;
+            this.gnPanelUsername.BorderColor = System.Drawing.Color.DarkGray;
+            this.gnPanelUsername.BorderRadius = 10;
+            this.gnPanelUsername.BorderThickness = 2;
+            this.gnPanelUsername.Controls.Add(this.txbUsername);
+            this.gnPanelUsername.Location = new System.Drawing.Point(85, 136);
+            this.gnPanelUsername.Name = "gnPanelUsername";
+            this.gnPanelUsername.Size = new System.Drawing.Size(410, 56);
+            this.gnPanelUsername.TabIndex = 15;
             // 
-            // gneSignUpButton
+            // txbUsername
             // 
-            this.gneSignUpButton.BorderRadius = 30;
-            this.gneSignUpButton.TargetControl = this.btnLogin;
+            this.txbUsername.BackColor = System.Drawing.Color.White;
+            this.txbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbUsername.ForeColor = System.Drawing.Color.DarkGray;
+            this.txbUsername.Location = new System.Drawing.Point(30, 17);
+            this.txbUsername.Name = "txbUsername";
+            this.txbUsername.Size = new System.Drawing.Size(350, 21);
+            this.txbUsername.TabIndex = 4;
+            this.txbUsername.Text = "Username";
+            this.txbUsername.Click += new System.EventHandler(this.txbUsername_Click);
+            this.txbUsername.Leave += new System.EventHandler(this.txbUsername_Leave);
+            // 
+            // gnPanelPassword
+            // 
+            this.gnPanelPassword.BorderColor = System.Drawing.Color.DarkGray;
+            this.gnPanelPassword.BorderRadius = 10;
+            this.gnPanelPassword.BorderThickness = 2;
+            this.gnPanelPassword.Controls.Add(this.txbPassword);
+            this.gnPanelPassword.Location = new System.Drawing.Point(85, 212);
+            this.gnPanelPassword.Name = "gnPanelPassword";
+            this.gnPanelPassword.Size = new System.Drawing.Size(410, 56);
+            this.gnPanelPassword.TabIndex = 16;
+            // 
+            // txbPassword
+            // 
+            this.txbPassword.BackColor = System.Drawing.Color.White;
+            this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbPassword.ForeColor = System.Drawing.Color.DarkGray;
+            this.txbPassword.Location = new System.Drawing.Point(30, 17);
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(350, 21);
+            this.txbPassword.TabIndex = 4;
+            this.txbPassword.Text = "Password";
+            this.txbPassword.Click += new System.EventHandler(this.txbPassword_Click);
+            this.txbPassword.Leave += new System.EventHandler(this.txbPassword_Leave);
+            // 
+            // gnPanelEmail
+            // 
+            this.gnPanelEmail.BorderColor = System.Drawing.Color.DarkGray;
+            this.gnPanelEmail.BorderRadius = 10;
+            this.gnPanelEmail.BorderThickness = 2;
+            this.gnPanelEmail.Controls.Add(this.txbEmail);
+            this.gnPanelEmail.Location = new System.Drawing.Point(85, 60);
+            this.gnPanelEmail.Name = "gnPanelEmail";
+            this.gnPanelEmail.Size = new System.Drawing.Size(410, 56);
+            this.gnPanelEmail.TabIndex = 14;
+            // 
+            // txbEmail
+            // 
+            this.txbEmail.BackColor = System.Drawing.Color.White;
+            this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbEmail.ForeColor = System.Drawing.Color.DarkGray;
+            this.txbEmail.Location = new System.Drawing.Point(30, 17);
+            this.txbEmail.Name = "txbEmail";
+            this.txbEmail.Size = new System.Drawing.Size(350, 21);
+            this.txbEmail.TabIndex = 4;
+            this.txbEmail.Text = "Email";
+            this.txbEmail.Click += new System.EventHandler(this.txbEmail_Click);
+            this.txbEmail.Leave += new System.EventHandler(this.txbEmail_Leave);
+            // 
+            // btnSignUp
+            // 
+            this.btnSignUp.BackColor = System.Drawing.Color.Blue;
+            this.btnSignUp.FlatAppearance.BorderSize = 0;
+            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSignUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSignUp.Location = new System.Drawing.Point(85, 384);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(410, 55);
+            this.btnSignUp.TabIndex = 13;
+            this.btnSignUp.Text = "Sign Up";
+            this.btnSignUp.UseVisualStyleBackColor = false;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            // 
+            // btnSignInGG
+            // 
+            this.btnSignInGG.BackColor = System.Drawing.Color.Blue;
+            this.btnSignInGG.FlatAppearance.BorderSize = 0;
+            this.btnSignInGG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignInGG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSignInGG.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSignInGG.Location = new System.Drawing.Point(85, 469);
+            this.btnSignInGG.Name = "btnSignInGG";
+            this.btnSignInGG.Size = new System.Drawing.Size(410, 55);
+            this.btnSignInGG.TabIndex = 12;
+            this.btnSignInGG.Text = "Continue With Google";
+            this.btnSignInGG.UseVisualStyleBackColor = false;
+            this.btnSignInGG.Click += new System.EventHandler(this.btnSignInGG_Click);
+            // 
+            // lbLogin1
+            // 
+            this.lbLogin1.AutoSize = true;
+            this.lbLogin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbLogin1.ForeColor = System.Drawing.Color.Black;
+            this.lbLogin1.Location = new System.Drawing.Point(85, 529);
+            this.lbLogin1.Name = "lbLogin1";
+            this.lbLogin1.Size = new System.Drawing.Size(201, 20);
+            this.lbLogin1.TabIndex = 8;
+            this.lbLogin1.Text = "Already have an account?";
+            this.lbLogin1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbLogin2
+            // 
+            this.lbLogin2.AutoSize = true;
+            this.lbLogin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbLogin2.ForeColor = System.Drawing.Color.Blue;
+            this.lbLogin2.Location = new System.Drawing.Point(315, 529);
+            this.lbLogin2.Name = "lbLogin2";
+            this.lbLogin2.Size = new System.Drawing.Size(55, 20);
+            this.lbLogin2.TabIndex = 7;
+            this.lbLogin2.Text = "Login!";
+            this.lbLogin2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbLogin2.Click += new System.EventHandler(this.lbLogin2_Click);
+            // 
+            // gnBtnSignInGG
+            // 
+            this.gnBtnSignInGG.BorderRadius = 30;
+            this.gnBtnSignInGG.TargetControl = this.btnSignInGG;
+            // 
+            // gnBtnLogin
+            // 
+            this.gnBtnLogin.BorderRadius = 30;
+            this.gnBtnLogin.TargetControl = this.btnSignUp;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
+            // errorProviderUsername
+            // 
+            this.errorProviderUsername.ContainerControl = this;
+            // 
+            // errorProviderPassword
+            // 
+            this.errorProviderPassword.ContainerControl = this;
+            // 
+            // errorProviderConfirmPassword
+            // 
+            this.errorProviderConfirmPassword.ContainerControl = this;
             // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 696);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(580, 620);
             this.Controls.Add(this.pnMainContentLogin);
-            this.Controls.Add(this.guna2HtmlLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SignUpForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
-            this.pnEmail.ResumeLayout(false);
-            this.pnEmail.PerformLayout();
-            this.pnPassword.ResumeLayout(false);
-            this.pnPassword.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            this.pnName.ResumeLayout(false);
-            this.pnName.PerformLayout();
-            this.pnConfirm.ResumeLayout(false);
-            this.pnConfirm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnMainContentLogin.ResumeLayout(false);
             this.pnMainContentLogin.PerformLayout();
+            this.gnPanelConfirmPassword.ResumeLayout(false);
+            this.gnPanelConfirmPassword.PerformLayout();
+            this.gnPanelUsername.ResumeLayout(false);
+            this.gnPanelUsername.PerformLayout();
+            this.gnPanelPassword.ResumeLayout(false);
+            this.gnPanelPassword.PerformLayout();
+            this.gnPanelEmail.ResumeLayout(false);
+            this.gnPanelEmail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPassword)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Panel pnEmail;
-        private System.Windows.Forms.TextBox txbEmail;
-        private System.Windows.Forms.Panel pnPassword;
-        private System.Windows.Forms.TextBox txbPassword;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel pnName;
-        private System.Windows.Forms.TextBox txbName;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel pnConfirm;
-        private System.Windows.Forms.TextBox txbConfirm;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnMainContentLogin;
-        private Guna.UI2.WinForms.Guna2Elipse gneNAme;
-        private Guna.UI2.WinForms.Guna2Elipse gneEmail;
-        private Guna.UI2.WinForms.Guna2Elipse gnePassword;
-        private Guna.UI2.WinForms.Guna2Elipse gneConfirm;
-        private Guna.UI2.WinForms.Guna2Elipse gneSignUpButton;
+        private Guna.UI2.WinForms.Guna2Panel gnPanelUsername;
+        private System.Windows.Forms.TextBox txbUsername;
+        private Guna.UI2.WinForms.Guna2Panel gnPanelEmail;
+        private System.Windows.Forms.TextBox txbEmail;
+        private System.Windows.Forms.Button btnSignUp;
+        private System.Windows.Forms.Button btnSignInGG;
+        private System.Windows.Forms.Label lbLogin1;
+        private Guna.UI2.WinForms.Guna2Panel gnPanelConfirmPassword;
+        private System.Windows.Forms.TextBox txbConfirmPassword;
+        private Guna.UI2.WinForms.Guna2Panel gnPanelPassword;
+        private System.Windows.Forms.TextBox txbPassword;
+        private System.Windows.Forms.Label lbLogin2;
+        private System.Windows.Forms.Label lbOr;
+        private Guna.UI2.WinForms.Guna2Elipse gnBtnSignInGG;
+        private Guna.UI2.WinForms.Guna2Elipse gnBtnLogin;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
+        private System.Windows.Forms.ErrorProvider errorProviderUsername;
+        private System.Windows.Forms.ErrorProvider errorProviderPassword;
+        private System.Windows.Forms.ErrorProvider errorProviderConfirmPassword;
     }
 }

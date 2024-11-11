@@ -1,4 +1,5 @@
-﻿using App_Library.Views.ToolerForm;
+﻿using App_Library.Views.Main.CollectionShop;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,25 +14,22 @@ namespace App_Library.Views
 {
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
-        internal LoginForm loginForm;
-        internal SignUpForm signUpForm;
         Point pointLbWelcome;
-        //Check Login dang duoc mo chua????
-        bool checkOpenLogin = false;
-        //Check sign-up dang duoc mo chua????
-        bool checkOpenSignUp = false;
-        //Check page nao dang duoc hien
-        bool checkPageLogin = false;
+
         public SplashForm()
         {
             InitializeComponent();
         }
-
+        private void SplashForm_Load(object sender, EventArgs e)
+        {
+            //pointLbWelcome = new Point((this.Size.Width - lbWellcome.Size.Width) / 2, 0);
+        }
+        // Bấm nút thoát
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        // Di chuyển cửa sổ
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
 
@@ -40,169 +38,96 @@ namespace App_Library.Views
                 this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
             }
         }
-
-        private void pnSubLogin_Paint(object sender, PaintEventArgs e)
+        // Bấm nút đăng nhập
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
-
+            timerClickButonLogin.Start();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnFrameOption_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnLogInContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        int Y;
-        Button btnSaveButtonRemove;
+        // Bấm nút đăng ký
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (loginForm == null && signUpForm == null)
-            {
-                loginForm = new LoginForm();
-                signUpForm = new SignUpForm();
-                timerSignUp.Start();
-                checkOpenLogin = true;
-                checkPageLogin = false;
-            }
-            else
-            {
-                signUpForm = new SignUpForm();
-                timer2SignUp.Start();
-                checkOpenSignUp = true;
-                checkPageLogin = false;
-            }
+            timerClickButtonSignUp.Start();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void movePanelConten()
         {
-            Y = lbWellcome.Location.Y;
-
-            if (loginForm == null && signUpForm == null)
+            if (lbWellcome.Location.Y > 30)
             {
-                loginForm = new LoginForm();
-                signUpForm = new SignUpForm();
-                timerClickButonLogin.Start();
-                checkOpenLogin = true;
-                checkPageLogin = true;
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - ((215 - 30) / 50));
             }
-            else
+            if (pnFrameOption.Location.Y > 130)
             {
-                if (!checkPageLogin && checkOpenLogin == true)
-                {
-                    loginForm = new LoginForm();
-                    timerClickButonLogin2.Start();
-                    checkOpenLogin = true;
-                    checkPageLogin = true;
-                }
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - ((490 - 130) / 50));
+            }
+            if (pnLoginSignupContent.Location.Y > 0)
+            {
+                pnLoginSignupContent.Location = new Point(pnLoginSignupContent.Location.X, pnLoginSignupContent.Location.Y - ((260 - 0) / 50));
             }
         }
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y > 10)
+            if (lbWellcome.Location.Y > 30 || pnFrameOption.Location.Y > 130 || pnLoginSignupContent.Location.Y > 0)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 410 / 37);
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 550 / 37));
-                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+                movePanelConten();
             }
             else
             {
-                timerSignUp.Stop();
-                pnLogInContent.Location = new Point(0, 119);
-                lbWellcome.Location = pointLbWelcome;
-                lbWellcome.Text = "SIGN - UP ";
-                pnFrameOption.Controls.Remove(btnSignUp);
-                button1.Location = new Point(120, 14);
-                pnFrameOption.Controls.Add(button1);
-                this.activeFormChild(this.pnLogInContent, signUpForm, sender);
-                return;
-            }
-        }
-        private void timerSignUp2_Tick(object sender, EventArgs e)
-        {
-            if (lbWellcome.Location.Y < 50)
-            {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
-                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
-            }
-            else
-            {
-                timer2SignUp.Stop();
-                btnSignUp.Location = new Point(120, 14);
-                pnFrameOption.Controls.Remove(btnSignUp);
-                pnFrameOption.Controls.Add(button1);
-                pnLogInContent.Location = new Point(0, 119);
-                lbWellcome.Location = pointLbWelcome;
-
+                timerClickButtonSignUp.Stop();
                 lbWellcome.Text = "SIGN - UP";
-                this.activeFormChild(this.pnLogInContent, signUpForm, sender);
+                this.activeFormChild(this.pnLoginSignupContent, new SignUpForm(this), sender);
                 return;
             }
-        }
-        private void lbWellcome_Click(object sender, EventArgs e)
-        {
-
         }
         private void timerClickButonLogin_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y > 10)
+            if (lbWellcome.Location.Y > 30 || pnFrameOption.Location.Y > 130 || pnLoginSignupContent.Location.Y > 0)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - 410 / 37);
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - (2 * 550 / 37));
-                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+                movePanelConten();
             }
             else
             {
                 timerClickButonLogin.Stop();
-                btnSignUp.Location = new Point(120, 14);
-                btnSaveButtonRemove = new Button();
-                pnFrameOption.Controls.Remove(button1);
-                pnLogInContent.Location = new Point(0, 119);
-                lbWellcome.Location = pointLbWelcome;
-                lbWellcome.Text = "SIGN - IN ";
-                this.activeFormChild(this.pnLogInContent, loginForm, sender);
+                lbWellcome.Text = "SIGN - IN";
+                this.activeFormChild(this.pnLoginSignupContent, new LoginForm(this), sender);
                 return;
             }
         }
-        private void timerClickButonLogin2_Tick(object sender, EventArgs e)
+        private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y < 50)
+            if (Location.X > 0)
             {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y + 210 / 37);
-                btnSignUp.Location = new Point(btnSignUp.Location.X, btnSignUp.Location.Y - 100 / 37);
+                int y = Location.Y - 5;
+                Location = new Point((550 / 62 * y), y);
             }
             else
             {
-                timerClickButonLogin2.Stop();
-                btnSignUp.Location = new Point(120, 14);
-                pnFrameOption.Controls.Remove(button1);
-                pnFrameOption.Controls.Add(btnSignUp);
-                pnLogInContent.Location = new Point(0, 119);
-                lbWellcome.Location = pointLbWelcome;
-                lbWellcome.Text = "SIGN - IN";
-                this.activeFormChild(this.pnLogInContent, loginForm, sender);
-                return;
+                timerOpenMainForm.Stop();
+                WindowState = FormWindowState.Maximized;
+                PnSubLogin.Controls.Clear();
+                Location = new Point(0, 0);
+                BtnExit.Location = new Point(1540 - 35, 1);
+                this.activeFormChild(this.PnSubLogin, new MainForm(), sender);
+            }
+            if (Size.Height < 1080 && Size.Width < 1920)
+            {
+                Size = new Size(Size.Width + 150, Size.Height + 30);
             }
         }
-        private void SplashForm_Load(object sender, EventArgs e)
+        // Mở Form LogIn
+        public void OpentLogin()
         {
-            pointLbWelcome = new Point((this.Size.Width - lbWellcome.Size.Width) / 2, 0);
+            lbWellcome.Text = "SIGN - IN";
+            this.activeFormChild(this.pnLoginSignupContent, new LoginForm(this));
+        }
+        // Mở Form SignUp
+        public void OpentSignup()
+        {
+            lbWellcome.Text = "SIGN - UP";
+            this.activeFormChild(this.pnLoginSignupContent, new SignUpForm(this));
+        }
+        // Mở Form chính
+        public void OpenMainForm()
+        {
+            timerOpenMainForm.Start();
         }
     }
 }

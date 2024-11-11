@@ -43,23 +43,25 @@ namespace App_Library.Services
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return result?.Token;
+                return "Success";
             }
-            return "";
+
+            return await response.Content.ReadAsStringAsync();
         }
 
         // Gọi API đăng nhập bằng Google
-        public async Task<string> GoogleLoginAsync(string email, string name, string googlePhotoURL)
+        public async Task<bool> GoogleLoginAsync(GoogleLoginRequest googleLoginRequest)
         {
-            var request = new GoogleLoginRequest { Email = email, Name = name, GooglePhotoURL = googlePhotoURL };
-            var response = await _httpClient.PostAsJsonAsync("api/auth/google-login", request);
+            //var request = new GoogleLoginRequest { Email = email, Name = name, GooglePhotoURL = googlePhotoURL };
+            var response = await _httpClient.PostAsJsonAsync("api/auth/google-login", googleLoginRequest);
 
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                return result?.Token;
+                Session.Token = result.Token;
+                return true;
             }
-            return "";
+            return false;
         }
     }
 

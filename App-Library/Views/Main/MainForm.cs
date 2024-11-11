@@ -28,7 +28,7 @@ namespace App_Library.Views
         private Point dragStartPoint;
         private Control draggedControl;
         private HomeForm homeForm;
-        private ShopForm shopForm;
+        private NewShopMain shopForm;
         // compunent shop 
         List<Panel> listBookAd;
         List<Book> books;
@@ -54,7 +54,7 @@ namespace App_Library.Views
             lbEmail.Text = currentUser.Email;
 
             homeForm = new HomeForm();
-            shopForm = new ShopForm();
+            shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnListsButton.Controls)
@@ -232,7 +232,7 @@ namespace App_Library.Views
                 picShop.Location = pointSave;
                 lbShop.Text = lbShop.Name.Substring(2);
 
-                if (!(currentForm is ShopForm))
+                if (!(currentForm is NewShopMain))
                 {
                     activeFormChildForMainForm(new NewShopMain(), e);
                     currentForm = shopForm;

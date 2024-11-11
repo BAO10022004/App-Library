@@ -33,62 +33,59 @@ namespace App_Library.Views
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashForm));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnHeader = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnSubLogin = new System.Windows.Forms.Panel();
             this.pnFrameOption = new System.Windows.Forms.Panel();
-            this.pnLogInContent = new System.Windows.Forms.Panel();
+            this.pnLoginSignupContent = new System.Windows.Forms.Panel();
             this.btnSignUp = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogIn = new System.Windows.Forms.Button();
             this.lbWellcome = new System.Windows.Forms.Label();
             this.gneContentLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerClickButonLogin = new System.Windows.Forms.Timer(this.components);
             this.gneBtnSingIn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.timerSignUp = new System.Windows.Forms.Timer(this.components);
-            this.timerClickButonLogin2 = new System.Windows.Forms.Timer(this.components);
-            this.timer2SignUp = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
+            this.timerClickButtonSignUp = new System.Windows.Forms.Timer(this.components);
+            this.timerOpenMainForm = new System.Windows.Forms.Timer(this.components);
+            this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             this.pnSubLogin.SuspendLayout();
             this.pnFrameOption.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnHeader
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 38);
-            this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.pnHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnHeader.Controls.Add(this.pictureBox1);
+            this.pnHeader.Controls.Add(this.btnExit);
+            this.pnHeader.Controls.Add(this.label1);
+            this.pnHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnHeader.Margin = new System.Windows.Forms.Padding(0);
+            this.pnHeader.Name = "pnHeader";
+            this.pnHeader.Size = new System.Drawing.Size(580, 40);
+            this.pnHeader.TabIndex = 2;
+            this.pnHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(52, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnExit
             // 
             this.btnExit.Image = global::App_Library.Properties.Resources.cross;
-            this.btnExit.Location = new System.Drawing.Point(540, 1);
+            this.btnExit.Location = new System.Drawing.Point(545, 3);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(35, 32);
+            this.btnExit.Size = new System.Drawing.Size(30, 30);
             this.btnExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnExit.TabIndex = 2;
             this.btnExit.TabStop = false;
@@ -103,7 +100,6 @@ namespace App_Library.Views
             this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Login Frame";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnSubLogin
             // 
@@ -112,70 +108,68 @@ namespace App_Library.Views
             this.pnSubLogin.Controls.Add(this.pnFrameOption);
             this.pnSubLogin.Controls.Add(this.lbWellcome);
             this.pnSubLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnSubLogin.Location = new System.Drawing.Point(0, 38);
+            this.pnSubLogin.Location = new System.Drawing.Point(0, 40);
             this.pnSubLogin.Name = "pnSubLogin";
-            this.pnSubLogin.Size = new System.Drawing.Size(580, 812);
+            this.pnSubLogin.Size = new System.Drawing.Size(580, 760);
             this.pnSubLogin.TabIndex = 5;
-            this.pnSubLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSubLogin_Paint);
             // 
             // pnFrameOption
             // 
             this.pnFrameOption.BackColor = System.Drawing.Color.White;
-            this.pnFrameOption.Controls.Add(this.pnLogInContent);
+            this.pnFrameOption.Controls.Add(this.pnLoginSignupContent);
             this.pnFrameOption.Controls.Add(this.btnSignUp);
-            this.pnFrameOption.Controls.Add(this.button1);
-            this.pnFrameOption.Location = new System.Drawing.Point(-1, 617);
+            this.pnFrameOption.Controls.Add(this.btnLogIn);
+            this.pnFrameOption.Location = new System.Drawing.Point(0, 490);
             this.pnFrameOption.Name = "pnFrameOption";
-            this.pnFrameOption.Size = new System.Drawing.Size(580, 800);
+            this.pnFrameOption.Size = new System.Drawing.Size(580, 894);
             this.pnFrameOption.TabIndex = 3;
-            this.pnFrameOption.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFrameOption_Paint);
             // 
-            // pnLogInContent
+            // pnLoginSignupContent
             // 
-            this.pnLogInContent.Location = new System.Drawing.Point(4, 239);
-            this.pnLogInContent.Name = "pnLogInContent";
-            this.pnLogInContent.Size = new System.Drawing.Size(576, 596);
-            this.pnLogInContent.TabIndex = 2;
+            this.pnLoginSignupContent.Location = new System.Drawing.Point(0, 260);
+            this.pnLoginSignupContent.Name = "pnLoginSignupContent";
+            this.pnLoginSignupContent.Size = new System.Drawing.Size(580, 620);
+            this.pnLoginSignupContent.TabIndex = 2;
             // 
             // btnSignUp
             // 
+            this.btnSignUp.BackColor = System.Drawing.Color.Gainsboro;
             this.btnSignUp.FlatAppearance.BorderSize = 0;
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSignUp.Location = new System.Drawing.Point(152, 117);
+            this.btnSignUp.Location = new System.Drawing.Point(150, 150);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(285, 73);
+            this.btnSignUp.Size = new System.Drawing.Size(280, 70);
             this.btnSignUp.TabIndex = 1;
             this.btnSignUp.Text = "Sign - Up";
-            this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
-            // button1
+            // btnLogIn
             // 
-            this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(152, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(285, 73);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Sign - In ";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLogIn.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLogIn.FlatAppearance.BorderSize = 0;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLogIn.Location = new System.Drawing.Point(150, 40);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(280, 70);
+            this.btnLogIn.TabIndex = 0;
+            this.btnLogIn.Text = "Sign - In ";
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // lbWellcome
             // 
             this.lbWellcome.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lbWellcome.Font = new System.Drawing.Font("Mistral", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWellcome.ForeColor = System.Drawing.Color.White;
-            this.lbWellcome.Location = new System.Drawing.Point(116, 213);
+            this.lbWellcome.Location = new System.Drawing.Point(115, 215);
             this.lbWellcome.Name = "lbWellcome";
-            this.lbWellcome.Size = new System.Drawing.Size(355, 83);
+            this.lbWellcome.Size = new System.Drawing.Size(350, 80);
             this.lbWellcome.TabIndex = 2;
             this.lbWellcome.Text = "WELLCOME BACK";
             this.lbWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbWellcome.Click += new System.EventHandler(this.lbWellcome_Click);
             // 
             // gneContentLogin
             // 
@@ -184,48 +178,42 @@ namespace App_Library.Views
             // 
             // timerClickButonLogin
             // 
-            this.timerClickButonLogin.Interval = 1;
+            this.timerClickButonLogin.Interval = 5;
             this.timerClickButonLogin.Tick += new System.EventHandler(this.timerClickButonLogin_Tick);
             // 
             // gneBtnSingIn
             // 
             this.gneBtnSingIn.BorderRadius = 50;
-            this.gneBtnSingIn.TargetControl = this.button1;
+            this.gneBtnSingIn.TargetControl = this.btnLogIn;
             // 
             // gneBtnSingUp
             // 
             this.gneBtnSingUp.BorderRadius = 40;
             this.gneBtnSingUp.TargetControl = this.btnSignUp;
             // 
-            // timerSignUp
+            // timerClickButtonSignUp
             // 
-            this.timerSignUp.Interval = 5;
-            this.timerSignUp.Tick += new System.EventHandler(this.timerSignUp_Tick);
+            this.timerClickButtonSignUp.Interval = 5;
+            this.timerClickButtonSignUp.Tick += new System.EventHandler(this.timerSignUp_Tick);
             // 
-            // timerClickButonLogin2
+            // timerOpenMainForm
             // 
-            this.timerClickButonLogin2.Interval = 5;
-            this.timerClickButonLogin2.Tick += new System.EventHandler(this.timerClickButonLogin2_Tick);
-            // 
-            // timer2SignUp
-            // 
-            this.timer2SignUp.Interval = 5;
-            this.timer2SignUp.Tick += new System.EventHandler(this.timerSignUp2_Tick);
+            this.timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
             // 
             // SplashForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 850);
+            this.ClientSize = new System.Drawing.Size(580, 800);
             this.Controls.Add(this.pnSubLogin);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
             this.Load += new System.EventHandler(this.SplashForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnHeader.ResumeLayout(false);
+            this.pnHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
             this.pnSubLogin.ResumeLayout(false);
@@ -236,23 +224,22 @@ namespace App_Library.Views
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnHeader;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox btnExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnSubLogin;
         private System.Windows.Forms.Panel pnFrameOption;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Label lbWellcome;
         private Guna.UI2.WinForms.Guna2Elipse gneContentLogin;
         private System.Windows.Forms.Timer timerClickButonLogin;
         private Guna.UI2.WinForms.Guna2Elipse gneBtnSingIn;
         private Guna.UI2.WinForms.Guna2Elipse gneBtnSingUp;
-        private Panel pnLogInContent;
-        private Timer timerSignUp;
-        private Timer timerClickButonLogin2;
-        private Timer timer2SignUp;
+        private Timer timerClickButtonSignUp;
+        private Panel pnLoginSignupContent;
+        private Timer timerOpenMainForm;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
         public PictureBox BtnExit { get => btnExit; set => btnExit = value; }

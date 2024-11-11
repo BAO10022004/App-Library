@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Views;
+using App_Library.Views.SignIn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace App_Library
             Application.SetCompatibleTextRenderingDefault(false);
             sp = new SplashForm();
             Application.Run(sp);
-            //Application.Run(new Test(context));
+            //Application.Run(new PdfViewerForm());
+            //Application.Run(new GoogleLoginForm());
+            //Application.Run(new Form1());
         }
     }
 }
