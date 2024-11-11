@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace App_Library.Models
 {
@@ -49,12 +50,24 @@ namespace App_Library.Models
 
         [BsonElement("slug")]
         public string Slug { get; set; }  // Loại bỏ nullable reference
-    }
-    public class SoldBooksResponse
+        //[JsonConstructor]
+        //public BookSold(Book book , User user){
+        //    this.BookId = book.Id;
+        //    this.Title = book.Title;
+        //    this.Price = book.Price;
+        //    UserId = user.Id;
+        //    Username = book.Username;
+        //    this.Email = user.Email;
+        //    Image = book.Image;
+        //    Genre = book.Genre;
+        //    Slug = book.Slug;
+        //}
+}
+public class SoldBooksResponse
     {
         public long TotalSoldBooks { get; set; }
         public long TotalSoldBooksTotal { get; set; }
         public List<User> Users { get; set; }
     }
-
+    
 }

@@ -28,7 +28,7 @@ namespace App_Library.Views
         private Point dragStartPoint;
         private Control draggedControl;
         private HomeForm homeForm;
-        private ShopForm shopForm;
+
         // compunent shop 
         List<Panel> listBookAd;
         List<Book> books;
@@ -51,10 +51,9 @@ namespace App_Library.Views
         {
             var currentUser = await _userService.GetCurrentUserAsync();
             lbName.Text = currentUser.Username;
-            lbEmail.Text = currentUser.Email;
+            //lbEmail.Text = currentUser.Email;
 
             homeForm = new HomeForm();
-            shopForm = new ShopForm();
             books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnListsButton.Controls)
@@ -70,7 +69,7 @@ namespace App_Library.Views
                 }
             }
             activeFormChild(pnContent, homeForm, e);
-            currentForm = homeForm;
+            currentForm = new HomeForm();
             foreach (var item in pnListsButton.Controls)
             {
                 Panel panel = item as Panel;
@@ -120,12 +119,12 @@ namespace App_Library.Views
         }
         private void txbSearch_Click(object sender, EventArgs e)
         {
-            txbSearch.Enabled = true;
+            //txbSearch.Enabled = true;
         }
 
         private void pnSearchMain_Click(object sender, EventArgs e)
         {
-            txbSearch.Enabled = true;
+            //txbSearch.Enabled = true;
         }
         void setIsClick(object sender)
         {
@@ -214,8 +213,9 @@ namespace App_Library.Views
                 if (!(currentForm is HomeForm))
                 {
                     homeForm = new HomeForm();
-                    activeFormChildForMainForm(homeForm, e);
                     currentForm = homeForm;
+                    activeFormChildForMainForm(homeForm, e);
+                   
                 }
             }
         }
@@ -232,10 +232,11 @@ namespace App_Library.Views
                 picShop.Location = pointSave;
                 lbShop.Text = lbShop.Name.Substring(2);
 
-                if (!(currentForm is ShopForm))
+                if (!(currentForm is NewShopMain))
                 {
+                    currentForm =new  NewShopMain();
                     activeFormChildForMainForm(new NewShopMain(), e);
-                    currentForm = shopForm;
+                    
                 }
             }
         }

@@ -28,78 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.fpHotDealBook = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.pnMainTittle = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnTittle = new Guna.UI2.WinForms.Guna2Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbTittle = new System.Windows.Forms.Label();
+            this.fpListBook = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnMainTittle.SuspendLayout();
+            this.pnTittle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2Panel1
+            // pnMainTittle
             // 
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1170, 52);
-            this.guna2Panel1.TabIndex = 0;
+            this.pnMainTittle.Controls.Add(this.pnTittle);
+            this.pnMainTittle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnMainTittle.Location = new System.Drawing.Point(0, 0);
+            this.pnMainTittle.Name = "pnMainTittle";
+            this.pnMainTittle.Size = new System.Drawing.Size(1300, 52);
+            this.pnMainTittle.TabIndex = 0;
+            this.pnMainTittle.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
-            // label1
+            // pnTittle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(57, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "HOT DEAL !!!";
+            this.pnTittle.Controls.Add(this.pictureBox1);
+            this.pnTittle.Controls.Add(this.lbTittle);
+            this.pnTittle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnTittle.Location = new System.Drawing.Point(3, 3);
+            this.pnTittle.Name = "pnTittle";
+            this.pnTittle.Size = new System.Drawing.Size(132, 49);
+            this.pnTittle.TabIndex = 2;
+            this.pnTittle.MouseLeave += new System.EventHandler(this.pnTittle_MouseLeave);
+            this.pnTittle.MouseHover += new System.EventHandler(this.pnTittle_MouseHover);
             // 
-            // guna2PictureBox1
+            // pictureBox1
             // 
-            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.deal;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(51, 46);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(83, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(46, 36);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pnTittle_MouseLeave);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.pnTittle_MouseHover);
             // 
-            // fpHotDealBook
+            // lbTittle
             // 
-            this.fpHotDealBook.AutoScroll = true;
-            this.fpHotDealBook.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.fpHotDealBook.Location = new System.Drawing.Point(0, 52);
-            this.fpHotDealBook.Name = "fpHotDealBook";
-            this.fpHotDealBook.Size = new System.Drawing.Size(1170, 379);
-            this.fpHotDealBook.TabIndex = 1;
+            this.lbTittle.AutoSize = true;
+            this.lbTittle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTittle.ForeColor = System.Drawing.Color.Red;
+            this.lbTittle.Location = new System.Drawing.Point(9, 9);
+            this.lbTittle.Name = "lbTittle";
+            this.lbTittle.Size = new System.Drawing.Size(56, 29);
+            this.lbTittle.TabIndex = 1;
+            this.lbTittle.Text = "title";
+            this.lbTittle.MouseLeave += new System.EventHandler(this.pnTittle_MouseLeave);
+            this.lbTittle.MouseHover += new System.EventHandler(this.pnTittle_MouseHover);
+            // 
+            // fpListBook
+            // 
+            this.fpListBook.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.fpListBook.Location = new System.Drawing.Point(0, 52);
+            this.fpListBook.Name = "fpListBook";
+            this.fpListBook.Size = new System.Drawing.Size(1297, 379);
+            this.fpListBook.TabIndex = 1;
+            this.fpListBook.Paint += new System.Windows.Forms.PaintEventHandler(this.fpHotDealBook_Paint);
             // 
             // HotDealForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1170, 413);
-            this.Controls.Add(this.fpHotDealBook);
-            this.Controls.Add(this.guna2Panel1);
+            this.ClientSize = new System.Drawing.Size(1300, 413);
+            this.Controls.Add(this.fpListBook);
+            this.Controls.Add(this.pnMainTittle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HotDealForm";
             this.Text = "HotDealForm";
             this.Load += new System.EventHandler(this.HotDealForm_Load);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.pnMainTittle.ResumeLayout(false);
+            this.pnTittle.ResumeLayout(false);
+            this.pnTittle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private System.Windows.Forms.FlowLayoutPanel fpHotDealBook;
+        private Guna.UI2.WinForms.Guna2Panel pnMainTittle;
+        private System.Windows.Forms.Label lbTittle;
+        private System.Windows.Forms.FlowLayoutPanel fpListBook;
+        private Guna.UI2.WinForms.Guna2Panel pnTittle;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

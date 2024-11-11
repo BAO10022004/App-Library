@@ -30,40 +30,40 @@
         {
             this.components = new System.ComponentModel.Container();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.fpAdBook = new System.Windows.Forms.FlowLayoutPanel();
             this.timerAd = new System.Windows.Forms.Timer(this.components);
+            this.panel = new System.Windows.Forms.Panel();
             this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel3
             // 
-            this.guna2Panel3.BorderColor = System.Drawing.Color.Red;
+            this.guna2Panel3.BorderColor = System.Drawing.Color.White;
             this.guna2Panel3.BorderRadius = 25;
             this.guna2Panel3.BorderThickness = 5;
-            this.guna2Panel3.Controls.Add(this.fpAdBook);
+            this.guna2Panel3.Controls.Add(this.panel);
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
-            this.guna2Panel3.Location = new System.Drawing.Point(127, 12);
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(1008, 321);
+            this.guna2Panel3.Size = new System.Drawing.Size(1300, 350);
             this.guna2Panel3.TabIndex = 1;
-            // 
-            // fpAdBook
-            // 
-            this.fpAdBook.BackColor = System.Drawing.Color.White;
-            this.fpAdBook.Location = new System.Drawing.Point(26, 13);
-            this.fpAdBook.Name = "fpAdBook";
-            this.fpAdBook.Size = new System.Drawing.Size(962, 298);
-            this.fpAdBook.TabIndex = 0;
             // 
             // timerAd
             // 
             this.timerAd.Interval = 1;
             // 
+            // panel
+            // 
+            this.panel.Location = new System.Drawing.Point(72, 4);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(1159, 344);
+            this.panel.TabIndex = 0;
+            // 
             // AdForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1212, 335);
+            this.ClientSize = new System.Drawing.Size(1300, 350);
             this.Controls.Add(this.guna2Panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdForm";
@@ -77,7 +77,7 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.FlowLayoutPanel fpAdBook;
         private System.Windows.Forms.Timer timerAd;
+        private System.Windows.Forms.Panel panel;
     }
 }
