@@ -53,7 +53,15 @@ namespace App_Library.Views
             var currentUser = await _userService.GetCurrentUserAsync();
             lbName.Text = currentUser.Username;
             //lbEmail.Text = currentUser.Email;
-
+            try
+            {
+                picAvatar.Load(currentUser.PhotoURL); // Đường dẫn hoặc URL của ảnh
+            }
+            catch (Exception)
+            {
+                // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
+                this.picAvatar.Image = global::App_Library.Properties.Resources.account;
+            }
             homeForm = new HomeForm();
             shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();

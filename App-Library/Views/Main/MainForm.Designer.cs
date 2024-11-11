@@ -43,7 +43,7 @@ namespace App_Library.Views
             this.lbShop = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbName = new System.Windows.Forms.Label();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +62,7 @@ namespace App_Library.Views
             this.pnShop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShop)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,7 +165,7 @@ namespace App_Library.Views
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lbName);
-            this.panel4.Controls.Add(this.guna2CirclePictureBox1);
+            this.panel4.Controls.Add(this.picAvatar);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -182,18 +182,17 @@ namespace App_Library.Views
             this.lbName.Text = "Name";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2CirclePictureBox1
+            // picAvatar
             // 
-            this.guna2CirclePictureBox1.ContextMenuStrip = this.guna2ContextMenuStrip1;
-            this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.IconLogin;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(81, 11);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2CirclePictureBox1.TabIndex = 1;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.picAvatar.ContextMenuStrip = this.guna2ContextMenuStrip1;
+            this.picAvatar.ImageRotate = 0F;
+            this.picAvatar.Location = new System.Drawing.Point(81, 11);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.picAvatar.Size = new System.Drawing.Size(60, 60);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatar.TabIndex = 1;
+            this.picAvatar.TabStop = false;
             // 
             // guna2ContextMenuStrip1
             // 
@@ -215,20 +214,20 @@ namespace App_Library.Views
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(215, 84);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(144, 56);
             // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.profileToolStripMenuItem.Text = "Profile";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Image = global::App_Library.Properties.Resources.logout;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(143, 26);
             this.logOutToolStripMenuItem.Text = "LogOut";
             // 
             // gneSearchmain
@@ -285,7 +284,7 @@ namespace App_Library.Views
             this.pnShop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picShop)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -298,7 +297,7 @@ namespace App_Library.Views
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lbName;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
         private System.Windows.Forms.FlowLayoutPanel pnSideBar;
         private System.Windows.Forms.Label lbHome;
         private System.Windows.Forms.Label lbShop;

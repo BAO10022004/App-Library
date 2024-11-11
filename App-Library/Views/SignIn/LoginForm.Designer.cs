@@ -162,6 +162,7 @@ namespace App_Library.Views
             // lbCreateAccount
             // 
             this.lbCreateAccount.AutoSize = true;
+            this.lbCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbCreateAccount.ForeColor = System.Drawing.Color.Black;
             this.lbCreateAccount.Location = new System.Drawing.Point(85, 282);

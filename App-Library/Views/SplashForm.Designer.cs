@@ -141,7 +141,7 @@ namespace App_Library.Views
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(280, 70);
             this.btnSignUp.TabIndex = 1;
-            this.btnSignUp.Text = "Sign - Up";
+            this.btnSignUp.Text = "Sign  Up";
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
@@ -155,7 +155,7 @@ namespace App_Library.Views
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(280, 70);
             this.btnLogIn.TabIndex = 0;
-            this.btnLogIn.Text = "Sign - In ";
+            this.btnLogIn.Text = "Sign  In ";
             this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
@@ -178,7 +178,7 @@ namespace App_Library.Views
             // 
             // timerClickButonLogin
             // 
-            this.timerClickButonLogin.Interval = 5;
+            this.timerClickButonLogin.Interval = 1;
             this.timerClickButonLogin.Tick += new System.EventHandler(this.timerClickButonLogin_Tick);
             // 
             // gneBtnSingIn
