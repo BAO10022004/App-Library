@@ -148,6 +148,7 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="SharpCompress, Version=0.30.1.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>packages\SharpCompress.0.30.1\lib\net461\SharpCompress.dll</HintPath>
     </Reference>
@@ -385,11 +386,29 @@
     <Compile Include="Views\Main\CollectionShop\AdForm.Designer.cs">
       <DependentUpon>AdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\AllBookForm.cs">
+    <Compile Include="Views\Main\CollectionShop\Advertisement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\AllBookForm.Designer.cs">
-      <DependentUpon>AllBookForm.cs</DependentUpon>
+    <Compile Include="Views\Main\CollectionShop\Advertisement.Designer.cs">
+      <DependentUpon>Advertisement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\BookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\BookForm.Designer.cs">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\CommentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\CommentForm.Designer.cs">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\CompunentComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\CollectionShop\CompunentComment.Designer.cs">
+      <DependentUpon>CompunentComment.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Main\CollectionShop\HotDealForm.cs">
       <SubType>Form</SubType>
@@ -421,17 +440,17 @@
     <Compile Include="Views\SignIn\GoogleLoginForm.Designer.cs">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignIn\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\SignIn\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignIn\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SignIn\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SignIn\SignUpForm.cs">
       <SubType>Form</SubType>
@@ -448,7 +467,7 @@
     <Compile Include="Views\ToolerForm\FormHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ToolerForm\MyPanel.cs">
+    <Compile Include="Views\ToolerForm\PanelBook.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -462,8 +481,17 @@
     <EmbeddedResource Include="Views\Main\CollectionShop\AdForm.resx">
       <DependentUpon>AdForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\AllBookForm.resx">
-      <DependentUpon>AllBookForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Main\CollectionShop\Advertisement.resx">
+      <DependentUpon>Advertisement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\CollectionShop\BookForm.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\CollectionShop\CommentForm.resx">
+      <DependentUpon>CommentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\CollectionShop\CompunentComment.resx">
+      <DependentUpon>CompunentComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\CollectionShop\HotDealForm.resx">
       <DependentUpon>HotDealForm.cs</DependentUpon>
@@ -477,11 +505,11 @@
     <EmbeddedResource Include="Views\SignIn\GoogleLoginForm.resx">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SignIn\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignIn\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SignIn\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
@@ -515,6 +543,17 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\new-9562_128.gif" />
+    <None Include="Resources\fire-3352_1281.gif" />
+    <None Include="Resources\fire-3352_128.gif" />
+    <None Include="Resources\account.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\dont-like.png" />
+    <None Include="Resources\like.png" />
+    <None Include="Resources\arrow %281%29.png" />
+    <None Include="Resources\star %281%29.png" />
+    <None Include="Resources\Star.png" />
+    <None Include="Resources\ArrowTittle.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\right-arrow.png" />
     <None Include="Resources\left-arrow.png" />

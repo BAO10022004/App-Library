@@ -41,14 +41,12 @@ namespace App_Library.Views
             this.pnShop = new Guna.UI2.WinForms.Guna2Panel();
             this.picShop = new System.Windows.Forms.PictureBox();
             this.lbShop = new System.Windows.Forms.Label();
-            this.lbLogOut = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pnSearchMain = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txbSearch = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.lbEmail = new System.Windows.Forms.Label();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gneSearchmain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gnePnContainContent = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -64,9 +62,8 @@ namespace App_Library.Views
             this.pnShop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShop)).BeginInit();
             this.panel4.SuspendLayout();
-            this.pnSearchMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.guna2ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,17 +74,16 @@ namespace App_Library.Views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(325, 826);
+            this.panel1.Size = new System.Drawing.Size(236, 826);
             this.panel1.TabIndex = 1;
             // 
             // pnSideBar
             // 
             this.pnSideBar.Controls.Add(this.pnListsButton);
-            this.pnSideBar.Controls.Add(this.lbLogOut);
             this.pnSideBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnSideBar.Location = new System.Drawing.Point(0, 168);
+            this.pnSideBar.Location = new System.Drawing.Point(0, 129);
             this.pnSideBar.Name = "pnSideBar";
-            this.pnSideBar.Size = new System.Drawing.Size(325, 658);
+            this.pnSideBar.Size = new System.Drawing.Size(236, 697);
             this.pnSideBar.TabIndex = 4;
             // 
             // pnListsButton
@@ -96,7 +92,7 @@ namespace App_Library.Views
             this.pnListsButton.Controls.Add(this.pnShop);
             this.pnListsButton.Location = new System.Drawing.Point(3, 3);
             this.pnListsButton.Name = "pnListsButton";
-            this.pnListsButton.Size = new System.Drawing.Size(322, 582);
+            this.pnListsButton.Size = new System.Drawing.Size(233, 733);
             this.pnListsButton.TabIndex = 3;
             // 
             // pnHome
@@ -106,14 +102,14 @@ namespace App_Library.Views
             this.pnHome.Controls.Add(this.lbHome);
             this.pnHome.Location = new System.Drawing.Point(3, 3);
             this.pnHome.Name = "pnHome";
-            this.pnHome.Size = new System.Drawing.Size(319, 73);
+            this.pnHome.Size = new System.Drawing.Size(230, 60);
             this.pnHome.TabIndex = 2;
             // 
             // picHome
             // 
             this.picHome.BackColor = System.Drawing.Color.Transparent;
             this.picHome.Image = global::App_Library.Properties.Resources.HomeHover;
-            this.picHome.Location = new System.Drawing.Point(27, 20);
+            this.picHome.Location = new System.Drawing.Point(6, 15);
             this.picHome.Name = "picHome";
             this.picHome.Size = new System.Drawing.Size(32, 32);
             this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,11 +118,11 @@ namespace App_Library.Views
             // 
             // lbHome
             // 
-            this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbHome.Location = new System.Drawing.Point(111, 0);
+            this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbHome.Location = new System.Drawing.Point(71, 0);
             this.lbHome.Margin = new System.Windows.Forms.Padding(0);
             this.lbHome.Name = "lbHome";
-            this.lbHome.Size = new System.Drawing.Size(208, 73);
+            this.lbHome.Size = new System.Drawing.Size(159, 73);
             this.lbHome.TabIndex = 0;
             this.lbHome.Text = "Home";
             this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,15 +132,15 @@ namespace App_Library.Views
             // 
             this.pnShop.Controls.Add(this.picShop);
             this.pnShop.Controls.Add(this.lbShop);
-            this.pnShop.Location = new System.Drawing.Point(3, 82);
+            this.pnShop.Location = new System.Drawing.Point(3, 69);
             this.pnShop.Name = "pnShop";
-            this.pnShop.Size = new System.Drawing.Size(319, 73);
+            this.pnShop.Size = new System.Drawing.Size(230, 60);
             this.pnShop.TabIndex = 3;
             // 
             // picShop
             // 
             this.picShop.Image = global::App_Library.Properties.Resources.book_fair;
-            this.picShop.Location = new System.Drawing.Point(27, 21);
+            this.picShop.Location = new System.Drawing.Point(6, 15);
             this.picShop.Name = "picShop";
             this.picShop.Size = new System.Drawing.Size(32, 32);
             this.picShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -154,103 +150,86 @@ namespace App_Library.Views
             // lbShop
             // 
             this.lbShop.BackColor = System.Drawing.Color.White;
-            this.lbShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbShop.Location = new System.Drawing.Point(117, 0);
+            this.lbShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbShop.Location = new System.Drawing.Point(71, 0);
             this.lbShop.Margin = new System.Windows.Forms.Padding(0);
             this.lbShop.Name = "lbShop";
-            this.lbShop.Size = new System.Drawing.Size(199, 73);
+            this.lbShop.Size = new System.Drawing.Size(162, 62);
             this.lbShop.TabIndex = 1;
             this.lbShop.Text = "Shop";
             this.lbShop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbShop.Click += new System.EventHandler(this.lbShop_Click);
             // 
-            // lbLogOut
-            // 
-            this.lbLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbLogOut.Location = new System.Drawing.Point(3, 588);
-            this.lbLogOut.Name = "lbLogOut";
-            this.lbLogOut.Size = new System.Drawing.Size(319, 70);
-            this.lbLogOut.TabIndex = 2;
-            this.lbLogOut.Text = "LogOut";
-            this.lbLogOut.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.pnSearchMain);
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lbName);
-            this.panel4.Controls.Add(this.lbEmail);
             this.panel4.Controls.Add(this.guna2CirclePictureBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(325, 168);
+            this.panel4.Size = new System.Drawing.Size(236, 129);
             this.panel4.TabIndex = 3;
-            // 
-            // pnSearchMain
-            // 
-            this.pnSearchMain.BackColor = System.Drawing.Color.LightGray;
-            this.pnSearchMain.Controls.Add(this.pictureBox1);
-            this.pnSearchMain.Controls.Add(this.txbSearch);
-            this.pnSearchMain.Location = new System.Drawing.Point(12, 116);
-            this.pnSearchMain.Name = "pnSearchMain";
-            this.pnSearchMain.Size = new System.Drawing.Size(303, 46);
-            this.pnSearchMain.TabIndex = 6;
-            this.pnSearchMain.Click += new System.EventHandler(this.pnSearchMain_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::App_Library.Properties.Resources.magnifying_glass__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(256, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // txbSearch
-            // 
-            this.txbSearch.BackColor = System.Drawing.Color.LightGray;
-            this.txbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbSearch.Enabled = false;
-            this.txbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txbSearch.Location = new System.Drawing.Point(7, 10);
-            this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(227, 20);
-            this.txbSearch.TabIndex = 0;
-            this.txbSearch.Click += new System.EventHandler(this.txbSearch_Click);
             // 
             // lbName
             // 
-            this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbName.Location = new System.Drawing.Point(92, 43);
+            this.lbName.Location = new System.Drawing.Point(-1, 88);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(82, 29);
+            this.lbName.Size = new System.Drawing.Size(236, 29);
             this.lbName.TabIndex = 3;
             this.lbName.Text = "Name";
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbEmail.Location = new System.Drawing.Point(93, 72);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(232, 20);
-            this.lbEmail.TabIndex = 2;
-            this.lbEmail.Text = "Giabaoonthcs123@gmail.com";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // guna2CirclePictureBox1
             // 
+            this.guna2CirclePictureBox1.ContextMenuStrip = this.guna2ContextMenuStrip1;
             this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.IconLogin;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(8, 24);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(81, 11);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(60, 60);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 1;
             this.guna2CirclePictureBox1.TabStop = false;
+            // 
+            // guna2ContextMenuStrip1
+            // 
+            this.guna2ContextMenuStrip1.BackColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profileToolStripMenuItem,
+            this.logOutToolStripMenuItem});
+            this.guna2ContextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.guna2ContextMenuStrip1.Margin = new System.Windows.Forms.Padding(10);
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.Aqua;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(215, 84);
+            // 
+            // profileToolStripMenuItem
+            // 
+            this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
+            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.profileToolStripMenuItem.Text = "Profile";
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Image = global::App_Library.Properties.Resources.logout;
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
+            this.logOutToolStripMenuItem.Text = "LogOut";
             // 
             // gneSearchmain
             // 
@@ -267,7 +246,6 @@ namespace App_Library.Views
             // guna2Elipse1
             // 
             this.guna2Elipse1.BorderRadius = 40;
-            this.guna2Elipse1.TargetControl = this.pnSearchMain;
             // 
             // timerPicHome
             // 
@@ -282,9 +260,9 @@ namespace App_Library.Views
             // pnContent
             // 
             this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
-            this.pnContent.Location = new System.Drawing.Point(331, 0);
+            this.pnContent.Location = new System.Drawing.Point(242, 0);
             this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1251, 826);
+            this.pnContent.Size = new System.Drawing.Size(1340, 826);
             this.pnContent.TabIndex = 3;
             // 
             // MainForm
@@ -307,11 +285,8 @@ namespace App_Library.Views
             this.pnShop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picShop)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.pnSearchMain.ResumeLayout(false);
-            this.pnSearchMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.guna2ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,18 +297,13 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Elipse gnePnContainContent;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel pnSearchMain;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txbSearch;
         private System.Windows.Forms.Label lbName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.FlowLayoutPanel pnSideBar;
         private System.Windows.Forms.Label lbHome;
         private System.Windows.Forms.Label lbShop;
-        private System.Windows.Forms.Label lbLogOut;
         private System.Windows.Forms.FlowLayoutPanel pnListsButton;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private System.Windows.Forms.Label lbEmail;
 
         private System.Windows.Forms.PictureBox picHome;
         private Guna.UI2.WinForms.Guna2Panel pnHome;
@@ -342,5 +312,8 @@ namespace App_Library.Views
         private Timer timerPicHome;
         private Timer timerPicShop;
         private Panel pnContent;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

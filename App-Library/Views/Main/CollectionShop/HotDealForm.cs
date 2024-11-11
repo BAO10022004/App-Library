@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_Library.Views.ToolerForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,26 +11,75 @@ using System.Windows.Forms;
 
 namespace App_Library.Views.Main.CollectionShop
 {
-    public partial class HotDealForm : Form
+    public partial class HotDealForm : FormHelper
     {
-        List<Panel> ListPanelHotDealBook = new List<Panel>();
+        List<Panel> ListPanelBook = new List<Panel>();
         Form formParent;
-
-        public HotDealForm(List<Panel> listPanelHotDealBook, NewShopMain FormParent)
+        String titleForm;
+        
+        public HotDealForm(List<Panel> listPanelBook, NewShopMain FormParent, string titleForm)
         {
             formParent = FormParent;
-            ListPanelHotDealBook = listPanelHotDealBook;
+            ListPanelBook = listPanelBook;
             InitializeComponent();
-            fpHotDealBook.AutoScrollMinSize = new System.Drawing.Size((listPanelHotDealBook.Count + 1) * listPanelHotDealBook[0].Width, 0);
+            this.titleForm = titleForm;
+            lbTittle.Text = titleForm;
+            pictureBox1.Location = new System.Drawing.Point(lbTittle.Location.X +  lbTittle.Size.Width, lbTittle.Location.Y);
+            pnTittle.Size = new System.Drawing.Size(lbTittle.Size.Width + 10 +pictureBox1.Size.Width, 50);
         }
 
         private void HotDealForm_Load(object sender, EventArgs e)
         {
-            foreach (Panel panel in ListPanelHotDealBook)
+            fpListBook.SuspendLayout(); // Tạm dừng việc vẽ lại khi thêm các phần tử
+
+            if (ListPanelBook.Count > 6)
             {
-                fpHotDealBook.Controls.Add(panel);
+                for (int i = 0; i < 6; i++)
+                {
+                    fpListBook.Controls.Add(ListPanelBook[i]);
+                }
+            }
+            else
+            {
+                foreach (Panel panel in ListPanelBook)
+                {
+                    fpListBook.Controls.Add(panel);
+                }
             }
 
+            fpListBook.ResumeLayout(); // Kích hoạt lại việc vẽ giao diện sau khi thêm xong
+
+
+        }
+
+        private void fpHotDealBook_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnTittle_MouseHover(object sender, EventArgs e)
+        {
+            this.pictureBox1.Image = global::App_Library.Properties.Resources.ArrowTittle;
+        }
+
+        private void pnTittle_MouseLeave(object sender, EventArgs e)
+        {
+            this.pictureBox1.Image = null;
         }
     }
 }

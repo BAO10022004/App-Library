@@ -23,6 +23,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using Guna.UI2.WinForms;
 using System.Net.Http;
+using static Guna.UI2.Native.WinApi;
+using App_Library.Views.ToolerForm;
 
 namespace App_Library.Models
 {
@@ -70,7 +72,7 @@ namespace App_Library.Models
         public Panel CreateBookAdPanel( int index, int rank = 4)
         {
             // Tạo Panel với kích thước cố định 1259 x 335
-            Panel panel = new Panel();
+            PanelBook panel = new PanelBook(this);
             panel.Size = new Size(1037, 294);
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.BackColor = Color.FromArgb(245, 245, 245); // Màu nền nhẹ nhàng
@@ -154,6 +156,7 @@ namespace App_Library.Models
             panel.Cursor = System.Windows.Forms.Cursors.Hand;
             panel.BorderStyle = BorderStyle.None;
             panel.Name = this.Username;
+            panel.BackColor = Color.White;
             foreach (System.Windows.Forms.Control control in panel.Controls)
             {
                 control.Name = "Book" + control.Name + index;
@@ -163,7 +166,7 @@ namespace App_Library.Models
         public async Task<Panel> CreateBookPanelAsync(int index, int rating = 4)
         {
             // Tạo panel mới với kích thước cố định
-            Guna2Panel panel = new Guna2Panel();
+            PanelBook panel = new PanelBook(this);
             panel.Size = new Size(200, 350); // Kích thước giữ nguyên
 
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
@@ -182,7 +185,7 @@ namespace App_Library.Models
                     var imageBytes = await client.GetByteArrayAsync(this.Image);
                     using (var ms = new System.IO.MemoryStream(imageBytes))
                     {
-                        Image img = System.Drawing.Image.FromStream(ms);
+                        pictureBox.Image = System.Drawing.Image.FromStream(ms);
                     }
                 }
             }
@@ -228,6 +231,16 @@ namespace App_Library.Models
             //    control.Name = "Book" + control.Name + index;
             //}
             return panel;
+        }
+
+        internal void CreateBookAdPanel()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal async Task<Panel> CreateBookPanelAsync()
+        {
+            throw new NotImplementedException();
         }
     }
     public class SearchBooksResponse

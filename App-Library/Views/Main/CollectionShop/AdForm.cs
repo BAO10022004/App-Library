@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App_Library.Models;
+using App_Library.Views.ToolerForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,43 +12,34 @@ using System.Windows.Forms;
 
 namespace App_Library.Views.Main.CollectionShop
 {
-    public partial class AdForm : Form
+    public partial class AdForm : FormHelper
     {
-        List<Panel> ListPanelAd;
-        Form FormParent;
+        List<Book> listBook;
+        NewShopMain shop;
         // index Book in Ad
         int indexCurrentBookAd = 0;
 
-        public AdForm(List<Panel> listPanelAd, Form formParent)
+        public AdForm(List<Book> listBook, NewShopMain formParent)
         {
-            ListPanelAd = listPanelAd;
+            this.listBook = listBook;
             InitializeComponent();
             this.timerAd.Tick += new System.EventHandler(this.timer1_Tick);
             timerAd.Start();
-            FormParent = formParent;
+            this.shop = formParent;
         }
-
+        Form form1;
         private void AdForm_Load(object sender, EventArgs e)
         {
-            //fpAdBook.Controls.Add(ListPanelAd[0]);
+            activeFormChild(panel, new Advertisement(listBook[indexCurrentBookAd], shop), null, ref form1);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (timerAd.Interval == 1) timerAd.Interval = 10000;
-
+            
             indexCurrentBookAd++;
-            if (indexCurrentBookAd < ListPanelAd.Count)
-            {
-                fpAdBook.Controls.Clear();
-                fpAdBook.Controls.Add(ListPanelAd[indexCurrentBookAd]);
-            }
-            else
-            {
-                fpAdBook.Controls.Remove(ListPanelAd[indexCurrentBookAd - 1]);
-                indexCurrentBookAd = 0;
-                timer1_Tick(sender, e);
-            }
+            if (indexCurrentBookAd !=2)
+                activeFormChild(panel, new Advertisement(listBook[indexCurrentBookAd], shop), null, ref form1);
         }
     }
 }
