@@ -374,88 +374,166 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Main\CollectionHome\HomeForm.cs">
+    <Compile Include="Views\AdminView\CollectionBooks\BooksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionHome\HomeForm.Designer.cs">
+    <Compile Include="Views\AdminView\CollectionBooks\BooksForm.Designer.cs">
+      <DependentUpon>BooksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionComments\CommentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionComments\CommentsForm.Designer.cs">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionHistory\HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionHistory\HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionPending\PendingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionPending\PendingForm.Designer.cs">
+      <DependentUpon>PendingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionStatistics\StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionStatistics\StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionUpload\UploadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionUpload\UploadForm.Designer.cs">
+      <DependentUpon>UploadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionUsers\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionUsers\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\SideBarAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\SideBarAdminForm.Designer.cs">
+      <DependentUpon>SideBarAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\EditprofileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\EditprofileForm.Designer.cs">
+      <DependentUpon>EditprofileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionHelp\HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionHelp\HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionProfile\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionProfile\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionSetting\SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionSetting\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\AdForm.cs">
+    <Compile Include="Views\UserView\CollectionRequest\RequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\AdForm.Designer.cs">
+    <Compile Include="Views\UserView\CollectionRequest\RequestForm.Designer.cs">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\AdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\AdForm.Designer.cs">
       <DependentUpon>AdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\Advertisement.cs">
+    <Compile Include="Views\UserView\CollectionShop\Advertisement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\Advertisement.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\Advertisement.Designer.cs">
       <DependentUpon>Advertisement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\BookForm.cs">
+    <Compile Include="Views\UserView\CollectionShop\BookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\BookForm.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\CommentForm.cs">
+    <Compile Include="Views\UserView\CollectionShop\CommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\CommentForm.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\CompunentComment.cs">
+    <Compile Include="Views\UserView\CollectionShop\CompunentComment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\CompunentComment.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\CompunentComment.Designer.cs">
       <DependentUpon>CompunentComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\HotDealForm.cs">
+    <Compile Include="Views\UserView\CollectionShop\HotDealForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\HotDealForm.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\HotDealForm.Designer.cs">
       <DependentUpon>HotDealForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\NewShopMain.cs">
+    <Compile Include="Views\UserView\CollectionShop\NewShopMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\NewShopMain.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\NewShopMain.Designer.cs">
       <DependentUpon>NewShopMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\PropertiesBookForm.cs">
+    <Compile Include="Views\UserView\CollectionShop\PropertiesBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\CollectionShop\PropertiesBookForm.Designer.cs">
+    <Compile Include="Views\UserView\CollectionShop\PropertiesBookForm.Designer.cs">
       <DependentUpon>PropertiesBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PdfViewerForm.cs">
+    <Compile Include="Views\Orthers\CollectionReadBook\PdfViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\PdfViewerForm.Designer.cs">
+    <Compile Include="Views\Orthers\CollectionReadBook\PdfViewerForm.Designer.cs">
       <DependentUpon>PdfViewerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignIn\GoogleLoginForm.cs">
+    <Compile Include="Views\SignUpSignIn\GoogleLoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SignIn\GoogleLoginForm.Designer.cs">
+    <Compile Include="Views\SignUpSignIn\GoogleLoginForm.Designer.cs">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Main\MainForm.cs">
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Main\MainForm.Designer.cs">
+    <Compile Include="Views\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignIn\LoginForm.cs">
+    <Compile Include="Views\SignUpSignIn\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SignIn\LoginForm.Designer.cs">
+    <Compile Include="Views\SignUpSignIn\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\SignIn\SignUpForm.cs">
+    <Compile Include="Views\SignUpSignIn\SignUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\SignIn\SignUpForm.Designer.cs">
+    <Compile Include="Views\SignUpSignIn\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SplashForm.cs">
@@ -470,52 +548,100 @@
     <Compile Include="Views\ToolerForm\PanelBook.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\UserView\SideBarUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\SideBarUserForm.Designer.cs">
+      <DependentUpon>SideBarUserForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionHome\HomeForm.resx">
+    <EmbeddedResource Include="Views\AdminView\CollectionBooks\BooksForm.resx">
+      <DependentUpon>BooksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionComments\CommentsForm.resx">
+      <DependentUpon>CommentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionHistory\HistoryForm.resx">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionPending\PendingForm.resx">
+      <DependentUpon>PendingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionStatistics\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionUpload\UploadForm.resx">
+      <DependentUpon>UploadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionUsers\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\SideBarAdminForm.resx">
+      <DependentUpon>SideBarAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\EditprofileForm.resx">
+      <DependentUpon>EditprofileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionHelp\HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionProfile\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionSetting\SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\AdForm.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionRequest\RequestForm.resx">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\AdForm.resx">
       <DependentUpon>AdForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\Advertisement.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\Advertisement.resx">
       <DependentUpon>Advertisement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\BookForm.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\CommentForm.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\CompunentComment.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\CompunentComment.resx">
       <DependentUpon>CompunentComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\HotDealForm.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\HotDealForm.resx">
       <DependentUpon>HotDealForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\NewShopMain.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\NewShopMain.resx">
       <DependentUpon>NewShopMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\CollectionShop\PropertiesBookForm.resx">
+    <EmbeddedResource Include="Views\UserView\CollectionShop\PropertiesBookForm.resx">
       <DependentUpon>PropertiesBookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SignIn\GoogleLoginForm.resx">
+    <EmbeddedResource Include="Views\SignUpSignIn\GoogleLoginForm.resx">
       <DependentUpon>GoogleLoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Main\MainForm.resx">
+    <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SignIn\LoginForm.resx">
+    <EmbeddedResource Include="Views\SignUpSignIn\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SignIn\SignUpForm.resx">
+    <EmbeddedResource Include="Views\SignUpSignIn\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\SideBarUserForm.resx">
+      <DependentUpon>SideBarUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
