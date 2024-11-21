@@ -17,7 +17,7 @@ namespace App_Library.Views.Main.CollectionShop
         List<Book> listBook;
         NewShopMain shop;
         // index Book in Ad
-        int indexCurrentBookAd = 0;
+        int indexCurrentBookAd = 3;
 
         public AdForm(List<Book> listBook, NewShopMain formParent)
         {
@@ -30,16 +30,27 @@ namespace App_Library.Views.Main.CollectionShop
         Form form1;
         private void AdForm_Load(object sender, EventArgs e)
         {
-            activeFormChild(panel, new Advertisement(listBook[indexCurrentBookAd], shop), null, ref form1);
+            loadAd(3);
         }
-
+        void loadAd(int index)
+        {
+            timerAd.Interval = 10000;
+            activeFormChild(pnAdMain, new Advertisement(listBook[index], shop), null, ref form1);
+            if(index != listBook.Count -1)
+            {
+                shop.loadImageAsync(picSubAd1, listBook[index + 1].Image);
+            }
+            if (index != listBook.Count - 2)
+            {
+                shop.loadImageAsync(picSubAd2, listBook[index + 2].Image);
+                return;
+            }
+            indexCurrentBookAd = 2;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timerAd.Interval == 1) timerAd.Interval = 10000;
-            
             indexCurrentBookAd++;
-            if (indexCurrentBookAd !=2)
-                activeFormChild(panel, new Advertisement(listBook[indexCurrentBookAd], shop), null, ref form1);
+            loadAd(indexCurrentBookAd);
         }
     }
 }

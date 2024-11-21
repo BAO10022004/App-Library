@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -35,10 +36,16 @@
             this.picImageBook = new System.Windows.Forms.PictureBox();
             this.lbTittelBook = new System.Windows.Forms.Label();
             this.lbPrice = new System.Windows.Forms.Label();
+            this.btnShowMore = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbShowMore = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ElipseForBtnSeeMore = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImageBook)).BeginInit();
+            this.btnShowMore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +63,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.Controls.Add(this.flowLayoutPanel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(24, 12);
+            this.guna2Panel1.Location = new System.Drawing.Point(12, 12);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(277, 71);
             this.guna2Panel1.TabIndex = 2;
@@ -83,46 +90,96 @@
             // 
             // picImageBook
             // 
-            this.picImageBook.Location = new System.Drawing.Point(838, 2);
+            this.picImageBook.Location = new System.Drawing.Point(292, 1);
             this.picImageBook.Name = "picImageBook";
-            this.picImageBook.Size = new System.Drawing.Size(289, 338);
+            this.picImageBook.Size = new System.Drawing.Size(249, 347);
             this.picImageBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImageBook.TabIndex = 0;
             this.picImageBook.TabStop = false;
             // 
             // lbTittelBook
             // 
-            this.lbTittelBook.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTittelBook.Font = new System.Drawing.Font("Showcard Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTittelBook.ForeColor = System.Drawing.Color.Black;
-            this.lbTittelBook.Location = new System.Drawing.Point(163, 100);
+            this.lbTittelBook.Location = new System.Drawing.Point(27, 91);
             this.lbTittelBook.Name = "lbTittelBook";
-            this.lbTittelBook.Size = new System.Drawing.Size(669, 110);
+            this.lbTittelBook.Size = new System.Drawing.Size(262, 110);
             this.lbTittelBook.TabIndex = 3;
             this.lbTittelBook.Text = "label2";
             this.lbTittelBook.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbPrice
             // 
-            this.lbPrice.Font = new System.Drawing.Font("Matura MT Script Capitals", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrice.Font = new System.Drawing.Font("Matura MT Script Capitals", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrice.ForeColor = System.Drawing.Color.Red;
             this.lbPrice.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbPrice.Location = new System.Drawing.Point(164, 210);
+            this.lbPrice.Location = new System.Drawing.Point(12, 215);
             this.lbPrice.Name = "lbPrice";
-            this.lbPrice.Size = new System.Drawing.Size(668, 79);
+            this.lbPrice.Size = new System.Drawing.Size(277, 79);
             this.lbPrice.TabIndex = 4;
             this.lbPrice.Text = "Price Only : ";
             this.lbPrice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbPrice.Click += new System.EventHandler(this.lbPrice_Click);
             // 
+            // btnShowMore
+            // 
+            this.btnShowMore.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnShowMore.BorderColor = System.Drawing.Color.LightSteelBlue;
+            this.btnShowMore.BorderRadius = 10;
+            this.btnShowMore.BorderThickness = 2;
+            this.btnShowMore.Controls.Add(this.lbShowMore);
+            this.btnShowMore.Controls.Add(this.pictureBox1);
+            this.btnShowMore.Location = new System.Drawing.Point(33, 298);
+            this.btnShowMore.Name = "btnShowMore";
+            this.btnShowMore.Size = new System.Drawing.Size(119, 40);
+            this.btnShowMore.TabIndex = 5;
+            this.btnShowMore.Click += new System.EventHandler(this.lbShowMore_Click);
+            this.btnShowMore.MouseLeave += new System.EventHandler(this.btnShowMore_MouseLeave);
+            this.btnShowMore.MouseHover += new System.EventHandler(this.btnShowMore_MouseHover);
+            // 
+            // lbShowMore
+            // 
+            this.lbShowMore.AutoSize = true;
+            this.lbShowMore.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbShowMore.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbShowMore.Location = new System.Drawing.Point(12, 11);
+            this.lbShowMore.Name = "lbShowMore";
+            this.lbShowMore.Size = new System.Drawing.Size(87, 16);
+            this.lbShowMore.TabIndex = 0;
+            this.lbShowMore.Text = "Show more ";
+            this.lbShowMore.Click += new System.EventHandler(this.lbShowMore_Click);
+            this.lbShowMore.MouseLeave += new System.EventHandler(this.btnShowMore_MouseLeave);
+            this.lbShowMore.MouseHover += new System.EventHandler(this.btnShowMore_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::App_Library.Properties.Resources.ArrowTittle;
+            this.pictureBox1.Location = new System.Drawing.Point(95, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.lbShowMore_Click);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.btnShowMore_MouseLeave);
+            this.pictureBox1.MouseHover += new System.EventHandler(this.btnShowMore_MouseHover);
+            // 
+            // ElipseForBtnSeeMore
+            // 
+            this.ElipseForBtnSeeMore.BorderRadius = 15;
+            this.ElipseForBtnSeeMore.TargetControl = this.btnShowMore;
+            // 
             // Advertisement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1159, 344);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(544, 350);
+            this.Controls.Add(this.btnShowMore);
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.lbTittelBook);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.picImageBook);
+            this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Advertisement";
             this.Text = "Advertisement";
@@ -131,6 +188,9 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImageBook)).EndInit();
+            this.btnShowMore.ResumeLayout(false);
+            this.btnShowMore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,5 +204,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbTittelBook;
         private System.Windows.Forms.Label lbPrice;
+        private Guna.UI2.WinForms.Guna2Panel btnShowMore;
+        private System.Windows.Forms.Label lbShowMore;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Elipse ElipseForBtnSeeMore;
     }
 }

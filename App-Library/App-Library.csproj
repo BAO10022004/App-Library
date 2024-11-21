@@ -655,9 +655,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="serviceAccountKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -669,6 +666,16 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\google1.png" />
+    <None Include="Resources\in-stock.png" />
+    <None Include="Resources\pending.png" />
+    <None Include="Resources\calculate.png" />
+    <None Include="Resources\scale.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\scale %281%29.png" />
+    <None Include="Resources\close-eye.png" />
+    <None Include="Resources\view.png" />
+    <None Include="Resources\good-wishes.gif" />
     <None Include="Resources\new-9562_128.gif" />
     <None Include="Resources\fire-3352_1281.gif" />
     <None Include="Resources\fire-3352_128.gif" />

@@ -20,6 +20,9 @@ namespace App_Library.Views
     {
         private SplashForm _splashForm;
         private readonly AuthService _authService;
+        bool isEyeForPassClose = true;
+        bool isEyeForConfirmClose = true;
+        int second = 2;
         public SignUpForm(SplashForm splashForm)
         {
             InitializeComponent();
@@ -210,7 +213,7 @@ namespace App_Library.Views
             if (txbPassword.Text == "Password")
             {
                 txbPassword.Text = string.Empty;
-                txbPassword.PasswordChar = '*';
+                closeEye(picEyeOfPass);
                 txbPassword.ForeColor = Color.Black;
             }
         }
@@ -221,7 +224,17 @@ namespace App_Library.Views
             {
                 txbPassword.Text = "Password";
                 txbPassword.PasswordChar = '\0';
+                isEyeForPassClose = true;
+                this.picEyeOfPass.Image = null;
                 txbPassword.ForeColor = Color.DarkGray;
+            }
+            if (txbPassword.Text.Equals("Password"))
+            {
+                txbPassword.PasswordChar = '•';
+            }
+            if (picEyeOfPass.Image == null)
+            {
+                txbPassword.PasswordChar = '\0';
             }
         }
 
@@ -230,7 +243,7 @@ namespace App_Library.Views
             if (txbConfirmPassword.Text == "Confirm Password")
             {
                 txbConfirmPassword.Text = string.Empty;
-                txbConfirmPassword.PasswordChar = '*';
+                closeEye(picEyeOfConfirm);
                 txbConfirmPassword.ForeColor = Color.Black;
             }
         }
@@ -241,7 +254,116 @@ namespace App_Library.Views
             {
                 txbConfirmPassword.Text = "Confirm Password";
                 txbConfirmPassword.PasswordChar = '\0';
-                txbConfirmPassword.ForeColor = Color.DarkGray;
+                isEyeForConfirmClose = true;
+                this.picEyeOfConfirm.Image = null;
+                txbPassword.ForeColor = Color.DarkGray;
+            }
+            if (txbConfirmPassword.Text.Equals("Confirm Password"))
+            {
+                txbConfirmPassword.PasswordChar = '•';
+            }
+            if (picEyeOfConfirm.Image == null)
+            {
+                txbConfirmPassword.PasswordChar = '\0';
+            }
+        }
+
+        private void txbConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picEyeOfPass_Click(object sender, EventArgs e)
+        {
+            openEyeFor(picEyeOfPass);
+        }
+        void closeEye(PictureBox pic)
+        {
+            try
+            {
+                pic.Image = global::App_Library.Properties.Resources.view;
+                if (pic.Name.Contains("C"))
+                {
+                    // Confirm
+                    isEyeForConfirmClose = true;
+                    txbConfirmPassword.PasswordChar = '•';
+                    picEyeOfConfirm.Click += new EventHandler(this.picEyeOfConfirm_Click);
+                }
+                else
+                {
+                    isEyeForPassClose = true;
+                    txbPassword.PasswordChar = '•';
+                    picEyeOfPass.Click += new EventHandler(this.picEyeOfPass_Click);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+        void openEyeFor( PictureBox pic )
+        {
+            try
+            {
+                pic.Image = global::App_Library.Properties.Resources.close_eye; 
+                if(pic.Name.Contains("Confirm"))
+                {
+                    // Confirm
+                    isEyeForConfirmClose = false;
+                    txbConfirmPassword.PasswordChar = '\0';
+                    timerOpenEyeForConfirm.Start();
+                    picEyeOfConfirm.Click -= new EventHandler(this.picEyeOfConfirm_Click);
+                }
+                else
+                {
+                    isEyeForPassClose = false;
+                    txbPassword.PasswordChar = '\0';
+                    timerOpenEyeForPassWord.Start();
+                    picEyeOfPass.Click -= new EventHandler(this.picEyeOfPass_Click);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+        private void picEyeOfConfirm_Click(object sender, EventArgs e)
+        {
+            openEyeFor(picEyeOfConfirm);
+        }
+
+        private void timerOpenEyeForPassWord_Tick(object sender, EventArgs e)
+        {
+            if (second > 0)
+            {
+                second--;
+            }
+            else
+            {
+                second = 2;
+                timerOpenEyeForPassWord.Stop();
+                closeEye(picEyeOfPass);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (second > 0)
+            {
+                second--;
+            }
+            else
+            {
+                second = 2;
+                timerOpenEyeForConfirm.Stop();
+                closeEye(picEyeOfConfirm);
             }
         }
     }

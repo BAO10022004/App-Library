@@ -100,7 +100,25 @@ namespace App_Library.Views.ToolerForm
             object image = rm.GetObject(imageName);
             return image as Image;
         }
+        public async void loadImageAsync(PictureBox pic, String image)
 
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var imageBytes = await client.GetByteArrayAsync(image);
+                    using (var ms = new System.IO.MemoryStream(imageBytes))
+                    {
+                        pic.Image = System.Drawing.Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
 
 
     }

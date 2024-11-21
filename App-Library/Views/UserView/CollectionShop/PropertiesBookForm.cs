@@ -171,5 +171,33 @@ namespace App_Library.Views
                 (sender as Guna2TextBox).Text = "Add Comment ...";
             }
         }
+        void ReSize()
+        {
+            pnMainPropertiesBook.Size = new Size(Width, pnMainPropertiesBook.Height);
+            pnInfoBook.Size = new Size(Width, pnInfoBook.Height);
+            guna2Panel2.Size = new Size(Width, guna2Panel2.Height);
+            foreach(Control control in pnMainPropertiesBook.Controls)
+            {
+                control.Size = new Size(pnMainPropertiesBook.Width, control.Height);
+            }
+            if(btnBuy.Visible == true)
+            {
+                btnBuy.Location = new Point((pnContainButtonBuy.Width - btnBuy.Width) / 2, (pnContainButtonBuy.Height - btnBuy.Height) / 2);
+            }
+            else
+            {
+                pnReadBook.Location = new Point((pnContainButtonBuy.Width - pnReadBook.Width) / 2, (pnContainButtonBuy.Height - pnReadBook.Height) / 2);
+            }
+        }
+
+        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void pnMainInfoBook_Resize(object sender, EventArgs e)
+        {
+            ReSize();
+        }
     }
 }

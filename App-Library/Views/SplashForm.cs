@@ -142,10 +142,12 @@ namespace App_Library.Views
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
+                this.btnMaximize.Image = global::App_Library.Properties.Resources.scale__1_;
                 this.WindowState = FormWindowState.Normal;
             }
             else
             {
+                this.btnMaximize.Image = global::App_Library.Properties.Resources.minimize;
                 this.WindowState = FormWindowState.Maximized;
             }
         }
