@@ -49,6 +49,14 @@ namespace App_Library.Services
             return await response.Content.ReadAsStringAsync();
         }
 
+        // Lấy người dùng theo email
+        public async Task<bool> GetUserByEmail(string email)
+        {
+            var request = new {Email = email};
+            var response = await _httpClient.PostAsJsonAsync("api/auth/getUserByEmail",request);
+            return response.IsSuccessStatusCode;
+        }
+
         // Gọi API đăng nhập bằng Google
         public async Task<bool> GoogleLoginAsync(GoogleLoginRequest googleLoginRequest)
         {

@@ -380,6 +380,12 @@
     <Compile Include="Views\AdminView\CollectionBooks\BooksForm.Designer.cs">
       <DependentUpon>BooksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminView\CollectionBooks\UpdateBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AdminView\CollectionBooks\UpdateBookForm.Designer.cs">
+      <DependentUpon>UpdateBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminView\CollectionComments\CommentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,6 +567,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminView\CollectionBooks\BooksForm.resx">
       <DependentUpon>BooksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AdminView\CollectionBooks\UpdateBookForm.resx">
+      <DependentUpon>UpdateBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AdminView\CollectionComments\CommentsForm.resx">
       <DependentUpon>CommentsForm.cs</DependentUpon>

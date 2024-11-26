@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 using System.Net.Http.Json;
+using static Google.Apis.Requests.BatchRequest;
 
 namespace App_Library.Services
 {
@@ -87,6 +88,20 @@ namespace App_Library.Services
             var lastMonthComments = jsonDocument.RootElement.GetProperty("lastMonthComments").GetInt32();
 
             return (comments, totalComments, lastMonthComments);
+        }
+
+        public async Task<List<Comment>> GetAllCommentAsync()
+        {
+            var response = await _httpClient.GetAsync("api/comments/all");
+            response.EnsureSuccessStatusCode();
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            var jsonDocument = JsonDocument.Parse(responseBody);
+            var comments = JsonSerializer.Deserialize<List<Comment>>(jsonDocument.RootElement.GetProperty("comments").GetRawText());
+            var totalComments = jsonDocument.RootElement.GetProperty("totalComments").GetInt32();
+            var lastMonthComments = jsonDocument.RootElement.GetProperty("lastMonthComments").GetInt32();
+
+            return comments;
         }
     }
 }

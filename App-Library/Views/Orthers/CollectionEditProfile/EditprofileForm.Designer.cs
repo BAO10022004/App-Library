@@ -32,16 +32,16 @@
             this.btnCancle = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.gnElipseForm = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnChangeAvartar = new Guna.UI2.WinForms.Guna2Button();
+            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblAvatar = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblAvatar = new System.Windows.Forms.Label();
-            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.gnElipseForm = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnChangeAvartar = new Guna.UI2.WinForms.Guna2Button();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
@@ -98,29 +98,56 @@
             this.guna2Panel1.Size = new System.Drawing.Size(450, 600);
             this.guna2Panel1.TabIndex = 2;
             // 
-            // gnElipseForm
+            // lblTitle
             // 
-            this.gnElipseForm.BorderRadius = 50;
-            this.gnElipseForm.TargetControl = this;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(100, 60);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(250, 40);
+            this.lblTitle.TabIndex = 9;
+            this.lblTitle.Text = "EDIT PROFILE";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblName
+            // btnChangeAvartar
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(60, 293);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(61, 24);
-            this.lblName.TabIndex = 2;
-            this.lblName.Text = "Name";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnChangeAvartar.BorderRadius = 5;
+            this.btnChangeAvartar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChangeAvartar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChangeAvartar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnChangeAvartar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnChangeAvartar.FillColor = System.Drawing.Color.Gray;
+            this.btnChangeAvartar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnChangeAvartar.ForeColor = System.Drawing.Color.White;
+            this.btnChangeAvartar.Location = new System.Drawing.Point(260, 198);
+            this.btnChangeAvartar.Name = "btnChangeAvartar";
+            this.btnChangeAvartar.Size = new System.Drawing.Size(130, 25);
+            this.btnChangeAvartar.TabIndex = 8;
+            this.btnChangeAvartar.Text = "Choose picture";
+            this.btnChangeAvartar.Click += new System.EventHandler(this.btnChangeAvartar_Click);
             // 
-            // txtName
+            // picAvatar
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(160, 290);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(230, 29);
-            this.txtName.TabIndex = 3;
+            this.picAvatar.BackColor = System.Drawing.Color.Transparent;
+            this.picAvatar.ImageRotate = 0F;
+            this.picAvatar.Location = new System.Drawing.Point(160, 170);
+            this.picAvatar.Margin = new System.Windows.Forms.Padding(2);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.picAvatar.Size = new System.Drawing.Size(80, 80);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatar.TabIndex = 7;
+            this.picAvatar.TabStop = false;
+            // 
+            // lblAvatar
+            // 
+            this.lblAvatar.AutoSize = true;
+            this.lblAvatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvatar.Location = new System.Drawing.Point(60, 198);
+            this.lblAvatar.Name = "lblAvatar";
+            this.lblAvatar.Size = new System.Drawing.Size(68, 24);
+            this.lblAvatar.TabIndex = 6;
+            this.lblAvatar.Text = "Avartar";
+            this.lblAvatar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtEmail
             // 
@@ -141,60 +168,33 @@
             this.lblEmail.Text = "Email";
             this.lblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblAvatar
+            // txtName
             // 
-            this.lblAvatar.AutoSize = true;
-            this.lblAvatar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvatar.Location = new System.Drawing.Point(60, 198);
-            this.lblAvatar.Name = "lblAvatar";
-            this.lblAvatar.Size = new System.Drawing.Size(68, 24);
-            this.lblAvatar.TabIndex = 6;
-            this.lblAvatar.Text = "Avartar";
-            this.lblAvatar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(160, 290);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(230, 29);
+            this.txtName.TabIndex = 3;
             // 
-            // picAvatar
+            // lblName
             // 
-            this.picAvatar.BackColor = System.Drawing.Color.Transparent;
-            this.picAvatar.ImageRotate = 0F;
-            this.picAvatar.Location = new System.Drawing.Point(160, 170);
-            this.picAvatar.Margin = new System.Windows.Forms.Padding(2);
-            this.picAvatar.Name = "picAvatar";
-            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.picAvatar.Size = new System.Drawing.Size(80, 80);
-            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAvatar.TabIndex = 7;
-            this.picAvatar.TabStop = false;
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(60, 293);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(61, 24);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Name";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gnElipseForm
+            // 
+            this.gnElipseForm.BorderRadius = 50;
+            this.gnElipseForm.TargetControl = this;
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnChangeAvartar
-            // 
-            this.btnChangeAvartar.BorderRadius = 5;
-            this.btnChangeAvartar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnChangeAvartar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnChangeAvartar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnChangeAvartar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnChangeAvartar.FillColor = System.Drawing.Color.Gray;
-            this.btnChangeAvartar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnChangeAvartar.ForeColor = System.Drawing.Color.White;
-            this.btnChangeAvartar.Location = new System.Drawing.Point(260, 198);
-            this.btnChangeAvartar.Name = "btnChangeAvartar";
-            this.btnChangeAvartar.Size = new System.Drawing.Size(130, 25);
-            this.btnChangeAvartar.TabIndex = 8;
-            this.btnChangeAvartar.Text = "Choose picture";
-            this.btnChangeAvartar.Click += new System.EventHandler(this.btnChangeAvartar_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(100, 60);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(250, 40);
-            this.lblTitle.TabIndex = 9;
-            this.lblTitle.Text = "EDIT PROFILE";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.openFileDialog1.FileName = "openFileDialog";
             // 
             // EditprofileForm
             // 

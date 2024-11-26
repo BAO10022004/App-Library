@@ -18,6 +18,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using static Guna.UI2.Native.WinApi;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -51,13 +52,14 @@ namespace App_Library.Views
             listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
             Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
-            
+
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
             // Hiển thị thông tin người dùng hiện tại
             var currentUser = await _userService.GetCurrentUserAsync();
+            Session.CurentUser = currentUser;
             lbName.Text = currentUser.Username;
             try
             {
