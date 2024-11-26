@@ -35,8 +35,8 @@
             this.lblUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblEmail = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pnBookAlready = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblStore = new System.Windows.Forms.Label();
             this.lblCountBookAlready = new System.Windows.Forms.Label();
+            this.lblStore = new System.Windows.Forms.Label();
             this.pnBookWaiting = new Guna.UI2.WinForms.Guna2Panel();
             this.lblCountBookWaiting = new System.Windows.Forms.Label();
             this.lblWaiting = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.pnBackground.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnBackground.Location = new System.Drawing.Point(0, 0);
             this.pnBackground.Name = "pnBackground";
-            this.pnBackground.Size = new System.Drawing.Size(1030, 250);
+            this.pnBackground.Size = new System.Drawing.Size(1030, 257);
             this.pnBackground.TabIndex = 0;
             // 
             // btnEdit
@@ -131,6 +131,17 @@
             this.pnBookAlready.Size = new System.Drawing.Size(100, 50);
             this.pnBookAlready.TabIndex = 7;
             // 
+            // lblCountBookAlready
+            // 
+            this.lblCountBookAlready.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCountBookAlready.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountBookAlready.Location = new System.Drawing.Point(0, 25);
+            this.lblCountBookAlready.Name = "lblCountBookAlready";
+            this.lblCountBookAlready.Size = new System.Drawing.Size(100, 25);
+            this.lblCountBookAlready.TabIndex = 9;
+            this.lblCountBookAlready.Text = "0";
+            this.lblCountBookAlready.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblStore
             // 
             this.lblStore.Dock = System.Windows.Forms.DockStyle.Top;
@@ -142,17 +153,6 @@
             this.lblStore.TabIndex = 8;
             this.lblStore.Text = "Store";
             this.lblStore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCountBookAlready
-            // 
-            this.lblCountBookAlready.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCountBookAlready.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCountBookAlready.Location = new System.Drawing.Point(0, 25);
-            this.lblCountBookAlready.Name = "lblCountBookAlready";
-            this.lblCountBookAlready.Size = new System.Drawing.Size(100, 25);
-            this.lblCountBookAlready.TabIndex = 9;
-            this.lblCountBookAlready.Text = "0";
-            this.lblCountBookAlready.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnBookWaiting
             // 

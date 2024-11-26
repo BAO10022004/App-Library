@@ -87,8 +87,8 @@
             this.gnPanelHome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gnPanelHome.BackColor = System.Drawing.Color.White;
-            this.gnPanelHome.Controls.Add(this.picHome);
             this.gnPanelHome.Controls.Add(this.lbHome);
+            this.gnPanelHome.Controls.Add(this.picHome);
             this.gnPanelHome.Location = new System.Drawing.Point(0, 5);
             this.gnPanelHome.Name = "gnPanelHome";
             this.gnPanelHome.Size = new System.Drawing.Size(250, 50);

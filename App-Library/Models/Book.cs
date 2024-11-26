@@ -25,6 +25,9 @@ using Guna.UI2.WinForms;
 using System.Net.Http;
 using static Guna.UI2.Native.WinApi;
 using App_Library.Views.ToolerForm;
+using App_Library.Views;
+using System.Drawing.Printing;
+using App_Library.Views.UserView.CollectionHome;
 
 namespace App_Library.Models
 {
@@ -74,7 +77,7 @@ namespace App_Library.Models
             // Tạo Panel với kích thước cố định 1259 x 335
             PanelBook panel = new PanelBook(this);
             panel.Size = new Size(1037, 294);
-            panel.BorderStyle = BorderStyle.FixedSingle;
+            //panel.BorderStyle = BorderStyle.FixedSingle;
             panel.BackColor = Color.FromArgb(245, 245, 245); // Màu nền nhẹ nhàng
 
             // Thêm PictureBox để hiển thị hình ảnh của cuốn sách
@@ -154,7 +157,7 @@ namespace App_Library.Models
             descriptionLabel.MaximumSize = new Size(900, 100); // Giới hạn chiều cao mô tả
             panel.Controls.Add(descriptionLabel);
             panel.Cursor = System.Windows.Forms.Cursors.Hand;
-            panel.BorderStyle = BorderStyle.None;
+            //panel.BorderStyle = BorderStyle.None;
             panel.Name = this.Username;
             panel.BackColor = Color.White;
             foreach (System.Windows.Forms.Control control in panel.Controls)
@@ -230,6 +233,85 @@ namespace App_Library.Models
             //{
             //    control.Name = "Book" + control.Name + index;
             //}
+            return panel;
+        }
+        public Panel CreateBookPanel(BoughtBook boughtBook)
+        {
+            Book book = this;
+            // Tạo Panel chính
+            PanelBook panel = new PanelBook(this);
+            panel.Size = new Size(300, 400);
+            panel.BackColor = System.Drawing.Color.White;
+            panel.BorderColor = System.Drawing.Color.Blue;
+            panel.BorderRadius = 15;
+            panel.BorderThickness = 3;
+
+            // Tạo PictureBox cho hình ảnh sách
+            PictureBox pictureBox = new PictureBox
+            {
+                Size = new Size(280, 200), // Kích thước hình ảnh
+                Location = new Point(10, 10), // Vị trí trên Panel
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BorderStyle = BorderStyle.None,
+                ImageLocation = this.Image // Đường dẫn đến ảnh của sách
+            };
+
+            // Tạo Label cho tiêu đề
+            Label titleLabel = new Label
+            {
+                Text = this.Title,
+                Font = new Font("Arial", 15, FontStyle.Bold),
+                AutoSize = false,
+                Size = new Size(280, 30),
+                Location = new Point(10, 220),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            // Tạo Label cho thể loại (Genre)
+            Label genreLabel = new Label
+            {
+                Text = this.Genre,
+                Font = new Font("Arial", 10, FontStyle.Italic),
+                AutoSize = false,
+                Size = new Size(280, 20),
+                Location = new Point(10, 260),
+                TextAlign = ContentAlignment.MiddleCenter,
+                ForeColor = Color.Gray
+            };
+
+            // Tạo Label cho tác giả (Author)
+            Label authorLabel = new Label
+            {
+                Text = $"Author: {this.Author}",
+                Font = new Font("Arial", 10, FontStyle.Regular),
+                AutoSize = false,
+                Size = new Size(280, 20),
+                Location = new Point(10, 290),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            // Tạo Button để mở PDF
+            Button openPdfButton = new Button
+            {
+                Name = book.Title,
+                Text = "Read PDF",
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                Size = new Size(120, 30),
+                Location = new Point(90, 330),
+                BackColor = Color.LightBlue,
+                FlatStyle = FlatStyle.Flat
+            };
+
+            // Gắn sự kiện cho nút "Read PDF"
+            openPdfButton.Click += new EventHandler(boughtBook.clickRead);
+
+            // Thêm các control vào Panel
+            panel.Controls.Add(pictureBox);
+            panel.Controls.Add(titleLabel);
+            panel.Controls.Add(genreLabel);
+            panel.Controls.Add(authorLabel);
+            panel.Controls.Add(openPdfButton);
+
             return panel;
         }
 

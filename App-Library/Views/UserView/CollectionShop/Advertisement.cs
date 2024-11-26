@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Views.ToolerForm;
+using Guna.UI2.WinForms.Suite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace App_Library.Views.Main.CollectionShop
             InitializeComponent();
             this.book = book;
             this.shopMain = shop;
+
         }
 
         private void Advertisement_Load(object sender, EventArgs e)
@@ -36,7 +38,8 @@ namespace App_Library.Views.Main.CollectionShop
             }
             lbTittelBook.Text = book.Title;
             lbPrice.Text += book.Price + "$";
-            this.Click += new EventHandler(shopMain.bookAd_Click);
+           
+            btnShowMore.FillColor = Color.FromArgb(40, 224, 224, 224);
         }
         private void bookAd_Click(object sender, EventArgs e)
         {
@@ -44,6 +47,32 @@ namespace App_Library.Views.Main.CollectionShop
         }
 
         private void lbPrice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowMore_MouseHover(object sender, EventArgs e)
+        {
+            btnShowMore.BackColor = Color.CornflowerBlue;
+        }
+
+        private void btnShowMore_MouseLeave(object sender, EventArgs e)
+        {
+           
+            btnShowMore.BackColor= Color.LightSteelBlue;
+        }
+
+        private void lbShowMore_Click(object sender, EventArgs e)
+        {
+            shopMain.bookClick(book);
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btnShowMore_Paint(object sender, PaintEventArgs e)
         {
 
         }

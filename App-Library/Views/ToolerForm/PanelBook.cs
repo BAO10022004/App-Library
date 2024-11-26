@@ -1,4 +1,5 @@
 ﻿using App_Library.Models;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace App_Library.Views.ToolerForm
 {
-    internal class PanelBook : Panel
+    internal class PanelBook : Guna2Panel
     {
         Book data;
 
@@ -16,6 +17,7 @@ namespace App_Library.Views.ToolerForm
         {
             this.data = data;
         }
-        public Book Data { get => data; }
+        
+        public Book Data1 { get => data; set => data = value; }
     }
 }

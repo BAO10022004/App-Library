@@ -122,7 +122,7 @@ namespace App_Library.Views.UserView
             //pointSave = picHome.Location;
             //lbHome.Text = "";
             //timerPicHome.Start();
-            _mainForm.activeFormChildForMainForm(new HomeForm(), e);
+            _mainForm.activeFormChildForMainForm(new HomeForm(_mainForm), e);
         }
 
         private void lbStore_Click(object sender, EventArgs e)

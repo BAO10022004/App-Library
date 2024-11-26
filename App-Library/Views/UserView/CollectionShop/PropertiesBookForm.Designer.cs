@@ -61,7 +61,7 @@
             this.lblPrice = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.panel19 = new System.Windows.Forms.Panel();
+            this.pnContainButtonBuy = new System.Windows.Forms.Panel();
             this.pnReadBook = new Guna.UI2.WinForms.Guna2Panel();
             this.lbReadBook = new System.Windows.Forms.Label();
             this.btnBuy = new Guna.UI2.WinForms.Guna2Panel();
@@ -98,7 +98,7 @@
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel19.SuspendLayout();
+            this.pnContainButtonBuy.SuspendLayout();
             this.pnReadBook.SuspendLayout();
             this.btnBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -125,7 +125,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1321, 702);
+            this.guna2Panel1.Size = new System.Drawing.Size(1011, 480);
             this.guna2Panel1.TabIndex = 0;
             // 
             // pnMainPropertiesBook
@@ -137,7 +137,7 @@
             this.pnMainPropertiesBook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainPropertiesBook.Location = new System.Drawing.Point(0, 446);
             this.pnMainPropertiesBook.Name = "pnMainPropertiesBook";
-            this.pnMainPropertiesBook.Size = new System.Drawing.Size(1304, 1354);
+            this.pnMainPropertiesBook.Size = new System.Drawing.Size(994, 1354);
             this.pnMainPropertiesBook.TabIndex = 2;
             this.pnMainPropertiesBook.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -147,16 +147,17 @@
             this.pnDescription.Controls.Add(this.lbDescription);
             this.pnDescription.Location = new System.Drawing.Point(3, 3);
             this.pnDescription.Name = "pnDescription";
-            this.pnDescription.Size = new System.Drawing.Size(1300, 166);
+            this.pnDescription.Size = new System.Drawing.Size(991, 166);
             this.pnDescription.TabIndex = 3;
             // 
             // lblContent
             // 
+            this.lblContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblContent.ForeColor = System.Drawing.Color.Black;
-            this.lblContent.Location = new System.Drawing.Point(4, 62);
+            this.lblContent.Location = new System.Drawing.Point(0, 57);
             this.lblContent.Name = "lblContent";
-            this.lblContent.Size = new System.Drawing.Size(1276, 104);
+            this.lblContent.Size = new System.Drawing.Size(991, 109);
             this.lblContent.TabIndex = 0;
             this.lblContent.Text = "lblContent";
             this.lblContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,7 +169,7 @@
             this.lbDescription.ForeColor = System.Drawing.Color.Black;
             this.lbDescription.Location = new System.Drawing.Point(0, 0);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(1300, 62);
+            this.lbDescription.Size = new System.Drawing.Size(991, 57);
             this.lbDescription.TabIndex = 0;
             this.lbDescription.Text = "---Description---";
             this.lbDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,7 +178,7 @@
             // 
             this.pnRecommend.Location = new System.Drawing.Point(3, 175);
             this.pnRecommend.Name = "pnRecommend";
-            this.pnRecommend.Size = new System.Drawing.Size(1300, 413);
+            this.pnRecommend.Size = new System.Drawing.Size(988, 413);
             this.pnRecommend.TabIndex = 0;
             // 
             // panel15
@@ -194,7 +195,7 @@
             this.panel16.Controls.Add(this.panel17);
             this.panel16.Location = new System.Drawing.Point(3, 600);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1294, 758);
+            this.panel16.Size = new System.Drawing.Size(991, 719);
             this.panel16.TabIndex = 2;
             // 
             // pnToolComment
@@ -202,7 +203,7 @@
             this.pnToolComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnToolComment.Location = new System.Drawing.Point(0, 49);
             this.pnToolComment.Name = "pnToolComment";
-            this.pnToolComment.Size = new System.Drawing.Size(1294, 709);
+            this.pnToolComment.Size = new System.Drawing.Size(991, 670);
             this.pnToolComment.TabIndex = 1;
             this.pnToolComment.MouseLeave += new System.EventHandler(this.btnBuy_MouseLeave);
             this.pnToolComment.MouseHover += new System.EventHandler(this.guna2Panel4_MouseHover);
@@ -213,7 +214,7 @@
             this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel17.Location = new System.Drawing.Point(0, 0);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(1294, 49);
+            this.panel17.Size = new System.Drawing.Size(991, 49);
             this.panel17.TabIndex = 0;
             // 
             // label5
@@ -223,7 +224,7 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1294, 49);
+            this.label5.Size = new System.Drawing.Size(991, 49);
             this.label5.TabIndex = 1;
             this.label5.Text = "Comment";
             // 
@@ -234,7 +235,7 @@
             this.pnInfoBook.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnInfoBook.Location = new System.Drawing.Point(0, 49);
             this.pnInfoBook.Name = "pnInfoBook";
-            this.pnInfoBook.Size = new System.Drawing.Size(1304, 397);
+            this.pnInfoBook.Size = new System.Drawing.Size(994, 397);
             this.pnInfoBook.TabIndex = 1;
             // 
             // pnMainInfoBook
@@ -243,12 +244,13 @@
             this.pnMainInfoBook.Controls.Add(this.panel5);
             this.pnMainInfoBook.Controls.Add(this.panel8);
             this.pnMainInfoBook.Controls.Add(this.panel11);
-            this.pnMainInfoBook.Controls.Add(this.panel19);
+            this.pnMainInfoBook.Controls.Add(this.pnContainButtonBuy);
             this.pnMainInfoBook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainInfoBook.Location = new System.Drawing.Point(374, 0);
             this.pnMainInfoBook.Name = "pnMainInfoBook";
-            this.pnMainInfoBook.Size = new System.Drawing.Size(930, 397);
+            this.pnMainInfoBook.Size = new System.Drawing.Size(620, 397);
             this.pnMainInfoBook.TabIndex = 1;
+            this.pnMainInfoBook.Resize += new System.EventHandler(this.pnMainInfoBook_Resize);
             // 
             // panel2
             // 
@@ -256,7 +258,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(906, 56);
+            this.panel2.Size = new System.Drawing.Size(614, 56);
             this.panel2.TabIndex = 0;
             // 
             // panel4
@@ -265,7 +267,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(134, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(772, 56);
+            this.panel4.Size = new System.Drawing.Size(480, 56);
             this.panel4.TabIndex = 1;
             // 
             // lblAuthor
@@ -305,7 +307,7 @@
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Location = new System.Drawing.Point(3, 65);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(906, 56);
+            this.panel5.Size = new System.Drawing.Size(614, 56);
             this.panel5.TabIndex = 1;
             // 
             // panel6
@@ -314,7 +316,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(134, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(772, 56);
+            this.panel6.Size = new System.Drawing.Size(480, 56);
             this.panel6.TabIndex = 1;
             // 
             // lblGenre
@@ -354,7 +356,7 @@
             this.panel8.Controls.Add(this.panel10);
             this.panel8.Location = new System.Drawing.Point(3, 127);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(906, 56);
+            this.panel8.Size = new System.Drawing.Size(617, 56);
             this.panel8.TabIndex = 2;
             // 
             // panel9
@@ -363,7 +365,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(237, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(669, 56);
+            this.panel9.Size = new System.Drawing.Size(380, 56);
             this.panel9.TabIndex = 1;
             // 
             // lblPublishYear
@@ -403,7 +405,7 @@
             this.panel11.Controls.Add(this.panel13);
             this.panel11.Location = new System.Drawing.Point(3, 189);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(906, 56);
+            this.panel11.Size = new System.Drawing.Size(614, 56);
             this.panel11.TabIndex = 3;
             // 
             // panel12
@@ -412,7 +414,7 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(149, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(757, 56);
+            this.panel12.Size = new System.Drawing.Size(465, 56);
             this.panel12.TabIndex = 1;
             // 
             // lblPrice
@@ -446,14 +448,14 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "List price: ";
             // 
-            // panel19
+            // pnContainButtonBuy
             // 
-            this.panel19.Controls.Add(this.pnReadBook);
-            this.panel19.Controls.Add(this.btnBuy);
-            this.panel19.Location = new System.Drawing.Point(3, 251);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(920, 146);
-            this.panel19.TabIndex = 4;
+            this.pnContainButtonBuy.Controls.Add(this.pnReadBook);
+            this.pnContainButtonBuy.Controls.Add(this.btnBuy);
+            this.pnContainButtonBuy.Location = new System.Drawing.Point(3, 251);
+            this.pnContainButtonBuy.Name = "pnContainButtonBuy";
+            this.pnContainButtonBuy.Size = new System.Drawing.Size(622, 146);
+            this.pnContainButtonBuy.TabIndex = 4;
             // 
             // pnReadBook
             // 
@@ -545,8 +547,9 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1304, 49);
+            this.guna2Panel2.Size = new System.Drawing.Size(994, 49);
             this.guna2Panel2.TabIndex = 0;
+            this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
             // pictureBox2
             // 
@@ -645,7 +648,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(1321, 702);
+            this.ClientSize = new System.Drawing.Size(1011, 480);
             this.Controls.Add(this.guna2Panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -680,7 +683,7 @@
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel19.ResumeLayout(false);
+            this.pnContainButtonBuy.ResumeLayout(false);
             this.pnReadBook.ResumeLayout(false);
             this.pnReadBook.PerformLayout();
             this.btnBuy.ResumeLayout(false);
@@ -745,7 +748,7 @@
         private System.Windows.Forms.Panel pnToolComment;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel pnContainButtonBuy;
         private Guna.UI2.WinForms.Guna2Panel btnBuy;
         private System.Windows.Forms.Label lbBuy;
         private System.Windows.Forms.PictureBox pictureBox1;

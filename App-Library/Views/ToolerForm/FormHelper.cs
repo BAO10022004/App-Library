@@ -1,10 +1,13 @@
 ﻿using App_Library.Models;
+using App_Library.Services;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,9 +103,60 @@ namespace App_Library.Views.ToolerForm
             object image = rm.GetObject(imageName);
             return image as Image;
         }
+        public async void loadImageAsync(PictureBox pic, String image)
 
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var imageBytes = await client.GetByteArrayAsync(image);
+                    using (var ms = new System.IO.MemoryStream(imageBytes))
+                    {
+                        pic.Image = System.Drawing.Image.FromStream(ms);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+        public async void  sendMail(string body, string mailTo)
+        {
+           
+            try
+            {
 
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("giabaoonutc2@gmail.com", "zaxhlxwulmedygre"),
+                    EnableSsl = true
+                };
+
+                MailMessage mail = new MailMessage
+                {
+                    From = new MailAddress("giabaoonutc2@gmail.com"),
+                    Subject = "Test Email",
+                    Body = body,
+                    IsBodyHtml = false
+                };
+
+                mail.To.Add(mailTo);
+
+                smtpClient.Send(mail);
+                MessageBox.Show("Email sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+        
 
     }
+
+}
 
 }

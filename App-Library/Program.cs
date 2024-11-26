@@ -21,6 +21,7 @@ namespace App_Library
         [STAThread]
         static void Main()
         {
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             sp = new SplashForm();

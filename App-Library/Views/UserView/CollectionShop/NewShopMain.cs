@@ -46,12 +46,12 @@ namespace App_Library.Views.Main.CollectionShop
         Control.ControlCollection collectionPanelHotDeal;
         Control.ControlCollection collectionPanelAll;
         // size properties
-        public const int WITH = 1321;
+        public  int WITH = 1011;
         public const int HEIGHT = 626;
         // check button option view  click
         Dictionary<Control, bool> mapCheckButtonOptionViewIsClick;
-        
-        
+        // Save main form 
+        Panel pnSaveForm = new Panel();
         public NewShopMain()
         {
             _bookService = new BookService();
@@ -62,6 +62,8 @@ namespace App_Library.Views.Main.CollectionShop
             _user = new UserService();
             listTask = new List<Task<PanelBook>>();
             InitializeComponent();
+           
+           
         }
      
         private async void NewShopMain_LoadAsync(object sender, EventArgs e)
@@ -145,7 +147,7 @@ namespace App_Library.Views.Main.CollectionShop
                     control.Visible = true;
                 }
                 formAd = new AdForm(listBook, this);
-                activeFormChild(pnAd, formAd, null, ref actForm1);
+                activeFormChild(pnContainAd, formAd, null, ref actForm1);
                 var bookSales = listBookSold
                             .GroupBy(b => b.BookId)
                             .Select(group => new { BookId = group.Key, SalesCount = group.Count() });
@@ -175,18 +177,18 @@ namespace App_Library.Views.Main.CollectionShop
                 }
                 listHotDeal = ((await Task.WhenAll(tasks)).ToList());
                 collectionPanelHotDeal.AddRange(listHotDeal.ToArray());
-                 tasks = new List<Task<Panel>>();
+                List<Task<Panel>> tasksBestSelling  = new List<Task<Panel>>();
                 for (int i = 0; i < listBookBestSelling.Count; i++)
                 {
                     var tack = listBookBestSelling[i].CreateBookPanelAsync(i, 4);
                     if (await tack != null)
                     {
-                        tasks.Add(tack);
+                        tasksBestSelling.Add(tack);
                         //getBookFromPanelHotDeal[await tack] = listBook[i];
                     }
                 }
 
-                listPanelBestSelling = ((await Task.WhenAll(tasks)).ToList());
+                listPanelBestSelling = ((await Task.WhenAll(tasksBestSelling)).ToList());
 
                 foreach (Control item in collectionPanelHotDeal)
                 {
@@ -195,11 +197,13 @@ namespace App_Library.Views.Main.CollectionShop
                         control.Click += new EventHandler(this.bookHotDeal_Click);
                 }
                 guna2ProgressIndicator.Stop();
+                this.Controls.Remove(guna2ProgressIndicator);
                 formHotDeal = new HotDealForm(listHotDeal, this, "HOT DEAL");
                 activeFormChild(pnHotDeal, formHotDeal, null, ref actForm2);
                 HotDealForm formBestSelling = new HotDealForm(listPanelBestSelling, this, "BEST SELLING ");
                 Form actForm3 = new Form();
                 activeFormChild(pnBestSelling, formBestSelling, null, ref actForm3);
+                ReSize();
             }
         }
         internal void back_Click(object sender, EventArgs e)
@@ -208,36 +212,42 @@ namespace App_Library.Views.Main.CollectionShop
             pnProperties.Size = new Size(0, this.Height);
             pnContainSearch.Height = 200;
             pnOptionViewBook.Show();
-       
+            pnProperties.Dock = DockStyle.Right;
         }
 
         internal void bookAd_Click(object sender, EventArgs e)
         {
+            
             pnMainForm.Size = new Size(this.Size.Width - WITH, this.Size.Height);
             pnProperties.Size = new Size(WITH, this.Height);
-            //pnProperties.BackColor = Color.Black;
-            pnProperties.Location = new Point(this.Size.Width + 300 - pnMainForm.Width, 0);
-            
+            pnProperties.Location = new Point(0, 0);
             activeFormChild(pnProperties, new PropertiesBookForm((sender as Advertisement).book, 4, this), e);
+            pnProperties.Dock = DockStyle.Fill;
+        }
+        internal void bookClick(Book book)
+        {
+            pnProperties.Data1 = book;
+            pnMainForm.Size = new Size(this.Size.Width - WITH, this.Size.Height);
+            pnProperties.Size = new Size(WITH, this.Height);
+            pnProperties.Location = new Point(0, 0);
+            activeFormChild(pnProperties, new PropertiesBookForm(book, 4, this), null);
+            
         }
         private void bookHotDeal_Click(object sender, EventArgs e)
         {
-            pnOptionViewBook.Hide();
-            pnContainSearch.Height = 116;
-            pnMainForm.Size = new Size(this.Size.Width - WITH, this.Size.Height);
-            pnProperties.Size = new Size(WITH, this.Height);
-            //pnProperties.BackColor = Color.Black;
-            pnProperties.Location = new Point(this.Size.Width + 300 - pnMainForm.Width, 0);
+            
             PanelBook panelBook;
             if (sender is PanelBook)
             {
                 panelBook = (PanelBook)sender;
+               
             }
             else
             {
                 panelBook = (PanelBook)FindControlContainer(collectionPanelHotDeal, sender as Control);
             }
-            activeFormChild(pnProperties, new PropertiesBookForm(panelBook.Data, 4, this), e);
+            bookClick(panelBook.Data1);
+           // activeFormChild(pnProperties, new PropertiesBookForm(panelBook.Data1, 4, this), e);
         }
 
         private void btnViewAll_MouseHover(object sender, EventArgs e)
@@ -371,6 +381,51 @@ namespace App_Library.Views.Main.CollectionShop
                 pnOptionViewBook.Show();
                 pnContainSearch.Height = 200;
             }
+        }
+
+        private void pnSearchShop_Resize(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pnBestSelling_Resize(object sender, EventArgs e)
+        {
+        }
+
+        private void pnHotDeal_Resize(object sender, EventArgs e)
+        {
+        }
+        void ReSize()
+        {
+            pnSearchShop.Location = new Point((pnSearch.Width - pnSearchShop.Width) / 2, (pnSearch.Height - pnSearchShop.Height) / 2);
+
+            this.Controls.Add(this.pnMainForm);
+            this.Controls.Add(this.pnProperties);
+            this.Controls.Add(this.pnContainSearch);
+            pnMainForm.Size = new Size(this.Width - 30, pnMainForm.Height);
+            pnContainSearch.Size = new Size (this.Width - 30, pnContainSearch.Height);
+
+            pnAd.Size = new Size(pnMainForm.Width, pnAd.Height);
+            pnBestSelling.Size = new Size(pnMainForm.Width, pnBestSelling.Height);
+            pnHotDeal.Size = new Size(pnMainForm.Width, pnHotDeal.Height);
+            pnContainAd.Location = new Point((pnAd.Width - pnContainAd.Width) / 2, (pnAd.Height - pnContainAd.Height) / 2);
+            
+        }
+        private void NewShopMain_Resize(object sender, EventArgs e)
+        {
+            //MessageBox.Show("HI");
+            ReSize();
+        }
+
+        private void pnProperties_Resize(object sender, EventArgs e)
+        {
+            if (pnProperties.Width > 1000)
+            {
+                WITH = this.Width;
+                pnProperties.Width = this.Width;
+                bookClick(pnProperties.Data1);
+            }
+            
         }
     }
 }

@@ -32,10 +32,12 @@
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
             this.lbOr = new System.Windows.Forms.Label();
             this.gnPanelConfirmPassword = new Guna.UI2.WinForms.Guna2Panel();
+            this.picEyeOfConfirm = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbConfirmPassword = new System.Windows.Forms.TextBox();
             this.gnPanelUsername = new Guna.UI2.WinForms.Guna2Panel();
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.gnPanelPassword = new Guna.UI2.WinForms.Guna2Panel();
+            this.picEyeOfPass = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.gnPanelEmail = new Guna.UI2.WinForms.Guna2Panel();
             this.txbEmail = new System.Windows.Forms.TextBox();
@@ -49,10 +51,14 @@
             this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.timerOpenEyeForPassWord = new System.Windows.Forms.Timer(this.components);
+            this.timerOpenEyeForConfirm = new System.Windows.Forms.Timer(this.components);
             this.pnMainContentLogin.SuspendLayout();
             this.gnPanelConfirmPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).BeginInit();
             this.gnPanelUsername.SuspendLayout();
             this.gnPanelPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).BeginInit();
             this.gnPanelEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
@@ -96,12 +102,25 @@
             this.gnPanelConfirmPassword.BorderColor = System.Drawing.Color.DarkGray;
             this.gnPanelConfirmPassword.BorderRadius = 10;
             this.gnPanelConfirmPassword.BorderThickness = 2;
+            this.gnPanelConfirmPassword.Controls.Add(this.picEyeOfConfirm);
             this.gnPanelConfirmPassword.Controls.Add(this.txbConfirmPassword);
             this.gnPanelConfirmPassword.Location = new System.Drawing.Point(75, 229);
             this.gnPanelConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelConfirmPassword.Name = "gnPanelConfirmPassword";
             this.gnPanelConfirmPassword.Size = new System.Drawing.Size(310, 47);
             this.gnPanelConfirmPassword.TabIndex = 17;
+            // 
+            // picEyeOfConfirm
+            // 
+            this.picEyeOfConfirm.Image = global::App_Library.Properties.Resources.view;
+            this.picEyeOfConfirm.ImageRotate = 0F;
+            this.picEyeOfConfirm.Location = new System.Drawing.Point(270, 10);
+            this.picEyeOfConfirm.Name = "picEyeOfConfirm";
+            this.picEyeOfConfirm.Size = new System.Drawing.Size(32, 29);
+            this.picEyeOfConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeOfConfirm.TabIndex = 8;
+            this.picEyeOfConfirm.TabStop = false;
+            this.picEyeOfConfirm.Click += new System.EventHandler(this.picEyeOfConfirm_Click);
             // 
             // txbConfirmPassword
             // 
@@ -112,10 +131,11 @@
             this.txbConfirmPassword.Location = new System.Drawing.Point(25, 15);
             this.txbConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txbConfirmPassword.Name = "txbConfirmPassword";
-            this.txbConfirmPassword.Size = new System.Drawing.Size(260, 17);
+            this.txbConfirmPassword.Size = new System.Drawing.Size(240, 17);
             this.txbConfirmPassword.TabIndex = 4;
             this.txbConfirmPassword.Text = "Confirm Password";
             this.txbConfirmPassword.Click += new System.EventHandler(this.txbConfirmPassword_Click);
+            this.txbConfirmPassword.TextChanged += new System.EventHandler(this.txbConfirmPassword_TextChanged);
             this.txbConfirmPassword.Leave += new System.EventHandler(this.txbConfirmPassword_Leave);
             // 
             // gnPanelUsername
@@ -150,12 +170,25 @@
             this.gnPanelPassword.BorderColor = System.Drawing.Color.DarkGray;
             this.gnPanelPassword.BorderRadius = 10;
             this.gnPanelPassword.BorderThickness = 2;
+            this.gnPanelPassword.Controls.Add(this.picEyeOfPass);
             this.gnPanelPassword.Controls.Add(this.txbPassword);
             this.gnPanelPassword.Location = new System.Drawing.Point(75, 167);
             this.gnPanelPassword.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelPassword.Name = "gnPanelPassword";
             this.gnPanelPassword.Size = new System.Drawing.Size(310, 47);
             this.gnPanelPassword.TabIndex = 16;
+            // 
+            // picEyeOfPass
+            // 
+            this.picEyeOfPass.Image = global::App_Library.Properties.Resources.view;
+            this.picEyeOfPass.ImageRotate = 0F;
+            this.picEyeOfPass.Location = new System.Drawing.Point(270, 10);
+            this.picEyeOfPass.Name = "picEyeOfPass";
+            this.picEyeOfPass.Size = new System.Drawing.Size(32, 29);
+            this.picEyeOfPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeOfPass.TabIndex = 7;
+            this.picEyeOfPass.TabStop = false;
+            this.picEyeOfPass.Click += new System.EventHandler(this.picEyeOfPass_Click);
             // 
             // txbPassword
             // 
@@ -166,10 +199,11 @@
             this.txbPassword.Location = new System.Drawing.Point(25, 15);
             this.txbPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.Size = new System.Drawing.Size(260, 17);
+            this.txbPassword.Size = new System.Drawing.Size(240, 17);
             this.txbPassword.TabIndex = 4;
             this.txbPassword.Text = "Password";
             this.txbPassword.Click += new System.EventHandler(this.txbPassword_Click);
+            this.txbPassword.TextChanged += new System.EventHandler(this.txbPassword_TextChanged);
             this.txbPassword.Leave += new System.EventHandler(this.txbPassword_Leave);
             // 
             // gnPanelEmail
@@ -284,6 +318,16 @@
             // 
             this.errorProviderConfirmPassword.ContainerControl = this;
             // 
+            // timerOpenEyeForPassWord
+            // 
+            this.timerOpenEyeForPassWord.Interval = 1000;
+            this.timerOpenEyeForPassWord.Tick += new System.EventHandler(this.timerOpenEyeForPassWord_Tick);
+            // 
+            // timerOpenEyeForConfirm
+            // 
+            this.timerOpenEyeForConfirm.Interval = 1000;
+            this.timerOpenEyeForConfirm.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,10 +344,12 @@
             this.pnMainContentLogin.PerformLayout();
             this.gnPanelConfirmPassword.ResumeLayout(false);
             this.gnPanelConfirmPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).EndInit();
             this.gnPanelUsername.ResumeLayout(false);
             this.gnPanelUsername.PerformLayout();
             this.gnPanelPassword.ResumeLayout(false);
             this.gnPanelPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).EndInit();
             this.gnPanelEmail.ResumeLayout(false);
             this.gnPanelEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
@@ -335,5 +381,9 @@
         private System.Windows.Forms.ErrorProvider errorProviderUsername;
         private System.Windows.Forms.ErrorProvider errorProviderPassword;
         private System.Windows.Forms.ErrorProvider errorProviderConfirmPassword;
+        private Guna.UI2.WinForms.Guna2PictureBox picEyeOfPass;
+        private Guna.UI2.WinForms.Guna2PictureBox picEyeOfConfirm;
+        private System.Windows.Forms.Timer timerOpenEyeForPassWord;
+        private System.Windows.Forms.Timer timerOpenEyeForConfirm;
     }
 }

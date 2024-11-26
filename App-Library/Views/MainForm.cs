@@ -33,7 +33,7 @@ namespace App_Library.Views
         private bool isDragging = false;
         private Point dragStartPoint;
         private Control draggedControl;
-        private HomeForm homeForm;
+        internal HomeForm homeForm;
         private NewShopMain shopForm;
 
         // compunent shop 
@@ -83,7 +83,7 @@ namespace App_Library.Views
                 activeFormChild(pnSideBar, new SideBarUserForm(this));
             }
 
-            homeForm = new HomeForm();
+            homeForm = new HomeForm(this);
             shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
 
@@ -100,7 +100,7 @@ namespace App_Library.Views
                 }
             }
             activeFormChildForMainForm(homeForm, e);
-            currentForm = new HomeForm();
+            currentForm = new HomeForm(this);
             foreach (var item in pnFooter.Controls)
             {
                 Panel panel = item as Panel;
@@ -120,7 +120,11 @@ namespace App_Library.Views
             panel.BackColor = Color.DeepSkyBlue;
             _lbShop.BackColor = Color.DeepSkyBlue;
         }
-
+        public void clickBackHome(object sender, EventArgs e)
+        {
+            homeForm = new HomeForm(this);
+            activeFormChildForMainForm(homeForm, e);
+        }
         private void MouseLeave(object sender, EventArgs e)
         {
             var _lbShop = (Control)sender;
@@ -212,6 +216,7 @@ namespace App_Library.Views
 
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             activeFormChildForMainForm(new ProfileForm(), e);
         }
     }

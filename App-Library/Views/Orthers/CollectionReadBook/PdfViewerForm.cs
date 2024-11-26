@@ -17,11 +17,11 @@ namespace App_Library.Views
     {
         private WebView2 webView;
 
-        public PdfViewerForm()
+        public PdfViewerForm(String stringPdf)
         {
             InitializeComponent();
             InitializeWebView();
-            LoadPdfFromUrl("https://firebasestorage.googleapis.com/v0/b/reading-book-web.appspot.com/o/pdfs%2F1728644837653to-kill-a-mockingbird.pdf?alt=media&token=f638608f-5bf3-4b21-a3e9-d3a5e671cf91");
+            LoadPdfFromUrl(stringPdf);
         }
 
         private async void InitializeWebView()

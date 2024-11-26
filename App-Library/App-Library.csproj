@@ -452,11 +452,29 @@
     <Compile Include="Views\Orthers\CollectionSetting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserView\CollectionHome\BoughtBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\BoughtBook.Designer.cs">
+      <DependentUpon>BoughtBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserView\CollectionHome\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\UserView\CollectionHome\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\MailPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\MailPassword.Designer.cs">
+      <DependentUpon>MailPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionRequest\RequestForm.cs">
       <SubType>Form</SubType>
@@ -604,8 +622,17 @@
     <EmbeddedResource Include="Views\Orthers\CollectionSetting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\BoughtBook.resx">
+      <DependentUpon>BoughtBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\HistoryForm.resx">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionHome\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\MailPassword.resx">
+      <DependentUpon>MailPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionRequest\RequestForm.resx">
       <DependentUpon>RequestForm.cs</DependentUpon>
@@ -664,9 +691,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="serviceAccountKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -678,6 +702,22 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\user %281%29.png" />
+    <None Include="Resources\user1.png" />
+    <None Include="Resources\history.png" />
+    <None Include="Resources\history %281%291.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\history %281%29.png" />
+    <None Include="Resources\google1.png" />
+    <None Include="Resources\in-stock.png" />
+    <None Include="Resources\pending.png" />
+    <None Include="Resources\calculate.png" />
+    <None Include="Resources\scale.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\scale %281%29.png" />
+    <None Include="Resources\close-eye.png" />
+    <None Include="Resources\view.png" />
+    <None Include="Resources\good-wishes.gif" />
     <None Include="Resources\new-9562_128.gif" />
     <None Include="Resources\fire-3352_1281.gif" />
     <None Include="Resources\fire-3352_128.gif" />

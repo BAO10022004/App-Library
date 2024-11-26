@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -50,11 +51,12 @@ namespace App_Library.Services
         }
 
         // Lấy người dùng theo email
-        public async Task<bool> GetUserByEmail(string email)
+        public async Task<User> GetUserByEmail(string email)
         {
             var request = new {Email = email};
             var response = await _httpClient.PostAsJsonAsync("api/auth/getUserByEmail",request);
-            return response.IsSuccessStatusCode;
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<User>();
         }
 
         // Gọi API đăng nhập bằng Google
