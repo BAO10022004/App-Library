@@ -149,13 +149,13 @@ namespace App_Library.Views
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(185, 78);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(134, 56);
             // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.profileToolStripMenuItem.Text = "Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
             // 
@@ -163,7 +163,7 @@ namespace App_Library.Views
             // 
             this.logOutToolStripMenuItem.Image = global::App_Library.Properties.Resources.logout;
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.logOutToolStripMenuItem.Text = "LogOut";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -278,7 +278,6 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
         private Timer timerPicHome;
         private Timer timerPicShop;
-        private Panel pnContent;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem logOutToolStripMenuItem;
@@ -289,5 +288,6 @@ namespace App_Library.Views
         private Label lbSetting;
         private Label lbRole;
         private Panel pnSideBar;
+        internal Panel pnContent;
     }
 }

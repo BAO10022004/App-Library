@@ -26,6 +26,7 @@ namespace App_Library.Views.Main.CollectionShop
             lbTittle.Text = titleForm;
             pictureBox1.Location = new System.Drawing.Point(lbTittle.Location.X +  lbTittle.Size.Width, lbTittle.Location.Y);
             pnTittle.Size = new System.Drawing.Size(lbTittle.Size.Width + 10 +pictureBox1.Size.Width, 50);
+            listPanelBook.ForEach(p => p.Click += new EventHandler(FormParent.bookHotDeal_Click));
         }
 
         private void HotDealForm_Load(object sender, EventArgs e)

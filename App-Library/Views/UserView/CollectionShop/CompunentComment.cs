@@ -15,39 +15,74 @@ namespace App_Library.Views.Main.CollectionShop
             InitializeComponent();
             this.Comment = comment;
             this.shop = shop;
+            lbNumberLike.Text = Comment.NumberOfLikes.ToString();
         }
 
         private async void CompunentComment_LoadAsync(object sender, EventArgs e)
         {
+           
             UserService userService = new UserService();
-            user = await userService.GetUserByIdAsync(Comment.UserId);
-            try
+            user = await userService.GetUserByUsernameAsync(Comment.UserId);
+            if(user != null)
             {
-                picAvatar.Load(user.PhotoURL); 
+
+                try
+                {
+                    guna2CirclePictureBox1.Load(user.PhotoURL);
+                }
+                catch (Exception)
+                {
+                }
+                lbNameComment.Text = user.Username;
+                
+                lbCreateAt.Text = Comment.CreatedAt.ToString();
+                lbComment.Text = Comment.Content;
+                if (lbComment.Text.Length > 100)
+                {
+                    lbComment.Text = Comment.Content.Substring(100);
+                    fpnContent.Controls.Add(lnMoreSeen);
+                }
+                
+                //fixed Size
+                //if (lbComment.Height <= pnContainComment.Height)
+                //    {
+                //        this.Height -= (pnContainComment.Height - lbComment.Height);
+                //    }
+                //    else
+                //    {
+                //        this.Height += 20;
+                //    }
+                int abs = pnContainComment.Height - lbComment.Height + 20;
+                this.Height -= abs;
             }
-            catch (Exception)
-            {
-            }
-            lbNameComment.Text = user.Username;
-            lbCreateAt.Text = Comment.CreatedAt.ToString();
-            lbComment.Text = Comment.Content;
-            lbNumberLike.Text = Comment.NumberOfLikes.ToString();
-            // fixed Size 
-            if (lbComment.Height <= pnContainComment.Height)
-            {
-                this.Height -= (pnContainComment.Height - lbComment.Height);
-            }
-            else
-            {
-                this.Height += 20;
-            }
+           
 
         }
 
         private void lnMoreSeen_Click(object sender, EventArgs e)
         {
-            this.Height += (-pnContainComment.Height + lbComment.Height);
-            pnContainComment.Height = lbComment.Height;
+            int abs = pnContainComment.Height;
+            lbComment.Text = Comment.Content;
+            this.Height += (pnContainComment.Height - abs );
+        }
+
+        private void pictureBox3_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox3.Image = App_Library.Properties.Resources.like__2_;
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox3.Image = App_Library.Properties.Resources.like;
+        }
+
+        private async void pictureBox3_Click(object sender, EventArgs e)
+        {
+            pictureBox3.MouseLeave -=new EventHandler( pictureBox3_MouseHover);
+            pictureBox3.Image = App_Library.Properties.Resources.like__2_;
+            CommentService commentService = new CommentService();
+            await commentService.LikeCommentAsync(Comment.Id);
+            lbNumberLike.Text = Comment.NumberOfLikes.ToString();
         }
     }
 }

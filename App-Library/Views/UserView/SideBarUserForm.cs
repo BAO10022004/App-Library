@@ -131,7 +131,7 @@ namespace App_Library.Views.UserView
             //pointSave = picHome.Location;
             //lbShop.Text = "";
             //timerPicShop.Start();
-            _mainForm.activeFormChildForMainForm(new NewShopMain(), e);
+            _mainForm.activeFormChildForMainForm(new NewShopMain(_mainForm), e);
         }
 
         private void lbRequest_Click(object sender, EventArgs e)

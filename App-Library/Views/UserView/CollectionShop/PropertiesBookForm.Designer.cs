@@ -176,6 +176,7 @@
             // 
             // pnRecommend
             // 
+            this.pnRecommend.ForeColor = System.Drawing.Color.Black;
             this.pnRecommend.Location = new System.Drawing.Point(3, 175);
             this.pnRecommend.Name = "pnRecommend";
             this.pnRecommend.Size = new System.Drawing.Size(988, 413);
@@ -201,6 +202,7 @@
             // pnToolComment
             // 
             this.pnToolComment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnToolComment.ForeColor = System.Drawing.Color.Black;
             this.pnToolComment.Location = new System.Drawing.Point(0, 49);
             this.pnToolComment.Name = "pnToolComment";
             this.pnToolComment.Size = new System.Drawing.Size(991, 670);
@@ -220,8 +222,8 @@
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F);
+            this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(991, 49);
@@ -495,6 +497,8 @@
             this.btnBuy.Name = "btnBuy";
             this.btnBuy.Size = new System.Drawing.Size(172, 69);
             this.btnBuy.TabIndex = 0;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
+            this.btnBuy.Paint += new System.Windows.Forms.PaintEventHandler(this.btnBuy_Paint);
             this.btnBuy.MouseLeave += new System.EventHandler(this.btnBuy_MouseLeave);
             this.btnBuy.MouseHover += new System.EventHandler(this.guna2Panel4_MouseHover);
             // 
@@ -561,6 +565,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // pnNameBook
             // 

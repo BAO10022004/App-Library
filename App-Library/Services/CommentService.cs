@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 using System.Net.Http.Json;
 using static Google.Apis.Requests.BatchRequest;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace App_Library.Services
 {
@@ -42,9 +44,13 @@ namespace App_Library.Services
         public async Task<List<Comment>> GetBookCommentsAsync(string bookId)
         {
             var response = await _httpClient.GetAsync($"api/comments/book/{bookId}");
-            response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<List<Comment>>(responseBody);
+
+            // Kiểm tra xem yêu cầu có thành công không
+
+            // Đọc dữ liệu trả về và chuyển thành danh sách Comment
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var comments = JsonConvert.DeserializeObject<List<Comment>>(jsonResponse);
+            return comments;
         }
 
         // Thích hoặc bỏ thích comment
