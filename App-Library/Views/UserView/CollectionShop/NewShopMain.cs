@@ -220,6 +220,7 @@ namespace App_Library.Views.Main.CollectionShop
             
             this.Controls.Add(this.pnMainForm);
             this.Controls.Add(pnContainSearch);
+            ReSize();
         }
         Form actFormProperti;
         internal  void bookClick(Book book)

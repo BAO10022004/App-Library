@@ -153,7 +153,7 @@
             this.pnListComment.Location = new System.Drawing.Point(164, 380);
             this.pnListComment.Margin = new System.Windows.Forms.Padding(2);
             this.pnListComment.Name = "pnListComment";
-            this.pnListComment.Size = new System.Drawing.Size(675, 255);
+            this.pnListComment.Size = new System.Drawing.Size(886, 255);
             this.pnListComment.TabIndex = 4;
             // 
             // pnAddComment

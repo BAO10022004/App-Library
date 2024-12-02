@@ -107,7 +107,7 @@ namespace App_Library.Views
             comments = await _commentDb.GetBookCommentsAsync(book.Id);
             pnToolComment.Height = 300 + comments.Count * 200;
 
-            activeFormChild(pnToolComment, new CommentForm(comments, book, shop), null, ref formComment);
+            activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
         }
         Form form;
         Form formComment;

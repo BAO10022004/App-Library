@@ -18,21 +18,22 @@ namespace App_Library.Views.Main.CollectionShop
         Book book;
         List<Comment> comments;
         NewShopMain shop;
+        // Database
+        CommentService dbComments = new CommentService();
         // Animation
         int x;
         bool isHover = false;
-        public CommentForm(List<Comment> comment, Book book , NewShopMain shop)
+        public CommentForm( Book book , NewShopMain shop)
         {
             InitializeComponent();
-            this.book = book;
-            this.comments = comment;
+            this.book = book;            
             this.shop = shop;
             x = pnHideOption.Location.X;
         }
-        private  void CommentForm_Load(object sender, EventArgs e)
+        private  async void CommentForm_Load(object sender, EventArgs e)
         {
+            this.comments =await dbComments.GetBookCommentsAsync(book.Id);
             lbNumberComments.Text = comments.Count.ToString();
-            //MessageBox.Show(comments.Count.ToString());
             if (comments.Count == 0)
             {
                 pnListComment.Visible = false;
@@ -60,7 +61,7 @@ namespace App_Library.Views.Main.CollectionShop
             Form Comment = new CompunentComment(c, shop);
             Panel panel = new Panel();
             panel.TabIndex = index;
-            panel.Size = new Size(675, Comment.Height);
+            panel.Size = new Size(600, Comment.Height);
             activeFormChild(panel, Comment , null,ref form);
             return panel;
         }
@@ -100,10 +101,9 @@ namespace App_Library.Views.Main.CollectionShop
             comment.UserId = (await userService.GetCurrentUserAsync() ).Id;
             comment.BookId = book.Id;
             comment.Likes = null;
-            CommentService commentService = new CommentService();
             
-            await commentService.CreateCommentAsync(comment);
-            comments = await commentService.GetBookCommentsAsync(book.Id);
+            await dbComments.CreateCommentAsync(comment);
+            comments = await dbComments.GetBookCommentsAsync(book.Id);
             pnListComment.Controls.Clear();
             foreach (Comment item in comments)
             {
@@ -175,9 +175,7 @@ namespace App_Library.Views.Main.CollectionShop
         
         private async void label4_Click(object sender, EventArgs e)
         {
-            CommentService commentService = new CommentService();
-
-            comments = await commentService.GetBookCommentsAsync(book.Id);
+            comments = await dbComments.GetBookCommentsAsync(book.Id);
             List<Comment> commentLikeSort = comments.OrderBy(x => x.NumberOfLikes).ToList();
 
             pnListComment.Controls.Clear();
@@ -189,9 +187,7 @@ namespace App_Library.Views.Main.CollectionShop
 
         private async void label5_Click(object sender, EventArgs e)
         {
-            CommentService commentService = new CommentService();
-
-            comments = await commentService.GetBookCommentsAsync(book.Id);
+            comments = await dbComments.GetBookCommentsAsync(book.Id);
             List<Comment> commentDateSort = comments.OrderByDescending(x => x.UpdatedAt).ToList();
 
             pnListComment.Controls.Clear();
