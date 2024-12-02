@@ -85,7 +85,7 @@
             // btnSubmit
             // 
             this.btnSubmit.BorderColor = System.Drawing.Color.Cyan;
-            this.btnSubmit.BorderRadius = 25;
+            this.btnSubmit.BorderRadius = 20;
             this.btnSubmit.BorderThickness = 5;
             this.btnSubmit.Controls.Add(this.label3);
             this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;

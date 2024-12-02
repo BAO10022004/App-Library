@@ -120,7 +120,6 @@
             this.lbPrice.TabIndex = 4;
             this.lbPrice.Text = "Price Only : ";
             this.lbPrice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lbPrice.Click += new System.EventHandler(this.lbPrice_Click);
             // 
             // btnShowMore
             // 
@@ -135,7 +134,6 @@
             this.btnShowMore.Size = new System.Drawing.Size(119, 40);
             this.btnShowMore.TabIndex = 5;
             this.btnShowMore.Click += new System.EventHandler(this.lbShowMore_Click);
-            this.btnShowMore.Paint += new System.Windows.Forms.PaintEventHandler(this.btnShowMore_Paint);
             this.btnShowMore.MouseLeave += new System.EventHandler(this.btnShowMore_MouseLeave);
             this.btnShowMore.MouseHover += new System.EventHandler(this.btnShowMore_MouseHover);
             // 
@@ -173,7 +171,6 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // Advertisement
             // 

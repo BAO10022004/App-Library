@@ -281,16 +281,13 @@ namespace App_Library.Views.Main.CollectionShop
             {
                 mapCheckButtonOptionViewIsClick[FindControlContainer(pnOptionViewBook.Controls, sender as Control)] = true;
             }
-
         }
-
         private void btnViewAll_MouseLeave(object sender, EventArgs e)
         {
             if (sender is Guna2Panel)
             {
                 var panelSender = (Guna2Panel)sender;
                 panelSender.BorderColor = Color.Black;
-
                 foreach (Label item in panelSender.Controls)
                 {
                     item.ForeColor = Color.Black;
@@ -312,7 +309,6 @@ namespace App_Library.Views.Main.CollectionShop
                 mapCheckButtonOptionViewIsClick[FindControlContainer(pnOptionViewBook.Controls, sender as Control)] = false;
             }
         }
-
         Guna2Panel btnClicked = new Guna2Panel();
         Label txtClicked = new Label();
         private void timerClick_Tick(object sender, EventArgs e)
@@ -329,9 +325,7 @@ namespace App_Library.Views.Main.CollectionShop
             {
                 timerDownClick.Stop();
             }
-
         }
-
         private void btnViewAll_MouseDown(object sender, MouseEventArgs e)
         {
             btnClicked = sender as Guna2Panel;
@@ -345,7 +339,6 @@ namespace App_Library.Views.Main.CollectionShop
             btnClicked = sender as Guna2Panel;
             timerUpClick.Start();
         }
-
         private void timerUpClick_Tick(object sender, EventArgs e)
         {
             if (btnClicked.Width < 109)
@@ -359,10 +352,7 @@ namespace App_Library.Views.Main.CollectionShop
             else
             {
                 timerUpClick.Stop();
-
                 BookForm allBookForm = new BookForm(listPanelBestSelling, this, "ALL BOOK");
-                //Control.ControlCollection controls = new Control.ControlCollection(pnMainForm);
-                //pnMainForm.Controls.Clear();
                 activeFormChild(pnProperties, allBookForm, null, ref formMain);
                 pnMainForm.Width = 0;
                 pnProperties.Width = WITH;
@@ -377,26 +367,12 @@ namespace App_Library.Views.Main.CollectionShop
             {
                 pnOptionViewBook.Hide();
                 pnContainSearch.Height = 116;
-
             }
             else
             {
                 pnOptionViewBook.Show();
                 pnContainSearch.Height = 200;
             }
-        }
-
-        private void pnSearchShop_Resize(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pnBestSelling_Resize(object sender, EventArgs e)
-        {
-        }
-
-        private void pnHotDeal_Resize(object sender, EventArgs e)
-        {
         }
         void ReSize()
         {
@@ -414,24 +390,12 @@ namespace App_Library.Views.Main.CollectionShop
             {
                 WITH = this.Width;
                 pnProperties.Width = this.Width;
-            }
-            
-            
+            }  
         }
         private void NewShopMain_Resize(object sender, EventArgs e)
         {
             //MessageBox.Show("HI");
             ReSize();
-        }
-
-        private void pnProperties_Resize(object sender, EventArgs e)
-        {
-            if (pnProperties.Width > 1000)
-            {
-               
-               
-            }
-            
         }
     }
 }

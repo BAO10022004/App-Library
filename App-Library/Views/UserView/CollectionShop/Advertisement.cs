@@ -41,16 +41,6 @@ namespace App_Library.Views.Main.CollectionShop
            
             btnShowMore.FillColor = Color.FromArgb(40, 224, 224, 224);
         }
-        private void bookAd_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void lbPrice_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnShowMore_MouseHover(object sender, EventArgs e)
         {
             btnShowMore.BackColor = Color.CornflowerBlue;
@@ -65,16 +55,6 @@ namespace App_Library.Views.Main.CollectionShop
         private void lbShowMore_Click(object sender, EventArgs e)
         {
             shopMain.bookClick(book);
-        }
-
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void btnShowMore_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
