@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
 using App_Library.Views.AdminView;
+using App_Library.Views.AdminView.CollectionStatistics;
 using App_Library.Views.Main.CollectionShop;
 using App_Library.Views.Orthers.CollectionHelp;
 using App_Library.Views.Orthers.CollectionProfile;
@@ -51,7 +52,7 @@ namespace App_Library.Views
             books = new List<Book>();
             listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
-            Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
+            //Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
 
         }
 
@@ -71,20 +72,22 @@ namespace App_Library.Views
                 this.picAvatar.Image = global::App_Library.Properties.Resources.account;
             }
 
+            homeForm = new HomeForm(this);
+            shopForm = new NewShopMain();
+
             // Hiển thị sidebar
             if (currentUser.IsAdmin)
             {
                 lbRole.Text = "Admin";
                 activeFormChild(pnSideBar, new SideBarAdminForm(this));
+                activeFormChildForMainForm(new StatisticsForm(), e);
             }
             else
             {
                 lbRole.Text = "User";
                 activeFormChild(pnSideBar, new SideBarUserForm(this));
+                activeFormChildForMainForm(homeForm, e);
             }
-
-            homeForm = new HomeForm(this);
-            shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnFooter.Controls)
@@ -99,7 +102,6 @@ namespace App_Library.Views
                     }
                 }
             }
-            activeFormChildForMainForm(homeForm, e);
             currentForm = new HomeForm(this);
             foreach (var item in pnFooter.Controls)
             {
@@ -216,8 +218,25 @@ namespace App_Library.Views
 
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            activeFormChildForMainForm(new ProfileForm(), e);
+
+            activeFormChildForMainForm(new ProfileForm(this), e);
+        }
+        public void LoadUser()
+        {
+            lbName.Text = Session.CurentUser.Username;
+            picAvatar.Load(Session.CurentUser.PhotoURL);
+
+            // Hiển thị sidebar
+            if (Session.CurentUser.IsAdmin)
+            {
+                lbRole.Text = "Admin";
+                activeFormChild(pnSideBar, new SideBarAdminForm(this));
+            }
+            else
+            {
+                lbRole.Text = "User";
+                activeFormChild(pnSideBar, new SideBarUserForm(this));
+            }
         }
     }
 }

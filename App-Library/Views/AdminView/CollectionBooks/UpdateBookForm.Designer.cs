@@ -46,7 +46,6 @@
             this.lblTitleForm = new System.Windows.Forms.Label();
             this.nudPirce = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.txtContent = new Guna.UI2.WinForms.Guna2TextBox();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.btnChooseImage = new Guna.UI2.WinForms.Guna2Button();
             this.btnChooseFile = new Guna.UI2.WinForms.Guna2Button();
             this.txtPathImage = new Guna.UI2.WinForms.Guna2TextBox();
@@ -58,6 +57,7 @@
             this.errorProviderPubYear = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPrice = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderContent = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nudPubYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPirce)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderTitle)).BeginInit();
@@ -317,6 +317,7 @@
             this.btnChooseImage.Size = new System.Drawing.Size(120, 25);
             this.btnChooseImage.TabIndex = 19;
             this.btnChooseImage.Text = "Choose Image";
+            this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
             // 
             // btnChooseFile
             // 
@@ -332,6 +333,7 @@
             this.btnChooseFile.Size = new System.Drawing.Size(120, 25);
             this.btnChooseFile.TabIndex = 20;
             this.btnChooseFile.Text = "Choose Image";
+            this.btnChooseFile.Click += new System.EventHandler(this.btnChooseFile_Click);
             // 
             // txtPathImage
             // 
@@ -402,6 +404,10 @@
             // 
             this.errorProviderContent.ContainerControl = this;
             // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
             // UpdateBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,7 +470,6 @@
         private System.Windows.Forms.Label lblTitleForm;
         private Guna.UI2.WinForms.Guna2NumericUpDown nudPirce;
         private Guna.UI2.WinForms.Guna2TextBox txtContent;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private Guna.UI2.WinForms.Guna2Button btnChooseImage;
         private Guna.UI2.WinForms.Guna2Button btnChooseFile;
         private Guna.UI2.WinForms.Guna2TextBox txtPathImage;
@@ -476,5 +481,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderPubYear;
         private System.Windows.Forms.ErrorProvider errorProviderPrice;
         private System.Windows.Forms.ErrorProvider errorProviderContent;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

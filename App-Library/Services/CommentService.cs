@@ -90,7 +90,7 @@ namespace App_Library.Services
             return (comments, totalComments, lastMonthComments);
         }
 
-        public async Task<List<Comment>> GetAllCommentAsync()
+        public async Task<CommentResponse> GetAllCommentAsync()
         {
             var response = await _httpClient.GetAsync("api/comments/all");
             response.EnsureSuccessStatusCode();
@@ -101,7 +101,14 @@ namespace App_Library.Services
             var totalComments = jsonDocument.RootElement.GetProperty("totalComments").GetInt32();
             var lastMonthComments = jsonDocument.RootElement.GetProperty("lastMonthComments").GetInt32();
 
-            return comments;
+            return await response.Content.ReadFromJsonAsync<CommentResponse>();
+            //return comments;
         }
+    }
+    class CommentResponse
+    {
+        public List<Comment> Comments { get; set; }
+        public long TotalComments { get; set; }
+        public long LastMonthComments { get; set; }
     }
 }

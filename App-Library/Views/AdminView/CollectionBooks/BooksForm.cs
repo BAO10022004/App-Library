@@ -20,6 +20,7 @@ namespace App_Library.Views.AdminView.CollectionBooks
     {
         private BookService _bookService;
         private List<Book> _books;
+        private BindingList<Book> _booksBinding;
         private int curentPage = 1;
         private int countLine = 0;
         private float totalPage = 0;
@@ -70,19 +71,20 @@ namespace App_Library.Views.AdminView.CollectionBooks
                 _books = _books.OrderByDescending(c => c.GetType().GetProperty(columnName)?.GetValue(c, null)).ToList();
             }
 
-            var lstBookView = _books.Select(n => new { ID = n.Id, Title = n.Title, Author = n.Author, Genre = n.Genre, PucYear = n.PublishedYear }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            var lstBook = _books.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            _booksBinding = new BindingList<Book>(lstBook);
 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.Columns["ID"].DataPropertyName = "ID";
             dataGridView.Columns["Title"].DataPropertyName = "Title";
             dataGridView.Columns["Author"].DataPropertyName = "Author";
             dataGridView.Columns["Genre"].DataPropertyName = "Genre";
-            dataGridView.Columns["PublishedYear"].DataPropertyName = "PucYear";
+            dataGridView.Columns["PublishedYear"].DataPropertyName = "PublishedYear";
             dataGridView.Columns["Action"].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dataGridView.Columns["Action2"].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dataGridView.Columns["Action"].Width = 100;
             dataGridView.Columns["Action2"].Width = 100;
-            dataGridView.DataSource = lstBookView;
+            dataGridView.DataSource = _booksBinding;
 
             if (countLine > count)
             {
@@ -177,27 +179,26 @@ namespace App_Library.Views.AdminView.CollectionBooks
             // Xóa sách
             if (e.ColumnIndex == dataGridView.Columns["Action2"].Index && e.RowIndex >= 0)
             {
-                await HandleDeleteBookAsync(id);
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    var bookDelete = _books.Where(n => n.Id == id).FirstOrDefault();
+                    var checkDelete = await _bookService.DeleteBookAsync(id);
+                    if (checkDelete)
+                    {
+                        _booksBinding.Remove(bookDelete);
+                        _books = await _bookService.GetBooksAsync();
+                        MessageBox.Show("Xóa thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công");
+                    }
+                    LoadData();
+                }
             }
         }
 
-        private async Task HandleDeleteBookAsync(string id)
-        {
-            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa", "Thông báo", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                var checkDelete = await _bookService.DeleteBookAsync(id);
-                if (checkDelete)
-                {
-                    MessageBox.Show("Xóa thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Xóa không thành công");
-                }
-                LoadData();
-            }
-        }
 
         //private void btnTimKiem_Click(object sender, EventArgs e)
         //{

@@ -1,5 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.Orthers.CollectionProfile;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,39 +11,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TheArtOfDevHtmlRenderer.Adapters;
 
 namespace App_Library.Views.Orthers.CollectionEditProfile
 {
     public partial class EditprofileForm : Form
     {
-        private User currentUser;
         private UserService _userService;
-        public EditprofileForm()
+        private FirebaseService _firebaseService;   
+        private ProfileForm _profileForm;
+        private string _pathImage = "";
+        public EditprofileForm(ProfileForm form)
         {
             InitializeComponent();
             _userService = new UserService();
-        }
-        private async void EditprofileForm_Load(object sender, EventArgs e)
-        {
-            currentUser = await _userService.GetCurrentUserAsync();
-            txtName.Text = currentUser.Username;
-            txtEmail.Text = currentUser.Email;
-            picAvatar.Load(currentUser.PhotoURL);
+            _firebaseService = new FirebaseService();
+            _profileForm = form;
+            txtName.Text = Session.CurentUser.Username;
+            txtEmail.Text = Session.CurentUser.Email;
+            picAvatar.Load(Session.CurentUser.PhotoURL);
         }
         private void btnCancle_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+            var photoUrl = Session.CurentUser.PhotoURL;
+            if (!string.IsNullOrWhiteSpace(_pathImage))
+            {
+                photoUrl = await _firebaseService.UploadFileAsync(_pathImage, "");
+            }
+            var updateuser = new UpdateUserDTO
+            {
+                Email = txtEmail.Text,
+                Username = txtName.Text,
+                PasswordHash = Session.CurentUser.PasswordHash,
+                PhotoURL = photoUrl
+            };
 
+            var result = await _userService.UpdateUserAsync(Session.CurentUser.Id, updateuser);
+            if (result)
+            {
+                MessageBox.Show("Cập nhật thành công");
+                _profileForm.LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Không thể cập nhật");
+            }
             this.Close();
         }
 
         private void btnChangeAvartar_Click(object sender, EventArgs e)
         {
-
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                picAvatar.Load(openFileDialog.FileName);
+                _pathImage = openFileDialog.FileName;
+            }
         }
     }
 }

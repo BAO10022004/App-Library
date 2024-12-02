@@ -23,7 +23,7 @@ namespace App_Library.Services
         // Tạo đánh giá mới 
         public async Task<StarsRating> CreateRatingAsync(StarsRating rating)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/ratings", rating);
+            var response = await _httpClient.PostAsJsonAsync("api/starsrating", rating);
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<StarsRating>();
@@ -36,7 +36,7 @@ namespace App_Library.Services
         // Lấy đánh giá theo ID
         public async Task<StarsRating> GetRatingByIdAsync(string id)
         {
-            var response = await _httpClient.GetAsync($"api/ratings/{id}");
+            var response = await _httpClient.GetAsync($"api/starsrating/{id}");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<StarsRating>();
@@ -49,7 +49,7 @@ namespace App_Library.Services
         // Cập nhật đánh giá theo ID
         public async Task UpdateRatingAsync(string id, StarsRating updatedRating)
         {
-            var response = await _httpClient.PutAsJsonAsync($"api/ratings/{id}", updatedRating);
+            var response = await _httpClient.PutAsJsonAsync($"api/starsrating/{id}", updatedRating);
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"Failed to update rating: {await response.Content.ReadAsStringAsync()}");
@@ -58,7 +58,7 @@ namespace App_Library.Services
         // Xóa đánh giá theo ID
         public async Task DeleteRatingAsync(string id)
         {
-            var response = await _httpClient.DeleteAsync($"api/ratings/{id}");
+            var response = await _httpClient.DeleteAsync($"api/starsrating/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception($"Failed to delete rating: {await response.Content.ReadAsStringAsync()}");
@@ -67,7 +67,7 @@ namespace App_Library.Services
         // Lấy danh sách các cuốn sách có đánh giá cao nhất 
         public async Task<List<BookRatingSummary>> GetHotBooksAsync()
         {
-            var response = await _httpClient.GetAsync("api/ratings/hot-books");
+            var response = await _httpClient.GetAsync("api/starsrating/hot-books");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<List<BookRatingSummary>>();
@@ -80,7 +80,7 @@ namespace App_Library.Services
         // Lấy tất cả đánh giá của 1 cuốn sách theo ID sách
         public async Task<BookRating> GetBookRatingAsync(string bookId)
         {
-            var response = await _httpClient.GetAsync($"api/ratings/book/{bookId}");
+            var response = await _httpClient.GetAsync($"api/starsrating/book/{bookId}");
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadFromJsonAsync<BookRating>();

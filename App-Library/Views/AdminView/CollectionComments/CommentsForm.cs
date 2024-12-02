@@ -45,7 +45,7 @@ namespace App_Library.Views.AdminView.CollectionComments
         {
             if (_comments == null)
             {
-                _comments = await _commentService.GetAllCommentAsync();
+                _comments = (await _commentService.GetAllCommentAsync()).Comments;
             }
 
             var count = _comments.Count;
@@ -70,6 +70,7 @@ namespace App_Library.Views.AdminView.CollectionComments
             }
 
             var lstCommentView = _comments.Select(n => new { CommentID = n.Id, Comments = n.Content, UserID = n.UserId, Like = n.Likes.Length, Time = n.CreatedAt }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+
 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.Columns["CommentID"].DataPropertyName = "CommentID";

@@ -42,6 +42,7 @@
             this.lblWaiting = new System.Windows.Forms.Label();
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.gnElipseAvatar = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.lblSignOut = new System.Windows.Forms.Label();
             this.pnBookAlready.SuspendLayout();
             this.pnBookWaiting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
@@ -207,11 +208,21 @@
             this.gnElipseAvatar.BorderRadius = 200;
             this.gnElipseAvatar.TargetControl = this.picAvatar;
             // 
+            // lblSignOut
+            // 
+            this.lblSignOut.AutoSize = true;
+            this.lblSignOut.Location = new System.Drawing.Point(970, 658);
+            this.lblSignOut.Name = "lblSignOut";
+            this.lblSignOut.Size = new System.Drawing.Size(48, 13);
+            this.lblSignOut.TabIndex = 11;
+            this.lblSignOut.Text = "Sign Out";
+            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1030, 680);
+            this.Controls.Add(this.lblSignOut);
             this.Controls.Add(this.pnBookWaiting);
             this.Controls.Add(this.pnBookAlready);
             this.Controls.Add(this.lblEmail);
@@ -223,11 +234,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProfileForm";
             this.Text = "ProfileForm";
-            this.Load += new System.EventHandler(this.ProfileForm_Load);
             this.pnBookAlready.ResumeLayout(false);
             this.pnBookWaiting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -246,5 +257,6 @@
         private System.Windows.Forms.Label lblCountBookWaiting;
         private System.Windows.Forms.Label lblWaiting;
         private Guna.UI2.WinForms.Guna2Elipse gnElipseAvatar;
+        private System.Windows.Forms.Label lblSignOut;
     }
 }

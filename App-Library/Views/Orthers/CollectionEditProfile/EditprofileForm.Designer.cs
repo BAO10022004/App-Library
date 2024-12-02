@@ -41,7 +41,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.gnElipseForm = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
@@ -192,9 +192,9 @@
             this.gnElipseForm.BorderRadius = 50;
             this.gnElipseForm.TargetControl = this;
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog";
+            this.openFileDialog.FileName = "openFileDialog";
             // 
             // EditprofileForm
             // 
@@ -206,7 +206,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditprofileForm";
             this.Text = "EditprofileForm";
-            this.Load += new System.EventHandler(this.EditprofileForm_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
@@ -226,7 +225,7 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private Guna.UI2.WinForms.Guna2Button btnChangeAvartar;
         private System.Windows.Forms.Label lblTitle;
     }

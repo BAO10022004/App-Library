@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,6 +144,22 @@ namespace App_Library.Views.AdminView.CollectionBooks
             {
                 errorProviderContent.SetError(txtContent, string.Empty);
                 return true;
+            }
+        }
+
+        private void btnChooseImage_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtPathImage.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void btnChooseFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtPathFile.Text = openFileDialog.FileName;
             }
         }
     }

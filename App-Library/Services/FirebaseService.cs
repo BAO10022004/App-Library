@@ -40,8 +40,15 @@ namespace App_Library.Services
 
         public async Task<string> UploadFileAsync(string localFilePath, string folder)
         {
-            var fileName = $"{folder}/{DateTime.Now.Ticks}{Path.GetFileName(localFilePath)}";
-            //var fileName = $"{DateTime.Now.Ticks}{Path.GetFileName(localFilePath)}";
+            string fileName;
+            if (string.IsNullOrWhiteSpace(folder))
+            {
+                fileName = $"{DateTime.Now.Ticks}{Path.GetFileName(localFilePath)}";
+            }
+            else
+            {
+                fileName = $"{folder}/{DateTime.Now.Ticks}{Path.GetFileName(localFilePath)}";
+            }
             using (var fileStream = File.OpenRead(localFilePath))
             {
                 var uploadTask = _firebaseStorage
@@ -51,7 +58,7 @@ namespace App_Library.Services
                 try
                 {
                     var downloadUrl = await uploadTask; // URL trả về từ Firebase Storage
-                     MessageBox.Show(downloadUrl);
+                    MessageBox.Show(downloadUrl);
                     return downloadUrl;  // URL này có thể sử dụng trực tiếp
                 }
                 catch (Exception ex)
@@ -59,7 +66,6 @@ namespace App_Library.Services
                     Console.WriteLine($"Error uploading file: {ex.Message}");
                     throw;
                 }
-                //return "";
             }
         }
     }

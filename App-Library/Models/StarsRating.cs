@@ -48,6 +48,7 @@ namespace App_Library.Models
         public int ThreeStars { get; set; }
         public int FourStars { get; set; }
         public int FiveStars { get; set; }
+        public Book BookDetail { get; set; }
     }
     public class BookRating
     {

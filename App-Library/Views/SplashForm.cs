@@ -110,8 +110,8 @@ namespace App_Library.Views
             PnSubLogin.Controls.Clear();
             Location = new Point(100, 100);
             this.activeFormChild(this.PnSubLogin, new MainForm(), sender);
-            Console.WriteLine($"1 {PnSubLogin.Size.Width}, {PnSubLogin.Size.Height}");
-            Console.WriteLine($"0 {Size.Width}, {Size.Height}");
+            //Console.WriteLine($"1 {PnSubLogin.Size.Width}, {PnSubLogin.Size.Height}");
+            //Console.WriteLine($"0 {Size.Width}, {Size.Height}");
             //}
 
         }

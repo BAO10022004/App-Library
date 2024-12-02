@@ -52,11 +52,11 @@ namespace App_Library.Services
             return await response.Content.ReadFromJsonAsync<User>();
         }
         // Cap nhat nguoi dung theo ID
-        public async Task<User> UpdateUserAsync(string id, UpdateUserDTO updatedUser)
+        public async Task<bool> UpdateUserAsync(string id, UpdateUserDTO updatedUser)
         {
             var response = await _httpClient.PutAsJsonAsync($"api/users/update/{id}", updatedUser);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<User>();
+            Session.CurentUser = await response.Content.ReadFromJsonAsync<User>();
+            return response.IsSuccessStatusCode;
         }
         // Tắc người dùng
         public async Task<bool> SoftDeleteUserAsync(string id)

@@ -17,29 +17,38 @@ namespace App_Library.Views.Orthers.CollectionProfile
     {
         private User currentUser;
         private UserService _userService;
-        public ProfileForm()
+        private MainForm _mainForm;
+        public ProfileForm(MainForm mainForm)
         {
             InitializeComponent();
             _userService = new UserService();
+            _mainForm = mainForm;
+            LoadData();
         }
 
-        private async void ProfileForm_Load(object sender, EventArgs e)
+        public void LoadData()
         {
-            currentUser = await _userService.GetCurrentUserAsync();
-            lblUserName.Text = currentUser.Username;
-            lblEmail.Text = currentUser.Email;
-            picAvatar.Load(currentUser.PhotoURL);
+            Console.WriteLine("load profile");
+            //currentUser = await _userService.GetCurrentUserAsync();
+            //lblUserName.Text = currentUser.Username;
+            //lblEmail.Text = currentUser.Email;
+            //picAvatar.Load(currentUser.PhotoURL);
+            lblUserName.Text = Session.CurentUser.Username;
+            lblEmail.Text = Session.CurentUser.Email;
+            picAvatar.Load(Session.CurentUser.PhotoURL);
+            _mainForm.LoadUser();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var editForm = new EditprofileForm();
+            var editForm = new EditprofileForm(this);
             editForm.ShowDialog();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-
+            var changeForm = new ChangePasswordForm();
+            changeForm.ShowDialog();
         }
     }
 }

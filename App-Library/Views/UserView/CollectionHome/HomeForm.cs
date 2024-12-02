@@ -90,7 +90,7 @@ namespace App_Library.Views
         {
             pnNameForm.Controls.Add(pnBack);
             this.Controls.Remove(pnNameForm);
-            activeFormChild(pnMain, new ProfileForm(), null, ref actFormFrofile);
+            activeFormChild(pnMain, new ProfileForm(main), null, ref actFormFrofile);
         }
 
         private async void label2_Click_1(object sender, EventArgs e)
