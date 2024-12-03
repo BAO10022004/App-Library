@@ -90,7 +90,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearchShop.Name = "pnSearchShop";
             this.pnSearchShop.Size = new System.Drawing.Size(735, 73);
             this.pnSearchShop.TabIndex = 2;
-            this.pnSearchShop.Resize += new System.EventHandler(this.pnSearchShop_Resize);
             // 
             // pnContainTextSearch
             // 
@@ -204,7 +203,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnHotDeal.Name = "pnHotDeal";
             this.pnHotDeal.Size = new System.Drawing.Size(1030, 413);
             this.pnHotDeal.TabIndex = 3;
-            this.pnHotDeal.Resize += new System.EventHandler(this.pnHotDeal_Resize);
             // 
             // pnBestSelling
             // 
@@ -214,7 +212,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnBestSelling.Name = "pnBestSelling";
             this.pnBestSelling.Size = new System.Drawing.Size(1030, 413);
             this.pnBestSelling.TabIndex = 4;
-            this.pnBestSelling.Resize += new System.EventHandler(this.pnBestSelling_Resize);
             // 
             // pnProperties
             // 
@@ -225,7 +222,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnProperties.Size = new System.Drawing.Size(19, 480);
             this.pnProperties.TabIndex = 1;
             this.pnProperties.Visible = false;
-            this.pnProperties.Resize += new System.EventHandler(this.pnProperties_Resize);
             // 
             // pnContainSearch
             // 

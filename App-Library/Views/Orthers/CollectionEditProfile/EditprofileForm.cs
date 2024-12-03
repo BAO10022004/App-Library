@@ -18,7 +18,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
     public partial class EditprofileForm : Form
     {
         private UserService _userService;
-        private FirebaseService _firebaseService;   
+        private FirebaseService _firebaseService;
         private ProfileForm _profileForm;
         private string _pathImage = "";
         public EditprofileForm(ProfileForm form)
@@ -56,12 +56,12 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             {
                 MessageBox.Show("Cập nhật thành công");
                 _profileForm.LoadData();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Không thể cập nhật");
             }
-            this.Close();
         }
 
         private void btnChangeAvartar_Click(object sender, EventArgs e)

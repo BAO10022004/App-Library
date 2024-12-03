@@ -36,6 +36,10 @@ namespace App_Library.Services
         // Lấy sách theo Slug
         public async Task<Book> GetBookBySlugAsync(string slug)
         {
+            if(slug == null)
+            {
+                return null;
+            }
             var response = await _httpClient.GetAsync($"api/books/{slug}");
             if (response.IsSuccessStatusCode)
             {

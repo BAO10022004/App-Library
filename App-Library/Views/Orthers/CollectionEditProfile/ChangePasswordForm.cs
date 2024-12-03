@@ -1,4 +1,6 @@
-﻿using App_Library.Services;
+﻿using App_Library.Models;
+using App_Library.Services;
+using App_Library.Views.Orthers.CollectionProfile;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +11,19 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace App_Library.Views.Orthers.CollectionEditProfile
 {
     public partial class ChangePasswordForm : Form
     {
+        private AuthService _authService;
+        private UserService _userService;
         public ChangePasswordForm()
         {
             InitializeComponent();
+            _authService = new AuthService();
+            _userService = new UserService();
         }
 
         private void btnCancle_Click(object sender, EventArgs e)
@@ -24,21 +31,40 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (CheckConfirmPass() && CheckNewPass() && await CheckOldPassAsync())
+            {
+                var updateuser = new UpdateUserDTO
+                {
+                    Email = Session.CurentUser.Email,
+                    Username = Session.CurentUser.Username,
+                    PasswordHash = txtNewPass.Text,
+                    PhotoURL = Session.CurentUser.PhotoURL
+                };
 
-            this.Close();
+                var result = await _userService.UpdateUserAsync(Session.CurentUser.Id, updateuser);
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật thành công");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Không thể cập nhật");
+                }
+            }
         }
-        private bool CheckOldPass()
+        private async Task<bool> CheckOldPassAsync()
         {
             if (string.IsNullOrWhiteSpace(txtOldPass.Text))
             {
                 errorProviderOldPass.SetError(txtOldPass, "Mật khẩu không được để trống");
                 return false;
             }
-            else if (txtOldPass.Text.Equals(Session.CurentUser.PasswordHash))
+            else if (!(await _authService.CheckPassword(Session.CurentUser.Username, txtOldPass.Text)))
             {
-                errorProviderOldPass.SetError(txtOldPass, "Mật khẩu không được để trống");
+                errorProviderOldPass.SetError(txtOldPass, "Mật khẩu không đúng");
                 return false;
             }
             else

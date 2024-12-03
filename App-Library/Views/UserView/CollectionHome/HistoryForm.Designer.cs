@@ -39,17 +39,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pnTime = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnListProcessing = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1.SuspendLayout();
             this.pnBookName.SuspendLayout();
             this.pnAuthor.SuspendLayout();
             this.pnPrice.SuspendLayout();
             this.pnStatus.SuspendLayout();
             this.pnTime.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Azure;
             this.flowLayoutPanel1.Controls.Add(this.pnBookName);
             this.flowLayoutPanel1.Controls.Add(this.pnAuthor);
             this.flowLayoutPanel1.Controls.Add(this.pnPrice);
@@ -66,7 +69,7 @@
             this.pnBookName.Controls.Add(this.label1);
             this.pnBookName.Location = new System.Drawing.Point(3, 3);
             this.pnBookName.Name = "pnBookName";
-            this.pnBookName.Size = new System.Drawing.Size(243, 61);
+            this.pnBookName.Size = new System.Drawing.Size(295, 61);
             this.pnBookName.TabIndex = 0;
             // 
             // label1
@@ -76,18 +79,18 @@
             this.label1.ForeColor = System.Drawing.Color.Navy;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 61);
+            this.label1.Size = new System.Drawing.Size(295, 61);
             this.label1.TabIndex = 0;
-            this.label1.Text = "BOOK NAME";
+            this.label1.Text = "    BOOK NAME";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Resize += new System.EventHandler(this.label1_Resize);
             // 
             // pnAuthor
             // 
             this.pnAuthor.Controls.Add(this.label2);
-            this.pnAuthor.Location = new System.Drawing.Point(252, 3);
+            this.pnAuthor.Location = new System.Drawing.Point(304, 3);
             this.pnAuthor.Name = "pnAuthor";
-            this.pnAuthor.Size = new System.Drawing.Size(178, 61);
+            this.pnAuthor.Size = new System.Drawing.Size(225, 61);
             this.pnAuthor.TabIndex = 1;
             // 
             // label2
@@ -97,15 +100,15 @@
             this.label2.ForeColor = System.Drawing.Color.Navy;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 61);
+            this.label2.Size = new System.Drawing.Size(225, 61);
             this.label2.TabIndex = 0;
-            this.label2.Text = "AUTHOR";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Text = "   AUTHOR";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnPrice
             // 
             this.pnPrice.Controls.Add(this.lbPrice);
-            this.pnPrice.Location = new System.Drawing.Point(436, 3);
+            this.pnPrice.Location = new System.Drawing.Point(535, 3);
             this.pnPrice.Name = "pnPrice";
             this.pnPrice.Size = new System.Drawing.Size(158, 61);
             this.pnPrice.TabIndex = 2;
@@ -120,12 +123,12 @@
             this.lbPrice.Size = new System.Drawing.Size(158, 61);
             this.lbPrice.TabIndex = 0;
             this.lbPrice.Text = "PRICE";
-            this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnStatus
             // 
             this.pnStatus.Controls.Add(this.label4);
-            this.pnStatus.Location = new System.Drawing.Point(600, 3);
+            this.pnStatus.Location = new System.Drawing.Point(699, 3);
             this.pnStatus.Name = "pnStatus";
             this.pnStatus.Size = new System.Drawing.Size(140, 61);
             this.pnStatus.TabIndex = 3;
@@ -145,7 +148,7 @@
             // pnTime
             // 
             this.pnTime.Controls.Add(this.label5);
-            this.pnTime.Location = new System.Drawing.Point(746, 3);
+            this.pnTime.Location = new System.Drawing.Point(845, 3);
             this.pnTime.Name = "pnTime";
             this.pnTime.Size = new System.Drawing.Size(210, 61);
             this.pnTime.TabIndex = 5;
@@ -162,31 +165,30 @@
             this.label5.Text = "TIME STAMP";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel1
+            // guna2Panel1
             // 
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 6;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.6F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.6F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.8F));
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.42282F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1073, 447);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.guna2Panel1.Controls.Add(this.pnListProcessing);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 64);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1073, 447);
+            this.guna2Panel1.TabIndex = 1;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // pnListProcessing
+            // 
+            this.pnListProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnListProcessing.Location = new System.Drawing.Point(0, 0);
+            this.pnListProcessing.Name = "pnListProcessing";
+            this.pnListProcessing.Size = new System.Drawing.Size(1073, 447);
+            this.pnListProcessing.TabIndex = 0;
             // 
             // HistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(1073, 511);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HistoryForm";
@@ -199,6 +201,7 @@
             this.pnPrice.ResumeLayout(false);
             this.pnStatus.ResumeLayout(false);
             this.pnTime.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -208,7 +211,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel pnBookName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel pnAuthor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnPrice;
@@ -217,5 +219,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel pnTime;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.FlowLayoutPanel pnListProcessing;
     }
 }

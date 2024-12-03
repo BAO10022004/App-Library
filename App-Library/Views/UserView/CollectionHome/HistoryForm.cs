@@ -25,9 +25,16 @@ namespace App_Library.Views.UserView.CollectionHome
         String mailPassword;
         public  HistoryForm(List<BookSold> bookSolds)
         {
-            
+            BookSolds = new List<BookSold>();
             InitializeComponent();
-            this.BookSolds = bookSolds;
+            foreach(BookSold book in bookSolds)
+            {
+                if(book.Slug != null)
+                {
+                    this.BookSolds.Add(book);
+                }
+            }
+           
 
         }
         Label newLabel(string name, bool isStatus = false)
@@ -35,7 +42,7 @@ namespace App_Library.Views.UserView.CollectionHome
             Label result = new Label();
             result.AutoSize = false;
             result.Dock = System.Windows.Forms.DockStyle.Fill;
-            result.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            result.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             if (isStatus)
             {
                 if (name.Equals("Approved"))
@@ -48,13 +55,13 @@ namespace App_Library.Views.UserView.CollectionHome
                 result.ForeColor = System.Drawing.Color.DimGray;
             }
 
-            
             result.Location = new System.Drawing.Point(0, 0);
             result.Name = name;
             result.Size = new System.Drawing.Size(140, 61);
             result.TabIndex = 0;
             result.Text = name;
-            result.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            result.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //result.Padding = new Padding(0,10, 0, 0);
             return result;
         }
         Guna2Button newButton(string name)
@@ -69,33 +76,33 @@ namespace App_Library.Views.UserView.CollectionHome
             result.ForeColor = System.Drawing.Color.White;
             result.Location = new System.Drawing.Point(5,15);
             result.Name = name;
-            result.Size = new System.Drawing.Size(111, 34);
+            //result.Size = new System.Drawing.Size(111, 34);
             result.TabIndex = 0;
             result.Text = "Remind";
             result.Click += new EventHandler(this.sendMail);
+            result.Size = new System.Drawing.Size(90, 30); // Thay đổi kích thước để phù hợp với hàng
+            result.Anchor = AnchorStyles.Top; // Trung tâm trong ô
+
             return result;
         }
-        private async void HistoryForm_Load(object sender, EventArgs e)
+        private void HistoryForm_Load(object sender, EventArgs e)
         {
-            BookService bookService = new BookService();
-            tableLayoutPanel1.RowCount += BookSolds.Count;
-            for (int i = 0; i < BookSolds.Count; i++)
+            
+            for(int i=0; i< BookSolds.Count; i++)
             {
-                this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.42282F));
-                Book book = await bookService.GetBookBySlugAsync(BookSolds[i].Slug);
-                this.tableLayoutPanel1.Controls.Add(newLabel(book.Title), 0, i);
-                this.tableLayoutPanel1.Controls.Add(newLabel(book.Author), 1, i);
-                this.tableLayoutPanel1.Controls.Add(newLabel(book.Price + "$"), 2, i);
-                this.tableLayoutPanel1.Controls.Add(newLabel(BookSolds[i].Status, true), 3, i);
-                this.tableLayoutPanel1.Controls.Add(newLabel(BookSolds[i].UpdatedAt.ToString()), 4, i);
-                if(!BookSolds[i].Status.Equals("Approved"))
-                {
-                    this.tableLayoutPanel1.Controls.Add(newButton(book.Title), 5, i);
-                }
-
+                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i], i));
             }
         }
-
+        Guna2Panel createPanel(BookSold bookSold, int index)
+        {
+            Form form = null;   
+            Guna2Panel gn = new Guna2Panel();
+            gn.Size = new System.Drawing.Size(1023, 64);
+            gn.Name = bookSold.Title;
+            gn.TabIndex = index;
+            activeFormChild(gn,new  HistoryChild(this, bookSold), null, ref form);
+            return gn;
+        }
         private void label1_Resize(object sender, EventArgs e)
         {
 
@@ -121,6 +128,12 @@ namespace App_Library.Views.UserView.CollectionHome
             sendMail("My name is " + (await user.GetCurrentUserAsync()).Username + "\n" +
                            "My mail is " + (await user.GetCurrentUserAsync()).Email + "\n" +
                            "Plese you approved my book !!!!!!", "Giabaoonthcs123@gmail.com");
-        }    
+        }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+     

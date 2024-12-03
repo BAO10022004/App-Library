@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             this.pnSideBar = new System.Windows.Forms.Panel();
-            this.gnPanelRequest = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbRequest = new System.Windows.Forms.Label();
             this.gnPanelHome = new Guna.UI2.WinForms.Guna2Panel();
-            this.picHome = new System.Windows.Forms.PictureBox();
             this.lbHome = new System.Windows.Forms.Label();
+            this.picHome = new System.Windows.Forms.PictureBox();
             this.gnPanelStore = new Guna.UI2.WinForms.Guna2Panel();
             this.picShop = new System.Windows.Forms.PictureBox();
             this.lbStore = new System.Windows.Forms.Label();
             this.pnSideBar.SuspendLayout();
-            this.gnPanelRequest.SuspendLayout();
             this.gnPanelHome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
             this.gnPanelStore.SuspendLayout();
@@ -51,7 +48,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnSideBar.BackColor = System.Drawing.Color.White;
-            this.pnSideBar.Controls.Add(this.gnPanelRequest);
             this.pnSideBar.Controls.Add(this.gnPanelHome);
             this.pnSideBar.Controls.Add(this.gnPanelStore);
             this.pnSideBar.Location = new System.Drawing.Point(0, 0);
@@ -59,28 +55,6 @@
             this.pnSideBar.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pnSideBar.Size = new System.Drawing.Size(250, 455);
             this.pnSideBar.TabIndex = 0;
-            // 
-            // gnPanelRequest
-            // 
-            this.gnPanelRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gnPanelRequest.BackColor = System.Drawing.Color.White;
-            this.gnPanelRequest.Controls.Add(this.lbRequest);
-            this.gnPanelRequest.Location = new System.Drawing.Point(0, 115);
-            this.gnPanelRequest.Name = "gnPanelRequest";
-            this.gnPanelRequest.Size = new System.Drawing.Size(250, 50);
-            this.gnPanelRequest.TabIndex = 12;
-            // 
-            // lbRequest
-            // 
-            this.lbRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbRequest.Location = new System.Drawing.Point(50, 0);
-            this.lbRequest.Name = "lbRequest";
-            this.lbRequest.Size = new System.Drawing.Size(200, 50);
-            this.lbRequest.TabIndex = 0;
-            this.lbRequest.Text = "REQUEST";
-            this.lbRequest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbRequest.Click += new System.EventHandler(this.lbRequest_Click);
             // 
             // gnPanelHome
             // 
@@ -94,17 +68,6 @@
             this.gnPanelHome.Size = new System.Drawing.Size(250, 50);
             this.gnPanelHome.TabIndex = 13;
             // 
-            // picHome
-            // 
-            this.picHome.BackColor = System.Drawing.Color.Transparent;
-            this.picHome.Image = global::App_Library.Properties.Resources.HomeHover;
-            this.picHome.Location = new System.Drawing.Point(9, 9);
-            this.picHome.Name = "picHome";
-            this.picHome.Size = new System.Drawing.Size(32, 32);
-            this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHome.TabIndex = 2;
-            this.picHome.TabStop = false;
-            // 
             // lbHome
             // 
             this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,6 +78,17 @@
             this.lbHome.Text = "HOME";
             this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbHome.Click += new System.EventHandler(this.lbHome_Click);
+            // 
+            // picHome
+            // 
+            this.picHome.BackColor = System.Drawing.Color.Transparent;
+            this.picHome.Image = global::App_Library.Properties.Resources.HomeHover;
+            this.picHome.Location = new System.Drawing.Point(9, 9);
+            this.picHome.Name = "picHome";
+            this.picHome.Size = new System.Drawing.Size(32, 32);
+            this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHome.TabIndex = 2;
+            this.picHome.TabStop = false;
             // 
             // gnPanelStore
             // 
@@ -160,7 +134,6 @@
             this.Text = "SideBarUserForm";
             this.Load += new System.EventHandler(this.SideBarUserForm_Load);
             this.pnSideBar.ResumeLayout(false);
-            this.gnPanelRequest.ResumeLayout(false);
             this.gnPanelHome.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picHome)).EndInit();
             this.gnPanelStore.ResumeLayout(false);
@@ -174,10 +147,8 @@
         private System.Windows.Forms.Panel pnSideBar;
         private System.Windows.Forms.Label lbHome;
         private System.Windows.Forms.Label lbStore;
-        private System.Windows.Forms.Label lbRequest;
         private System.Windows.Forms.PictureBox picHome;
         private System.Windows.Forms.PictureBox picShop;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelRequest;
         private Guna.UI2.WinForms.Guna2Panel gnPanelHome;
         private Guna.UI2.WinForms.Guna2Panel gnPanelStore;
     }

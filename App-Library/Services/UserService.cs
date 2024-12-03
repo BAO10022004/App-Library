@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace App_Library.Services
 {
@@ -50,6 +52,25 @@ namespace App_Library.Services
             var response = await _httpClient.GetAsync($"api/users/{id}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<User>();
+        }
+        public async Task<User> GetUserByUsernameAsync(string id)
+        {
+            // Gửi yêu cầu GET tới API
+            var response = await _httpClient.GetAsync($"api/users/{id}");
+
+            // Kiểm tra xem yêu cầu có thành công không
+            if (response.IsSuccessStatusCode)
+            {
+                // Đọc dữ liệu trả về và chuyển thành đối tượng User
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<User>(jsonResponse);
+                return user;
+            }
+            else
+            {
+                // Nếu không thành công, xử lý lỗi (ví dụ: ném exception hoặc trả về null)
+                return null;
+            }
         }
         // Cap nhat nguoi dung theo ID
         public async Task<bool> UpdateUserAsync(string id, UpdateUserDTO updatedUser)

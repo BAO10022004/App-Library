@@ -73,7 +73,7 @@ namespace App_Library.Views
             }
 
             homeForm = new HomeForm(this);
-            shopForm = new NewShopMain();
+            shopForm = new NewShopMain(this);
 
             // Hiển thị sidebar
             if (currentUser.IsAdmin)
@@ -88,6 +88,9 @@ namespace App_Library.Views
                 activeFormChild(pnSideBar, new SideBarUserForm(this));
                 activeFormChildForMainForm(homeForm, e);
             }
+
+            //homeForm = new HomeForm(this);
+            //shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
 
             foreach (Control item in pnFooter.Controls)
@@ -179,7 +182,11 @@ namespace App_Library.Views
                 }
             }
         }
-
+        Form formShopMain;
+        internal void openShopMain()
+        {
+            activeFormChild(pnContent, new NewShopMain(this), null,ref formShopMain);
+        }
         Form ActForm;
         public void activeFormChildForMainForm(Form formDes, object obj)
         {

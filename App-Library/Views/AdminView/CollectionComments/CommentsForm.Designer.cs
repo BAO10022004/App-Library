@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnContent = new Guna.UI2.WinForms.Guna2Panel();
             this.pnFooter = new System.Windows.Forms.Panel();
             this.cbbSoDong = new System.Windows.Forms.ComboBox();
@@ -41,6 +41,12 @@
             this.btnTrangKe = new System.Windows.Forms.Button();
             this.lblSoTrang = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.CommentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Like = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txbTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -52,12 +58,6 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CommentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Like = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnContent.SuspendLayout();
             this.pnFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -109,6 +109,7 @@
             this.cbbSoDong.Name = "cbbSoDong";
             this.cbbSoDong.Size = new System.Drawing.Size(70, 26);
             this.cbbSoDong.TabIndex = 3;
+            this.cbbSoDong.SelectedIndexChanged += new System.EventHandler(this.cbbSoDong_SelectedIndexChanged);
             // 
             // lblSoDong
             // 
@@ -130,6 +131,7 @@
             this.btnTrangTruoc.TabIndex = 4;
             this.btnTrangTruoc.Text = "Trang Trước";
             this.btnTrangTruoc.UseVisualStyleBackColor = true;
+            this.btnTrangTruoc.Click += new System.EventHandler(this.btnTrangTruoc_Click);
             // 
             // btnTrangKe
             // 
@@ -141,6 +143,7 @@
             this.btnTrangKe.TabIndex = 5;
             this.btnTrangKe.Text = "Trang Kế";
             this.btnTrangKe.UseVisualStyleBackColor = true;
+            this.btnTrangKe.Click += new System.EventHandler(this.btnTrangKe_Click);
             // 
             // lblSoTrang
             // 
@@ -154,17 +157,18 @@
             // 
             // dataGridView
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.ColumnHeadersHeight = 30;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CommentID,
@@ -173,26 +177,26 @@
             this.Like,
             this.Time,
             this.Action});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Name = "dataGridView";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.Size = new System.Drawing.Size(1010, 350);
             this.dataGridView.TabIndex = 16;
@@ -217,6 +221,47 @@
             this.dataGridView.ThemeStyle.RowsStyle.Height = 22;
             this.dataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // CommentID
+            // 
+            this.CommentID.HeaderText = "CommentID";
+            this.CommentID.Name = "CommentID";
+            // 
+            // Comments
+            // 
+            this.Comments.FillWeight = 66.1519F;
+            this.Comments.HeaderText = "Comments";
+            this.Comments.Name = "Comments";
+            // 
+            // UserID
+            // 
+            this.UserID.FillWeight = 66.1519F;
+            this.UserID.HeaderText = "ID User";
+            this.UserID.Name = "UserID";
+            // 
+            // Like
+            // 
+            this.Like.FillWeight = 66.1519F;
+            this.Like.HeaderText = "Like";
+            this.Like.Name = "Like";
+            // 
+            // Time
+            // 
+            this.Time.FillWeight = 66.1519F;
+            this.Time.HeaderText = "Time";
+            this.Time.Name = "Time";
+            this.Time.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Action
+            // 
+            this.Action.FillWeight = 50F;
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Action.Text = "Delete";
+            this.Action.UseColumnTextForButtonValue = true;
             // 
             // txbTimKiem
             // 
@@ -341,46 +386,6 @@
             this.pDFToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip1";
             this.contextMenuStrip.Size = new System.Drawing.Size(118, 70);
-            // 
-            // CommentID
-            // 
-            this.CommentID.HeaderText = "CommentID";
-            this.CommentID.Name = "CommentID";
-            // 
-            // Comments
-            // 
-            this.Comments.FillWeight = 66.1519F;
-            this.Comments.HeaderText = "Comments";
-            this.Comments.Name = "Comments";
-            // 
-            // UserID
-            // 
-            this.UserID.FillWeight = 66.1519F;
-            this.UserID.HeaderText = "ID User";
-            this.UserID.Name = "UserID";
-            // 
-            // Like
-            // 
-            this.Like.FillWeight = 66.1519F;
-            this.Like.HeaderText = "Like";
-            this.Like.Name = "Like";
-            // 
-            // Time
-            // 
-            this.Time.FillWeight = 66.1519F;
-            this.Time.HeaderText = "Time";
-            this.Time.Name = "Time";
-            this.Time.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Action
-            // 
-            this.Action.FillWeight = 50F;
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Action.Text = "Delete";
-            this.Action.UseColumnTextForButtonValue = true;
             // 
             // CommentsForm
             // 

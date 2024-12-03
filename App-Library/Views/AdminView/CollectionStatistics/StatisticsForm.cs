@@ -35,7 +35,7 @@ namespace App_Library.Views.AdminView.CollectionStatistics
             LoadDataBook();
             LoadDataBookSold();
             LoadDataComment();
-            //LoadDataHotBook();
+            LoadDataHotBook();
 
         }
 
@@ -122,8 +122,7 @@ namespace App_Library.Views.AdminView.CollectionStatistics
         }
         private async void LoadDataHotBook()
         {
-            var lstHotBook = await _starsRatingService.GetHotBooksAsync();
-            var lstBook = lstHotBook.Select(n => n.BookDetail).ToList();
+            var lstBook = await _bookService.GetBooksAsync();
             var lstPoint = lstBook.GroupBy(n => n.Genre).Select(x => x.Key).ToList();
 
             LPointCollection lPointCollection = new LPointCollection();
@@ -132,7 +131,6 @@ namespace App_Library.Views.AdminView.CollectionStatistics
                 lPointCollection.Add(item, lstBook.Where(n => n.Genre == item).Count());
             }
             datasetHotBook.DataPoints = lPointCollection;
-
         }
     }
 }

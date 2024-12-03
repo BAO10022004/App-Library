@@ -14,17 +14,15 @@ namespace App_Library.Views.AdminView.CollectionComments
 {
     public partial class CommentsForm : Form
     {
-        private BookSoldService _bookSoldService;
-        private List<BookSold> _bookSolds;
         private CommentService _commentService;
         private List<Comment> _comments;
+        private BindingList<Comment> _commentsBindingList;
         private int curentPage = 1;
         private int countLine = 0;
         private float totalPage = 0;
         public CommentsForm()
         {
             InitializeComponent();
-            _bookSoldService = new BookSoldService();
             _commentService = new CommentService();
 
             cbbSoDong.SelectedIndex = 0;
@@ -69,18 +67,19 @@ namespace App_Library.Views.AdminView.CollectionComments
                 _comments = _comments.OrderByDescending(c => c.GetType().GetProperty(columnName)?.GetValue(c, null)).ToList();
             }
 
-            var lstCommentView = _comments.Select(n => new { CommentID = n.Id, Comments = n.Content, UserID = n.UserId, Like = n.Likes.Length, Time = n.CreatedAt }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
-
+            //var lstCommentView = _comments.Select(n => new CommentView() { Id = n.Id, Content = n.Content, UserId = n.UserId, Like = n.NumberOfLikes, Time = n.UpdatedAt.ToString() }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            var lstCommentView = _comments.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            _commentsBindingList = new BindingList<Comment>(lstCommentView);
 
             dataGridView.AutoGenerateColumns = false;
-            dataGridView.Columns["CommentID"].DataPropertyName = "CommentID";
-            dataGridView.Columns["Comments"].DataPropertyName = "Comments";
-            dataGridView.Columns["UserID"].DataPropertyName = "UserID";
-            dataGridView.Columns["Like"].DataPropertyName = "Like";
+            dataGridView.Columns["CommentID"].DataPropertyName = "Id";
+            dataGridView.Columns["Comments"].DataPropertyName = "Content";
+            dataGridView.Columns["UserID"].DataPropertyName = "UserId";
+            dataGridView.Columns["Like"].DataPropertyName = "NumberOfLikes";
             dataGridView.Columns["Time"].DataPropertyName = "Time";
             dataGridView.Columns["Action"].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dataGridView.Columns["Action"].Width = 100;
-            dataGridView.DataSource = lstCommentView;
+            dataGridView.DataSource = _commentsBindingList;
 
             if (countLine > count)
             {
@@ -164,37 +163,29 @@ namespace App_Library.Views.AdminView.CollectionComments
         private async void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView.Rows[e.RowIndex];
-            var id = row.Cells["BookID"].Value.ToString();
-            // Duyệt
-
+            var id = row.Cells["CommentID"].Value.ToString();
+            // Xóa
             if (e.ColumnIndex == dataGridView.Columns["Action"].Index && e.RowIndex >= 0)
             {
-                var result = await _bookSoldService.ApproveBookSoldAsync(id);
-                if (result)
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Đã kích hoạt người dùng");
-                    _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
-                }
-                else
-                {
-                    MessageBox.Show("Không thể kích hoạt người dùng");
-                }
-            }
-            // Từ chối
-            if (e.ColumnIndex == dataGridView.Columns["Action2"].Index && e.RowIndex >= 0)
-            {
-                var result = await _bookSoldService.RejectBookSoldAsync(id);
-                if (result)
-                {
-                    MessageBox.Show("Đã ngưng hoạt động người dùng");
-                    _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
-                }
-                else
-                {
-                    MessageBox.Show("Không thể ngưng hoạt động người dùng");
+                    //var commentDelete = _comments.Where(n => n.Id == id).Select(n => new CommentView() { Id = n.Id, Content = n.Content, UserId = n.UserId, Like = n.NumberOfLikes, Time = n.UpdatedAt.ToString() }).Skip(countLine * (curentPage - 1)).FirstOrDefault();
+                    var commentDelete = _comments.Where(n => n.Id == id).FirstOrDefault();
+                    var checkDelete = await _commentService.DeleteCommentAsync(id);
+                    if (checkDelete)
+                    {
+                        _commentsBindingList.Remove(commentDelete);
+                        _comments = (await _commentService.GetAllCommentAsync()).Comments;
+                        MessageBox.Show("Xóa thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công");
+                    }
+                    LoadData();
                 }
             }
-            LoadData();
         }
 
 
@@ -210,6 +201,16 @@ namespace App_Library.Views.AdminView.CollectionComments
 
         //    lblSoTrang.Text = $"Trang: {curentPage}/{totalPage}";
         //}
+
+    }
+
+    class CommentView
+    {
+        public string Id { get; set; }
+        public string Content { get; set; }
+        public string UserId { get; set; }
+        public int Like { get; set; }
+        public string Time { get; set; }
 
     }
 }

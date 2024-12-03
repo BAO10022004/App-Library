@@ -59,6 +59,15 @@ namespace App_Library.Services
             return await response.Content.ReadFromJsonAsync<User>();
         }
 
+        // Kiểm tra mật khẩu người dùng
+        public async Task<bool> CheckPassword(string username, string password)
+        {
+            var request = new LoginRequest { Username = username, Password = password };
+            var response = await _httpClient.PostAsJsonAsync("api/auth/checkPassword", request);
+
+            return response.IsSuccessStatusCode;
+        }
+
         // Gọi API đăng nhập bằng Google
         public async Task<bool> GoogleLoginAsync(GoogleLoginRequest googleLoginRequest)
         {

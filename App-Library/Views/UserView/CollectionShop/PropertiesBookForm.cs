@@ -102,12 +102,12 @@ namespace App_Library.Views
                     btnBuy.Visible = false;
                 }
             }
-            //CommentService _commentDb = new CommentService();
-            
-            // comments =await  _commentDb.GetBookCommentsAsync(book.Id);
-            //pnToolComment.Height = 300 + comments.Count *200;
+            CommentService _commentDb = new CommentService();
+            comments = new List<Comment>();
+            comments = await _commentDb.GetBookCommentsAsync(book.Id);
+            pnToolComment.Height = 300 + comments.Count * 200;
 
-            //activeFormChild(pnToolComment, new CommentForm(comments, book, shop), null, ref formComment);
+            activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
         }
         Form form;
         Form formComment;
@@ -188,6 +188,7 @@ namespace App_Library.Views
             {
                 pnReadBook.Location = new Point((pnContainButtonBuy.Width - pnReadBook.Width) / 2, (pnContainButtonBuy.Height - pnReadBook.Height) / 2);
             }
+
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -198,6 +199,32 @@ namespace App_Library.Views
         private void pnMainInfoBook_Resize(object sender, EventArgs e)
         {
             ReSize();
+        }
+
+        private void btnBuy_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private async void btnBuy_Click(object sender, EventArgs e)
+        {
+            BookSold bookSold = new BookSold()
+            {
+                BookId = book.Id,
+                UserId = (await (new UserService()).GetCurrentUserAsync()).Id,
+                Username = (await (new UserService()).GetCurrentUserAsync()).Username,
+                Status = "Pending",
+                Slug = book.Slug
+            };
+            String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
+            int count = (await (new BookSoldService()).GetBooksInProgressAsync()).Count();
+            MessageBox.Show(mes + count);
+            
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

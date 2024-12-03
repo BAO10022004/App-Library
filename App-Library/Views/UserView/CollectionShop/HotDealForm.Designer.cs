@@ -76,11 +76,11 @@
             // 
             this.lbTittle.AutoSize = true;
             this.lbTittle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbTittle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTittle.ForeColor = System.Drawing.Color.Red;
             this.lbTittle.Location = new System.Drawing.Point(9, 9);
             this.lbTittle.Name = "lbTittle";
-            this.lbTittle.Size = new System.Drawing.Size(56, 29);
+            this.lbTittle.Size = new System.Drawing.Size(68, 33);
             this.lbTittle.TabIndex = 1;
             this.lbTittle.Text = "title";
             this.lbTittle.MouseLeave += new System.EventHandler(this.pnTittle_MouseLeave);

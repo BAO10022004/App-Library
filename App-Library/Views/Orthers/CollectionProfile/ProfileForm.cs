@@ -15,24 +15,24 @@ namespace App_Library.Views.Orthers.CollectionProfile
 {
     public partial class ProfileForm : Form
     {
-        private User currentUser;
         private UserService _userService;
+        private BookSoldService _bookSoldService;
         private MainForm _mainForm;
         public ProfileForm(MainForm mainForm)
         {
             InitializeComponent();
             _userService = new UserService();
+            _bookSoldService = new BookSoldService();
             _mainForm = mainForm;
+
             LoadData();
         }
 
-        public void LoadData()
+        public async void LoadData()
         {
-            Console.WriteLine("load profile");
-            //currentUser = await _userService.GetCurrentUserAsync();
-            //lblUserName.Text = currentUser.Username;
-            //lblEmail.Text = currentUser.Email;
-            //picAvatar.Load(currentUser.PhotoURL);
+            var lstBook = await _bookSoldService.GetBooksInProgressAsync();
+            lblCountBookAlready.Text = lstBook.Where(n=>n.Status == "Approved").Count().ToString();
+            lblCountBookWaiting.Text = lstBook.Where(n => n.Status == "Pending").Count().ToString();
             lblUserName.Text = Session.CurentUser.Username;
             lblEmail.Text = Session.CurentUser.Email;
             picAvatar.Load(Session.CurentUser.PhotoURL);

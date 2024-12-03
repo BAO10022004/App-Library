@@ -73,6 +73,16 @@ namespace App_Library.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrange {
+            get {
+                object obj = ResourceManager.GetObject("arrange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow__1_ {
             get {
                 object obj = ResourceManager.GetObject("arrow (1)", resourceCulture);
@@ -366,6 +376,16 @@ namespace App_Library.Properties {
         internal static System.Drawing.Bitmap like {
             get {
                 object obj = ResourceManager.GetObject("like", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap like__2_ {
+            get {
+                object obj = ResourceManager.GetObject("like (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
