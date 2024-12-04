@@ -91,7 +91,11 @@ namespace App_Library.Views
                 return;
             }
         }
-
+        Form actForm;
+        public void LogOut()
+        {
+            this.activeFormChild(this.pnLoginSignupContent, new SplashForm(), null,ref actForm);
+        }
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
             //if (Location.X > 0)
@@ -109,7 +113,7 @@ namespace App_Library.Views
             Size = new Size(1280, 720);
             PnSubLogin.Controls.Clear();
             Location = new Point(100, 100);
-            this.activeFormChild(this.PnSubLogin, new MainForm(), sender);
+            this.activeFormChild(this.PnSubLogin, new MainForm(this), sender);
             //Console.WriteLine($"1 {PnSubLogin.Size.Width}, {PnSubLogin.Size.Height}");
             //Console.WriteLine($"0 {Size.Width}, {Size.Height}");
             //}

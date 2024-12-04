@@ -43,7 +43,8 @@ namespace App_Library.Views
         Dictionary<Control, Form> formDictionary;
         Form currentForm;
         Dictionary<Control, bool> isClick;
-        public MainForm()
+        SplashForm Parent;
+        public MainForm(SplashForm _Parent )
         {
             InitializeComponent();
             _userService = new UserService();
@@ -53,9 +54,25 @@ namespace App_Library.Views
             listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
             //Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
-
+            this.Parent = _Parent;
         }
-
+        public async void refresh()
+        {
+            var currentUser = await _userService.GetCurrentUserAsync();
+            Session.CurentUser = currentUser;
+            lbName.Text = currentUser.Username;
+            try
+            {
+                picAvatar.Load(currentUser.PhotoURL); // Đường dẫn hoặc URL của ảnh
+            }
+            catch (Exception)
+            {
+                // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
+                this.picAvatar.Image = global::App_Library.Properties.Resources.account;
+            }
+            // Hiển thị sidebar
+            
+        }
         private async void MainForm_Load(object sender, EventArgs e)
         {
             // Hiển thị thông tin người dùng hiện tại
@@ -93,38 +110,8 @@ namespace App_Library.Views
             //shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
 
-            foreach (Control item in pnFooter.Controls)
-            {
-                if (item is Panel)
-                {
-                    var controls = item.Controls;
-                    foreach (Control control in controls)
-                    {
-                        control.MouseLeave += new System.EventHandler(MouseLeave);
-                        control.MouseHover += new System.EventHandler(MouseHover);
-                    }
-                }
-            }
-            currentForm = new HomeForm(this);
-            foreach (var item in pnFooter.Controls)
-            {
-                Panel panel = item as Panel;
-                foreach (Control control in panel.Controls)
-                {
-                    if (control is Label)
-                    {
-                        isClick[control] = false;
-                    }
-                }
-            }
         }
-        private void MouseHover(object sender, EventArgs e)
-        {
-            var _lbShop = (Control)sender;
-            var panel = FindControlContainer(pnFooter.Controls, _lbShop);
-            panel.BackColor = Color.DeepSkyBlue;
-            _lbShop.BackColor = Color.DeepSkyBlue;
-        }
+       
         public void clickBackHome(object sender, EventArgs e)
         {
             homeForm = new HomeForm(this);
@@ -244,6 +231,95 @@ namespace App_Library.Views
                 lbRole.Text = "User";
                 activeFormChild(pnSideBar, new SideBarUserForm(this));
             }
+        }
+        Form actForm;
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(460, 700);
+            Program.sp.Hide();
+            Program.sp = new SplashForm();
+
+            Program.sp.ShowDialog();
+        }
+
+        private void pnContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbRole_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnUser_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void timerPicShop_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void profileToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void pnSideBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnLeft_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void picAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerPicHome_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnFooter_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnLogOut_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

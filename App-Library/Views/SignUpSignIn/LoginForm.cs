@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
 using App_Library.Views.SignIn;
+using App_Library.Views.ToolerForm;
 using DnsClient.Protocol;
 using MongoDB.Driver;
 using System;
@@ -33,13 +34,20 @@ namespace App_Library.Views
         {
             
         }
+        public SplashForm  getParent()
+        {
+            return _splashForm;
+        }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text);
             if (checkLoginSuccess)
             {
-                MessageBox.Show("Success");
-                _splashForm.OpenMainForm();
+                (new AlertSuccess(this)).ShowDialog();
+            }
+            else
+            {
+                (new AlertFail()).ShowDialog();
             }
         }
         private async void btnSignInGG_Click(object sender, EventArgs e)
@@ -48,8 +56,10 @@ namespace App_Library.Views
             bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync();
             if (checkLoginSuccess)
             {
-                MessageBox.Show("Success");
-                _splashForm.OpenMainForm();
+                (new AlertSuccess(this)).ShowDialog();
+            }else
+            {
+                (new AlertFail()).ShowDialog();
             }
         }
 

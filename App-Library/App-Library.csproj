@@ -438,11 +438,23 @@
     <Compile Include="Views\Orthers\CollectionEditProfile\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\ConfirmPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\ConfirmPasswordForm.Designer.cs">
+      <DependentUpon>ConfirmPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Orthers\CollectionEditProfile\EditprofileForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Orthers\CollectionEditProfile\EditprofileForm.Designer.cs">
       <DependentUpon>EditprofileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\NewPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Orthers\CollectionEditProfile\NewPasswordForm.Designer.cs">
+      <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Orthers\CollectionHelp\HelpForm.cs">
       <SubType>Form</SubType>
@@ -461,6 +473,18 @@
     </Compile>
     <Compile Include="Views\Orthers\CollectionSetting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertFail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertFail.Designer.cs">
+      <DependentUpon>AlertFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertSuccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertSuccess.Designer.cs">
+      <DependentUpon>AlertSuccess.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionHome\BoughtBook.cs">
       <SubType>Form</SubType>
@@ -626,8 +650,8 @@
     <EmbeddedResource Include="Views\AdminView\SideBarAdminForm.resx">
       <DependentUpon>SideBarAdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\ChangePasswordForm.resx">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\ConfirmPasswordForm.resx">
+      <DependentUpon>ConfirmPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\EditprofileForm.resx">
       <DependentUpon>EditprofileForm.cs</DependentUpon>
@@ -640,6 +664,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionSetting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolerForm\AlertFail.resx">
+      <DependentUpon>AlertFail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolerForm\AlertSuccess.resx">
+      <DependentUpon>AlertSuccess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionHome\BoughtBook.resx">
       <DependentUpon>BoughtBook.cs</DependentUpon>
@@ -724,6 +754,26 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\square-3503_256.gif" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\healthy1.png" />
+    <None Include="Resources\healthy.png" />
+    <None Include="Resources\checkmark1.png" />
+    <None Include="Resources\congratulations-13773_256.gif" />
+    <None Include="Resources\Remove-bg.ai_1733317826966.png" />
+    <None Include="Resources\20200327103048_5C8yi1.jpeg" />
+    <None Include="Resources\rocket-12318_256.gif" />
+    <None Include="Resources\png-transparent-white-paper-plane-illustration-airplane-paper-plane-white-paper-airplane-angle-white-hand-thumbnail_preview_rev_1.png" />
+    <None Include="Resources\png-transparent-white-paper-plane-illustration-airplane-paper-plane-white-paper-airplane-angle-white-hand-thumbnail.png" />
+    <None Include="Resources\20200327103048_5C8yi.jpeg" />
+    <None Include="Resources\checkmark.png" />
+    <None Include="Resources\logout %281%29.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\headset1.png" />
+    <None Include="Resources\carts1.png" />
+    <None Include="Resources\carts.png" />
+    <None Include="Resources\trolley.png" />
+    <None Include="Resources\headset.png" />
     <None Include="Resources\arrange.png" />
     <None Include="Resources\like %282%29.png" />
     <None Include="Resources\user %281%29.png" />

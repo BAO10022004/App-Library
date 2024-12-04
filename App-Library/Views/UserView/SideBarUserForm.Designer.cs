@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             this.pnSideBar = new System.Windows.Forms.Panel();
-            this.gnPanelHome = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbHome = new System.Windows.Forms.Label();
-            this.picHome = new System.Windows.Forms.PictureBox();
-            this.gnPanelStore = new Guna.UI2.WinForms.Guna2Panel();
-            this.picShop = new System.Windows.Forms.PictureBox();
-            this.lbStore = new System.Windows.Forms.Label();
+            this.btnHelp = new Guna.UI2.WinForms.Guna2Button();
+            this.btnStore = new Guna.UI2.WinForms.Guna2Button();
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.pnSideBar.SuspendLayout();
-            this.gnPanelHome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
-            this.gnPanelStore.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picShop)).BeginInit();
             this.SuspendLayout();
             // 
             // pnSideBar
@@ -48,80 +41,78 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnSideBar.BackColor = System.Drawing.Color.White;
-            this.pnSideBar.Controls.Add(this.gnPanelHome);
-            this.pnSideBar.Controls.Add(this.gnPanelStore);
+            this.pnSideBar.Controls.Add(this.btnHelp);
+            this.pnSideBar.Controls.Add(this.btnStore);
+            this.pnSideBar.Controls.Add(this.btnHome);
             this.pnSideBar.Location = new System.Drawing.Point(0, 0);
             this.pnSideBar.Name = "pnSideBar";
             this.pnSideBar.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pnSideBar.Size = new System.Drawing.Size(250, 455);
             this.pnSideBar.TabIndex = 0;
             // 
-            // gnPanelHome
+            // btnHelp
             // 
-            this.gnPanelHome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gnPanelHome.BackColor = System.Drawing.Color.White;
-            this.gnPanelHome.Controls.Add(this.lbHome);
-            this.gnPanelHome.Controls.Add(this.picHome);
-            this.gnPanelHome.Location = new System.Drawing.Point(0, 5);
-            this.gnPanelHome.Name = "gnPanelHome";
-            this.gnPanelHome.Size = new System.Drawing.Size(250, 50);
-            this.gnPanelHome.TabIndex = 13;
+            this.btnHelp.BorderRadius = 5;
+            this.btnHelp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHelp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHelp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHelp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHelp.FillColor = System.Drawing.Color.White;
+            this.btnHelp.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnHelp.Image = global::App_Library.Properties.Resources.headset1;
+            this.btnHelp.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHelp.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnHelp.Location = new System.Drawing.Point(3, 127);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(244, 52);
+            this.btnHelp.TabIndex = 17;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.Click += new System.EventHandler(this.lbHelp_Click);
             // 
-            // lbHome
+            // btnStore
             // 
-            this.lbHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHome.Location = new System.Drawing.Point(50, 0);
-            this.lbHome.Name = "lbHome";
-            this.lbHome.Size = new System.Drawing.Size(200, 50);
-            this.lbHome.TabIndex = 0;
-            this.lbHome.Text = "HOME";
-            this.lbHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbHome.Click += new System.EventHandler(this.lbHome_Click);
+            this.btnStore.BorderRadius = 5;
+            this.btnStore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnStore.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnStore.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnStore.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnStore.FillColor = System.Drawing.Color.White;
+            this.btnStore.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnStore.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F);
+            this.btnStore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnStore.Image = global::App_Library.Properties.Resources.carts1;
+            this.btnStore.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnStore.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnStore.Location = new System.Drawing.Point(3, 70);
+            this.btnStore.Name = "btnStore";
+            this.btnStore.Size = new System.Drawing.Size(244, 51);
+            this.btnStore.TabIndex = 16;
+            this.btnStore.Text = "Store";
+            this.btnStore.Click += new System.EventHandler(this.lbStore_Click);
             // 
-            // picHome
+            // btnHome
             // 
-            this.picHome.BackColor = System.Drawing.Color.Transparent;
-            this.picHome.Image = global::App_Library.Properties.Resources.HomeHover;
-            this.picHome.Location = new System.Drawing.Point(9, 9);
-            this.picHome.Name = "picHome";
-            this.picHome.Size = new System.Drawing.Size(32, 32);
-            this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHome.TabIndex = 2;
-            this.picHome.TabStop = false;
-            // 
-            // gnPanelStore
-            // 
-            this.gnPanelStore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gnPanelStore.BackColor = System.Drawing.Color.White;
-            this.gnPanelStore.Controls.Add(this.picShop);
-            this.gnPanelStore.Controls.Add(this.lbStore);
-            this.gnPanelStore.Location = new System.Drawing.Point(0, 60);
-            this.gnPanelStore.Name = "gnPanelStore";
-            this.gnPanelStore.Size = new System.Drawing.Size(250, 50);
-            this.gnPanelStore.TabIndex = 13;
-            // 
-            // picShop
-            // 
-            this.picShop.Image = global::App_Library.Properties.Resources.book_fair;
-            this.picShop.Location = new System.Drawing.Point(9, 9);
-            this.picShop.Name = "picShop";
-            this.picShop.Size = new System.Drawing.Size(32, 32);
-            this.picShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picShop.TabIndex = 3;
-            this.picShop.TabStop = false;
-            // 
-            // lbStore
-            // 
-            this.lbStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStore.Location = new System.Drawing.Point(50, 0);
-            this.lbStore.Name = "lbStore";
-            this.lbStore.Size = new System.Drawing.Size(200, 50);
-            this.lbStore.TabIndex = 0;
-            this.lbStore.Text = "STORE";
-            this.lbStore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbStore.Click += new System.EventHandler(this.lbStore_Click);
+            this.btnHome.BackColor = System.Drawing.Color.Transparent;
+            this.btnHome.BorderRadius = 5;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.FillColor = System.Drawing.Color.LightSkyBlue;
+            this.btnHome.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnHome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnHome.Image = global::App_Library.Properties.Resources.HomeHover;
+            this.btnHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHome.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnHome.Location = new System.Drawing.Point(3, 12);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(244, 52);
+            this.btnHome.TabIndex = 15;
+            this.btnHome.Text = "Home";
+            this.btnHome.Click += new System.EventHandler(this.lbHome_Click);
             // 
             // SideBarUserForm
             // 
@@ -134,10 +125,6 @@
             this.Text = "SideBarUserForm";
             this.Load += new System.EventHandler(this.SideBarUserForm_Load);
             this.pnSideBar.ResumeLayout(false);
-            this.gnPanelHome.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picHome)).EndInit();
-            this.gnPanelStore.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picShop)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,11 +132,8 @@
         #endregion
 
         private System.Windows.Forms.Panel pnSideBar;
-        private System.Windows.Forms.Label lbHome;
-        private System.Windows.Forms.Label lbStore;
-        private System.Windows.Forms.PictureBox picHome;
-        private System.Windows.Forms.PictureBox picShop;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelHome;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelStore;
+        private Guna.UI2.WinForms.Guna2Button btnHome;
+        private Guna.UI2.WinForms.Guna2Button btnStore;
+        private Guna.UI2.WinForms.Guna2Button btnHelp;
     }
 }

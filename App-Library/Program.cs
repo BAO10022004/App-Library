@@ -15,13 +15,14 @@ namespace App_Library
         static public User user;
         static public List<Panel> ListBookAd;
         static public List<Book> books;
+        static public bool checkLoginGG = false;
         /// summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-           
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             sp = new SplashForm();

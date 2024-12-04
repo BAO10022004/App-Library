@@ -28,182 +28,126 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtConfirmPass = new System.Windows.Forms.TextBox();
-            this.lblConfirmPass = new System.Windows.Forms.Label();
-            this.txtNewPass = new System.Windows.Forms.TextBox();
-            this.lblNewPass = new System.Windows.Forms.Label();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCancle = new Guna.UI2.WinForms.Guna2Button();
-            this.txtOldPass = new System.Windows.Forms.TextBox();
-            this.lblOldPass = new System.Windows.Forms.Label();
-            this.gnElipseForm = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.errorProviderOldPass = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProviderNewPass = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProviderConfirmPass = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOldPass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNewPass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPass)).BeginInit();
+            this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnInformation = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.lbUserName = new System.Windows.Forms.Label();
+            this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnMain.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblTitle
+            // pnMain
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(25, 55);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(400, 40);
-            this.lblTitle.TabIndex = 19;
-            this.lblTitle.Text = "CHANGE PASSWORD";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pnMain.Controls.Add(this.pnInformation);
+            this.pnMain.Controls.Add(this.guna2Panel1);
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 0);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.Size = new System.Drawing.Size(1014, 641);
+            this.pnMain.TabIndex = 0;
             // 
-            // txtConfirmPass
+            // pnInformation
             // 
-            this.txtConfirmPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPass.Location = new System.Drawing.Point(200, 288);
-            this.txtConfirmPass.Name = "txtConfirmPass";
-            this.txtConfirmPass.Size = new System.Drawing.Size(220, 29);
-            this.txtConfirmPass.TabIndex = 15;
+            this.pnInformation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnInformation.Location = new System.Drawing.Point(366, 0);
+            this.pnInformation.Name = "pnInformation";
+            this.pnInformation.Size = new System.Drawing.Size(648, 641);
+            this.pnInformation.TabIndex = 1;
             // 
-            // lblConfirmPass
+            // guna2Panel1
             // 
-            this.lblConfirmPass.AutoSize = true;
-            this.lblConfirmPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirmPass.Location = new System.Drawing.Point(30, 288);
-            this.lblConfirmPass.Name = "lblConfirmPass";
-            this.lblConfirmPass.Size = new System.Drawing.Size(162, 24);
-            this.lblConfirmPass.TabIndex = 14;
-            this.lblConfirmPass.Text = "Confirm Password";
-            this.lblConfirmPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.guna2Panel1.Controls.Add(this.guna2Panel4);
+            this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(366, 641);
+            this.guna2Panel1.TabIndex = 0;
             // 
-            // txtNewPass
+            // guna2Panel4
             // 
-            this.txtNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNewPass.Location = new System.Drawing.Point(200, 218);
-            this.txtNewPass.Name = "txtNewPass";
-            this.txtNewPass.Size = new System.Drawing.Size(220, 29);
-            this.txtNewPass.TabIndex = 13;
+            this.guna2Panel4.Controls.Add(this.lbEmail);
+            this.guna2Panel4.Controls.Add(this.lbUserName);
+            this.guna2Panel4.Controls.Add(this.picAvatar);
+            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel4.Location = new System.Drawing.Point(0, 175);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(366, 466);
+            this.guna2Panel4.TabIndex = 1;
             // 
-            // lblNewPass
+            // lbEmail
             // 
-            this.lblNewPass.AutoSize = true;
-            this.lblNewPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPass.Location = new System.Drawing.Point(30, 218);
-            this.lblNewPass.Name = "lblNewPass";
-            this.lblNewPass.Size = new System.Drawing.Size(136, 24);
-            this.lblNewPass.TabIndex = 12;
-            this.lblNewPass.Text = "New Password";
-            this.lblNewPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Location = new System.Drawing.Point(3, 280);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(363, 51);
+            this.lbEmail.TabIndex = 4;
+            this.lbEmail.Text = "USER NAME";
+            this.lbEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSave
+            // lbUserName
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BorderRadius = 20;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(260, 400);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(130, 50);
-            this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.lbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.Location = new System.Drawing.Point(3, 229);
+            this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Size = new System.Drawing.Size(363, 51);
+            this.lbUserName.TabIndex = 3;
+            this.lbUserName.Text = "USER NAME";
+            this.lbUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnCancle
+            // picAvatar
             // 
-            this.btnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancle.BorderRadius = 20;
-            this.btnCancle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCancle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCancle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCancle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancle.ForeColor = System.Drawing.Color.White;
-            this.btnCancle.Location = new System.Drawing.Point(60, 400);
-            this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(130, 50);
-            this.btnCancle.TabIndex = 10;
-            this.btnCancle.Text = "Cancle";
-            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
+            this.picAvatar.ImageRotate = 0F;
+            this.picAvatar.Location = new System.Drawing.Point(85, 3);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.picAvatar.Size = new System.Drawing.Size(210, 214);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatar.TabIndex = 2;
+            this.picAvatar.TabStop = false;
             // 
-            // txtOldPass
+            // guna2Panel3
             // 
-            this.txtOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOldPass.Location = new System.Drawing.Point(200, 150);
-            this.txtOldPass.Name = "txtOldPass";
-            this.txtOldPass.Size = new System.Drawing.Size(220, 29);
-            this.txtOldPass.TabIndex = 21;
-            // 
-            // lblOldPass
-            // 
-            this.lblOldPass.AutoSize = true;
-            this.lblOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOldPass.Location = new System.Drawing.Point(30, 150);
-            this.lblOldPass.Name = "lblOldPass";
-            this.lblOldPass.Size = new System.Drawing.Size(127, 24);
-            this.lblOldPass.TabIndex = 20;
-            this.lblOldPass.Text = "Old Password";
-            this.lblOldPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // gnElipseForm
-            // 
-            this.gnElipseForm.BorderRadius = 50;
-            this.gnElipseForm.TargetControl = this;
-            // 
-            // errorProviderOldPass
-            // 
-            this.errorProviderOldPass.ContainerControl = this;
-            // 
-            // errorProviderNewPass
-            // 
-            this.errorProviderNewPass.ContainerControl = this;
-            // 
-            // errorProviderConfirmPass
-            // 
-            this.errorProviderConfirmPass.ContainerControl = this;
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(366, 175);
+            this.guna2Panel3.TabIndex = 0;
             // 
             // ChangePasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 500);
-            this.Controls.Add(this.txtOldPass);
-            this.Controls.Add(this.lblOldPass);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtConfirmPass);
-            this.Controls.Add(this.lblConfirmPass);
-            this.Controls.Add(this.txtNewPass);
-            this.Controls.Add(this.lblNewPass);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancle);
+            this.BackColor = System.Drawing.Color.Beige;
+            this.ClientSize = new System.Drawing.Size(1014, 641);
+            this.Controls.Add(this.pnMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChangePasswordForm";
             this.Text = "ChangePasswordForm";
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOldPass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNewPass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPass)).EndInit();
+            this.Load += new System.EventHandler(this.ChangePasswordForm_Load);
+            this.pnMain.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox txtConfirmPass;
-        private System.Windows.Forms.Label lblConfirmPass;
-        private System.Windows.Forms.TextBox txtNewPass;
-        private System.Windows.Forms.Label lblNewPass;
-        private Guna.UI2.WinForms.Guna2Button btnSave;
-        private Guna.UI2.WinForms.Guna2Button btnCancle;
-        private System.Windows.Forms.TextBox txtOldPass;
-        private System.Windows.Forms.Label lblOldPass;
-        private Guna.UI2.WinForms.Guna2Elipse gnElipseForm;
-        private System.Windows.Forms.ErrorProvider errorProviderOldPass;
-        private System.Windows.Forms.ErrorProvider errorProviderNewPass;
-        private System.Windows.Forms.ErrorProvider errorProviderConfirmPass;
+        private Guna.UI2.WinForms.Guna2Panel pnMain;
+        private Guna.UI2.WinForms.Guna2Panel pnInformation;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.Label lbUserName;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label lbEmail;
     }
 }

@@ -70,7 +70,7 @@ namespace App_Library.Views.ToolerForm
                 actForm.Close();
             }
 
-           
+
 
             // Thiết lập form mới vào actForm
             actForm = formDes;
@@ -139,12 +139,12 @@ namespace App_Library.Views.ToolerForm
             }
             catch (Exception)
             {
-                
+
             }
         }
-        public async void  sendMail(string body, string mailTo)
+        public async void sendMail(string body, string mailTo)
         {
-           
+
             try
             {
 
@@ -173,10 +173,44 @@ namespace App_Library.Views.ToolerForm
 
             }
 
-        
+
+
+        }
+        public async void sendMailOtp(string body, string mailTo)
+        {
+
+            try
+            {
+
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("giabaoonutc2@gmail.com", "zaxhlxwulmedygre"),
+                    EnableSsl = true
+                };
+
+                MailMessage mail = new MailMessage
+                {
+                    From = new MailAddress("giabaoonutc2@gmail.com"),
+                    Subject = "READ BOOK APP",
+                    Body = body,
+                    IsBodyHtml = false
+                };
+
+                mail.To.Add(mailTo);
+
+                smtpClient.Send(mail);
+                MessageBox.Show("Email sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+
+
+        }
 
     }
-
-}
 
 }

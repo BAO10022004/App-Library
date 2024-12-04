@@ -32,6 +32,12 @@ namespace App_Library.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.timerPicHome = new System.Windows.Forms.Timer(this.components);
+            this.pnContent = new System.Windows.Forms.Panel();
+            this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnFooter = new System.Windows.Forms.Panel();
+            this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSetting = new Guna.UI2.WinForms.Guna2Button();
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.Panel();
             this.pnUser = new System.Windows.Forms.Panel();
@@ -39,24 +45,96 @@ namespace App_Library.Views
             this.lbName = new System.Windows.Forms.Label();
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnFooter = new System.Windows.Forms.Panel();
-            this.gnPanelHelp = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbHelp = new System.Windows.Forms.Label();
-            this.gnPanelSetting = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbSetting = new System.Windows.Forms.Label();
-            this.timerPicHome = new System.Windows.Forms.Timer(this.components);
+            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerPicShop = new System.Windows.Forms.Timer(this.components);
-            this.pnContent = new System.Windows.Forms.Panel();
+            this.pnFooter.SuspendLayout();
             this.pnLeft.SuspendLayout();
             this.pnUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.guna2ContextMenuStrip1.SuspendLayout();
-            this.pnFooter.SuspendLayout();
-            this.gnPanelHelp.SuspendLayout();
-            this.gnPanelSetting.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // timerPicHome
+            // 
+            this.timerPicHome.Interval = 5;
+            this.timerPicHome.Tick += new System.EventHandler(this.timerPicHome_Tick);
+            // 
+            // pnContent
+            // 
+            this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
+            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContent.Location = new System.Drawing.Point(253, 0);
+            this.pnContent.Margin = new System.Windows.Forms.Padding(2);
+            this.pnContent.Name = "pnContent";
+            this.pnContent.Size = new System.Drawing.Size(1027, 680);
+            this.pnContent.TabIndex = 5;
+            this.pnContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContent_Paint);
+            // 
+            // pnMain
+            // 
+            this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMain.Location = new System.Drawing.Point(0, 0);
+            this.pnMain.Name = "pnMain";
+            this.pnMain.Size = new System.Drawing.Size(1280, 680);
+            this.pnMain.TabIndex = 0;
+            this.pnMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMain_Paint);
+            // 
+            // pnFooter
+            // 
+            this.pnFooter.AutoScroll = true;
+            this.pnFooter.BackColor = System.Drawing.Color.White;
+            this.pnFooter.Controls.Add(this.btnLogOut);
+            this.pnFooter.Controls.Add(this.btnSetting);
+            this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnFooter.Location = new System.Drawing.Point(0, 546);
+            this.pnFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.pnFooter.Name = "pnFooter";
+            this.pnFooter.Size = new System.Drawing.Size(253, 134);
+            this.pnFooter.TabIndex = 4;
+            this.pnFooter.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFooter_Paint);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BorderRadius = 5;
+            this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogOut.FillColor = System.Drawing.Color.White;
+            this.btnLogOut.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnLogOut.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnLogOut.Image = global::App_Library.Properties.Resources.logout__1_;
+            this.btnLogOut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogOut.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnLogOut.Location = new System.Drawing.Point(4, 71);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(246, 52);
+            this.btnLogOut.TabIndex = 18;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.BorderRadius = 5;
+            this.btnSetting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSetting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSetting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSetting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSetting.FillColor = System.Drawing.Color.White;
+            this.btnSetting.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnSetting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnSetting.Image = global::App_Library.Properties.Resources.settings;
+            this.btnSetting.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSetting.ImageSize = new System.Drawing.Size(35, 35);
+            this.btnSetting.Location = new System.Drawing.Point(3, 0);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(245, 65);
+            this.btnSetting.TabIndex = 17;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // pnLeft
             // 
@@ -68,8 +146,9 @@ namespace App_Library.Views
             this.pnLeft.Location = new System.Drawing.Point(0, 0);
             this.pnLeft.Margin = new System.Windows.Forms.Padding(2);
             this.pnLeft.Name = "pnLeft";
-            this.pnLeft.Size = new System.Drawing.Size(250, 680);
-            this.pnLeft.TabIndex = 1;
+            this.pnLeft.Size = new System.Drawing.Size(253, 680);
+            this.pnLeft.TabIndex = 4;
+            this.pnLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.pnLeft_Paint);
             // 
             // pnSideBar
             // 
@@ -78,8 +157,9 @@ namespace App_Library.Views
             this.pnSideBar.Location = new System.Drawing.Point(0, 110);
             this.pnSideBar.Margin = new System.Windows.Forms.Padding(2);
             this.pnSideBar.Name = "pnSideBar";
-            this.pnSideBar.Size = new System.Drawing.Size(250, 455);
+            this.pnSideBar.Size = new System.Drawing.Size(253, 436);
             this.pnSideBar.TabIndex = 5;
+            this.pnSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSideBar_Paint);
             // 
             // pnUser
             // 
@@ -91,8 +171,9 @@ namespace App_Library.Views
             this.pnUser.Location = new System.Drawing.Point(0, 0);
             this.pnUser.Margin = new System.Windows.Forms.Padding(2);
             this.pnUser.Name = "pnUser";
-            this.pnUser.Size = new System.Drawing.Size(250, 110);
+            this.pnUser.Size = new System.Drawing.Size(253, 110);
             this.pnUser.TabIndex = 3;
+            this.pnUser.Paint += new System.Windows.Forms.PaintEventHandler(this.pnUser_Paint);
             // 
             // lbRole
             // 
@@ -104,6 +185,7 @@ namespace App_Library.Views
             this.lbRole.TabIndex = 4;
             this.lbRole.Text = "Role";
             this.lbRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbRole.Click += new System.EventHandler(this.lbRole_Click);
             // 
             // lbName
             // 
@@ -115,6 +197,7 @@ namespace App_Library.Views
             this.lbName.TabIndex = 3;
             this.lbName.Text = "Name";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // picAvatar
             // 
@@ -128,6 +211,7 @@ namespace App_Library.Views
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAvatar.TabIndex = 1;
             this.picAvatar.TabStop = false;
+            this.picAvatar.Click += new System.EventHandler(this.picAvatar_Click);
             // 
             // guna2ContextMenuStrip1
             // 
@@ -135,7 +219,6 @@ namespace App_Library.Views
             this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profileToolStripMenuItem,
             this.logOutToolStripMenuItem});
             this.guna2ContextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.guna2ContextMenuStrip1.Margin = new System.Windows.Forms.Padding(10);
@@ -149,15 +232,8 @@ namespace App_Library.Views
             this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(134, 56);
-            // 
-            // profileToolStripMenuItem
-            // 
-            this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
-            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.profileToolStripMenuItem.Text = "Profile";
-            this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(134, 30);
+            this.guna2ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.guna2ContextMenuStrip1_Opening);
             // 
             // logOutToolStripMenuItem
             // 
@@ -165,87 +241,20 @@ namespace App_Library.Views
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.logOutToolStripMenuItem.Text = "LogOut";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click_1);
             // 
-            // pnFooter
+            // profileToolStripMenuItem
             // 
-            this.pnFooter.AutoScroll = true;
-            this.pnFooter.BackColor = System.Drawing.Color.White;
-            this.pnFooter.Controls.Add(this.gnPanelHelp);
-            this.pnFooter.Controls.Add(this.gnPanelSetting);
-            this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnFooter.Location = new System.Drawing.Point(0, 565);
-            this.pnFooter.Margin = new System.Windows.Forms.Padding(2);
-            this.pnFooter.Name = "pnFooter";
-            this.pnFooter.Size = new System.Drawing.Size(250, 115);
-            this.pnFooter.TabIndex = 4;
-            // 
-            // gnPanelHelp
-            // 
-            this.gnPanelHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gnPanelHelp.BackColor = System.Drawing.Color.White;
-            this.gnPanelHelp.Controls.Add(this.lbHelp);
-            this.gnPanelHelp.Location = new System.Drawing.Point(0, 60);
-            this.gnPanelHelp.Margin = new System.Windows.Forms.Padding(2);
-            this.gnPanelHelp.Name = "gnPanelHelp";
-            this.gnPanelHelp.Size = new System.Drawing.Size(250, 50);
-            this.gnPanelHelp.TabIndex = 4;
-            // 
-            // lbHelp
-            // 
-            this.lbHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbHelp.Location = new System.Drawing.Point(50, 0);
-            this.lbHelp.Margin = new System.Windows.Forms.Padding(0);
-            this.lbHelp.Name = "lbHelp";
-            this.lbHelp.Size = new System.Drawing.Size(200, 50);
-            this.lbHelp.TabIndex = 0;
-            this.lbHelp.Text = "Help";
-            this.lbHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbHelp.Click += new System.EventHandler(this.lbHelp_Click);
-            // 
-            // gnPanelSetting
-            // 
-            this.gnPanelSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gnPanelSetting.BackColor = System.Drawing.Color.White;
-            this.gnPanelSetting.Controls.Add(this.lbSetting);
-            this.gnPanelSetting.Location = new System.Drawing.Point(0, 5);
-            this.gnPanelSetting.Margin = new System.Windows.Forms.Padding(2);
-            this.gnPanelSetting.Name = "gnPanelSetting";
-            this.gnPanelSetting.Size = new System.Drawing.Size(250, 50);
-            this.gnPanelSetting.TabIndex = 3;
-            // 
-            // lbSetting
-            // 
-            this.lbSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbSetting.Location = new System.Drawing.Point(50, 0);
-            this.lbSetting.Margin = new System.Windows.Forms.Padding(0);
-            this.lbSetting.Name = "lbSetting";
-            this.lbSetting.Size = new System.Drawing.Size(200, 50);
-            this.lbSetting.TabIndex = 0;
-            this.lbSetting.Text = "Setting";
-            this.lbSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbSetting.Click += new System.EventHandler(this.lbSetting_Click);
-            // 
-            // timerPicHome
-            // 
-            this.timerPicHome.Interval = 5;
+            this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
+            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.profileToolStripMenuItem.Text = "Profile";
+            this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click_1);
             // 
             // timerPicShop
             // 
             this.timerPicShop.Interval = 5;
-            // 
-            // pnContent
-            // 
-            this.pnContent.BackColor = System.Drawing.Color.AliceBlue;
-            this.pnContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContent.Location = new System.Drawing.Point(250, 0);
-            this.pnContent.Margin = new System.Windows.Forms.Padding(2);
-            this.pnContent.Name = "pnContent";
-            this.pnContent.Size = new System.Drawing.Size(1030, 680);
-            this.pnContent.TabIndex = 3;
+            this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
             // 
             // MainForm
             // 
@@ -255,39 +264,38 @@ namespace App_Library.Views
             this.ClientSize = new System.Drawing.Size(1280, 680);
             this.Controls.Add(this.pnContent);
             this.Controls.Add(this.pnLeft);
+            this.Controls.Add(this.pnMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.pnFooter.ResumeLayout(false);
             this.pnLeft.ResumeLayout(false);
             this.pnUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.guna2ContextMenuStrip1.ResumeLayout(false);
-            this.pnFooter.ResumeLayout(false);
-            this.gnPanelHelp.ResumeLayout(false);
-            this.gnPanelSetting.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel pnLeft;
-        private System.Windows.Forms.Panel pnUser;
-        private System.Windows.Forms.Label lbName;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
+
         private Timer timerPicHome;
-        private Timer timerPicShop;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
-        private ToolStripMenuItem profileToolStripMenuItem;
-        private ToolStripMenuItem logOutToolStripMenuItem;
-        private Panel pnFooter;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelHelp;
-        private Label lbHelp;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelSetting;
-        private Label lbSetting;
-        private Label lbRole;
-        private Panel pnSideBar;
         internal Panel pnContent;
+        private Guna.UI2.WinForms.Guna2Panel pnMain;
+        private Panel pnFooter;
+        private Guna.UI2.WinForms.Guna2Button btnLogOut;
+        private Guna.UI2.WinForms.Guna2Button btnSetting;
+        private Panel pnLeft;
+        private Panel pnSideBar;
+        private Panel pnUser;
+        private Label lbRole;
+        private Label lbName;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private ToolStripMenuItem logOutToolStripMenuItem;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private Timer timerPicShop;
     }
 }
