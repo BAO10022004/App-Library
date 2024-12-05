@@ -43,7 +43,8 @@ namespace App_Library.Views
             bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text);
             if (checkLoginSuccess)
             {
-                (new AlertSuccess(this)).ShowDialog();
+                (new AlertSuccess("Success")).ShowDialog();
+                _splashForm.OpenMainForm();
             }
             else
             {
@@ -56,7 +57,7 @@ namespace App_Library.Views
             bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync();
             if (checkLoginSuccess)
             {
-                (new AlertSuccess(this)).ShowDialog();
+                (new AlertSuccess("Success")).ShowDialog();
             }else
             {
                 (new AlertFail()).ShowDialog();

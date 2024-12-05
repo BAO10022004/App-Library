@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,43 +17,23 @@ namespace App_Library.Views.Main.CollectionShop
 {
     public partial class Advertisement : Form
     {
-        internal Book book;
+        internal Book book ;
         NewShopMain shopMain;
-        public Advertisement(Book book, NewShopMain shop)
+        Dictionary<Image, Book> mapBanner;
+        public Advertisement(Image img, Book book,  NewShopMain shop)
         {
             InitializeComponent();
             this.book = book;
+            picImageBook.Image = img;
             this.shopMain = shop;
-
         }
 
         private void Advertisement_Load(object sender, EventArgs e)
         {
-            try
-            {
-                picImageBook.Load(book.Image); // Đường dẫn hoặc URL của ảnh
-            }
-            catch (Exception)
-            {
-
-            }
-            lbTittelBook.Text = book.Title;
-            lbPrice.Text += book.Price + "$";
            
-            btnShowMore.FillColor = Color.FromArgb(40, 224, 224, 224);
-        }
-        private void btnShowMore_MouseHover(object sender, EventArgs e)
-        {
-            btnShowMore.BackColor = Color.CornflowerBlue;
         }
 
-        private void btnShowMore_MouseLeave(object sender, EventArgs e)
-        {
-           
-            btnShowMore.BackColor= Color.LightSteelBlue;
-        }
-
-        private void lbShowMore_Click(object sender, EventArgs e)
+        private void picImageBook_Click(object sender, EventArgs e)
         {
             shopMain.bookClick(book);
         }

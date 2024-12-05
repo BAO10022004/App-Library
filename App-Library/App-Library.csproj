@@ -754,6 +754,13 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\bannerElonMusk.jpg" />
+    <None Include="Resources\bannerNhagiakim.jpg" />
+    <None Include="Resources\bannerTheGreatGatsby.jpg" />
+    <None Include="Resources\bannerConan.jpg" />
+    <None Include="Resources\bannerMatBiec.jpg" />
+    <None Include="Resources\bannerDoreamon.jpg" />
+    <None Include="Resources\bannerBraveNewWord.jpg" />
     <None Include="Resources\square-3503_256.gif" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\healthy1.png" />

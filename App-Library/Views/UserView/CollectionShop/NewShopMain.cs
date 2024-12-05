@@ -150,7 +150,7 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                     control.Visible = true;
                 }
-                formAd = new AdForm(listBook, this);
+                formAd = new AdForm(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);
                 var bookSales = listBookSold
                             .GroupBy(b => b.BookId)

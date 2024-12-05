@@ -32,11 +32,11 @@
             this.timerAd = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnAdMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.picSubAd1 = new System.Windows.Forms.PictureBox();
+            this.picSubAd2 = new System.Windows.Forms.PictureBox();
             this.ElipseForMainAd = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.ElipseForSubAd1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.ElipseForSubAd2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.picSubAd1 = new System.Windows.Forms.PictureBox();
-            this.picSubAd2 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSubAd1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSubAd2)).BeginInit();
@@ -66,6 +66,26 @@
             this.pnAdMain.Size = new System.Drawing.Size(544, 350);
             this.pnAdMain.TabIndex = 0;
             // 
+            // picSubAd1
+            // 
+            this.picSubAd1.Location = new System.Drawing.Point(547, 3);
+            this.picSubAd1.Name = "picSubAd1";
+            this.picSubAd1.Size = new System.Drawing.Size(220, 350);
+            this.picSubAd1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSubAd1.TabIndex = 1;
+            this.picSubAd1.TabStop = false;
+            this.picSubAd1.Click += new System.EventHandler(this.picSubAd1_Click);
+            // 
+            // picSubAd2
+            // 
+            this.picSubAd2.Location = new System.Drawing.Point(773, 3);
+            this.picSubAd2.Name = "picSubAd2";
+            this.picSubAd2.Size = new System.Drawing.Size(220, 350);
+            this.picSubAd2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSubAd2.TabIndex = 2;
+            this.picSubAd2.TabStop = false;
+            this.picSubAd2.Click += new System.EventHandler(this.picSubAd2_Click);
+            // 
             // ElipseForMainAd
             // 
             this.ElipseForMainAd.BorderRadius = 50;
@@ -80,24 +100,6 @@
             // 
             this.ElipseForSubAd2.BorderRadius = 50;
             this.ElipseForSubAd2.TargetControl = this.picSubAd2;
-            // 
-            // picSubAd1
-            // 
-            this.picSubAd1.Location = new System.Drawing.Point(547, 3);
-            this.picSubAd1.Name = "picSubAd1";
-            this.picSubAd1.Size = new System.Drawing.Size(220, 350);
-            this.picSubAd1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSubAd1.TabIndex = 1;
-            this.picSubAd1.TabStop = false;
-            // 
-            // picSubAd2
-            // 
-            this.picSubAd2.Location = new System.Drawing.Point(773, 3);
-            this.picSubAd2.Name = "picSubAd2";
-            this.picSubAd2.Size = new System.Drawing.Size(220, 350);
-            this.picSubAd2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSubAd2.TabIndex = 2;
-            this.picSubAd2.TabStop = false;
             // 
             // AdForm
             // 

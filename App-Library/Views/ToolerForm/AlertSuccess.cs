@@ -13,17 +13,14 @@ namespace App_Library.Views.ToolerForm
     public partial class AlertSuccess : Form
     {
         LoginForm parent;
-        public AlertSuccess(LoginForm parent)
+        public AlertSuccess( String messege)
         {
             InitializeComponent();
-            this.parent = parent;
+            lbMessge .Text = messege;   
         }
 
         public void pnOk_Click(object sender, EventArgs e)
         {
-           
-            SplashForm form = parent.getParent();
-            form.OpenMainForm();
             this.Close();
         }
 
