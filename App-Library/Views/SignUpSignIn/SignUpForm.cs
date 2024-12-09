@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using App_Library.Models;
 using App_Library.Services;
 using App_Library.Views.SignIn;
+using Guna.UI2.WinForms;
+using MongoDB.Driver.Linq;
 using Org.BouncyCastle.Asn1.Ocsp;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -41,135 +43,226 @@ namespace App_Library.Views
 
         private async void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (checkEmail() && checkUsername() && checkPassword() && checkConfirmPassword())
+            List<TextBox> listCotrol = new List<TextBox>();
+            listCotrol.Add(txbEmail);
+            listCotrol.Add(txbUsername);
+            listCotrol.Add(txbPassword);
+            listCotrol.Add(txbConfirmPassword);
+            Dictionary<Control, bool> checkValid = new Dictionary<Control, bool>();
+            Dictionary<Control, Guna2Button> messegeError = new Dictionary<Control, Guna2Button>();
+            foreach (TextBox item in listCotrol)
             {
-                var result = await _authService.SignUpAsync(txbUsername.Text, txbEmail.Text, txbPassword.Text);
-                if (result.Equals("Success"))
+                checkValid[item] = true;
+                switch (item.Name)
                 {
-                    MessageBox.Show("Registration successful");
-                    _splashForm.OpentLogin();
+                    case "txbEmail":
+                        {
+                            messegeError.Add(item, MessegeEmail);
+                            break;
+                        }
+                    case "txbUsername":
+                        {
+                            messegeError.Add(item, MessegeUsername);
+                            break;
+                        }
+                    case "txbPassword":
+                        {
+                            messegeError.Add(item, MessegePassword);
+                            break;
+                        }
+                    case "txbConfirmPassword":
+                        {
+                            messegeError.Add(item, MessegeConfirm);
+                            break;
+                        }
                 }
-                else if (result.Equals("Username already exists"))
+                messegeError[item].Text = "";
+            }
+            bool check = true;
+            MessegeEmail.Visible =  !checkEmail(checkValid[txbEmail], messegeError[txbEmail]);
+            MessegeUsername.Visible = !checkUsername(checkValid[txbUsername], messegeError[txbUsername]);
+            MessegePassword.Visible = !checkPassword(checkValid[txbPassword], messegeError[txbPassword]);
+            MessegeConfirm.Visible = !checkConfirmPassword(checkValid[txbConfirmPassword], messegeError[txbConfirmPassword]);
+            listCotrol.ForEach(x => check = (check && !checkValid[x]) ? false : true);
+            if (!check)
                 {
-                    errorProviderUsername.SetError(txbUsername, result);
-                }
-                else if (result.Equals("Email already exists"))
+                    var result = await _authService.SignUpAsync(txbUsername.Text, txbEmail.Text, txbPassword.Text);
+                    if (result.Equals("Success"))
+                    {
+                        
+                        _splashForm.OpentLogin();
+                    }
+                    else if (result.Equals("Username already exists"))
+                    {
+                        messegeError[txbUsername].Text = result;
+                    }
+                    else if (result.Equals("Email already exists"))
+                    {
+                        messegeError[txbEmail].Text = result;
+                    }
+            }
+            else
+            {
+                listCotrol.ForEach(x =>
                 {
-                    errorProviderEmail.SetError(txbEmail, result);
-                }
+                    if (!checkValid[x])
+                    {
+                        Guna2Panel pn = FindControlContainer(this.Controls, x) as Guna2Panel;
+                        pn.BorderColor = Color.Red;
+
+                    }
+                });
+                
             }
         }
         private async void btnSignInGG_Click(object sender, EventArgs e)
         {
             var googleLoginForm = new GoogleLoginForm();
-            bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync();
+            bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync(_splashForm);
             if (checkLoginSuccess)
             {
-                MessageBox.Show("Success");
+                Program.checkLoginGG = true;
                 _splashForm.OpenMainForm();
             }
         }
-        private bool checkEmail()
+        private void lbGG_MouseHover(object sender, EventArgs e)
+        {
+            btnSignInGG.FillColor = Color.Blue;
+            lbGG.ForeColor = Color.White;
+            lbGG.BackColor = Color.Blue;
+        }
+
+        private void lbGG_MouseLeave(object sender, EventArgs e)
+        {
+            btnSignInGG.FillColor = Color.White;
+            lbGG.ForeColor = Color.Black;
+            lbGG.BackColor = Color.White;
+        }
+        private bool checkEmail(bool checkValid, Guna2Button messege)
         {
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbEmail.Text) || txbEmail.Text == "Email")
             {
-                errorProviderEmail.SetError(txbEmail, "Please enter email");
-                return false;
+                messege.Text ="Please enter email";
+               
+                checkValid = false;
+                return checkValid;
             }
             // Kiểm tra định dạng
             if (!Regex.IsMatch(txbEmail.Text, emailPattern))
             {
-                errorProviderEmail.SetError(txbEmail, "Email format incorrect");
-                return false;
+               
+                messege.Text = "Email format incorrect";
+                checkValid = false;
+                return checkValid;
             }
             else
             {
-                errorProviderEmail.SetError(txbEmail, string.Empty);
-                return true;
+                
+                messege.Text = "";
+                checkValid = true;
+                return checkValid;
             }
         }
-        private bool checkUsername()
+        private bool checkUsername(bool checkValid, Guna2Button messege)
         {
             var namePattern = @"^[a-zA-Z0-9\s]+$";
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbUsername.Text) || txbUsername.Text == "Username")
             {
-                errorProviderUsername.SetError(txbUsername, "Please enter username");
-                return false;
+                
+                messege.Text = "Please enter username";
+                checkValid = false;
+                return checkValid;
             }
             else if (txbUsername.Text.Length < 3)
             {
-                errorProviderUsername.SetError(txbUsername, "Username must be at least 3 characters long");
-                return false;
+                
+                messege.Text = "Username must be at least 3 characters long";
+                checkValid = false;
+                return checkValid;
             }
             else if (txbUsername.Text.Length > 20)
             {
-                errorProviderUsername.SetError(txbUsername, "Username must be less than 20 characters long");
-                return false;
+                
+                messege.Text = "Username must be less than 20 characters long";
+                checkValid = false;
+                return checkValid;
             }
             // Kiểm tra định dạng
             if (!Regex.IsMatch(txbUsername.Text, namePattern))
             {
-                errorProviderUsername.SetError(txbUsername, "Username must contain only letters, numbers and spaces, no special characters");
-                return false;
+               
+                messege.Text = "Username must contain only letters, numbers and spaces, no special characters";
+                checkValid = false;
+                return checkValid;
             }
             else
             {
-                errorProviderUsername.SetError(txbUsername, string.Empty);
-                return true;
+                
+                messege.Text = "";
+                checkValid = true;
+                return checkValid;
             }
         }
-        private bool checkPassword()
+        private bool checkPassword(bool checkValid, Guna2Button messege)
         {
             var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbPassword.Text) || txbPassword.Text == "Password")
             {
-                errorProviderPassword.SetError(txbPassword, "Please enter password");
-                return false;
+                messege.Text = "Please enter password";
+                checkValid = false;
+                return checkValid;
             }
             else if (txbPassword.Text.Length < 5)
             {
-                errorProviderPassword.SetError(txbPassword, "Password must be at least 5 characters long");
-                return false;
+                messege.Text = "Password must be at least 5 characters long";
+                checkValid = false;
+                return checkValid;
             }
             else if (txbPassword.Text.Length > 20)
             {
-                errorProviderPassword.SetError(txbPassword, "Password must be less than 20 characters long");
-                return false;
+                messege.Text = "Password must be less than 20 characters long";
+                checkValid = false;
+                return checkValid;
             }
             // Kiểm tra định dạng
             if (!Regex.IsMatch(txbPassword.Text, passwordPattern))
             {
-                errorProviderPassword.SetError(txbPassword, "Password must contain uppercase, lowercase, numbers and special characters");
-                return false;
+                messege.Text = "Password must contain uppercase, lowercase, numbers and special characters";
+                checkValid = false;
+                return checkValid;
             }
             else
             {
-                errorProviderPassword.SetError(txbPassword, string.Empty);
-                return true;
+                messege.Text = "";
+                checkValid = true;
+                return checkValid;
             }
         }
-        private bool checkConfirmPassword()
+        private bool checkConfirmPassword(bool checkValid, Guna2Button messege)
         {
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbConfirmPassword.Text) || txbConfirmPassword.Text == "Confirm Password")
             {
-                errorProviderConfirmPassword.SetError(txbConfirmPassword, "Please confirm password");
-                return false;
+                messege.Text = "Please confirm password";
+                checkValid = false;
+                return checkValid;
             }
             // Kiểm tra định dạng
             if (!txbConfirmPassword.Text.Equals(txbPassword.Text))
             {
-                errorProviderConfirmPassword.SetError(txbConfirmPassword, "Password confirm incorrect");
-                return false;
+                messege.Text = "Password confirm incorrect";
+                checkValid = false;
+                return checkValid;
             }
             else
             {
-                errorProviderConfirmPassword.SetError(txbConfirmPassword, string.Empty);
-                return true;
+                messege.Text = "";
+                checkValid = true;
+                return checkValid;
             }
         }
 
@@ -307,12 +400,12 @@ namespace App_Library.Views
             }
 
         }
-        void openEyeFor( PictureBox pic )
+        void openEyeFor(PictureBox pic)
         {
             try
             {
-                pic.Image = global::App_Library.Properties.Resources.close_eye; 
-                if(pic.Name.Contains("Confirm"))
+                pic.Image = global::App_Library.Properties.Resources.close_eye;
+                if (pic.Name.Contains("Confirm"))
                 {
                     // Confirm
                     isEyeForConfirmClose = false;
@@ -327,7 +420,7 @@ namespace App_Library.Views
                     timerOpenEyeForPassWord.Start();
                     picEyeOfPass.Click -= new EventHandler(this.picEyeOfPass_Click);
                 }
-                
+
             }
             catch (Exception ex)
             {

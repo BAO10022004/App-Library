@@ -100,7 +100,11 @@ namespace App_Library.Views.Orthers.CollectionProfile
         Form actFormChangePassword;
         private void btnChangePassword_Click_1(object sender, EventArgs e)
         {
-            timeropenChangePassword.Start();
+            if(Program.checkLoginGG)
+            {
+                (new AlertFail("Login with Google not can change password")).ShowDialog();
+            }else
+                timeropenChangePassword.Start();
         }
 
         private void timeropenChangePassword_Tick(object sender, EventArgs e)

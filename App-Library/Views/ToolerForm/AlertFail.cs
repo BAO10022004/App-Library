@@ -12,9 +12,11 @@ namespace App_Library.Views.ToolerForm
 {
     public partial class AlertFail : Form
     {
-        public AlertFail()
+        public AlertFail(String messege)
         {
             InitializeComponent();
+            lbMessge.Text = messege;
+            this.Location = Program.sp.Location;
         }
 
         private void pnOk_Click(object sender, EventArgs e)

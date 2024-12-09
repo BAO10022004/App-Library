@@ -53,7 +53,6 @@ namespace App_Library.Views
                     lisBookPending.Add(bookSold);
                 }
             }
-            lbProcessing.Text = lisBookPending.Count.ToString();
         }
         private void HomeForm_Resize(object sender, EventArgs e)
         {
@@ -61,8 +60,8 @@ namespace App_Library.Views
             pnGroup1.Width = this.Width / 2-10;
             pnGroup.Width = this.Width / 2-10;
             btnBoughtBook.Location =new Point( (pnGroup1.Width - btnBoughtBook.Width) / 2, btnBoughtBook.Location.Y);
-            btnProcessing.Location = new Point((pnGroup2.Width - btnProcessing.Width) / 2, btnProcessing.Location.Y);
-            pnHistory.Location = new Point((pnGroup2.Width - btnProcessing.Width) / 2, pnHistory.Location.Y);
+            btnSetting.Location = new Point((pnGroup2.Width - btnSetting.Width) / 2, btnSetting.Location.Y);
+            pnHistory.Location = new Point((pnGroup2.Width - btnSetting.Width) / 2, pnHistory.Location.Y);
             pnProFile.Location = new Point((pnGroup1.Width - btnBoughtBook.Width) / 2, pnProFile.Location.Y);
         }
         Form actForm;
@@ -107,6 +106,59 @@ namespace App_Library.Views
         {
             
                 main.clickBackHome(sender, e);
+        }
+
+        private void lbSetting_MouseHover(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+        private Image RotateImage(Image img, float angle)
+        {
+            // Tạo một Bitmap mới từ hình ảnh gốc
+            Bitmap rotatedBitmap = new Bitmap(img);
+
+            // Tạo đối tượng Graphics từ Bitmap mới
+            Graphics g = Graphics.FromImage(rotatedBitmap);
+
+            // Lấy tọa độ trung tâm của hình ảnh
+            PointF center = new PointF(img.Width / 2, img.Height / 2);
+
+            // Di chuyển hệ tọa độ Graphics để gốc nằm ở giữa hình ảnh
+            g.TranslateTransform(center.X, center.Y);
+
+            // Xoay hệ tọa độ Graphics
+            g.RotateTransform(angle);
+
+            // Di chuyển ngược lại để khôi phục vị trí gốc ban đầu
+            g.TranslateTransform(-center.X, -center.Y);
+
+            // Vẽ hình ảnh gốc vào Graphics đã xoay
+            g.DrawImage(img, new Point(0, 0));
+
+            // Trả về hình ảnh đã xoay
+            return rotatedBitmap;
+        }
+        float angle = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(angle < 360)
+            {
+                angle += 10;
+                RotateImage(picSetting.Image, angle);
+                picSetting.Invalidate();
+            }
+            else
+            {
+                angle += 10;
+                RotateImage(picSetting.Image, angle);
+                picSetting.Invalidate();
+                timer1.Stop();
+            }
+        }
+
+        private void lbSetting_MouseLeave(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

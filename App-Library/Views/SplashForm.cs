@@ -15,11 +15,15 @@ namespace App_Library.Views
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
         Point pointLbWelcome;
-        public SplashForm()
+        Theme theme;
+        public SplashForm(bool isDarkMode = false)
         {
             InitializeComponent();
-
+            theme = new Theme(isDarkMode);
+            pnFrameOption.BackColor = theme.BackRound;
+            lbWellcome.ForeColor = theme.BackRound;
         }
+
         private void SplashForm_Load(object sender, EventArgs e)
         {
             //pointLbWelcome = new Point((this.Size.Width - lbWellcome.Size.Width) / 2, 0);
@@ -33,10 +37,6 @@ namespace App_Library.Views
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
 
-            if (e.Button == MouseButtons.Left) // Chỉ di chuyển khi chuột trái được nhấn
-            {
-                this.Location = new Point(this.Location.X + e.X, this.Location.Y + e.Y);
-            }
         }
         // Bấm nút đăng nhập
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -161,5 +161,9 @@ namespace App_Library.Views
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void guna2ProgressIndicator2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -373,6 +373,16 @@ namespace App_Library.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gear {
+            get {
+                object obj = ResourceManager.GetObject("gear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap good_wishes {
             get {
                 object obj = ResourceManager.GetObject("good-wishes", resourceCulture);
@@ -616,6 +626,16 @@ namespace App_Library.Properties {
         internal static System.Drawing.Bitmap magnifying_glass__1_ {
             get {
                 object obj = ResourceManager.GetObject("magnifying-glass (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mark {
+            get {
+                object obj = ResourceManager.GetObject("mark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -33,7 +33,6 @@ namespace App_Library.Views
             this.components = new System.ComponentModel.Container();
             this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnLogIn = new System.Windows.Forms.Button();
-            this.txbUserName = new System.Windows.Forms.TextBox();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
             this.btnSignInGG = new Guna.UI2.WinForms.Guna2Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,6 +42,7 @@ namespace App_Library.Views
             this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.gnPanelLogIn = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbUserName = new System.Windows.Forms.TextBox();
             this.lbCreateAccount = new System.Windows.Forms.Label();
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -76,22 +76,6 @@ namespace App_Library.Views
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // txbUserName
-            // 
-            this.txbUserName.BackColor = System.Drawing.Color.White;
-            this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbUserName.ForeColor = System.Drawing.Color.DarkGray;
-            this.txbUserName.Location = new System.Drawing.Point(25, 15);
-            this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.txbUserName.Name = "txbUserName";
-            this.txbUserName.Size = new System.Drawing.Size(260, 19);
-            this.txbUserName.TabIndex = 4;
-            this.txbUserName.Text = "Username";
-            this.txbUserName.Click += new System.EventHandler(this.txbUserName_Click);
-            this.txbUserName.Leave += new System.EventHandler(this.txbUserName_Leave);
-            this.txbUserName.MouseHover += new System.EventHandler(this.txbUserName_MouseHover);
             // 
             // pnMainContentLogin
             // 
@@ -175,8 +159,8 @@ namespace App_Library.Views
             this.gnPanelPassword.Name = "gnPanelPassword";
             this.gnPanelPassword.Size = new System.Drawing.Size(310, 47);
             this.gnPanelPassword.TabIndex = 15;
-            this.gnPanelPassword.MouseLeave += new System.EventHandler(this.gnPanelPassword_MouseLeave);
-            this.gnPanelPassword.MouseHover += new System.EventHandler(this.gnPanelPassword_MouseHover);
+            this.gnPanelPassword.MouseLeave += new System.EventHandler(this.txbPassword_MouseLeave);
+            this.gnPanelPassword.MouseHover += new System.EventHandler(this.txbPassword_MouseHover);
             // 
             // picEye
             // 
@@ -221,7 +205,23 @@ namespace App_Library.Views
             this.gnPanelLogIn.Size = new System.Drawing.Size(310, 47);
             this.gnPanelLogIn.TabIndex = 14;
             this.gnPanelLogIn.MouseLeave += new System.EventHandler(this.gnPanelLogIn_MouseLeave);
-            this.gnPanelLogIn.MouseHover += new System.EventHandler(this.gnPanelLogIn_MouseHover);
+            this.gnPanelLogIn.MouseHover += new System.EventHandler(this.txbUserName_MouseHover);
+            // 
+            // txbUserName
+            // 
+            this.txbUserName.BackColor = System.Drawing.Color.White;
+            this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUserName.ForeColor = System.Drawing.Color.DarkGray;
+            this.txbUserName.Location = new System.Drawing.Point(25, 15);
+            this.txbUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.txbUserName.Name = "txbUserName";
+            this.txbUserName.Size = new System.Drawing.Size(260, 19);
+            this.txbUserName.TabIndex = 4;
+            this.txbUserName.Text = "Username";
+            this.txbUserName.Click += new System.EventHandler(this.txbUserName_Click);
+            this.txbUserName.Leave += new System.EventHandler(this.txbUserName_Leave);
+            this.txbUserName.MouseHover += new System.EventHandler(this.txbUserName_MouseHover);
             // 
             // lbCreateAccount
             // 
@@ -291,11 +291,9 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Elipse gnBtnLogin;
         private Panel pnMainContentLogin;
         private Label lbCreateAccount;
-        private TextBox txbUserName;
         private Label lbForgotPassword;
         private Button btnLogIn;
         private Guna.UI2.WinForms.Guna2Elipse gnBtnSignInGG;
-        private Guna.UI2.WinForms.Guna2Panel gnPanelLogIn;
         private Guna.UI2.WinForms.Guna2Panel gnPanelPassword;
         private TextBox txbPassword;
         private Label lbOr;
@@ -304,5 +302,7 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Panel btnSignInGG;
         private Label lbGG;
         private PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel gnPanelLogIn;
+        private TextBox txbUserName;
     }
 }

@@ -40,6 +40,7 @@ namespace App_Library.Views
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnSubLogin = new System.Windows.Forms.Panel();
+            this.guna2ProgressIndicator1 = new Guna.UI2.WinForms.Guna2ProgressIndicator();
             this.pnFrameOption = new System.Windows.Forms.Panel();
             this.pnLoginSignupContent = new System.Windows.Forms.Panel();
             this.btnSignUp = new System.Windows.Forms.Button();
@@ -73,7 +74,6 @@ namespace App_Library.Views
             this.pnHeader.Name = "pnHeader";
             this.pnHeader.Size = new System.Drawing.Size(460, 40);
             this.pnHeader.TabIndex = 2;
-            this.pnHeader.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // btnMinimize
             // 
@@ -139,6 +139,7 @@ namespace App_Library.Views
             // pnSubLogin
             // 
             this.pnSubLogin.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.pnSubLogin.Controls.Add(this.guna2ProgressIndicator1);
             this.pnSubLogin.Controls.Add(this.pnFrameOption);
             this.pnSubLogin.Controls.Add(this.lbWellcome);
             this.pnSubLogin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -147,6 +148,13 @@ namespace App_Library.Views
             this.pnSubLogin.Name = "pnSubLogin";
             this.pnSubLogin.Size = new System.Drawing.Size(460, 600);
             this.pnSubLogin.TabIndex = 5;
+            // 
+            // guna2ProgressIndicator1
+            // 
+            this.guna2ProgressIndicator1.Location = new System.Drawing.Point(-15, -55);
+            this.guna2ProgressIndicator1.Name = "guna2ProgressIndicator1";
+            this.guna2ProgressIndicator1.Size = new System.Drawing.Size(90, 90);
+            this.guna2ProgressIndicator1.TabIndex = 4;
             // 
             // pnFrameOption
             // 
@@ -201,14 +209,14 @@ namespace App_Library.Views
             // lbWellcome
             // 
             this.lbWellcome.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.lbWellcome.Font = new System.Drawing.Font("Mistral", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWellcome.Font = new System.Drawing.Font("Lucida Handwriting", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbWellcome.ForeColor = System.Drawing.Color.White;
-            this.lbWellcome.Location = new System.Drawing.Point(90, 160);
+            this.lbWellcome.Location = new System.Drawing.Point(0, 152);
             this.lbWellcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbWellcome.Name = "lbWellcome";
-            this.lbWellcome.Size = new System.Drawing.Size(280, 65);
+            this.lbWellcome.Size = new System.Drawing.Size(458, 65);
             this.lbWellcome.TabIndex = 2;
-            this.lbWellcome.Text = "WELLCOME BACK";
+            this.lbWellcome.Text = "WELCOME BACK";
             this.lbWellcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gneContentLogin
@@ -286,6 +294,7 @@ namespace App_Library.Views
         private Timer timerOpenMainForm;
         private PictureBox btnMaximize;
         private PictureBox btnMinimize;
+        private Guna.UI2.WinForms.Guna2ProgressIndicator guna2ProgressIndicator1;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
         public PictureBox BtnExit { get => btnClose; set => btnClose = value; }

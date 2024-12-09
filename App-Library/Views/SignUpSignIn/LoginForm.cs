@@ -3,6 +3,7 @@ using App_Library.Services;
 using App_Library.Views.SignIn;
 using App_Library.Views.ToolerForm;
 using DnsClient.Protocol;
+using Guna.UI2.WinForms;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -40,27 +41,24 @@ namespace App_Library.Views
         }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text);
+           
+            bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text, this);
             if (checkLoginSuccess)
             {
-                (new AlertSuccess("Success")).ShowDialog();
+                Program.checkLoginGG = true;
                 _splashForm.OpenMainForm();
-            }
-            else
-            {
-                (new AlertFail()).ShowDialog();
             }
         }
         private async void btnSignInGG_Click(object sender, EventArgs e)
         {
+
             var googleLoginForm = new GoogleLoginForm();
-            bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync();
+
+            bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync(_splashForm);
             if (checkLoginSuccess)
             {
-                (new AlertSuccess("Success")).ShowDialog();
-            }else
-            {
-                (new AlertFail()).ShowDialog();
+                Program.checkLoginGG = true;
+                _splashForm.OpenMainForm();
             }
         }
 
@@ -243,11 +241,11 @@ namespace App_Library.Views
             gnPanelPassword.BorderColor = Color.Blue;
         }
 
-        private void gnPanelPassword_MouseLeave(object sender, EventArgs e)
+        private void txbUserName_MouseLeave(object sender, EventArgs e)
         {
-            if (txbPassword.Text.Equals("Password") || txbPassword.Text.Equals(""))
+            if (txbUserName.Text.Equals("Username") || txbUserName.Text.Equals(""))
             {
-                gnPanelPassword.BorderColor = Color.DarkGray;
+                gnPanelLogIn.BorderColor = Color.DarkGray;
             }
         }
 

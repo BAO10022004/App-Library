@@ -151,6 +151,9 @@
   <data name="congratulations-13773_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\congratulations-13773_256.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bannerElonMusk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bannerElonMusk.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="png-transparent-white-paper-plane-illustration-airplane-paper-plane-white-paper-airplane-angle-white-hand-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-transparent-white-paper-plane-illustration-airplane-paper-plane-white-paper-airplane-angle-white-hand-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -361,7 +364,10 @@
   <data name="Star" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Star.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bannerElonMusk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bannerElonMusk.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

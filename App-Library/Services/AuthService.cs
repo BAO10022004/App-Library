@@ -1,11 +1,14 @@
 ﻿using App_Library.Models;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Collections.Specialized.BitVector32;
 
 namespace App_Library.Services
@@ -21,32 +24,98 @@ namespace App_Library.Services
         }
 
         // Gọi API đăng nhập
-        public async Task<bool> LoginAsync(string username, string password)
+        public async Task<bool> LoginAsync(string username, string password, Control uiControl)
         {
+            // Tạo LoadingForm
+            LoadingForm loadingForm = new LoadingForm();
+
+            // Tạo thread và gọi công việc trong thread phụ
+            Thread thread1 = new Thread(() =>
+            {
+                // Kiểm tra xem thread này có phải là UI thread không
+                if (loadingForm.InvokeRequired)
+                {
+                    // Sử dụng Invoke để gọi ShowDialog từ UI thread
+                    loadingForm.Invoke(new Action(() =>
+                    {
+                        loadingForm.ShowDialog();
+                    }));
+                }
+                else
+                {
+                    // Nếu đã ở trên UI thread, có thể gọi trực tiếp
+                    loadingForm.ShowDialog();
+                }
+            });
+            thread1.Start();
             var request = new LoginRequest { Username = username, Password = password };
             var response = await _httpClient.PostAsJsonAsync("api/auth/login", request);
-
+            
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
                 Session.Token = result.Token;
+
+                // Sau khi login thành công, cập nhật UI
+                // Ẩn LoadingForm sau khi hoàn thành công việc
+                    loadingForm.Invoke(new Action(() => loadingForm.Hide()));
+
+                (new AlertSuccess("Success")).ShowDialog();
+
+                // Đảm bảo đóng LoadingForm sau khi sử dụng
+                loadingForm.Close();
                 return true;
             }
+            (new AlertFail("Login Fail")).ShowDialog();
             return false;
         }
+
+        
 
         // Gọi API đăng ký
         public async Task<string> SignUpAsync(string username, string email, string password)
         {
+            // Tạo LoadingForm
+            LoadingForm loadingForm = new LoadingForm();
+
+            // Tạo thread và gọi công việc trong thread phụ
+            Thread thread1 = new Thread(() =>
+            {
+                // Kiểm tra xem thread này có phải là UI thread không
+                if (loadingForm.InvokeRequired)
+                {
+                    // Sử dụng Invoke để gọi ShowDialog từ UI thread
+                    loadingForm.Invoke(new Action(() =>
+                    {
+                        loadingForm.ShowDialog();
+                    }));
+                }
+                else
+                {
+                    // Nếu đã ở trên UI thread, có thể gọi trực tiếp
+                    loadingForm.ShowDialog();
+                }
+            });
+            thread1.Start();
             var request = new SignUpRequest { Username = username, Email = email, Password = password };
             var response = await _httpClient.PostAsJsonAsync("api/auth/signup", request);
 
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
+                Session.Token = result.Token;
+
+                // Sau khi login thành công, cập nhật UI
+                // Ẩn LoadingForm sau khi hoàn thành công việc
+                loadingForm.Invoke(new Action(() => loadingForm.Hide()));
+
+                (new AlertSuccess("Success")).ShowDialog();
+
+                // Đảm bảo đóng LoadingForm sau khi sử dụng
+                loadingForm.Close();
                 return "Success";
             }
-
+            (new AlertFail("SignUp Fail")).ShowDialog();
             return await response.Content.ReadAsStringAsync();
         }
 

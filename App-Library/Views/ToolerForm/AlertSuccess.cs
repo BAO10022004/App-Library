@@ -16,7 +16,8 @@ namespace App_Library.Views.ToolerForm
         public AlertSuccess( String messege)
         {
             InitializeComponent();
-            lbMessge .Text = messege;   
+            lbMessge .Text = messege;
+            this.Location = Program.sp.Location;
         }
 
         public void pnOk_Click(object sender, EventArgs e)

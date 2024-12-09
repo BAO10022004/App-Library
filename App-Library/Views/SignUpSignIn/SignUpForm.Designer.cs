@@ -30,19 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
+            this.btnSignInGG = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbGG = new System.Windows.Forms.Label();
             this.lbOr = new System.Windows.Forms.Label();
             this.gnPanelConfirmPassword = new Guna.UI2.WinForms.Guna2Panel();
-            this.picEyeOfConfirm = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbConfirmPassword = new System.Windows.Forms.TextBox();
             this.gnPanelUsername = new Guna.UI2.WinForms.Guna2Panel();
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.gnPanelPassword = new Guna.UI2.WinForms.Guna2Panel();
-            this.picEyeOfPass = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.gnPanelEmail = new Guna.UI2.WinForms.Guna2Panel();
             this.txbEmail = new System.Windows.Forms.TextBox();
             this.btnSignUp = new System.Windows.Forms.Button();
-            this.btnSignInGG = new System.Windows.Forms.Button();
             this.lbLogin1 = new System.Windows.Forms.Label();
             this.lbLogin2 = new System.Windows.Forms.Label();
             this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -53,29 +52,42 @@
             this.errorProviderConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.timerOpenEyeForPassWord = new System.Windows.Forms.Timer(this.components);
             this.timerOpenEyeForConfirm = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picEyeOfConfirm = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.picEyeOfPass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.MessegeEmail = new Guna.UI2.WinForms.Guna2Button();
+            this.MessegeUsername = new Guna.UI2.WinForms.Guna2Button();
+            this.MessegePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.MessegeConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.pnMainContentLogin.SuspendLayout();
+            this.btnSignInGG.SuspendLayout();
             this.gnPanelConfirmPassword.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).BeginInit();
             this.gnPanelUsername.SuspendLayout();
             this.gnPanelPassword.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).BeginInit();
             this.gnPanelEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).BeginInit();
             this.SuspendLayout();
             // 
             // pnMainContentLogin
             // 
             this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
+            this.pnMainContentLogin.Controls.Add(this.MessegeConfirm);
+            this.pnMainContentLogin.Controls.Add(this.MessegePassword);
+            this.pnMainContentLogin.Controls.Add(this.MessegeUsername);
+            this.pnMainContentLogin.Controls.Add(this.MessegeEmail);
+            this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
             this.pnMainContentLogin.Controls.Add(this.lbOr);
             this.pnMainContentLogin.Controls.Add(this.gnPanelConfirmPassword);
             this.pnMainContentLogin.Controls.Add(this.gnPanelUsername);
             this.pnMainContentLogin.Controls.Add(this.gnPanelPassword);
             this.pnMainContentLogin.Controls.Add(this.gnPanelEmail);
             this.pnMainContentLogin.Controls.Add(this.btnSignUp);
-            this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
             this.pnMainContentLogin.Controls.Add(this.lbLogin1);
             this.pnMainContentLogin.Controls.Add(this.lbLogin2);
             this.pnMainContentLogin.Location = new System.Drawing.Point(0, 0);
@@ -84,17 +96,46 @@
             this.pnMainContentLogin.Size = new System.Drawing.Size(460, 475);
             this.pnMainContentLogin.TabIndex = 5;
             // 
+            // btnSignInGG
+            // 
+            this.btnSignInGG.BorderColor = System.Drawing.Color.Blue;
+            this.btnSignInGG.BorderRadius = 15;
+            this.btnSignInGG.BorderThickness = 3;
+            this.btnSignInGG.Controls.Add(this.pictureBox1);
+            this.btnSignInGG.Controls.Add(this.lbGG);
+            this.btnSignInGG.Location = new System.Drawing.Point(75, 403);
+            this.btnSignInGG.Name = "btnSignInGG";
+            this.btnSignInGG.Padding = new System.Windows.Forms.Padding(10);
+            this.btnSignInGG.Size = new System.Drawing.Size(310, 47);
+            this.btnSignInGG.TabIndex = 19;
+            // 
+            // lbGG
+            // 
+            this.lbGG.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbGG.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbGG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
+            this.lbGG.ForeColor = System.Drawing.Color.Black;
+            this.lbGG.Location = new System.Drawing.Point(10, 10);
+            this.lbGG.Name = "lbGG";
+            this.lbGG.Size = new System.Drawing.Size(290, 27);
+            this.lbGG.TabIndex = 0;
+            this.lbGG.Text = "Continue with Google";
+            this.lbGG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbGG.Click += new System.EventHandler(this.btnSignInGG_Click);
+            this.lbGG.MouseLeave += new System.EventHandler(this.lbGG_MouseLeave);
+            this.lbGG.MouseHover += new System.EventHandler(this.lbGG_MouseHover);
+            // 
             // lbOr
             // 
             this.lbOr.AutoSize = true;
-            this.lbOr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbOr.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbOr.ForeColor = System.Drawing.Color.Black;
-            this.lbOr.Location = new System.Drawing.Point(219, 346);
+            this.lbOr.Location = new System.Drawing.Point(213, 376);
             this.lbOr.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbOr.Name = "lbOr";
-            this.lbOr.Size = new System.Drawing.Size(21, 17);
+            this.lbOr.Size = new System.Drawing.Size(33, 19);
             this.lbOr.TabIndex = 18;
-            this.lbOr.Text = "or";
+            this.lbOr.Text = "OR";
             this.lbOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gnPanelConfirmPassword
@@ -104,23 +145,11 @@
             this.gnPanelConfirmPassword.BorderThickness = 2;
             this.gnPanelConfirmPassword.Controls.Add(this.picEyeOfConfirm);
             this.gnPanelConfirmPassword.Controls.Add(this.txbConfirmPassword);
-            this.gnPanelConfirmPassword.Location = new System.Drawing.Point(75, 229);
+            this.gnPanelConfirmPassword.Location = new System.Drawing.Point(75, 244);
             this.gnPanelConfirmPassword.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelConfirmPassword.Name = "gnPanelConfirmPassword";
             this.gnPanelConfirmPassword.Size = new System.Drawing.Size(310, 47);
             this.gnPanelConfirmPassword.TabIndex = 17;
-            // 
-            // picEyeOfConfirm
-            // 
-            this.picEyeOfConfirm.Image = global::App_Library.Properties.Resources.view;
-            this.picEyeOfConfirm.ImageRotate = 0F;
-            this.picEyeOfConfirm.Location = new System.Drawing.Point(270, 10);
-            this.picEyeOfConfirm.Name = "picEyeOfConfirm";
-            this.picEyeOfConfirm.Size = new System.Drawing.Size(32, 29);
-            this.picEyeOfConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEyeOfConfirm.TabIndex = 8;
-            this.picEyeOfConfirm.TabStop = false;
-            this.picEyeOfConfirm.Click += new System.EventHandler(this.picEyeOfConfirm_Click);
             // 
             // txbConfirmPassword
             // 
@@ -144,7 +173,7 @@
             this.gnPanelUsername.BorderRadius = 10;
             this.gnPanelUsername.BorderThickness = 2;
             this.gnPanelUsername.Controls.Add(this.txbUsername);
-            this.gnPanelUsername.Location = new System.Drawing.Point(75, 105);
+            this.gnPanelUsername.Location = new System.Drawing.Point(75, 103);
             this.gnPanelUsername.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelUsername.Name = "gnPanelUsername";
             this.gnPanelUsername.Size = new System.Drawing.Size(310, 47);
@@ -172,23 +201,11 @@
             this.gnPanelPassword.BorderThickness = 2;
             this.gnPanelPassword.Controls.Add(this.picEyeOfPass);
             this.gnPanelPassword.Controls.Add(this.txbPassword);
-            this.gnPanelPassword.Location = new System.Drawing.Point(75, 167);
+            this.gnPanelPassword.Location = new System.Drawing.Point(75, 173);
             this.gnPanelPassword.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelPassword.Name = "gnPanelPassword";
             this.gnPanelPassword.Size = new System.Drawing.Size(310, 47);
             this.gnPanelPassword.TabIndex = 16;
-            // 
-            // picEyeOfPass
-            // 
-            this.picEyeOfPass.Image = global::App_Library.Properties.Resources.view;
-            this.picEyeOfPass.ImageRotate = 0F;
-            this.picEyeOfPass.Location = new System.Drawing.Point(270, 10);
-            this.picEyeOfPass.Name = "picEyeOfPass";
-            this.picEyeOfPass.Size = new System.Drawing.Size(32, 29);
-            this.picEyeOfPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEyeOfPass.TabIndex = 7;
-            this.picEyeOfPass.TabStop = false;
-            this.picEyeOfPass.Click += new System.EventHandler(this.picEyeOfPass_Click);
             // 
             // txbPassword
             // 
@@ -212,7 +229,7 @@
             this.gnPanelEmail.BorderRadius = 10;
             this.gnPanelEmail.BorderThickness = 2;
             this.gnPanelEmail.Controls.Add(this.txbEmail);
-            this.gnPanelEmail.Location = new System.Drawing.Point(75, 43);
+            this.gnPanelEmail.Location = new System.Drawing.Point(75, 27);
             this.gnPanelEmail.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelEmail.Name = "gnPanelEmail";
             this.gnPanelEmail.Size = new System.Drawing.Size(310, 47);
@@ -240,7 +257,7 @@
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSignUp.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSignUp.Location = new System.Drawing.Point(75, 297);
+            this.btnSignUp.Location = new System.Drawing.Point(75, 322);
             this.btnSignUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(310, 47);
@@ -249,28 +266,12 @@
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
-            // btnSignInGG
-            // 
-            this.btnSignInGG.BackColor = System.Drawing.Color.Blue;
-            this.btnSignInGG.FlatAppearance.BorderSize = 0;
-            this.btnSignInGG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignInGG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSignInGG.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSignInGG.Location = new System.Drawing.Point(75, 365);
-            this.btnSignInGG.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSignInGG.Name = "btnSignInGG";
-            this.btnSignInGG.Size = new System.Drawing.Size(310, 47);
-            this.btnSignInGG.TabIndex = 12;
-            this.btnSignInGG.Text = "Continue With Google";
-            this.btnSignInGG.UseVisualStyleBackColor = false;
-            this.btnSignInGG.Click += new System.EventHandler(this.btnSignInGG_Click);
-            // 
             // lbLogin1
             // 
             this.lbLogin1.AutoSize = true;
             this.lbLogin1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbLogin1.ForeColor = System.Drawing.Color.Black;
-            this.lbLogin1.Location = new System.Drawing.Point(75, 414);
+            this.lbLogin1.Location = new System.Drawing.Point(72, 453);
             this.lbLogin1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLogin1.Name = "lbLogin1";
             this.lbLogin1.Size = new System.Drawing.Size(173, 17);
@@ -283,7 +284,7 @@
             this.lbLogin2.AutoSize = true;
             this.lbLogin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbLogin2.ForeColor = System.Drawing.Color.Blue;
-            this.lbLogin2.Location = new System.Drawing.Point(252, 414);
+            this.lbLogin2.Location = new System.Drawing.Point(249, 453);
             this.lbLogin2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLogin2.Name = "lbLogin2";
             this.lbLogin2.Size = new System.Drawing.Size(46, 17);
@@ -295,7 +296,6 @@
             // gnBtnSignInGG
             // 
             this.gnBtnSignInGG.BorderRadius = 30;
-            this.gnBtnSignInGG.TargetControl = this.btnSignInGG;
             // 
             // gnBtnLogin
             // 
@@ -328,6 +328,117 @@
             this.timerOpenEyeForConfirm.Interval = 1000;
             this.timerOpenEyeForConfirm.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::App_Library.Properties.Resources.google1;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 23);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // picEyeOfConfirm
+            // 
+            this.picEyeOfConfirm.Image = global::App_Library.Properties.Resources.view;
+            this.picEyeOfConfirm.ImageRotate = 0F;
+            this.picEyeOfConfirm.Location = new System.Drawing.Point(270, 10);
+            this.picEyeOfConfirm.Name = "picEyeOfConfirm";
+            this.picEyeOfConfirm.Size = new System.Drawing.Size(32, 29);
+            this.picEyeOfConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeOfConfirm.TabIndex = 8;
+            this.picEyeOfConfirm.TabStop = false;
+            this.picEyeOfConfirm.Click += new System.EventHandler(this.picEyeOfConfirm_Click);
+            // 
+            // picEyeOfPass
+            // 
+            this.picEyeOfPass.Image = global::App_Library.Properties.Resources.view;
+            this.picEyeOfPass.ImageRotate = 0F;
+            this.picEyeOfPass.Location = new System.Drawing.Point(270, 10);
+            this.picEyeOfPass.Name = "picEyeOfPass";
+            this.picEyeOfPass.Size = new System.Drawing.Size(32, 29);
+            this.picEyeOfPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeOfPass.TabIndex = 7;
+            this.picEyeOfPass.TabStop = false;
+            this.picEyeOfPass.Click += new System.EventHandler(this.picEyeOfPass_Click);
+            // 
+            // MessegeEmail
+            // 
+            this.MessegeEmail.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeEmail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegeEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegeEmail.FillColor = System.Drawing.Color.White;
+            this.MessegeEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegeEmail.ForeColor = System.Drawing.Color.Red;
+            this.MessegeEmail.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegeEmail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeEmail.Location = new System.Drawing.Point(75, 79);
+            this.MessegeEmail.Name = "MessegeEmail";
+            this.MessegeEmail.Size = new System.Drawing.Size(310, 18);
+            this.MessegeEmail.TabIndex = 21;
+            this.MessegeEmail.Text = "guna2Button1";
+            this.MessegeEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeEmail.Visible = false;
+            // 
+            // MessegeUsername
+            // 
+            this.MessegeUsername.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeUsername.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegeUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegeUsername.FillColor = System.Drawing.Color.White;
+            this.MessegeUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegeUsername.ForeColor = System.Drawing.Color.Red;
+            this.MessegeUsername.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegeUsername.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeUsername.Location = new System.Drawing.Point(78, 155);
+            this.MessegeUsername.Name = "MessegeUsername";
+            this.MessegeUsername.Size = new System.Drawing.Size(310, 18);
+            this.MessegeUsername.TabIndex = 24;
+            this.MessegeUsername.Text = "guna2Button1";
+            this.MessegeUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeUsername.Visible = false;
+            // 
+            // MessegePassword
+            // 
+            this.MessegePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegePassword.FillColor = System.Drawing.Color.White;
+            this.MessegePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegePassword.ForeColor = System.Drawing.Color.Red;
+            this.MessegePassword.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegePassword.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegePassword.Location = new System.Drawing.Point(75, 225);
+            this.MessegePassword.Name = "MessegePassword";
+            this.MessegePassword.Size = new System.Drawing.Size(310, 18);
+            this.MessegePassword.TabIndex = 25;
+            this.MessegePassword.Text = "guna2Button1";
+            this.MessegePassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegePassword.Visible = false;
+            // 
+            // MessegeConfirm
+            // 
+            this.MessegeConfirm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeConfirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeConfirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegeConfirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegeConfirm.FillColor = System.Drawing.Color.White;
+            this.MessegeConfirm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegeConfirm.ForeColor = System.Drawing.Color.Red;
+            this.MessegeConfirm.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegeConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeConfirm.Location = new System.Drawing.Point(75, 296);
+            this.MessegeConfirm.Name = "MessegeConfirm";
+            this.MessegeConfirm.Size = new System.Drawing.Size(310, 18);
+            this.MessegeConfirm.TabIndex = 26;
+            this.MessegeConfirm.Text = "guna2Button1";
+            this.MessegeConfirm.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeConfirm.Visible = false;
+            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,20 +453,22 @@
             this.Load += new System.EventHandler(this.SignUpForm_Load);
             this.pnMainContentLogin.ResumeLayout(false);
             this.pnMainContentLogin.PerformLayout();
+            this.btnSignInGG.ResumeLayout(false);
             this.gnPanelConfirmPassword.ResumeLayout(false);
             this.gnPanelConfirmPassword.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).EndInit();
             this.gnPanelUsername.ResumeLayout(false);
             this.gnPanelUsername.PerformLayout();
             this.gnPanelPassword.ResumeLayout(false);
             this.gnPanelPassword.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).EndInit();
             this.gnPanelEmail.ResumeLayout(false);
             this.gnPanelEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderConfirmPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfConfirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeOfPass)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +480,6 @@
         private Guna.UI2.WinForms.Guna2Panel gnPanelEmail;
         private System.Windows.Forms.TextBox txbEmail;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Button btnSignInGG;
         private System.Windows.Forms.Label lbLogin1;
         private Guna.UI2.WinForms.Guna2Panel gnPanelConfirmPassword;
         private System.Windows.Forms.TextBox txbConfirmPassword;
@@ -385,5 +497,12 @@
         private Guna.UI2.WinForms.Guna2PictureBox picEyeOfConfirm;
         private System.Windows.Forms.Timer timerOpenEyeForPassWord;
         private System.Windows.Forms.Timer timerOpenEyeForConfirm;
+        private Guna.UI2.WinForms.Guna2Panel btnSignInGG;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbGG;
+        private Guna.UI2.WinForms.Guna2Button MessegeEmail;
+        private Guna.UI2.WinForms.Guna2Button MessegeConfirm;
+        private Guna.UI2.WinForms.Guna2Button MessegePassword;
+        private Guna.UI2.WinForms.Guna2Button MessegeUsername;
     }
 }

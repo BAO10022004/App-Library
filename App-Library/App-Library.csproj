@@ -486,6 +486,13 @@
     <Compile Include="Views\ToolerForm\AlertSuccess.Designer.cs">
       <DependentUpon>AlertSuccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ToolerForm\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolerForm\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolerForm\Theme.cs" />
     <Compile Include="Views\UserView\CollectionHome\BoughtBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -671,6 +678,9 @@
     <EmbeddedResource Include="Views\ToolerForm\AlertSuccess.resx">
       <DependentUpon>AlertSuccess.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolerForm\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionHome\BoughtBook.resx">
       <DependentUpon>BoughtBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -754,6 +764,8 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\mark.png" />
     <None Include="Resources\bannerElonMusk.jpg" />
     <None Include="Resources\bannerNhagiakim.jpg" />
     <None Include="Resources\bannerTheGreatGatsby.jpg" />

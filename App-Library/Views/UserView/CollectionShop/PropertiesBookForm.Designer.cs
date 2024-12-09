@@ -522,6 +522,7 @@
             this.lbBuy.Size = new System.Drawing.Size(50, 24);
             this.lbBuy.TabIndex = 0;
             this.lbBuy.Text = "BUY";
+            this.lbBuy.Click += new System.EventHandler(this.btnBuy_Click);
             // 
             // pnIntro
             // 

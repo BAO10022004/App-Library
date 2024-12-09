@@ -29,27 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.geForMain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pnOk = new Guna.UI2.WinForms.Guna2Button();
             this.lbMessge = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pnOk = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.geForMain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // geForMain
+            // guna2CirclePictureBox1
             // 
-            this.geForMain.BorderRadius = 30;
-            this.geForMain.TargetControl = this;
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.guna2CirclePictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.square_3503_256;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(133, 68);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.TabIndex = 5;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // guna2Elipse1
+            // guna2Elipse2
             // 
-            this.guna2Elipse1.BorderRadius = 100;
-            this.guna2Elipse1.TargetControl = this.guna2PictureBox1;
+            this.guna2Elipse2.BorderRadius = 64;
+            this.guna2Elipse2.TargetControl = this.guna2CirclePictureBox1;
             // 
             // guna2PictureBox1
             // 
@@ -63,6 +74,27 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
+            // 
+            // pnOk
+            // 
+            this.pnOk.BackColor = System.Drawing.Color.Transparent;
+            this.pnOk.BorderRadius = 15;
+            this.pnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.pnOk.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.pnOk.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.pnOk.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.pnOk.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.pnOk.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pnOk.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnOk.ForeColor = System.Drawing.Color.Green;
+            this.pnOk.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pnOk.ImageSize = new System.Drawing.Size(40, 40);
+            this.pnOk.Location = new System.Drawing.Point(56, 323);
+            this.pnOk.Name = "pnOk";
+            this.pnOk.Size = new System.Drawing.Size(211, 55);
+            this.pnOk.TabIndex = 2;
+            this.pnOk.Text = "OK";
+            this.pnOk.Click += new System.EventHandler(this.pnOk_Click);
             // 
             // lbMessge
             // 
@@ -86,47 +118,15 @@
             this.label2.Text = "SUCCESS !!!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pnOk
+            // guna2Elipse1
             // 
-            this.pnOk.BackColor = System.Drawing.Color.Transparent;
-            this.pnOk.BorderRadius = 15;
-            this.pnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.pnOk.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.pnOk.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.pnOk.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.pnOk.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.pnOk.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.pnOk.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnOk.ForeColor = System.Drawing.Color.Green;
-            this.pnOk.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.pnOk.ImageSize = new System.Drawing.Size(40, 40);
-            this.pnOk.Location = new System.Drawing.Point(56, 323);
-            this.pnOk.Name = "pnOk";
-            this.pnOk.Size = new System.Drawing.Size(211, 55);
-            this.pnOk.TabIndex = 2;
-            this.pnOk.Text = "OK";
-            this.pnOk.Click += new System.EventHandler(this.pnOk_Click);
+            this.guna2Elipse1.BorderRadius = 100;
+            this.guna2Elipse1.TargetControl = this.guna2PictureBox1;
             // 
-            // guna2Elipse2
+            // geForMain
             // 
-            this.guna2Elipse2.BorderRadius = 64;
-            this.guna2Elipse2.TargetControl = this.guna2CirclePictureBox1;
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2CirclePictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.square_3503_256;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(133, 68);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2CirclePictureBox1.TabIndex = 5;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.geForMain.BorderRadius = 30;
+            this.geForMain.TargetControl = this;
             // 
             // AlertSuccess
             // 
@@ -145,21 +145,21 @@
             this.Name = "AlertSuccess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlertSuccess";
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Elipse geForMain;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button pnOk;
-        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private System.Windows.Forms.Label lbMessge;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Button pnOk;
+        private System.Windows.Forms.Label lbMessge;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Elipse geForMain;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using App_Library.Services;
+using App_Library.Views.ToolerForm;
 using Firebase.Auth;
+using Guna.UI2.WinForms;
 using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -94,22 +97,56 @@ namespace App_Library.Views.SignIn
 
             return googleLoginRequest;
         }
-
-        public async Task<bool> GoogleSignInAndSaveUserAsync()
+        public async Task<bool> GoogleSignInAndSaveUserAsync(SplashForm sp)
         {
             using (var loginForm = new GoogleLoginForm())
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
+                    // Tạo LoadingForm
+                    LoadingForm loadingForm = new LoadingForm();
+
+                    // Tạo thread và gọi công việc trong thread phụ
+                    Thread thread1 = new Thread(() =>
+                    {
+                        // Kiểm tra xem thread này có phải là UI thread không
+                        if (loadingForm.InvokeRequired)
+                        {
+                            // Sử dụng Invoke để gọi ShowDialog từ UI thread
+                            loadingForm.Invoke(new Action(() =>
+                            {
+                                loadingForm.ShowDialog();
+                            }));
+                        }
+                        else
+                        {
+                            // Nếu đã ở trên UI thread, có thể gọi trực tiếp
+                            loadingForm.ShowDialog();
+                        }
+                    });
+
+                    // Bắt đầu thread
+                    thread1.Start();
+
+                    // Thực hiện các thao tác tiếp theo như đăng nhập và lưu người dùng
                     var idToken = await ExchangeCodeForIdTokenAsync(loginForm.AuthorizationCode);
-
                     var googleLoginRequest = DecodeIdToken(idToken);
-
                     var result = await authService.GoogleLoginAsync(googleLoginRequest);
+
+                    // Ẩn LoadingForm sau khi hoàn thành công việc
+                    loadingForm.Invoke(new Action(() => loadingForm.Hide()));
+
+                    (new AlertSuccess("Success")).ShowDialog();
+
+                    // Đảm bảo đóng LoadingForm sau khi sử dụng
+                    loadingForm.Close();
+
                     return result;
                 }
             }
+            (new AlertFail("Login Fail")).ShowDialog();
             return false;
         }
+
     }
 }

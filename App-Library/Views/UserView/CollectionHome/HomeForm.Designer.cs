@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.pnNameForm = new Guna.UI2.WinForms.Guna2Panel();
             this.pnBack = new Guna.UI2.WinForms.Guna2Panel();
-            this.picBack = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lbNameForm = new System.Windows.Forms.Label();
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -39,16 +39,14 @@
             this.pnGroup2 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnHistory = new Guna.UI2.WinForms.Guna2Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbNumberHistory = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnProcessing = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSetting = new Guna.UI2.WinForms.Guna2Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbSetting = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbProcessing = new System.Windows.Forms.Label();
@@ -56,46 +54,50 @@
             this.pnGroup1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnProFile = new Guna.UI2.WinForms.Guna2Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lbProfile = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBoughtBook = new Guna.UI2.WinForms.Guna2Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbNumberBoughtBook = new System.Windows.Forms.Label();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.picSetting = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.picBack = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnNameForm.SuspendLayout();
             this.pnBack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             this.pnMain.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.pnGroup.SuspendLayout();
             this.pnGroup2.SuspendLayout();
             this.pnHistory.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             this.panel6.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
-            this.btnProcessing.SuspendLayout();
+            this.btnSetting.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.guna2Panel10.SuspendLayout();
             this.pnGroup1.SuspendLayout();
             this.pnProFile.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.panel8.SuspendLayout();
             this.btnBoughtBook.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.guna2Panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -124,19 +126,6 @@
             this.pnBack.Name = "pnBack";
             this.pnBack.Size = new System.Drawing.Size(62, 52);
             this.pnBack.TabIndex = 1;
-            // 
-            // picBack
-            // 
-            this.picBack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBack.Image = global::App_Library.Properties.Resources.arrow__1_;
-            this.picBack.ImageRotate = 0F;
-            this.picBack.Location = new System.Drawing.Point(0, 0);
-            this.picBack.Name = "picBack";
-            this.picBack.Size = new System.Drawing.Size(62, 52);
-            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBack.TabIndex = 0;
-            this.picBack.TabStop = false;
-            this.picBack.Click += new System.EventHandler(this.picBack_Click);
             // 
             // lbNameForm
             // 
@@ -181,7 +170,7 @@
             // pnGroup2
             // 
             this.pnGroup2.Controls.Add(this.pnHistory);
-            this.pnGroup2.Controls.Add(this.btnProcessing);
+            this.pnGroup2.Controls.Add(this.btnSetting);
             this.pnGroup2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnGroup2.Location = new System.Drawing.Point(559, 0);
             this.pnGroup2.Name = "pnGroup2";
@@ -211,18 +200,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(351, 79);
             this.panel5.TabIndex = 1;
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox3.Image = global::App_Library.Properties.Resources.history__1_;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(72, 22);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(34, 38);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox3.TabIndex = 2;
-            this.guna2PictureBox3.TabStop = false;
             // 
             // label2
             // 
@@ -276,53 +253,43 @@
             this.guna2Panel5.Size = new System.Drawing.Size(40, 21);
             this.guna2Panel5.TabIndex = 0;
             // 
-            // btnProcessing
+            // btnSetting
             // 
-            this.btnProcessing.BackColor = System.Drawing.Color.Transparent;
-            this.btnProcessing.BorderColor = System.Drawing.Color.Yellow;
-            this.btnProcessing.BorderRadius = 20;
-            this.btnProcessing.BorderThickness = 5;
-            this.btnProcessing.Controls.Add(this.panel3);
-            this.btnProcessing.Controls.Add(this.panel4);
-            this.btnProcessing.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnProcessing.Location = new System.Drawing.Point(91, 6);
-            this.btnProcessing.Name = "btnProcessing";
-            this.btnProcessing.Size = new System.Drawing.Size(351, 100);
-            this.btnProcessing.TabIndex = 2;
+            this.btnSetting.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetting.BorderColor = System.Drawing.Color.Yellow;
+            this.btnSetting.BorderRadius = 20;
+            this.btnSetting.BorderThickness = 5;
+            this.btnSetting.Controls.Add(this.panel3);
+            this.btnSetting.Controls.Add(this.panel4);
+            this.btnSetting.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSetting.Location = new System.Drawing.Point(91, 6);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(351, 100);
+            this.btnSetting.TabIndex = 2;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.guna2PictureBox1);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.picSetting);
+            this.panel3.Controls.Add(this.lbSetting);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(351, 79);
             this.panel3.TabIndex = 1;
             // 
-            // guna2PictureBox1
+            // lbSetting
             // 
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.pending;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(59, 22);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(34, 38);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 2;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Chocolate;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(351, 79);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "PROCESSING ";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSetting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSetting.ForeColor = System.Drawing.Color.Chocolate;
+            this.lbSetting.Location = new System.Drawing.Point(0, 0);
+            this.lbSetting.Name = "lbSetting";
+            this.lbSetting.Size = new System.Drawing.Size(351, 79);
+            this.lbSetting.TabIndex = 1;
+            this.lbSetting.Text = "SETTING";
+            this.lbSetting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbSetting.MouseLeave += new System.EventHandler(this.lbSetting_MouseLeave);
+            this.lbSetting.MouseHover += new System.EventHandler(this.lbSetting_MouseHover);
             // 
             // panel4
             // 
@@ -351,7 +318,6 @@
             this.lbProcessing.Name = "lbProcessing";
             this.lbProcessing.Size = new System.Drawing.Size(311, 21);
             this.lbProcessing.TabIndex = 0;
-            this.lbProcessing.Text = "NUMBER";
             this.lbProcessing.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // guna2Panel11
@@ -395,18 +361,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 79);
             this.panel7.TabIndex = 1;
-            // 
-            // guna2PictureBox4
-            // 
-            this.guna2PictureBox4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox4.Image = global::App_Library.Properties.Resources.user__1_;
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(72, 22);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(34, 38);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox4.TabIndex = 2;
-            this.guna2PictureBox4.TabStop = false;
             // 
             // lbProfile
             // 
@@ -471,18 +425,6 @@
             this.panel2.Size = new System.Drawing.Size(351, 79);
             this.panel2.TabIndex = 1;
             // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox2.Image = global::App_Library.Properties.Resources.in_stock;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(33, 22);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(34, 38);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 3;
-            this.guna2PictureBox2.TabStop = false;
-            // 
             // label4
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -534,6 +476,72 @@
             this.guna2Panel8.Size = new System.Drawing.Size(40, 21);
             this.guna2Panel8.TabIndex = 0;
             // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox3.Image = global::App_Library.Properties.Resources.history__1_;
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(72, 22);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(34, 38);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox3.TabIndex = 2;
+            this.guna2PictureBox3.TabStop = false;
+            // 
+            // picSetting
+            // 
+            this.picSetting.FillColor = System.Drawing.Color.Transparent;
+            this.picSetting.Image = global::App_Library.Properties.Resources.gear;
+            this.picSetting.ImageRotate = 0F;
+            this.picSetting.Location = new System.Drawing.Point(59, 22);
+            this.picSetting.Name = "picSetting";
+            this.picSetting.Size = new System.Drawing.Size(34, 38);
+            this.picSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picSetting.TabIndex = 2;
+            this.picSetting.TabStop = false;
+            // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox4.Image = global::App_Library.Properties.Resources.user__1_;
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(72, 22);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(34, 38);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox4.TabIndex = 2;
+            this.guna2PictureBox4.TabStop = false;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Image = global::App_Library.Properties.Resources.in_stock;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(33, 22);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(34, 38);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 3;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // picBack
+            // 
+            this.picBack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBack.Image = global::App_Library.Properties.Resources.arrow__1_;
+            this.picBack.ImageRotate = 0F;
+            this.picBack.Location = new System.Drawing.Point(0, 0);
+            this.picBack.Name = "picBack";
+            this.picBack.Size = new System.Drawing.Size(62, 52);
+            this.picBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBack.TabIndex = 0;
+            this.picBack.TabStop = false;
+            this.picBack.Click += new System.EventHandler(this.picBack_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -554,31 +562,31 @@
             this.pnNameForm.ResumeLayout(false);
             this.pnNameForm.PerformLayout();
             this.pnBack.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             this.pnMain.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.pnGroup.ResumeLayout(false);
             this.pnGroup2.ResumeLayout(false);
             this.pnHistory.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             this.panel6.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
-            this.btnProcessing.ResumeLayout(false);
+            this.btnSetting.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.guna2Panel10.ResumeLayout(false);
             this.pnGroup1.ResumeLayout(false);
             this.pnProFile.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.panel8.ResumeLayout(false);
             this.btnBoughtBook.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.guna2Panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSetting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -592,10 +600,10 @@
         private Guna.UI2.WinForms.Guna2Panel pnMain;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel pnGroup;
-        private Guna.UI2.WinForms.Guna2Panel btnProcessing;
+        private Guna.UI2.WinForms.Guna2Panel btnSetting;
         private System.Windows.Forms.Panel panel3;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2PictureBox picSetting;
+        private System.Windows.Forms.Label lbSetting;
         private System.Windows.Forms.Panel panel4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel10;
         private System.Windows.Forms.Label lbProcessing;
@@ -627,5 +635,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel12;
         private Guna.UI2.WinForms.Guna2Panel pnBack;
         private Guna.UI2.WinForms.Guna2PictureBox picBack;
+        private System.Windows.Forms.Timer timer1;
     }
 }
