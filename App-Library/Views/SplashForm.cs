@@ -19,9 +19,10 @@ namespace App_Library.Views
         public SplashForm(bool isDarkMode = false)
         {
             InitializeComponent();
-            theme = new Theme(isDarkMode);
-            pnFrameOption.BackColor = theme.BackRound;
-            lbWellcome.ForeColor = theme.BackRound;
+            theme = new Theme();
+            theme.BackRound.Add(this,this.pnFrameOption.BackColor);
+            pnFrameOption.BackColor = theme.BackRound[this];
+            lbWellcome.ForeColor = theme.BackRound[this];
         }
 
         private void SplashForm_Load(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace App_Library.Views
         // Bấm nút đăng nhập
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+            playMusic("click.wav"); 
             timerClickButonLogin.Start();
         }
         // Bấm nút đăng ký

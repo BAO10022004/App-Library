@@ -263,5 +263,32 @@ namespace App_Library.Views
             sendMail((await userService.GetCurrentUserAsync()).PasswordHash, (await userService.GetCurrentUserAsync()).Email);
             MessageBox.Show("Password sended to your mail");
         }
+
+        private void lbCreateAccount_MouseHover(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+           lb.Font =  new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+        }
+
+        private void lbCreateAccount_MouseLeave(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+
+        }
+
+        private void lbForgotPassword_MouseHover(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+        }
+
+        private void lbForgotPassword_MouseLeave(object sender, EventArgs e)
+        {
+            Label lb = sender as Label;
+            lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+        }
     }
 }

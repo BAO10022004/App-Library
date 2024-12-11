@@ -492,3 +492,11 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\bin\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\bin\Debug\Unidecode.NET.xml
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App-Libr.588373D8.Up2Date
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.ToolerForm.LoadingForm.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.MediaPlayer.dll
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPDXMLib.dll
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPLauncher.dll
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPLib.dll
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPNSSCI.dll
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App-Library.csproj.ResolveComReference.cache
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.SettingForm.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.BookItem.resources

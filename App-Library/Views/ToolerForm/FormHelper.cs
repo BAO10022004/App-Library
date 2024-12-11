@@ -1,19 +1,28 @@
-﻿using App_Library.Models;
+﻿using Amazon.Auth.AccessControlPolicy;
+using App_Library.Models;
 using App_Library.Services;
+using Firebase.Auth;
+using FirebaseAdmin.Messaging;
+using Guna.Charts.WinForms;
 using Guna.UI2.WinForms;
+using MongoDB.Libmongocrypt;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mail;
+using System.Numerics;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
-
+using WMPLib;
 namespace App_Library.Views.ToolerForm
 {
     public class FormHelper : Form
@@ -105,7 +114,7 @@ namespace App_Library.Views.ToolerForm
             System.Windows.Forms.Control result = new System.Windows.Forms.Control();
             foreach (System.Windows.Forms.Control panel in listControl)
             {
-                var item = (Panel)panel;
+                var item = (System.Windows.Forms.Panel)panel;
                 foreach (var c in item.Controls)
                 {
                     var itemControl = (System.Windows.Forms.Control)c;
@@ -117,12 +126,7 @@ namespace App_Library.Views.ToolerForm
             }
             return result;
         }
-        public Image GetImageFromResources(string imageName)
-        {
-            ResourceManager rm = Properties.Resources.ResourceManager;
-            object image = rm.GetObject(imageName);
-            return image as Image;
-        }
+        
         public async void loadImageAsync(PictureBox pic, String image)
 
         {
@@ -211,6 +215,12 @@ namespace App_Library.Views.ToolerForm
 
         }
 
+        public void playMusic(string url)
+        {
+
+            SoundPlayer player = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 10), "Content\\Music\\" + url));
+            player.PlaySync();
+        }
     }
 
 }

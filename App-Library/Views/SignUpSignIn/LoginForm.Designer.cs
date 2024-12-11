@@ -35,24 +35,24 @@ namespace App_Library.Views
             this.btnLogIn = new System.Windows.Forms.Button();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
             this.btnSignInGG = new Guna.UI2.WinForms.Guna2Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbGG = new System.Windows.Forms.Label();
             this.lbOr = new System.Windows.Forms.Label();
             this.gnPanelPassword = new Guna.UI2.WinForms.Guna2Panel();
-            this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.gnPanelLogIn = new Guna.UI2.WinForms.Guna2Panel();
             this.txbUserName = new System.Windows.Forms.TextBox();
-            this.lbCreateAccount = new System.Windows.Forms.Label();
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerEyeOpen = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.lbCreateAccount = new System.Windows.Forms.Label();
             this.pnMainContentLogin.SuspendLayout();
             this.btnSignInGG.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gnPanelPassword.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.gnPanelLogIn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.SuspendLayout();
             // 
             // gnBtnLogin
@@ -79,7 +79,7 @@ namespace App_Library.Views
             // 
             // pnMainContentLogin
             // 
-            this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
+            this.pnMainContentLogin.BackColor = System.Drawing.Color.AliceBlue;
             this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
             this.pnMainContentLogin.Controls.Add(this.lbOr);
             this.pnMainContentLogin.Controls.Add(this.gnPanelPassword);
@@ -106,17 +106,6 @@ namespace App_Library.Views
             this.btnSignInGG.Padding = new System.Windows.Forms.Padding(10);
             this.btnSignInGG.Size = new System.Drawing.Size(310, 47);
             this.btnSignInGG.TabIndex = 17;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::App_Library.Properties.Resources.google1;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // lbGG
             // 
@@ -162,20 +151,9 @@ namespace App_Library.Views
             this.gnPanelPassword.MouseLeave += new System.EventHandler(this.txbPassword_MouseLeave);
             this.gnPanelPassword.MouseHover += new System.EventHandler(this.txbPassword_MouseHover);
             // 
-            // picEye
-            // 
-            this.picEye.ImageRotate = 0F;
-            this.picEye.Location = new System.Drawing.Point(274, 10);
-            this.picEye.Name = "picEye";
-            this.picEye.Size = new System.Drawing.Size(32, 29);
-            this.picEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEye.TabIndex = 5;
-            this.picEye.TabStop = false;
-            this.picEye.Click += new System.EventHandler(this.picEye_Click);
-            // 
             // txbPassword
             // 
-            this.txbPassword.BackColor = System.Drawing.Color.White;
+            this.txbPassword.BackColor = System.Drawing.Color.AliceBlue;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.txbPassword.ForeColor = System.Drawing.Color.DarkGray;
@@ -209,7 +187,7 @@ namespace App_Library.Views
             // 
             // txbUserName
             // 
-            this.txbUserName.BackColor = System.Drawing.Color.White;
+            this.txbUserName.BackColor = System.Drawing.Color.AliceBlue;
             this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUserName.ForeColor = System.Drawing.Color.DarkGray;
@@ -223,33 +201,21 @@ namespace App_Library.Views
             this.txbUserName.Leave += new System.EventHandler(this.txbUserName_Leave);
             this.txbUserName.MouseHover += new System.EventHandler(this.txbUserName_MouseHover);
             // 
-            // lbCreateAccount
-            // 
-            this.lbCreateAccount.AutoSize = true;
-            this.lbCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbCreateAccount.ForeColor = System.Drawing.Color.Black;
-            this.lbCreateAccount.Location = new System.Drawing.Point(75, 224);
-            this.lbCreateAccount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbCreateAccount.Name = "lbCreateAccount";
-            this.lbCreateAccount.Size = new System.Drawing.Size(119, 17);
-            this.lbCreateAccount.TabIndex = 8;
-            this.lbCreateAccount.Text = "Create Account";
-            this.lbCreateAccount.Click += new System.EventHandler(this.lbCreateAccount_Click);
-            // 
             // lbForgotPassword
             // 
             this.lbForgotPassword.AutoSize = true;
             this.lbForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbForgotPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbForgotPassword.ForeColor = System.Drawing.Color.Blue;
-            this.lbForgotPassword.Location = new System.Drawing.Point(267, 224);
+            this.lbForgotPassword.Location = new System.Drawing.Point(261, 226);
             this.lbForgotPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbForgotPassword.Name = "lbForgotPassword";
-            this.lbForgotPassword.Size = new System.Drawing.Size(118, 17);
+            this.lbForgotPassword.Size = new System.Drawing.Size(120, 15);
             this.lbForgotPassword.TabIndex = 7;
             this.lbForgotPassword.Text = "Forgot Password ";
             this.lbForgotPassword.Click += new System.EventHandler(this.lbForgotPassword_Click);
+            this.lbForgotPassword.MouseLeave += new System.EventHandler(this.lbForgotPassword_MouseLeave);
+            this.lbForgotPassword.MouseHover += new System.EventHandler(this.lbForgotPassword_MouseHover);
             // 
             // gnBtnSignInGG
             // 
@@ -259,6 +225,45 @@ namespace App_Library.Views
             // 
             this.timerEyeOpen.Interval = 200;
             this.timerEyeOpen.Tick += new System.EventHandler(this.timerEyeOpen_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::App_Library.Properties.Resources.google1;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 23);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // picEye
+            // 
+            this.picEye.FillColor = System.Drawing.Color.AliceBlue;
+            this.picEye.ImageRotate = 0F;
+            this.picEye.Location = new System.Drawing.Point(274, 10);
+            this.picEye.Name = "picEye";
+            this.picEye.Size = new System.Drawing.Size(32, 29);
+            this.picEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEye.TabIndex = 5;
+            this.picEye.TabStop = false;
+            this.picEye.Click += new System.EventHandler(this.picEye_Click);
+            // 
+            // lbCreateAccount
+            // 
+            this.lbCreateAccount.AutoSize = true;
+            this.lbCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbCreateAccount.ForeColor = System.Drawing.Color.Black;
+            this.lbCreateAccount.Location = new System.Drawing.Point(75, 224);
+            this.lbCreateAccount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbCreateAccount.Name = "lbCreateAccount";
+            this.lbCreateAccount.Size = new System.Drawing.Size(124, 18);
+            this.lbCreateAccount.TabIndex = 8;
+            this.lbCreateAccount.Text = "Create Account";
+            this.lbCreateAccount.Click += new System.EventHandler(this.lbCreateAccount_Click);
+            this.lbCreateAccount.MouseLeave += new System.EventHandler(this.lbCreateAccount_MouseLeave);
+            this.lbCreateAccount.MouseHover += new System.EventHandler(this.lbCreateAccount_MouseHover);
             // 
             // LoginForm
             // 
@@ -277,12 +282,12 @@ namespace App_Library.Views
             this.pnMainContentLogin.ResumeLayout(false);
             this.pnMainContentLogin.PerformLayout();
             this.btnSignInGG.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gnPanelPassword.ResumeLayout(false);
             this.gnPanelPassword.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picEye)).EndInit();
             this.gnPanelLogIn.ResumeLayout(false);
             this.gnPanelLogIn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -290,7 +295,6 @@ namespace App_Library.Views
         #endregion
         private Guna.UI2.WinForms.Guna2Elipse gnBtnLogin;
         private Panel pnMainContentLogin;
-        private Label lbCreateAccount;
         private Label lbForgotPassword;
         private Button btnLogIn;
         private Guna.UI2.WinForms.Guna2Elipse gnBtnSignInGG;
@@ -304,5 +308,6 @@ namespace App_Library.Views
         private PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Panel gnPanelLogIn;
         private TextBox txbUserName;
+        private Label lbCreateAccount;
     }
 }

@@ -40,6 +40,7 @@
             this.pnContent.Name = "pnContent";
             this.pnContent.Size = new System.Drawing.Size(1089, 550);
             this.pnContent.TabIndex = 1;
+            this.pnContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContent_Paint);
             // 
             // BoughtBook
             // 
@@ -59,6 +60,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel pnContent;
+
+        internal System.Windows.Forms.FlowLayoutPanel pnContent;
     }
 }

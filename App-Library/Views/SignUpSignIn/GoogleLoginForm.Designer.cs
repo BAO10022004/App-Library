@@ -28,41 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.webViewGoogle = new Microsoft.Web.WebView2.WinForms.WebView2();
-            ((System.ComponentModel.ISupportInitialize)(this.webViewGoogle)).BeginInit();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SuspendLayout();
             // 
-            // webViewGoogle
+            // guna2Panel1
             // 
-            this.webViewGoogle.AllowExternalDrop = true;
-            this.webViewGoogle.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.webViewGoogle.CreationProperties = null;
-            this.webViewGoogle.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webViewGoogle.Location = new System.Drawing.Point(11, 11);
-            this.webViewGoogle.Margin = new System.Windows.Forms.Padding(2);
-            this.webViewGoogle.Name = "webViewGoogle";
-            this.webViewGoogle.Size = new System.Drawing.Size(412, 539);
-            this.webViewGoogle.TabIndex = 0;
-            this.webViewGoogle.ZoomFactor = 1D;
+            this.guna2Panel1.Location = new System.Drawing.Point(180, 200);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(200, 100);
+            this.guna2Panel1.TabIndex = 0;
             // 
             // GoogleLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(434, 561);
-            this.Controls.Add(this.webViewGoogle);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.guna2Panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GoogleLoginForm";
             this.Text = "GoogleLoginForm";
             this.Load += new System.EventHandler(this.GoogleLoginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.webViewGoogle)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Web.WebView2.WinForms.WebView2 webViewGoogle;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }
