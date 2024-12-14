@@ -87,7 +87,7 @@ namespace App_Library.Services
             }
             else
             {
-                throw new Exception($"Failed to get book rating: {await response.Content.ReadAsStringAsync()}");
+                return null;
             }
         }
     }

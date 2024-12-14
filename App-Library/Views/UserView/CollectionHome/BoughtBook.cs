@@ -21,14 +21,12 @@ namespace App_Library.Views.UserView.CollectionHome
         internal Double percentWidthForNameBook = 0.516;
         internal Double percentWidthForAuthor = 0.07;
         List<Book> booksBold;
+        bool isViewGrid = true;
         public BoughtBook(List<Book> booksBold)
         {
-
             InitializeComponent();
-            //processing.S();
             this.booksBold = booksBold;
-            pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count % 3) + 1) * 302);
-         
+            pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count % 3) + 1) * 302);    
         }
 
         private void BoughtBook_Resize(object sender, EventArgs e)
@@ -54,15 +52,47 @@ namespace App_Library.Views.UserView.CollectionHome
             activeFormChild(gn, new BookItem(book, this), null, ref form);
             return gn;
         }
+        Guna2Panel createPanelList(Book book, int index)
+        {
+            Form form = null;
+            Guna2Panel gn = new Guna2Panel();
+            gn.Size = new System.Drawing.Size(1080, 250);
+            gn.TabIndex = index;
+            activeFormChild(gn, new BookItemList(book), null, ref form);
+            return gn;
+        }
         Form actFormRead;
         public void clickRead(object sender, EventArgs e)
         {
             //PanelBook panel = FindControlContainer(pnContent.Controls, (sender) as Button) as PanelBook;
         }
-
-        private void pnContent_Paint(object sender, PaintEventArgs e)
+        private void btnGrid_Click(object sender, EventArgs e)
         {
+            if(!isViewGrid)
+            {
+                pnContent.Controls.Clear();
+                for (int i = 0; i < booksBold.Count; i++)
+                {
+                    pnContent.Controls.Add(createPanel(booksBold[i], i));
+                }
+                pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count % 3) + 1) * 302);
+                isViewGrid = true;
+            }
+            
+        }
 
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            if (isViewGrid)
+            {
+                pnContent.Controls.Clear();
+                for (int i = 0; i < booksBold.Count; i++)
+                {
+                    pnContent.Controls.Add(createPanelList(booksBold[i], i));
+                }
+                pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count) + 1) * 252);
+                isViewGrid = false;
+            }
         }
     }
 }

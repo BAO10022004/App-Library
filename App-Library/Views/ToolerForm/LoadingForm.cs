@@ -16,9 +16,7 @@ namespace App_Library.Views.ToolerForm
         {
             InitializeComponent();
             this.Location = Program.sp.Location;
-            process.Start();
             this.Size = Program.sp.Size;
-            process.Location = new Point(this.Width/2- process.Width/2, this.Height/2 -process.Height/2);
            
         }
 

@@ -25,11 +25,16 @@ namespace App_Library.Views
         internal MainForm mainform;
         bool isEyeClose = true;
         int second =2;
+        // animation hover GG
+        int xPicGG;
         public LoginForm(SplashForm splashForm)
         {
             InitializeComponent();
             _splashForm = splashForm;
             _authService = new AuthService();
+
+            xPicGG = picGG.Location.X;
+           
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -45,13 +50,13 @@ namespace App_Library.Views
             bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text, this);
             if (checkLoginSuccess)
             {
-                Program.checkLoginGG = true;
+                Program.checkLoginGG = false;
                 _splashForm.OpenMainForm();
             }
         }
         private async void btnSignInGG_Click(object sender, EventArgs e)
         {
-
+            //(new ActionClickLoginWithGG(this)).ShowDialog();
             var googleLoginForm = new GoogleLoginForm();
 
             bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync(_splashForm);
@@ -72,7 +77,7 @@ namespace App_Library.Views
             if (txbUserName.Text == "Username")
             {
                 txbUserName.Text = string.Empty;
-                txbUserName.ForeColor = Color.Black;
+                txbUserName.ForeColor = Color.Aqua;
             }
         }
 
@@ -95,7 +100,7 @@ namespace App_Library.Views
             {
                 txbPassword.Text = string.Empty;
                 closeEye();
-                txbPassword.ForeColor = Color.Black;
+                txbPassword.ForeColor = Color.Aqua;
             }
         }
 
@@ -151,10 +156,6 @@ namespace App_Library.Views
             }
             
         }
-        private void txbPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
 
         private void picEye_Click(object sender, EventArgs e)
         {     
@@ -194,33 +195,44 @@ namespace App_Library.Views
         {
            
         }
-
+        
         private void lbGG_MouseHover(object sender, EventArgs e)
         {
-            btnSignInGG.FillColor = Color.Blue;
-            lbGG.ForeColor = Color.White;
-            lbGG.BackColor = Color.Blue;
+            lbGG.Text = "";
+            timerHoverGg.Start();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(picGG.Location.X < lbGG.Width/2)
+            {
+                picGG.Location = new Point(picGG.Location.X + 5, lbGG.Location.Y);
+            }
+            else
+            {
+                timerHoverGg.Stop();
+            }
+        }
         private void lbGG_MouseLeave(object sender, EventArgs e)
         {
-            btnSignInGG.FillColor = Color.White;
-            lbGG.ForeColor = Color.Black;
-            lbGG.BackColor = Color.White;
+            timerHoverGg.Stop();
+            timerLeaveGG.Start();
         }
-
-        private void gnPanelLogIn_MouseHover(object sender, EventArgs e)
+        private void timerLeaveGG_Tick(object sender, EventArgs e)
         {
-            gnPanelLogIn.BorderColor = Color.Blue;
-            //if(txbUserName.Text.Equals("User Name") || txbUserName.Text.Equals(""))
-            //{
-
-            //}
+            if (picGG.Location.X > xPicGG)
+            {
+                picGG.Location = new Point(picGG.Location.X - 5, lbGG.Location.Y);
+            }
+            else
+            {
+                lbGG.Text = "Continue with Google";
+                timerLeaveGG.Stop();
+            }
         }
-
         private void txbUserName_MouseHover(object sender, EventArgs e)
         {
-            gnPanelLogIn.BorderColor = Color.Blue;
+            gnPanelLogIn.BorderColor = Color.Aqua;
         }
 
         private void gnPanelLogIn_MouseLeave(object sender, EventArgs e)
@@ -231,23 +243,12 @@ namespace App_Library.Views
             }
         }
 
-        private void gnPanelPassword_MouseHover(object sender, EventArgs e)
-        {
-            gnPanelPassword.BorderColor = Color.Blue;
-        }
 
         private void txbPassword_MouseHover(object sender, EventArgs e)
         {
-            gnPanelPassword.BorderColor = Color.Blue;
+            gnPanelPassword.BorderColor = Color.Aqua;
         }
 
-        private void txbUserName_MouseLeave(object sender, EventArgs e)
-        {
-            if (txbUserName.Text.Equals("Username") || txbUserName.Text.Equals(""))
-            {
-                gnPanelLogIn.BorderColor = Color.DarkGray;
-            }
-        }
 
         private void txbPassword_MouseLeave(object sender, EventArgs e)
         {
@@ -260,7 +261,7 @@ namespace App_Library.Views
         private async void lbForgotPassword_Click(object sender, EventArgs e)
         {
             UserService userService = new UserService();
-            sendMail((await userService.GetCurrentUserAsync()).PasswordHash, (await userService.GetCurrentUserAsync()).Email);
+           // sendMail((await userService.GetCurrentUserAsync()).PasswordHash, (await userService.GetCurrentUserAsync()).Email);
             MessageBox.Show("Password sended to your mail");
         }
 
@@ -288,6 +289,11 @@ namespace App_Library.Views
         {
             Label lb = sender as Label;
             lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+
+        }
+
+        private void s(object sender, EventArgs e)
+        {
 
         }
     }

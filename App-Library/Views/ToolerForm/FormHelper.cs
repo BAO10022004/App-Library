@@ -1,6 +1,7 @@
 ﻿using Amazon.Auth.AccessControlPolicy;
 using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.UserView.CollectionHome;
 using Firebase.Auth;
 using FirebaseAdmin.Messaging;
 using Guna.Charts.WinForms;
@@ -114,15 +115,19 @@ namespace App_Library.Views.ToolerForm
             System.Windows.Forms.Control result = new System.Windows.Forms.Control();
             foreach (System.Windows.Forms.Control panel in listControl)
             {
-                var item = (System.Windows.Forms.Panel)panel;
-                foreach (var c in item.Controls)
+                if(control is System.Windows.Forms.Panel || control is Guna2Panel)
                 {
-                    var itemControl = (System.Windows.Forms.Control)c;
-                    if (itemControl.Name.Equals(control.Name))
+                    var item = (System.Windows.Forms.Panel)panel;
+                    foreach (var c in item.Controls)
                     {
-                        return panel;
+                        var itemControl = (System.Windows.Forms.Control)c;
+                        if (itemControl.Name.Equals(control.Name))
+                        {
+                            return panel;
+                        }
                     }
                 }
+                
             }
             return result;
         }
@@ -146,7 +151,8 @@ namespace App_Library.Views.ToolerForm
 
             }
         }
-        public async void sendMail(string body, string mailTo)
+      
+        public  void sendMailRemind(string username,string bookTitle, HistoryChild parent)
         {
 
             try
@@ -161,24 +167,23 @@ namespace App_Library.Views.ToolerForm
                 MailMessage mail = new MailMessage
                 {
                     From = new MailAddress("giabaoonutc2@gmail.com"),
-                    Subject = "Test Email",
-                    Body = body,
+                    Subject = "REMIND APPROVE",
+                    Body = "Please approve my order"+"\n"
+                          +"My name is" +username + "\n"
+                          +"Book is" + bookTitle + "\n",
                     IsBodyHtml = false
                 };
 
-                mail.To.Add(mailTo);
+                mail.To.Add("Giabaoonthcs123@gmail.com");
 
                 smtpClient.Send(mail);
-                MessageBox.Show("Email sent successfully!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
-
-
-
+            parent.btnRemind.Text = string.Empty;
+            parent.btnRemind.Image = App_Library.Properties.Resources.Animation___1734104585214;
         }
         public async void sendMailOtp(string body, string mailTo)
         {

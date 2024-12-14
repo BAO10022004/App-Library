@@ -28,23 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBook = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnContainRead = new Guna.UI2.WinForms.Guna2Panel();
             this.btnRead = new Guna.UI2.WinForms.Guna2Button();
+            this.picBook = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBook)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBook
-            // 
-            this.picBook.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picBook.ImageRotate = 0F;
-            this.picBook.Location = new System.Drawing.Point(10, 10);
-            this.picBook.Name = "picBook";
-            this.picBook.Size = new System.Drawing.Size(180, 280);
-            this.picBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBook.TabIndex = 0;
-            this.picBook.TabStop = false;
-            this.picBook.MouseHover += new System.EventHandler(this.pnNoSee_MouseHover);
             // 
             // pnContainRead
             // 
@@ -55,6 +43,7 @@
             this.pnContainRead.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pnContainRead.Size = new System.Drawing.Size(180, 34);
             this.pnContainRead.TabIndex = 1;
+            this.pnContainRead.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContainRead_Paint);
             this.pnContainRead.MouseLeave += new System.EventHandler(this.pnNoSee_MouseLeave);
             this.pnContainRead.MouseHover += new System.EventHandler(this.pnNoSee_MouseHover);
             // 
@@ -78,11 +67,23 @@
             this.btnRead.Text = "READ";
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
+            // picBook
+            // 
+            this.picBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picBook.ImageRotate = 0F;
+            this.picBook.Location = new System.Drawing.Point(10, 10);
+            this.picBook.Name = "picBook";
+            this.picBook.Size = new System.Drawing.Size(180, 280);
+            this.picBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBook.TabIndex = 0;
+            this.picBook.TabStop = false;
+            this.picBook.MouseHover += new System.EventHandler(this.pnNoSee_MouseHover);
+            // 
             // BookItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(200, 300);
             this.Controls.Add(this.pnContainRead);
             this.Controls.Add(this.picBook);

@@ -25,10 +25,10 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         private static readonly string firebaseStorageUrl = "https://firebasestorage.googleapis.com/v0/b/reading-book-web.appspot.com/o/";
         private static readonly string filePath = @"path\to\your\image.jpg";  // Đường dẫn đến file ảnh
         UpdateUserDTO updateBookDTO = new UpdateUserDTO();
-        ProfileForm parent;
+        NewProfileForm parent;
         private static readonly string fileName = "image.jpg";
         string pathImage = "";
-        public EditprofileForm(ProfileForm parent)
+        public EditprofileForm(NewProfileForm parent)
         {
             InitializeComponent();
             _userService = new UserService();
@@ -37,8 +37,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         private async void EditprofileForm_Load(object sender, EventArgs e)
         {
             currentUser = await _userService.GetCurrentUserAsync();
-            txtName.Text = currentUser.Username;
-            txtEmail.Text = currentUser.Email;
+            txbUsername.Text = currentUser.Username;
+            txbEmail.Text = currentUser.Email;
             try
             {
                 picAvatar.Load(currentUser.PhotoURL);
@@ -53,27 +53,38 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             updateBookDTO.PasswordHash = currentUser.PasswordHash;
             if (Program.checkLoginGG)
             {
-                txtEmail.Enabled = true;
-                txtEmail.ReadOnly = true;
+                txbEmail.Enabled = true;
+                txbEmail.ReadOnly = true;
             }
-        }
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            updateBookDTO.Email = txtEmail.Text;
-            updateBookDTO.Username = txtName.Text;
-            await _userService.UpdateUserAsync(currentUser.Id, updateBookDTO);
-            activeFormChild(this, new ProfileForm(parent.mainForm), null, ref actForm);
+            
+            bool confirm = false;
+            using (var alert = (new AlertConfirm()))
+            { 
+                alert.ShowDialog();
+                confirm = alert.ConfirmResult;
+            }
+            if (confirm)
+            {
+                updateBookDTO.Email = txbEmail.Text;
+                updateBookDTO.Username = txbUsername.Text;
+                await _userService.UpdateUserAsync(currentUser.Id, updateBookDTO);
+                (new AlertSuccess("SAVES SUCCESS" + "\n" + "RE-LOGIN TO COUNTINUE")).ShowDialog();
+                Program.sp.Hide();
+                Program.sp = new SplashForm();
+                Program.sp.ShowDialog();
+            }
+            else
+            {
+                txbUsername.Text = currentUser.Username;
+                txbEmail.Text = currentUser.Email;
+            }
+            
         }
 
-        private void btnChangeAvartar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private async void picEdit_Click(object sender, EventArgs e)
         {
@@ -111,7 +122,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                         var downloadUrl = await uploadTask;
 
                         // Hiển thị URL tải về của file
-                        MessageBox.Show("File uploaded successfully: " + downloadUrl);
+                        (new AlertSuccess("Save success")).ShowDialog();
                         updateBookDTO.PhotoURL = downloadUrl;
                         try
                         {
@@ -137,36 +148,10 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
 
             }
         }
-        public static async Task<String> UploadImageToFirebase(string localFilePath, string fileName)
+        Form actForm2;
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            using (HttpClient client = new HttpClient())
-            {
-                var fileContent = new ByteArrayContent(File.ReadAllBytes(localFilePath));
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-
-                var url = $"{firebaseStorageUrl}?name={Uri.EscapeDataString(fileName)}";
-
-                var request = new HttpRequestMessage(HttpMethod.Post, url)
-                {
-                    Content = fileContent
-                };
-
-                var response = await client.SendAsync(request);
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("Tải tệp lên Firebase thành công!");
-                }
-                else
-                {
-                    Console.WriteLine($"Lỗi khi tải tệp lên Firebase: {response.ReasonPhrase}");
-                }
-                return url;
-            }
-        }
-
-        private void guna2Panel4_Paint(object sender, PaintEventArgs e)
-        {
-
+            activeFormChild(parent.mainForm.pnContent, new NewProfileForm(parent.mainForm), null, ref actForm2); 
         }
     }
 }

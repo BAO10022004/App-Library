@@ -24,7 +24,7 @@ namespace App_Library.Models
         public string BookId { get; set; }  // Loại bỏ nullable reference và required
 
         [BsonElement("likes")]
-        public string[] Likes { get; set; } = Array.Empty<string>();  // Loại bỏ nullable reference
+        public string[] Likes { get; set; } = Array.Empty<string>();  
 
         [BsonElement("number_of_likes")]
         public int NumberOfLikes { get; set; } = 0;

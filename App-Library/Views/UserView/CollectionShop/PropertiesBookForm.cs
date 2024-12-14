@@ -65,23 +65,13 @@ namespace App_Library.Views
             lblContent.Text = book.Content;
             pnNameBook.Width = lblNameProduct.Width + 20;
             pnRating.Location =new Point( pnNameBook.Location.X + pnNameBook.Width, pnRating.Location.Y);
-            //list book
-            List<Task<Panel>> tasks = new List<Task<Panel>>();
-            for (int i = 0; i < 6; i++)
+            // Recommend
+            var books =await (new BookService()).GetBooksAsync();
+            
+            for(int i=0; i<4; i++ )
             {
-                var tack = shop.listBook[i].CreateBookPanelAsync(i, 4);
-                if (await tack != null && !shop.listBook[i].Title.Equals(book.Title))
-                {
-                    tasks.Add(tack);
-                }
+                flowpnRecommed.Controls.Add(shop.createPanel( books[(new Random()).Next(books.Count)],i));
             }
-        
-            listPanelRecommed = ((await Task.WhenAll(tasks)).ToList());
-
-
-            // Load Recommend
-            activeFormChild(pnRecommend, new HotDealForm(listPanelRecommed, shop, "Recommend"),null, ref form);
-            this.pictureBox2.Click += new System.EventHandler(this.shop.back_Click);
             // fixed scroll
             int HEIGHT = 0;
             foreach (Control control in pnDescription.Controls)
@@ -106,7 +96,6 @@ namespace App_Library.Views
             comments = new List<Comment>();
             comments = await _commentDb.GetBookCommentsAsync(book.Id);
             pnToolComment.Height = 300 + comments.Count * 200;
-
             activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
         }
         Form form;
@@ -221,10 +210,10 @@ namespace App_Library.Views
             MessageBox.Show(mes + count);
             
         }
-
+        Form formAct;
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
-
+            activeFormChild(shop.parent.pnContent, new NewShopMain(shop.parent), null,ref formAct);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
 using App_Library.Views.ToolerForm;
+using App_Library.Views.UserView.CollectionShop;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace App_Library.Views.Main.CollectionShop
         public const int HEIGHT = 626;
         // check button option view  click
         Dictionary<Control, bool> mapCheckButtonOptionViewIsClick;
-        MainForm parent;
+        internal MainForm parent;
         //Check open properties
         bool isOpenProperti = false;
         // Save main form 
@@ -66,6 +67,15 @@ namespace App_Library.Views.Main.CollectionShop
             _user = new UserService();
             listTask = new List<Task<PanelBook>>();
             InitializeComponent();
+            pnProperties = new Panel();
+            this.pnProperties.BackColor = System.Drawing.Color.Transparent;
+            this.pnProperties.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnProperties.Location = new System.Drawing.Point(1011, 200);
+            this.pnProperties.Name = "pnProperties";
+            this.pnProperties.Size = new System.Drawing.Size(19, 480);
+            this.pnProperties.TabIndex = 1;
+            this.pnProperties.Visible = false;
+
             this.parent = _parent;
            
         }
@@ -97,17 +107,7 @@ namespace App_Library.Views.Main.CollectionShop
             // Create Data for book
             listBook = await _bookService.GetBooksAsync();
             listBookSold = await _bookSoldService.GetBoughtBooksAsync();
-            // Add event handel for View option 
-            foreach (Guna2Panel pn in pnOptionViewBook.Controls)
-            {
-                pn.MouseHover += new EventHandler(this.btnViewAll_MouseHover);
-                pn.MouseLeave += new EventHandler(this.btnViewAll_MouseLeave);
-                foreach (Control control in pn.Controls)
-                {
-                    control.MouseHover += new EventHandler(this.btnViewAll_MouseHover);
-                    control.MouseLeave += new EventHandler(this.btnViewAll_MouseLeave);
-                }
-            }
+            
             // Check click
             mapCheckButtonOptionViewIsClick = new Dictionary<Control, bool>();
             backgroundWorker1.RunWorkerAsync();
@@ -152,65 +152,37 @@ namespace App_Library.Views.Main.CollectionShop
                 }
                 formAd = new AdForm(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);
-                var bookSales = listBookSold
-                            .GroupBy(b => b.BookId)
-                            .Select(group => new { BookId = group.Key, SalesCount = group.Count() });
-
-                // Join với bảng book để lấy thông tin sách chi tiết và sắp xếp theo lượt mua giảm dần
-                        var topSellingBooks = bookSales
-                     .Join(listBook, sale => sale.BookId, book => book.Id, (sale, book) => new
-                     {
-                         Book = book,
-                         SalesCount = sale.SalesCount
-                     })
-                     .OrderByDescending(item => item.SalesCount)
-                     .Select(item => item.Book) // Chỉ lấy đối tượng Book
-                     .ToList(); // Chuyển kết quả thành List<Book>
-                listBookBestSelling = topSellingBooks;
-                var listBookSorted = listBook.OrderBy(b => b.Price).ToList();
-
-                List<Task<Panel>> tasks = new List<Task<Panel>>();
-                for (int i = 0; i < 10; i++)
+                var books = await (new BookService()).GetBooksAsync();
+                var bookNewItem = books.OrderBy(book => book.CreatedAt).ToList();
+                flowpnNewItem.AutoScroll = true;
+                flowpnNewItem.AutoScrollMinSize=new Size( (books.Count + 1) * 400, 400 );
+                for(int i=0; i< 7; i++)
                 {
-                    var tack = listBook[i].CreateBookPanelAsync(i, 4);
-                    if (await tack != null)
-                    {
-                        tasks.Add(tack);
-                        getBookFromPanelHotDeal[await tack] = listBook[i];
-                    }
+                    flowpnNewItem.Controls.Add(createPanel(bookNewItem[i], i));
                 }
-                listHotDeal = ((await Task.WhenAll(tasks)).ToList());
-                collectionPanelHotDeal.AddRange(listHotDeal.ToArray());
-                List<Task<Panel>> tasksBestSelling  = new List<Task<Panel>>();
-                for (int i = 0; i < listBookBestSelling.Count; i++)
+                var bookHotDeal = books.OrderBy(book => book.Price).ToList();
+                flowpnHotDeal.AutoScroll = true;
+                flowpnHotDeal.AutoScrollMinSize = new Size((bookHotDeal.Count + 1) * 400, 400);
+                for (int i = 0; i < bookHotDeal.Count; i++)
                 {
-                    var tack = listBookBestSelling[i].CreateBookPanelAsync(i, 4);
-                    if (await tack != null)
-                    {
-                        tasksBestSelling.Add(tack);
-                        //getBookFromPanelHotDeal[await tack] = listBook[i];
-                    }
-                }
-
-                listPanelBestSelling = ((await Task.WhenAll(tasksBestSelling)).ToList());
-
-                foreach (Control item in collectionPanelHotDeal)
-                {
-                    item.Click += new EventHandler(this.bookHotDeal_Click);
-                    foreach (Control control in item.Controls)
-                        control.Click += new EventHandler(this.bookHotDeal_Click);
+                    flowpnHotDeal.Controls.Add(createPanel(bookHotDeal[i], i));
                 }
                 guna2ProgressIndicator.Stop();
                 this.Controls.Remove(guna2ProgressIndicator);
-                formHotDeal = new HotDealForm(listHotDeal, this, "HOT DEAL");
-                activeFormChild(pnHotDeal, formHotDeal, null, ref actForm2);
-                HotDealForm formBestSelling = new HotDealForm(listPanelBestSelling, this, "BEST SELLING ");
-                Form actForm3 = new Form();
-                activeFormChild(pnBestSelling, formBestSelling, null, ref actForm3);
+                
                 this.Controls.Remove (this.pnProperties);
                 isOpenProperti = false;
                 ReSize();
             }
+        }
+        public Guna2Panel createPanel(Book book, int index)
+        {
+            Form form = null;
+            Guna2Panel gn = new Guna2Panel();
+            gn.Size = new System.Drawing.Size(250, 380);
+            gn.TabIndex = index;
+            activeFormChild(gn, new BookItem(book, this), null, ref form);
+            return gn;
         }
         Form formContent;
         internal  void back_Click(object sender, EventArgs e)
@@ -223,18 +195,27 @@ namespace App_Library.Views.Main.CollectionShop
             ReSize();
         }
         Form actFormProperti;
-        internal  void bookClick(Book book)
+        internal async void bookClick(Book book)
         {
             this.Controls.Clear();
-            //StarsRatingService ratingService = new StarsRatingService();
-            //StarsRating starsRating = await ratingService.GetRatingByIdAsync(book.Id);    
-            activeFormChild(pnProperties, new PropertiesBookForm(book, 4, this), null, ref actFormProperti);
+            StarsRatingService ratingService = new StarsRatingService();
+            BookRating starsRating = await ratingService.GetBookRatingAsync(book.Id);
+            if(starsRating == null)
+            {
+                activeFormChild(parent.pnContent, new PropertiesBookForm(book, 4, this), null, ref actFormProperti);
+            }
+            else
+            {
+                activeFormChild(parent.pnContent, new PropertiesBookForm(book, starsRating.TotalRatings, this), null, ref actFormProperti);
 
-            this.Controls.Remove(pnMainForm);
-            this.Controls.Add(this.pnProperties);
-            isOpenProperti = true;
-            pnProperties.Dock = DockStyle.Fill;
-            this.Controls.Add(pnContainSearch);
+            }
+            
+
+            //this.Controls.Remove(pnMainForm);
+            //this.Controls.Add(this.pnProperties);
+            //isOpenProperti = true;
+            //pnProperties.Dock = DockStyle.Fill;
+            //this.Controls.Add(pnContainSearch);
             
         }
         public void bookHotDeal_Click(object sender, EventArgs e)
@@ -253,62 +234,7 @@ namespace App_Library.Views.Main.CollectionShop
            
             bookClick(panelBook.Data1);
         }
-        private void btnViewAll_MouseHover(object sender, EventArgs e)
-        {
-            if (sender is Guna2Panel)
-            {
-                var panelSender = (Guna2Panel)sender;
-                panelSender.BorderColor = Color.Cyan;
-
-                foreach (Label item in panelSender.Controls)
-                {
-                    item.ForeColor = Color.Cyan;
-                }
-
-            }
-            else
-            {
-                var labelSender = (Label)sender;
-                labelSender.ForeColor = Color.Cyan;
-                Guna2Panel panel = (Guna2Panel)FindControlContainer(pnOptionViewBook.Controls, labelSender);
-                panel.BorderColor = Color.Cyan;
-            }
-            if (sender is Guna2Panel)
-            {
-                mapCheckButtonOptionViewIsClick[sender as Control] = true;
-            }
-            else
-            {
-                mapCheckButtonOptionViewIsClick[FindControlContainer(pnOptionViewBook.Controls, sender as Control)] = true;
-            }
-        }
-        private void btnViewAll_MouseLeave(object sender, EventArgs e)
-        {
-            if (sender is Guna2Panel)
-            {
-                var panelSender = (Guna2Panel)sender;
-                panelSender.BorderColor = Color.Black;
-                foreach (Label item in panelSender.Controls)
-                {
-                    item.ForeColor = Color.Black;
-                }
-            }
-            else
-            {
-                var labelSender = (Label)sender;
-                labelSender.ForeColor = Color.Black;
-                Guna2Panel panel = (Guna2Panel)FindControlContainer(pnOptionViewBook.Controls, labelSender);
-                panel.BorderColor = Color.Black;
-            }
-            if (sender is Guna2Panel)
-            {
-                mapCheckButtonOptionViewIsClick[sender as Control] = false;
-            }
-            else
-            {
-                mapCheckButtonOptionViewIsClick[FindControlContainer(pnOptionViewBook.Controls, sender as Control)] = false;
-            }
-        }
+       
         Guna2Panel btnClicked = new Guna2Panel();
         Label txtClicked = new Label();
         private void timerClick_Tick(object sender, EventArgs e)
@@ -356,24 +282,12 @@ namespace App_Library.Views.Main.CollectionShop
                 activeFormChild(pnProperties, allBookForm, null, ref formMain);
                 pnMainForm.Width = 0;
                 pnProperties.Width = WITH;
-                pnOptionViewBook.Hide();
+               // pnOptionViewBook.Hide();
                 pnContainSearch.Height = 116;
             }
         }
         Form formMain;
-        private void pnAd_Scroll(object sender, ScrollEventArgs e)
-        {
-            if(pnMainForm.AutoScrollPosition.X != 0)
-            {
-                pnOptionViewBook.Hide();
-                pnContainSearch.Height = 116;
-            }
-            else
-            {
-                pnOptionViewBook.Show();
-                pnContainSearch.Height = 200;
-            }
-        }
+        
         void ReSize()
         {
             if(isOpenProperti == false)

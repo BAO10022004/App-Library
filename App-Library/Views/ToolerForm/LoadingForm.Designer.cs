@@ -29,43 +29,47 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.process = new Guna.UI2.WinForms.Guna2ProgressIndicator();
             this.timerStart = new System.Windows.Forms.Timer(this.components);
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // process
-            // 
-            this.process.AnimationSpeed = 80;
-            this.process.Location = new System.Drawing.Point(170, 299);
-            this.process.Name = "process";
-            this.process.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.process.Size = new System.Drawing.Size(113, 115);
-            this.process.TabIndex = 0;
             // 
             // timerStart
             // 
             this.timerStart.Interval = 1;
             this.timerStart.Tick += new System.EventHandler(this.timerStart_Tick);
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.Animation___1734111580615;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(460, 475);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // LoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 475);
-            this.Controls.Add(this.process);
+            this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoadingForm";
             this.Opacity = 0.78D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadingForm";
             this.Load += new System.EventHandler(this.LoadingForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2ProgressIndicator process;
         private System.Windows.Forms.Timer timerStart;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

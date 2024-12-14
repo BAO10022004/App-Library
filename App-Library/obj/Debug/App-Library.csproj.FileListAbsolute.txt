@@ -340,15 +340,12 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollection.ConfirmPasswordForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionEditProfile.EditprofileForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionHelp.HelpForm.resources
-C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionProfile.ProfileForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionSetting.SettingForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.ToolerForm.AlertFail.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.ToolerForm.AlertSuccess.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.BoughtBook.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.HistoryChild.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.HistoryForm.resources
-C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.HomeForm.resources
-C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.MailPassword.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionRequest.RequestForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Main.CollectionShop.AdForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Main.CollectionShop.Advertisement.resources
@@ -498,5 +495,10 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPLib.dll
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\Interop.WMPNSSCI.dll
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App-Library.csproj.ResolveComReference.cache
-C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.SettingForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.BookItem.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionShop.BookItem.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.StockForm.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.BookItemList.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionHome.History.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionProfile.NewProfileForm.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.ToolerForm.AlertConfirm.resources

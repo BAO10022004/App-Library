@@ -1,4 +1,5 @@
 ﻿using App_Library.Views.ToolerForm;
+using System.Web.UI.WebControls;
 
 namespace App_Library.Views.Main.CollectionShop
 {
@@ -46,23 +47,35 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnAd = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainAd = new Guna.UI2.WinForms.Guna2Panel();
             this.pnHotDeal = new Guna.UI2.WinForms.Guna2Panel();
+            this.flowpnNewItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnBestSelling = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnProperties = new PanelBook(null);
+            this.flowpnHotDeal = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pnContainSearch = new Guna.UI2.WinForms.Guna2Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
-            this.pnOptionViewBook = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnSearchShop.SuspendLayout();
             this.pnContainTextSearch.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMainForm.SuspendLayout();
             this.pnAd.SuspendLayout();
+            this.pnHotDeal.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.pnBestSelling.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
+            this.guna2Panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.pnContainSearch.SuspendLayout();
             this.pnSearch.SuspendLayout();
-            this.pnOptionViewBook.SuspendLayout();
-            this.guna2Panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -86,9 +99,9 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearchShop.BorderThickness = 3;
             this.pnSearchShop.Controls.Add(this.pnContainTextSearch);
             this.pnSearchShop.Controls.Add(this.guna2Panel1);
-            this.pnSearchShop.Location = new System.Drawing.Point(166, 22);
+            this.pnSearchShop.Location = new System.Drawing.Point(170, 12);
             this.pnSearchShop.Name = "pnSearchShop";
-            this.pnSearchShop.Size = new System.Drawing.Size(735, 73);
+            this.pnSearchShop.Size = new System.Drawing.Size(708, 70);
             this.pnSearchShop.TabIndex = 2;
             // 
             // pnContainTextSearch
@@ -98,7 +111,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnContainTextSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContainTextSearch.Location = new System.Drawing.Point(0, 0);
             this.pnContainTextSearch.Name = "pnContainTextSearch";
-            this.pnContainTextSearch.Size = new System.Drawing.Size(654, 73);
+            this.pnContainTextSearch.Size = new System.Drawing.Size(627, 70);
             this.pnContainTextSearch.TabIndex = 2;
             // 
             // txtSearch
@@ -129,9 +142,9 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel1.BorderThickness = 4;
             this.guna2Panel1.Controls.Add(this.pictureBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel1.Location = new System.Drawing.Point(654, 0);
+            this.guna2Panel1.Location = new System.Drawing.Point(627, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(81, 73);
+            this.guna2Panel1.Size = new System.Drawing.Size(81, 70);
             this.guna2Panel1.TabIndex = 1;
             // 
             // pictureBox1
@@ -173,9 +186,9 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnMainForm.Controls.Add(this.pnHotDeal);
             this.pnMainForm.Controls.Add(this.pnBestSelling);
             this.pnMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMainForm.Location = new System.Drawing.Point(0, 200);
+            this.pnMainForm.Location = new System.Drawing.Point(0, 100);
             this.pnMainForm.Name = "pnMainForm";
-            this.pnMainForm.Size = new System.Drawing.Size(1011, 480);
+            this.pnMainForm.Size = new System.Drawing.Size(1030, 580);
             this.pnMainForm.TabIndex = 2;
             // 
             // pnAd
@@ -186,52 +199,152 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnAd.Name = "pnAd";
             this.pnAd.Size = new System.Drawing.Size(1030, 350);
             this.pnAd.TabIndex = 2;
-            this.pnAd.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pnAd_Scroll);
             // 
             // pnContainAd
             // 
-            this.pnContainAd.Location = new System.Drawing.Point(4, 4);
+            this.pnContainAd.Location = new System.Drawing.Point(4, 0);
             this.pnContainAd.Name = "pnContainAd";
-            this.pnContainAd.Size = new System.Drawing.Size(1011, 343);
+            this.pnContainAd.Size = new System.Drawing.Size(1011, 347);
             this.pnContainAd.TabIndex = 0;
             // 
             // pnHotDeal
             // 
             this.pnHotDeal.BackColor = System.Drawing.Color.Transparent;
+            this.pnHotDeal.Controls.Add(this.flowpnNewItem);
+            this.pnHotDeal.Controls.Add(this.guna2Panel2);
             this.pnHotDeal.Location = new System.Drawing.Point(0, 356);
             this.pnHotDeal.Margin = new System.Windows.Forms.Padding(0);
             this.pnHotDeal.Name = "pnHotDeal";
-            this.pnHotDeal.Size = new System.Drawing.Size(1030, 413);
+            this.pnHotDeal.Size = new System.Drawing.Size(1030, 500);
             this.pnHotDeal.TabIndex = 3;
+            // 
+            // flowpnNewItem
+            // 
+            this.flowpnNewItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpnNewItem.Location = new System.Drawing.Point(0, 70);
+            this.flowpnNewItem.Name = "flowpnNewItem";
+            this.flowpnNewItem.Size = new System.Drawing.Size(1030, 430);
+            this.flowpnNewItem.TabIndex = 1;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Controls.Add(this.guna2Panel3);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(1030, 70);
+            this.guna2Panel2.TabIndex = 0;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.BackColor = System.Drawing.Color.White;
+            this.guna2Panel3.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel3.BorderRadius = 10;
+            this.guna2Panel3.BorderThickness = 3;
+            this.guna2Panel3.Controls.Add(this.label1);
+            this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
+            this.guna2Panel3.Location = new System.Drawing.Point(13, 3);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(250, 61);
+            this.guna2Panel3.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.Location = new System.Drawing.Point(60, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(181, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "NEW ITEMS";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackgroundImage = global::App_Library.Properties.Resources.Screenshot_2024_12_13_003940;
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.new_17204014;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(7, 7);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(47, 46);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // pnBestSelling
             // 
             this.pnBestSelling.BackColor = System.Drawing.Color.Transparent;
-            this.pnBestSelling.Location = new System.Drawing.Point(0, 769);
+            this.pnBestSelling.Controls.Add(this.flowpnHotDeal);
+            this.pnBestSelling.Controls.Add(this.guna2Panel4);
+            this.pnBestSelling.Location = new System.Drawing.Point(0, 856);
             this.pnBestSelling.Margin = new System.Windows.Forms.Padding(0);
             this.pnBestSelling.Name = "pnBestSelling";
-            this.pnBestSelling.Size = new System.Drawing.Size(1030, 413);
+            this.pnBestSelling.Size = new System.Drawing.Size(1030, 500);
             this.pnBestSelling.TabIndex = 4;
             // 
-            // pnProperties
+            // flowpnHotDeal
             // 
-            this.pnProperties.BackColor = System.Drawing.Color.Transparent;
-            this.pnProperties.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnProperties.Location = new System.Drawing.Point(1011, 200);
-            this.pnProperties.Name = "pnProperties";
-            this.pnProperties.Size = new System.Drawing.Size(19, 480);
-            this.pnProperties.TabIndex = 1;
-            this.pnProperties.Visible = false;
+            this.flowpnHotDeal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpnHotDeal.Location = new System.Drawing.Point(0, 70);
+            this.flowpnHotDeal.Name = "flowpnHotDeal";
+            this.flowpnHotDeal.Size = new System.Drawing.Size(1030, 430);
+            this.flowpnHotDeal.TabIndex = 1;
+            // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.Controls.Add(this.guna2Panel5);
+            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel4.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(1030, 70);
+            this.guna2Panel4.TabIndex = 0;
+            // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.BackColor = System.Drawing.Color.White;
+            this.guna2Panel5.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel5.BorderRadius = 10;
+            this.guna2Panel5.BorderThickness = 3;
+            this.guna2Panel5.Controls.Add(this.label2);
+            this.guna2Panel5.Controls.Add(this.guna2PictureBox2);
+            this.guna2Panel5.Location = new System.Drawing.Point(7, 6);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(250, 61);
+            this.guna2Panel5.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(60, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(175, 31);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "BEST DEAL";
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.BackgroundImage = global::App_Library.Properties.Resources.Screenshot_2024_12_13_003940;
+            this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox2.Image = global::App_Library.Properties.Resources.hot_sale_17905376;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(7, 7);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(47, 46);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 0;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // pnContainSearch
             // 
             this.pnContainSearch.BackColor = System.Drawing.Color.Transparent;
             this.pnContainSearch.Controls.Add(this.pnSearch);
-            this.pnContainSearch.Controls.Add(this.pnOptionViewBook);
             this.pnContainSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnContainSearch.Location = new System.Drawing.Point(0, 0);
             this.pnContainSearch.Name = "pnContainSearch";
-            this.pnContainSearch.Size = new System.Drawing.Size(1030, 200);
+            this.pnContainSearch.Size = new System.Drawing.Size(1030, 100);
             this.pnContainSearch.TabIndex = 0;
             // 
             // pnSearch
@@ -240,43 +353,8 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnSearch.Location = new System.Drawing.Point(0, 0);
             this.pnSearch.Name = "pnSearch";
-            this.pnSearch.Size = new System.Drawing.Size(1030, 116);
+            this.pnSearch.Size = new System.Drawing.Size(1030, 100);
             this.pnSearch.TabIndex = 6;
-            // 
-            // pnOptionViewBook
-            // 
-            this.pnOptionViewBook.Controls.Add(this.guna2Panel6);
-            this.pnOptionViewBook.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnOptionViewBook.Location = new System.Drawing.Point(0, 116);
-            this.pnOptionViewBook.Name = "pnOptionViewBook";
-            this.pnOptionViewBook.Size = new System.Drawing.Size(1030, 84);
-            this.pnOptionViewBook.TabIndex = 5;
-            // 
-            // guna2Panel6
-            // 
-            this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel6.BorderRadius = 15;
-            this.guna2Panel6.BorderThickness = 3;
-            this.guna2Panel6.Controls.Add(this.label2);
-            this.guna2Panel6.ForeColor = System.Drawing.Color.White;
-            this.guna2Panel6.Location = new System.Drawing.Point(0, 3);
-            this.guna2Panel6.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
-            this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(109, 52);
-            this.guna2Panel6.TabIndex = 0;
-            this.guna2Panel6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnViewAll_MouseDown);
-            this.guna2Panel6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnViewAll_MouseUp);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(33, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 24);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "All";
             // 
             // NewShopMain
             // 
@@ -285,7 +363,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1030, 680);
             this.Controls.Add(this.pnMainForm);
-            this.Controls.Add(this.pnProperties);
             this.Controls.Add(this.pnContainSearch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewShopMain";
@@ -298,11 +375,18 @@ namespace App_Library.Views.Main.CollectionShop
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMainForm.ResumeLayout(false);
             this.pnAd.ResumeLayout(false);
+            this.pnHotDeal.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.pnBestSelling.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel5.ResumeLayout(false);
+            this.guna2Panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.pnContainSearch.ResumeLayout(false);
             this.pnSearch.ResumeLayout(false);
-            this.pnOptionViewBook.ResumeLayout(false);
-            this.guna2Panel6.ResumeLayout(false);
-            this.guna2Panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,7 +394,7 @@ namespace App_Library.Views.Main.CollectionShop
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel pnContainSearch;
-        private PanelBook pnProperties;
+        private System.Windows.Forms.Panel pnProperties;
         private System.Windows.Forms.FlowLayoutPanel pnMainForm;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Guna.UI2.WinForms.Guna2Elipse geSearch;
@@ -327,9 +411,16 @@ namespace App_Library.Views.Main.CollectionShop
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Panel pnAd;
         private Guna.UI2.WinForms.Guna2Panel pnBestSelling;
-        private Guna.UI2.WinForms.Guna2Panel pnOptionViewBook;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Panel pnContainAd;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowpnNewItem;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowpnHotDeal;
     }
 }

@@ -66,5 +66,10 @@ namespace App_Library.Views.UserView.CollectionHome
            // pnContainRead.Controls.Remove(btnRead);
            
         }
+
+        private void pnContainRead_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

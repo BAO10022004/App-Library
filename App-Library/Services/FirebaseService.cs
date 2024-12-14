@@ -16,6 +16,7 @@ namespace App_Library.Services
 {
     internal class FirebaseService
     {
+
         private readonly FirebaseStorage _firebaseStorage;
 
         public FirebaseService()
@@ -27,7 +28,6 @@ namespace App_Library.Services
                 throw new FileNotFoundException("serviceAccountKey.json not found at path: " + serviceAccountPath);
             }
 
-            // Khởi tạo Firebase với tệp JSON cấu hình (key JSON từ Firebase)
             if (FirebaseApp.DefaultInstance == null)
             {
                 FirebaseApp.Create(new AppOptions()

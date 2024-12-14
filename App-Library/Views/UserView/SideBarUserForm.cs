@@ -1,5 +1,7 @@
 ﻿using App_Library.Views.Main.CollectionShop;
+using App_Library.Views.Orthers.CollectionProfile;
 using App_Library.Views.ToolerForm;
+using App_Library.Views.UserView.CollectionHome;
 using App_Library.Views.UserView.CollectionRequest;
 using Guna.UI2.WinForms;
 using System;
@@ -67,7 +69,6 @@ namespace App_Library.Views.UserView
         {
             Guna2Button myButton = sender as Guna2Button;
             myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            myButton.ImageSize = new Size(45, 45);
             myButton.FillColor = Color.SkyBlue;
             isClick[myButton] = true;
             foreach(Guna2Button control in pnSideBar.Controls)
@@ -75,27 +76,32 @@ namespace App_Library.Views.UserView
                 if(!control.Name.Equals(myButton.Name))
                 {
                     control.Font = new System.Drawing.Font("Arial Rounded MT Bold", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    control.ImageSize = new Size(35, 35);
                     control.FillColor = Color.White;
                     isClick[control] = false;
                 }
             }
         }
-        private void lbHome_Click(object sender, EventArgs e)
+        public void lbHome_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new HomeForm(_mainForm), e);
+            _mainForm.activeFormChildForMainForm(new NewShopMain(_mainForm), e);
         }
 
         private void lbStore_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new NewShopMain(_mainForm), e);
+            _mainForm.activeFormChildForMainForm(new StockForm(_mainForm), e);
         }
-        private void lbHelp_Click(object sender, EventArgs e)
+        private void btnHistory_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new HomeForm(_mainForm), e);
+            _mainForm.activeFormChildForMainForm(new History(_mainForm, this), e);
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            setIsClick(sender as Control);
+            _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm), e);
         }
     }
 }

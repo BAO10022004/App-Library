@@ -144,4 +144,10 @@
   <metadata name="timerOpenEyeForConfirm.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>432, 59</value>
   </metadata>
+  <metadata name="timerHoverGg.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>622, 59</value>
+  </metadata>
+  <metadata name="timerLeaveGG.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>751, 59</value>
+  </metadata>
 </root>

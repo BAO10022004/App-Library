@@ -73,6 +73,8 @@ namespace App_Library.Views
             }
             else
             {
+                pnFrameOption.Controls.Remove(pnContainButtonSignIn);
+                pnFrameOption.Controls.Remove(pnContainButtonSignUp);
                 timerClickButtonSignUp.Stop();
                 lbWellcome.Text = "SIGN - UP";
                 this.activeFormChild(this.pnLoginSignupContent, new SignUpForm(this), sender);
@@ -87,6 +89,9 @@ namespace App_Library.Views
             }
             else
             {
+                pnFrameOption.Controls.Remove(pnContainButtonSignIn);
+                pnFrameOption.Controls.Remove(pnContainButtonSignUp);
+
                 timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN";
                 this.activeFormChild(this.pnLoginSignupContent, new LoginForm(this), sender);
@@ -111,10 +116,13 @@ namespace App_Library.Views
             //}
             //else
             //{
+            Program.sp.pnHeader.BackColor = Color.DarkGray;
             timerOpenMainForm.Stop();
             Size = new Size(1280, 720);
             PnSubLogin.Controls.Clear();
-            Location = new Point(100, 100);
+            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            Location = new Point(screenWidth/2 -1280/2, screenHeight/2-720/2);
             this.activeFormChild(this.PnSubLogin, new MainForm(this), sender);
             //Console.WriteLine($"1 {PnSubLogin.Size.Width}, {PnSubLogin.Size.Height}");
             //Console.WriteLine($"0 {Size.Width}, {Size.Height}");

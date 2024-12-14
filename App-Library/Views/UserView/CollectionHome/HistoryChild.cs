@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Xml.Linq;
 
 namespace App_Library.Views.UserView.CollectionHome
 {
-    public partial class HistoryChild : Form
+    public partial class HistoryChild : FormHelper
     {
         HistoryForm myParent;
         BookSold bookSold;
@@ -32,25 +33,54 @@ namespace App_Library.Views.UserView.CollectionHome
             lbBookName.Text = book.Title;
             lbAuthor.Text = book.Author;
             lbPrice.Text = book.Price + "$";
-            lbTime.Text = bookSold.CreatedAt.ToString();
+            lbTime.Text ="  " + bookSold.CreatedAt.ToString();
             lbStatus.Text = bookSold.Status;
-            if (bookSold.Status.Equals("Approved"))
-                lbStatus.ForeColor = System.Drawing.Color.Green;
-            else
+            if (!bookSold.Status.Equals("Approved"))
+            {
                 lbStatus.ForeColor = System.Drawing.Color.Red;
+             
+            }
+            else
+            {
+                lbStatus.ForeColor = System.Drawing.Color.Green;
+                btnRemind.Visible = false;  
+            }
+                
+            
+
         }
 
-        private void lbTime_Click(object sender, EventArgs e)
+        private void HistoryChild_Resize(object sender, EventArgs e)
         {
-
+            this.Width = myParent.Width;
+            pnBookName.Width = Convert.ToInt32(this.Width * 0.226);
+            pnAuthor.Width = Convert.ToInt32(this.Width * 0.166);
+            pnPrice.Width = Convert.ToInt32(this.Width * 0.10);
+            pnStatus.Width = Convert.ToInt32(this.Width * 0.17);
+            pnTime.Width = Convert.ToInt32(this.Width * 0.19);
         }
-
-        private void lbAuthor_Click(object sender, EventArgs e)
+        private void btnRemind_Click(object sender, EventArgs e)
         {
-
+            sendMailRemind(bookSold.Username, bookSold.Title, this);
+            timer1.Start();
+        }
+        int countDown = 4;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(countDown > 0)
+            {
+                countDown--;
+            }
+            else
+            {
+                countDown = 4;
+                btnRemind.Text = "REMIND";
+                btnRemind.Image = null;
+                timer1.Stop();
+            }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void lbBookName_Click(object sender, EventArgs e)
         {
 
         }

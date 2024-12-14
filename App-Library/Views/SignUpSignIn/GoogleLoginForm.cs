@@ -148,5 +148,9 @@ namespace App_Library.Views.SignIn
             return false;
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

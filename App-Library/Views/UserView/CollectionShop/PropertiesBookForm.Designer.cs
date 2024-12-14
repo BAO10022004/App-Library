@@ -34,6 +34,12 @@
             this.lblContent = new System.Windows.Forms.Label();
             this.lbDescription = new System.Windows.Forms.Label();
             this.pnRecommend = new System.Windows.Forms.Panel();
+            this.pnHotDeal = new Guna.UI2.WinForms.Guna2Panel();
+            this.flowpnRecommed = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
             this.pnToolComment = new System.Windows.Forms.Panel();
@@ -82,6 +88,11 @@
             this.guna2Panel1.SuspendLayout();
             this.pnMainPropertiesBook.SuspendLayout();
             this.pnDescription.SuspendLayout();
+            this.pnRecommend.SuspendLayout();
+            this.pnHotDeal.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.panel16.SuspendLayout();
             this.panel17.SuspendLayout();
             this.pnInfoBook.SuspendLayout();
@@ -176,16 +187,83 @@
             // 
             // pnRecommend
             // 
+            this.pnRecommend.Controls.Add(this.pnHotDeal);
             this.pnRecommend.ForeColor = System.Drawing.Color.Black;
             this.pnRecommend.Location = new System.Drawing.Point(3, 175);
             this.pnRecommend.Name = "pnRecommend";
-            this.pnRecommend.Size = new System.Drawing.Size(988, 413);
+            this.pnRecommend.Size = new System.Drawing.Size(988, 500);
             this.pnRecommend.TabIndex = 0;
+            // 
+            // pnHotDeal
+            // 
+            this.pnHotDeal.BackColor = System.Drawing.Color.Transparent;
+            this.pnHotDeal.Controls.Add(this.flowpnRecommed);
+            this.pnHotDeal.Controls.Add(this.guna2Panel3);
+            this.pnHotDeal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHotDeal.Location = new System.Drawing.Point(0, 0);
+            this.pnHotDeal.Margin = new System.Windows.Forms.Padding(0);
+            this.pnHotDeal.Name = "pnHotDeal";
+            this.pnHotDeal.Size = new System.Drawing.Size(988, 500);
+            this.pnHotDeal.TabIndex = 4;
+            // 
+            // flowpnRecommed
+            // 
+            this.flowpnRecommed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpnRecommed.Location = new System.Drawing.Point(0, 70);
+            this.flowpnRecommed.Name = "flowpnRecommed";
+            this.flowpnRecommed.Size = new System.Drawing.Size(988, 430);
+            this.flowpnRecommed.TabIndex = 1;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.Controls.Add(this.guna2Panel4);
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(988, 70);
+            this.guna2Panel3.TabIndex = 0;
+            // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.BackColor = System.Drawing.Color.White;
+            this.guna2Panel4.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel4.BorderRadius = 10;
+            this.guna2Panel4.BorderThickness = 3;
+            this.guna2Panel4.Controls.Add(this.label2);
+            this.guna2Panel4.Controls.Add(this.guna2PictureBox1);
+            this.guna2Panel4.Location = new System.Drawing.Point(13, 3);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(250, 61);
+            this.guna2Panel4.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.Location = new System.Drawing.Point(60, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 31);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "NEW ITEMS";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackgroundImage = global::App_Library.Properties.Resources.Screenshot_2024_12_13_003940;
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.new_17204014;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(7, 7);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(47, 46);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // panel15
             // 
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(3, 594);
+            this.panel15.Location = new System.Drawing.Point(3, 681);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(1300, 0);
             this.panel15.TabIndex = 1;
@@ -194,7 +272,7 @@
             // 
             this.panel16.Controls.Add(this.pnToolComment);
             this.panel16.Controls.Add(this.panel17);
-            this.panel16.Location = new System.Drawing.Point(3, 600);
+            this.panel16.Location = new System.Drawing.Point(3, 687);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(991, 719);
             this.panel16.TabIndex = 2;
@@ -665,6 +743,12 @@
             this.guna2Panel1.ResumeLayout(false);
             this.pnMainPropertiesBook.ResumeLayout(false);
             this.pnDescription.ResumeLayout(false);
+            this.pnRecommend.ResumeLayout(false);
+            this.pnHotDeal.ResumeLayout(false);
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.panel16.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.pnInfoBook.ResumeLayout(false);
@@ -764,5 +848,11 @@
         private System.Windows.Forms.Panel pnDescription;
         private Guna.UI2.WinForms.Guna2Panel pnReadBook;
         private System.Windows.Forms.Label lbReadBook;
+        private Guna.UI2.WinForms.Guna2Panel pnHotDeal;
+        private System.Windows.Forms.FlowLayoutPanel flowpnRecommed;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

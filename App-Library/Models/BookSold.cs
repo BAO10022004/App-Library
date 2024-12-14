@@ -13,19 +13,19 @@ namespace App_Library.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }  // Loại bỏ nullable reference
+        public string Id { get; set; }  
 
         [BsonElement("book_id")]
-        public string BookId { get; set; }  // Loại bỏ nullable reference
+        public string BookId { get; set; }
 
         [BsonElement("title")]
-        public string Title { get; set; }  // Loại bỏ nullable reference
+        public string Title { get; set; }  
 
         [BsonElement("price")]
         public decimal Price { get; set; }
 
         [BsonElement("user_id")]
-        public string UserId { get; set; }  // Loại bỏ nullable reference
+        public string UserId { get; set; } 
 
         [BsonElement("username")]
         public string Username { get; set; }  // Loại bỏ nullable reference
@@ -50,18 +50,7 @@ namespace App_Library.Models
 
         [BsonElement("slug")]
         public string Slug { get; set; }  // Loại bỏ nullable reference
-        //[JsonConstructor]
-        //public BookSold(Book book , User user){
-        //    this.BookId = book.Id;
-        //    this.Title = book.Title;
-        //    this.Price = book.Price;
-        //    UserId = user.Id;
-        //    Username = book.Username;
-        //    this.Email = user.Email;
-        //    Image = book.Image;
-        //    Genre = book.Genre;
-        //    Slug = book.Slug;
-        //}
+        
 }
 public class SoldBooksResponse
     {

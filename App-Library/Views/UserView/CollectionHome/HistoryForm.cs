@@ -34,66 +34,18 @@ namespace App_Library.Views.UserView.CollectionHome
                     this.BookSolds.Add(book);
                 }
             }
-           
-
-        }
-        Label newLabel(string name, bool isStatus = false)
-        {
-            Label result = new Label();
-            result.AutoSize = false;
-            result.Dock = System.Windows.Forms.DockStyle.Fill;
-            result.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            if (isStatus)
-            {
-                if (name.Equals("Approved"))
-                    result.ForeColor = System.Drawing.Color.Green;
-                else
-                    result.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                result.ForeColor = System.Drawing.Color.DimGray;
-            }
-
-            result.Location = new System.Drawing.Point(0, 0);
-            result.Name = name;
-            result.Size = new System.Drawing.Size(140, 61);
-            result.TabIndex = 0;
-            result.Text = name;
-            result.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            //result.Padding = new Padding(0,10, 0, 0);
-            return result;
-        }
-        Guna2Button newButton(string name)
-        {
-            Guna2Button result = new Guna2Button();
-            result.BorderRadius = 5;
-            result.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            result.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            result.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            result.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            result.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            result.ForeColor = System.Drawing.Color.White;
-            result.Location = new System.Drawing.Point(5,15);
-            result.Name = name;
-            //result.Size = new System.Drawing.Size(111, 34);
-            result.TabIndex = 0;
-            result.Text = "Remind";
-            result.Click += new EventHandler(this.sendMail);
-            result.Size = new System.Drawing.Size(90, 30); // Thay đổi kích thước để phù hợp với hàng
-            result.Anchor = AnchorStyles.Top; // Trung tâm trong ô
-
-            return result;
         }
         private void HistoryForm_Load(object sender, EventArgs e)
         {
             
             for(int i=0; i< BookSolds.Count; i++)
             {
-                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i], i));
+                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i],1000, i));
             }
+            pnListProcessing.AutoScroll = true;
+            pnListProcessing.AutoScrollMinSize = new System.Drawing.Size(0, 64 * BookSolds.Count);
         }
-        Guna2Panel createPanel(BookSold bookSold, int index)
+        Guna2Panel createPanel(BookSold bookSold,int width,  int index)
         {
             Form form = null;   
             Guna2Panel gn = new Guna2Panel();
@@ -114,26 +66,16 @@ namespace App_Library.Views.UserView.CollectionHome
             pnAuthor.Width = Convert.ToInt32(this.Width * 0.166);
             pnPrice.Width = Convert.ToInt32(this.Width * 0.14);
             pnStatus.Width = Convert.ToInt32(this.Width * 0.13);
+            pnListProcessing.Controls.Clear();
             pnTime.Width = Convert.ToInt32(this.Width * 0.19);
-        }
-        void actionSendMail()
-        {
+            for (int i = 0; i < BookSolds.Count; i++)
             {
-
+                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i], this.Width-80, i));
             }
+            pnListProcessing.AutoScroll = true;
+            pnListProcessing.AutoScrollMinSize = new System.Drawing.Size(0, 64 * BookSolds.Count);
         }
-        public async void sendMail(object sender, EventArgs e)
-        {
-            UserService user = new UserService();
-            sendMail("My name is " + (await user.GetCurrentUserAsync()).Username + "\n" +
-                           "My mail is " + (await user.GetCurrentUserAsync()).Email + "\n" +
-                           "Plese you approved my book !!!!!!", "Giabaoonthcs123@gmail.com");
-        }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }
      

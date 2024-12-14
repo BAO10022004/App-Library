@@ -22,6 +22,7 @@ namespace App_Library.Views
     {
         private SplashForm _splashForm;
         private readonly AuthService _authService;
+        private  int xPicGG;
         bool isEyeForPassClose = true;
         bool isEyeForConfirmClose = true;
         int second = 2;
@@ -30,6 +31,7 @@ namespace App_Library.Views
             InitializeComponent();
             _splashForm = splashForm;
             _authService = new AuthService();
+            xPicGG = picGG.Location.X;
         }
         private void SignUpForm_Load(object sender, EventArgs e)
         {
@@ -79,27 +81,30 @@ namespace App_Library.Views
                 messegeError[item].Text = "";
             }
             bool check = true;
-            MessegeEmail.Visible =  !checkEmail(checkValid[txbEmail], messegeError[txbEmail]);
+            MessegeEmail.Visible = !checkEmail(checkValid[txbEmail], messegeError[txbEmail]);
             MessegeUsername.Visible = !checkUsername(checkValid[txbUsername], messegeError[txbUsername]);
             MessegePassword.Visible = !checkPassword(checkValid[txbPassword], messegeError[txbPassword]);
             MessegeConfirm.Visible = !checkConfirmPassword(checkValid[txbConfirmPassword], messegeError[txbConfirmPassword]);
+            
             listCotrol.ForEach(x => check = (check && !checkValid[x]) ? false : true);
-            if (!check)
+            MessageBox.Show(check +"");
+            if (check)
+            {
+                
+                var result = await _authService.SignUpAsync(txbUsername.Text, txbEmail.Text, txbPassword.Text);
+                if (result.Equals("Success"))
                 {
-                    var result = await _authService.SignUpAsync(txbUsername.Text, txbEmail.Text, txbPassword.Text);
-                    if (result.Equals("Success"))
-                    {
-                        
-                        _splashForm.OpentLogin();
-                    }
-                    else if (result.Equals("Username already exists"))
-                    {
-                        messegeError[txbUsername].Text = result;
-                    }
-                    else if (result.Equals("Email already exists"))
-                    {
-                        messegeError[txbEmail].Text = result;
-                    }
+
+                    _splashForm.OpentLogin();
+                }
+                else if (result.Equals("Username already exists"))
+                {
+                    messegeError[txbUsername].Text = result;
+                }
+                else if (result.Equals("Email already exists"))
+                {
+                    messegeError[txbEmail].Text = result;
+                }
             }
             else
             {
@@ -112,7 +117,7 @@ namespace App_Library.Views
 
                     }
                 });
-                
+
             }
         }
         private async void btnSignInGG_Click(object sender, EventArgs e)
@@ -125,41 +130,29 @@ namespace App_Library.Views
                 _splashForm.OpenMainForm();
             }
         }
-        private void lbGG_MouseHover(object sender, EventArgs e)
-        {
-            btnSignInGG.FillColor = Color.Blue;
-            lbGG.ForeColor = Color.White;
-            lbGG.BackColor = Color.Blue;
-        }
-
-        private void lbGG_MouseLeave(object sender, EventArgs e)
-        {
-            btnSignInGG.FillColor = Color.White;
-            lbGG.ForeColor = Color.Black;
-            lbGG.BackColor = Color.White;
-        }
+       
         private bool checkEmail(bool checkValid, Guna2Button messege)
         {
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbEmail.Text) || txbEmail.Text == "Email")
             {
-                messege.Text ="Please enter email";
-               
+                messege.Text = "Please enter email";
+
                 checkValid = false;
                 return checkValid;
             }
             // Kiểm tra định dạng
             if (!Regex.IsMatch(txbEmail.Text, emailPattern))
             {
-               
+
                 messege.Text = "Email format incorrect";
                 checkValid = false;
                 return checkValid;
             }
             else
             {
-                
+
                 messege.Text = "";
                 checkValid = true;
                 return checkValid;
@@ -171,21 +164,21 @@ namespace App_Library.Views
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbUsername.Text) || txbUsername.Text == "Username")
             {
-                
+
                 messege.Text = "Please enter username";
                 checkValid = false;
                 return checkValid;
             }
             else if (txbUsername.Text.Length < 3)
             {
-                
+
                 messege.Text = "Username must be at least 3 characters long";
                 checkValid = false;
                 return checkValid;
             }
             else if (txbUsername.Text.Length > 20)
             {
-                
+
                 messege.Text = "Username must be less than 20 characters long";
                 checkValid = false;
                 return checkValid;
@@ -193,14 +186,14 @@ namespace App_Library.Views
             // Kiểm tra định dạng
             if (!Regex.IsMatch(txbUsername.Text, namePattern))
             {
-               
+
                 messege.Text = "Username must contain only letters, numbers and spaces, no special characters";
                 checkValid = false;
                 return checkValid;
             }
             else
             {
-                
+
                 messege.Text = "";
                 checkValid = true;
                 return checkValid;
@@ -271,7 +264,7 @@ namespace App_Library.Views
             if (txbEmail.Text == "Email")
             {
                 txbEmail.Text = string.Empty;
-                txbEmail.ForeColor = Color.Black;
+                txbEmail.ForeColor = Color.Aqua;
             }
         }
 
@@ -288,7 +281,7 @@ namespace App_Library.Views
             if (txbUsername.Text == "Username")
             {
                 txbUsername.Text = string.Empty;
-                txbUsername.ForeColor = Color.Black;
+                txbUsername.ForeColor = Color.Aqua;
             }
         }
 
@@ -307,7 +300,7 @@ namespace App_Library.Views
             {
                 txbPassword.Text = string.Empty;
                 closeEye(picEyeOfPass);
-                txbPassword.ForeColor = Color.Black;
+                txbPassword.ForeColor = Color.Aqua;
             }
         }
 
@@ -337,7 +330,7 @@ namespace App_Library.Views
             {
                 txbConfirmPassword.Text = string.Empty;
                 closeEye(picEyeOfConfirm);
-                txbConfirmPassword.ForeColor = Color.Black;
+                txbConfirmPassword.ForeColor = Color.Aqua;
             }
         }
 
@@ -379,7 +372,7 @@ namespace App_Library.Views
         {
             try
             {
-                pic.Image = global::App_Library.Properties.Resources.view;
+                pic.Image = global::App_Library.Properties.Resources.eye_slash;
                 if (pic.Name.Contains("C"))
                 {
                     // Confirm
@@ -404,7 +397,7 @@ namespace App_Library.Views
         {
             try
             {
-                pic.Image = global::App_Library.Properties.Resources.close_eye;
+                pic.Image = global::App_Library.Properties.Resources.eye;
                 if (pic.Name.Contains("Confirm"))
                 {
                     // Confirm
@@ -459,5 +452,83 @@ namespace App_Library.Views
                 closeEye(picEyeOfConfirm);
             }
         }
+        private void lbGG_MouseHover(object sender, EventArgs e)
+        {
+            lbGG.Text = "";
+            timerHoverGg.Start();
+        }
+
+        private void timerHoverGg_Tick(object sender, EventArgs e)
+        {
+            if (picGG.Location.X < lbGG.Width / 2)
+            {
+                picGG.Location = new Point(picGG.Location.X + 5, lbGG.Location.Y);
+            }
+            else
+            {
+                timerHoverGg.Stop();
+            }
+        }
+        private void lbGG_MouseLeave(object sender, EventArgs e)
+        {
+            timerHoverGg.Stop();
+            timerLeaveGG.Start();
+        }
+        private void timerLeaveGG_Tick(object sender, EventArgs e)
+        {
+            if (picGG.Location.X > xPicGG)
+            {
+                picGG.Location = new Point(picGG.Location.X - 5, lbGG.Location.Y);
+            }
+            else
+            {
+                lbGG.Text = "Continue with Google";
+                timerLeaveGG.Stop();
+            }
+        }
+
+        private void pnMainContentLogin_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txbEmail_MouseHover(object sender, EventArgs e)
+        {
+            Guna2Panel pn = sender as Guna2Panel; pn.BorderColor = Color.Aqua;
+        }
+
+        private void gnPanelEmail_MouseLeave(object sender, EventArgs e)
+        {
+            Guna2Panel pn = sender as Guna2Panel;
+            foreach(Control txb in pn.Controls)
+            {
+                if(txb is TextBox)
+                if(txb.Text == "" || txb .Text.Equals("Email") || txb.Text.Equals("Username") || txb.Text.Equals("Password") || txb.Text.Equals("Confirm Password"))
+                {
+                        pn.BorderColor = Color.DarkGray;
+                    }
+            }
+           
+        }
+
+        private void txbEmail_MouseHover_1(object sender, EventArgs e)
+        {
+            Guna2Panel pn = new Guna2Panel();
+            TextBox lb = sender as TextBox;
+            foreach (Control control in pnMainContentLogin.Controls)
+            {
+                if(control is Guna2Panel)
+                {
+                    if (control.Name.Contains(lb.Name.Substring(3)))
+                    {
+                        pn = control as Guna2Panel;
+                    }
+                }
+            }
+
+
+            pn.BorderColor = Color.Aqua;
+        }
+       
     }
 }

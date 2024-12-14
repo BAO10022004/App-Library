@@ -36,8 +36,9 @@ namespace App_Library.Views
             this.pnContent = new System.Windows.Forms.Panel();
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
             this.pnFooter = new System.Windows.Forms.Panel();
+            this.pnContainLogOut = new Guna.UI2.WinForms.Guna2Panel();
+            this.picLogOut = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSetting = new Guna.UI2.WinForms.Guna2Button();
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.Panel();
             this.pnUser = new System.Windows.Forms.Panel();
@@ -46,9 +47,11 @@ namespace App_Library.Views
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerPicShop = new System.Windows.Forms.Timer(this.components);
+            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnFooter.SuspendLayout();
+            this.pnContainLogOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).BeginInit();
             this.pnLeft.SuspendLayout();
             this.pnUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
@@ -83,9 +86,8 @@ namespace App_Library.Views
             // pnFooter
             // 
             this.pnFooter.AutoScroll = true;
-            this.pnFooter.BackColor = System.Drawing.Color.White;
-            this.pnFooter.Controls.Add(this.btnLogOut);
-            this.pnFooter.Controls.Add(this.btnSetting);
+            this.pnFooter.BackColor = System.Drawing.Color.Black;
+            this.pnFooter.Controls.Add(this.pnContainLogOut);
             this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnFooter.Location = new System.Drawing.Point(0, 546);
             this.pnFooter.Margin = new System.Windows.Forms.Padding(2);
@@ -94,6 +96,32 @@ namespace App_Library.Views
             this.pnFooter.TabIndex = 4;
             this.pnFooter.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFooter_Paint);
             // 
+            // pnContainLogOut
+            // 
+            this.pnContainLogOut.BorderColor = System.Drawing.Color.Black;
+            this.pnContainLogOut.BorderRadius = 15;
+            this.pnContainLogOut.BorderThickness = 3;
+            this.pnContainLogOut.Controls.Add(this.picLogOut);
+            this.pnContainLogOut.Controls.Add(this.btnLogOut);
+            this.pnContainLogOut.Location = new System.Drawing.Point(3, 63);
+            this.pnContainLogOut.Name = "pnContainLogOut";
+            this.pnContainLogOut.Padding = new System.Windows.Forms.Padding(10);
+            this.pnContainLogOut.Size = new System.Drawing.Size(248, 68);
+            this.pnContainLogOut.TabIndex = 0;
+            this.pnContainLogOut.MouseHover += new System.EventHandler(this.btnLogOut_MouseHover);
+            // 
+            // picLogOut
+            // 
+            this.picLogOut.Image = global::App_Library.Properties.Resources.icons8_log_out1;
+            this.picLogOut.ImageRotate = 0F;
+            this.picLogOut.Location = new System.Drawing.Point(17, 15);
+            this.picLogOut.Name = "picLogOut";
+            this.picLogOut.Size = new System.Drawing.Size(40, 40);
+            this.picLogOut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogOut.TabIndex = 0;
+            this.picLogOut.TabStop = false;
+            this.picLogOut.Visible = false;
+            // 
             // btnLogOut
             // 
             this.btnLogOut.BorderRadius = 5;
@@ -101,40 +129,22 @@ namespace App_Library.Views
             this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogOut.FillColor = System.Drawing.Color.White;
+            this.btnLogOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogOut.FillColor = System.Drawing.Color.Black;
             this.btnLogOut.FocusedColor = System.Drawing.Color.LightCyan;
-            this.btnLogOut.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnLogOut.Image = global::App_Library.Properties.Resources.logout__1_;
+            this.btnLogOut.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F);
+            this.btnLogOut.ForeColor = System.Drawing.Color.Aqua;
+            this.btnLogOut.Image = global::App_Library.Properties.Resources.icons8_log_out2;
             this.btnLogOut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogOut.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnLogOut.Location = new System.Drawing.Point(4, 71);
+            this.btnLogOut.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnLogOut.Location = new System.Drawing.Point(10, 10);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(246, 52);
+            this.btnLogOut.Size = new System.Drawing.Size(228, 48);
             this.btnLogOut.TabIndex = 18;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // btnSetting
-            // 
-            this.btnSetting.BorderRadius = 5;
-            this.btnSetting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSetting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSetting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSetting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSetting.FillColor = System.Drawing.Color.White;
-            this.btnSetting.FocusedColor = System.Drawing.Color.LightCyan;
-            this.btnSetting.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnSetting.Image = global::App_Library.Properties.Resources.settings;
-            this.btnSetting.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSetting.ImageSize = new System.Drawing.Size(35, 35);
-            this.btnSetting.Location = new System.Drawing.Point(3, 0);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(245, 65);
-            this.btnSetting.TabIndex = 17;
-            this.btnSetting.Text = "Setting";
-            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            this.btnLogOut.MouseLeave += new System.EventHandler(this.pnContainLogOut_MouseLeave);
+            this.btnLogOut.MouseHover += new System.EventHandler(this.btnLogOut_MouseHover);
             // 
             // pnLeft
             // 
@@ -163,7 +173,7 @@ namespace App_Library.Views
             // 
             // pnUser
             // 
-            this.pnUser.BackColor = System.Drawing.Color.White;
+            this.pnUser.BackColor = System.Drawing.Color.Black;
             this.pnUser.Controls.Add(this.lbRole);
             this.pnUser.Controls.Add(this.lbName);
             this.pnUser.Controls.Add(this.picAvatar);
@@ -178,6 +188,7 @@ namespace App_Library.Views
             // lbRole
             // 
             this.lbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbRole.ForeColor = System.Drawing.Color.Aqua;
             this.lbRole.Location = new System.Drawing.Point(64, 56);
             this.lbRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRole.Name = "lbRole";
@@ -190,6 +201,7 @@ namespace App_Library.Views
             // lbName
             // 
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbName.ForeColor = System.Drawing.Color.Aqua;
             this.lbName.Location = new System.Drawing.Point(64, 32);
             this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";
@@ -243,6 +255,11 @@ namespace App_Library.Views
             this.logOutToolStripMenuItem.Text = "LogOut";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click_1);
             // 
+            // timerPicShop
+            // 
+            this.timerPicShop.Interval = 5;
+            this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
+            // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
@@ -250,11 +267,6 @@ namespace App_Library.Views
             this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.profileToolStripMenuItem.Text = "Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click_1);
-            // 
-            // timerPicShop
-            // 
-            this.timerPicShop.Interval = 5;
-            this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
             // 
             // MainForm
             // 
@@ -271,6 +283,8 @@ namespace App_Library.Views
             this.Text = "Main";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnFooter.ResumeLayout(false);
+            this.pnContainLogOut.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogOut)).EndInit();
             this.pnLeft.ResumeLayout(false);
             this.pnUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
@@ -282,11 +296,9 @@ namespace App_Library.Views
         #endregion
 
         private Timer timerPicHome;
-        internal Panel pnContent;
         private Guna.UI2.WinForms.Guna2Panel pnMain;
         private Panel pnFooter;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
-        private Guna.UI2.WinForms.Guna2Button btnSetting;
         private Panel pnLeft;
         private Panel pnSideBar;
         private Panel pnUser;
@@ -297,5 +309,8 @@ namespace App_Library.Views
         private ToolStripMenuItem logOutToolStripMenuItem;
         private ToolStripMenuItem profileToolStripMenuItem;
         private Timer timerPicShop;
+        private Guna.UI2.WinForms.Guna2Panel pnContainLogOut;
+        private Guna.UI2.WinForms.Guna2PictureBox picLogOut;
+        public Panel pnContent;
     }
 }

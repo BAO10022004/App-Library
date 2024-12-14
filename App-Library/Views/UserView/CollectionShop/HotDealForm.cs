@@ -33,20 +33,11 @@ namespace App_Library.Views.Main.CollectionShop
         {
             fpListBook.SuspendLayout(); // Tạm dừng việc vẽ lại khi thêm các phần tử
 
-            if (ListPanelBook.Count > 6)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    fpListBook.Controls.Add(ListPanelBook[i]);
-                }
-            }
-            else
-            {
                 foreach (Panel panel in ListPanelBook)
                 {
                     fpListBook.Controls.Add(panel);
                 }
-            }
+        
 
             fpListBook.ResumeLayout(); // Kích hoạt lại việc vẽ giao diện sau khi thêm xong
 

@@ -462,17 +462,23 @@
     <Compile Include="Views\Orthers\CollectionHelp\HelpForm.Designer.cs">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Orthers\CollectionProfile\ProfileForm.cs">
+    <Compile Include="Views\Orthers\CollectionProfile\NewProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Orthers\CollectionProfile\ProfileForm.Designer.cs">
-      <DependentUpon>ProfileForm.cs</DependentUpon>
+    <Compile Include="Views\Orthers\CollectionProfile\NewProfileForm.Designer.cs">
+      <DependentUpon>NewProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Orthers\CollectionSetting\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Orthers\CollectionSetting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ToolerForm\AlertConfirm.Designer.cs">
+      <DependentUpon>AlertConfirm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ToolerForm\AlertFail.cs">
       <SubType>Form</SubType>
@@ -499,6 +505,12 @@
     <Compile Include="Views\UserView\CollectionHome\BookItem.Designer.cs">
       <DependentUpon>BookItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserView\CollectionHome\BookItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionHome\BookItemList.Designer.cs">
+      <DependentUpon>BookItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserView\CollectionHome\BoughtBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -517,23 +529,17 @@
     <Compile Include="Views\UserView\CollectionHome\HistoryForm.Designer.cs">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserView\CollectionHome\HomeForm.cs">
+    <Compile Include="Views\UserView\CollectionHome\StockForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UserView\CollectionHome\HomeForm.Designer.cs">
-      <DependentUpon>HomeForm.cs</DependentUpon>
+    <Compile Include="Views\UserView\CollectionHome\StockForm.Designer.cs">
+      <DependentUpon>StockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserView\CollectionHome\MailPassword.cs">
+    <Compile Include="Views\UserView\CollectionHome\History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UserView\CollectionHome\MailPassword.Designer.cs">
-      <DependentUpon>MailPassword.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionHome\SettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionHome\SettingForm.Designer.cs">
-      <DependentUpon>SettingForm.cs</DependentUpon>
+    <Compile Include="Views\UserView\CollectionHome\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionRequest\RequestForm.cs">
       <SubType>Form</SubType>
@@ -558,6 +564,12 @@
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\BookItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\BookItem.Designer.cs">
+      <DependentUpon>BookItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\CommentForm.cs">
       <SubType>Form</SubType>
@@ -678,11 +690,14 @@
     <EmbeddedResource Include="Views\Orthers\CollectionHelp\HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Orthers\CollectionProfile\ProfileForm.resx">
-      <DependentUpon>ProfileForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Orthers\CollectionProfile\NewProfileForm.resx">
+      <DependentUpon>NewProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionSetting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ToolerForm\AlertConfirm.resx">
+      <DependentUpon>AlertConfirm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolerForm\AlertFail.resx">
       <DependentUpon>AlertFail.cs</DependentUpon>
@@ -696,6 +711,9 @@
     <EmbeddedResource Include="Views\UserView\CollectionHome\BookItem.resx">
       <DependentUpon>BookItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\BookItemList.resx">
+      <DependentUpon>BookItemList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionHome\BoughtBook.resx">
       <DependentUpon>BoughtBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -705,14 +723,11 @@
     <EmbeddedResource Include="Views\UserView\CollectionHome\HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionHome\HomeForm.resx">
-      <DependentUpon>HomeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\StockForm.resx">
+      <DependentUpon>StockForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionHome\MailPassword.resx">
-      <DependentUpon>MailPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionHome\SettingForm.resx">
-      <DependentUpon>SettingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserView\CollectionHome\History.resx">
+      <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionRequest\RequestForm.resx">
       <DependentUpon>RequestForm.cs</DependentUpon>
@@ -725,6 +740,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\BookItem.resx">
+      <DependentUpon>BookItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
@@ -783,6 +801,47 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\bo_17091774 %281%29.gif" />
+    <None Include="Resources\Animation - 1734151314083.gif" />
+    <None Include="Resources\Animation - 1734150991827.gif" />
+    <None Include="Resources\Animation - 1734150323195.gif" />
+    <None Include="Resources\pexels-baskincreativeco-17668382.jpg" />
+    <None Include="Resources\pexels-baskincreativeco-17668381.jpg" />
+    <None Include="Resources\edit %281%29.png" />
+    <None Include="Resources\pexels-baskincreativeco-1766838.jpg" />
+    <None Include="Resources\pexels-eberhardgross-1287145.jpg" />
+    <None Include="Resources\z6018041312532_644c1d8760bac36ecff4166bed526e3a.jpg" />
+    <None Include="Resources\Animation - 1734111580615.gif" />
+    <None Include="Resources\Animation - 1734111328431 %281%29.gif" />
+    <None Include="Resources\Animation - 1734099993534.gif" />
+    <None Include="Resources\Animation - 1734101867809.gif" />
+    <None Include="Resources\nextAnimation %282%293.gif" />
+    <None Include="Resources\nextAnimation %282%292.gif" />
+    <None Include="Resources\Animation - 1734104585214.gif" />
+    <None Include="Resources\nextAnimation %282%291.gif" />
+    <None Include="Resources\nextAnimation %282%29.gif" />
+    <None Include="Resources\nextAnimation.gif" />
+    <None Include="Resources\grid.png" />
+    <None Include="Resources\list.png" />
+    <None Include="Resources\user %282%29.png" />
+    <None Include="Resources\order-history.png" />
+    <None Include="Resources\education.png" />
+    <None Include="Resources\hot-sale_179053761.gif" />
+    <None Include="Resources\hot-sale_17905376.gif" />
+    <None Include="Resources\new_17204014.gif" />
+    <None Include="Resources\Screenshot 2024-12-13 003940.png" />
+    <None Include="Resources\new_14178125.gif" />
+    <None Include="Resources\icons8-home.gif" />
+    <None Include="Resources\icons8-home %281%291.gif" />
+    <None Include="Resources\icons8-home %281%29.gif" />
+    <None Include="Resources\icons8-log-out2.gif" />
+    <None Include="Resources\icons8-log-out1.gif" />
+    <None Include="Resources\icons8-log-out.gif" />
+    <None Include="Resources\logout %282%29.png" />
+    <None Include="Resources\log-out.gif" />
+    <None Include="Resources\eye.png" />
+    <None Include="Resources\eye-slash.png" />
+    <None Include="Resources\open-book.png" />
     <None Include="Resources\gear.png" />
     <None Include="Resources\mark.png" />
     <None Include="Resources\bannerElonMusk.jpg" />

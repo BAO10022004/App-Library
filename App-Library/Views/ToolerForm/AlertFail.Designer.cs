@@ -75,6 +75,7 @@
             // 
             // pnOk
             // 
+            this.pnOk.Animated = true;
             this.pnOk.BackColor = System.Drawing.Color.Transparent;
             this.pnOk.BorderRadius = 15;
             this.pnOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -101,17 +102,16 @@
             // 
             // guna2CirclePictureBox1
             // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.BackgroundImage = global::App_Library.Properties.Resources.healthy1;
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.cancel;
+            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Red;
+            this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.Animation___1734099993534;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(133, 66);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(137, 70);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 10;
             this.guna2CirclePictureBox1.TabStop = false;
             // 

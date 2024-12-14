@@ -34,7 +34,7 @@ namespace App_Library.Views
         private bool isDragging = false;
         private Point dragStartPoint;
         private Control draggedControl;
-        internal HomeForm homeForm;
+        internal StockForm homeForm;
         private NewShopMain shopForm;
 
         // compunent shop 
@@ -89,7 +89,7 @@ namespace App_Library.Views
                 this.picAvatar.Image = global::App_Library.Properties.Resources.account;
             }
 
-            homeForm = new HomeForm(this);
+            homeForm = new StockForm(this);
             shopForm = new NewShopMain(this);
 
             // Hiển thị sidebar
@@ -103,18 +103,17 @@ namespace App_Library.Views
             {
                 lbRole.Text = "User";
                 activeFormChild(pnSideBar, new SideBarUserForm(this));
-                activeFormChildForMainForm(homeForm, e);
+                activeFormChildForMainForm(shopForm, e);
             }
 
             //homeForm = new HomeForm(this);
             //shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
-
         }
        
         public void clickBackHome(object sender, EventArgs e)
         {
-            homeForm = new HomeForm(this);
+            homeForm = new StockForm(this);
             activeFormChildForMainForm(homeForm, e);
         }
         private void MouseLeave(object sender, EventArgs e)
@@ -191,7 +190,6 @@ namespace App_Library.Views
             formDes.Show();
         }
 
-        public Form getCurrentForm() => currentForm;
 
         private void lbSetting_Click(object sender, EventArgs e)
         {
@@ -205,33 +203,6 @@ namespace App_Library.Views
             activeFormChildForMainForm(new HelpForm(), e);
         }
 
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            activeFormChildForMainForm(new ProfileForm(this), e);
-        }
-        public void LoadUser()
-        {
-            lbName.Text = Session.CurentUser.Username;
-            picAvatar.Load(Session.CurentUser.PhotoURL);
-
-            // Hiển thị sidebar
-            if (Session.CurentUser.IsAdmin)
-            {
-                lbRole.Text = "Admin";
-                activeFormChild(pnSideBar, new SideBarAdminForm(this));
-            }
-            else
-            {
-                lbRole.Text = "User";
-                activeFormChild(pnSideBar, new SideBarUserForm(this));
-            }
-        }
         Form actForm;
         private void btnLogOut_Click(object sender, EventArgs e)
         {
@@ -262,10 +233,6 @@ namespace App_Library.Views
 
         }
 
-        private void btnSetting_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void pnMain_Paint(object sender, PaintEventArgs e)
         {
@@ -312,14 +279,21 @@ namespace App_Library.Views
 
         }
 
-        private void btnLogOut_Click_1(object sender, EventArgs e)
+        private void lbName_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void lbName_Click(object sender, EventArgs e)
+        private void btnLogOut_MouseHover(object sender, EventArgs e)
         {
+            pnContainLogOut.BorderColor = Color.Blue;
+            picLogOut.Visible = true;
+        }
 
+        private void pnContainLogOut_MouseLeave(object sender, EventArgs e)
+        {
+            pnContainLogOut.BorderColor = Color.Black;
+            picLogOut.Visible=false;
         }
     }
 }
