@@ -219,8 +219,6 @@ namespace App_Library.Views.ToolerForm
         public void playMusic(string url)
         {
 
-            //SoundPlayer player = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 10), "Content\\Music\\" + url));
-            //player.PlaySync();
         }
     }
 

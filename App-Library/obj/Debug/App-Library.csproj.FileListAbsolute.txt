@@ -505,3 +505,4 @@ C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debu
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollection.NewPasswordForm.resources
 C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionShop.BookItemSearch.resources
+C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\obj\Debug\App_Library.Views.UserView.CollectionShop.CommentEdit.resources

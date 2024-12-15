@@ -108,6 +108,7 @@
             this.label3.Size = new System.Drawing.Size(85, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "SUBMIT";
+            this.label3.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // guna2Panel4
             // 
@@ -168,7 +169,6 @@
             this.pnAddComment.Name = "pnAddComment";
             this.pnAddComment.Size = new System.Drawing.Size(970, 377);
             this.pnAddComment.TabIndex = 5;
-            this.pnAddComment.Paint += new System.Windows.Forms.PaintEventHandler(this.pnAddComment_Paint);
             this.pnAddComment.Resize += new System.EventHandler(this.pnAddComment_Resize);
             // 
             // pnHideOption

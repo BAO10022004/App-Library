@@ -32,25 +32,27 @@
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainToolComment = new System.Windows.Forms.Panel();
             this.pnContainComment = new Guna.UI2.WinForms.Guna2Panel();
+            this.fpnContent = new System.Windows.Forms.FlowLayoutPanel();
             this.lbComment = new System.Windows.Forms.Label();
             this.lnMoreSeen = new System.Windows.Forms.Label();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
+            this.lbNumberLike = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lbNameComment = new System.Windows.Forms.Label();
             this.lbCreateAt = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.fpnContent = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lbNumberLike = new System.Windows.Forms.Label();
             this.pnMainComment.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.pnContainToolComment.SuspendLayout();
             this.pnContainComment.SuspendLayout();
+            this.fpnContent.SuspendLayout();
             this.guna2Panel8.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.fpnContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +63,7 @@
             this.pnMainComment.Controls.Add(this.panel1);
             this.pnMainComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainComment.Location = new System.Drawing.Point(0, 0);
-            this.pnMainComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnMainComment.Margin = new System.Windows.Forms.Padding(2);
             this.pnMainComment.Name = "pnMainComment";
             this.pnMainComment.Size = new System.Drawing.Size(963, 106);
             this.pnMainComment.TabIndex = 1;
@@ -73,7 +75,7 @@
             this.guna2Panel7.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel7.Location = new System.Drawing.Point(65, 0);
-            this.guna2Panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel7.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel7.Name = "guna2Panel7";
             this.guna2Panel7.Size = new System.Drawing.Size(898, 106);
             this.guna2Panel7.TabIndex = 1;
@@ -83,10 +85,10 @@
             this.pnContainToolComment.Controls.Add(this.pnContainComment);
             this.pnContainToolComment.Controls.Add(this.lnMoreSeen);
             this.pnContainToolComment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContainToolComment.Location = new System.Drawing.Point(0, 33);
-            this.pnContainToolComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnContainToolComment.Location = new System.Drawing.Point(0, 28);
+            this.pnContainToolComment.Margin = new System.Windows.Forms.Padding(2);
             this.pnContainToolComment.Name = "pnContainToolComment";
-            this.pnContainToolComment.Size = new System.Drawing.Size(898, 36);
+            this.pnContainToolComment.Size = new System.Drawing.Size(898, 41);
             this.pnContainToolComment.TabIndex = 3;
             // 
             // pnContainComment
@@ -95,10 +97,19 @@
             this.pnContainComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContainComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.pnContainComment.Location = new System.Drawing.Point(0, 0);
-            this.pnContainComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnContainComment.Margin = new System.Windows.Forms.Padding(2);
             this.pnContainComment.Name = "pnContainComment";
-            this.pnContainComment.Size = new System.Drawing.Size(898, 36);
+            this.pnContainComment.Size = new System.Drawing.Size(898, 41);
             this.pnContainComment.TabIndex = 2;
+            // 
+            // fpnContent
+            // 
+            this.fpnContent.Controls.Add(this.lbComment);
+            this.fpnContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fpnContent.Location = new System.Drawing.Point(0, 0);
+            this.fpnContent.Name = "fpnContent";
+            this.fpnContent.Size = new System.Drawing.Size(898, 41);
+            this.fpnContent.TabIndex = 0;
             // 
             // lbComment
             // 
@@ -126,14 +137,65 @@
             // 
             // guna2Panel8
             // 
+            this.guna2Panel8.Controls.Add(this.btnDelete);
+            this.guna2Panel8.Controls.Add(this.btnEdit);
             this.guna2Panel8.Controls.Add(this.lbNumberLike);
             this.guna2Panel8.Controls.Add(this.pictureBox3);
             this.guna2Panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel8.Location = new System.Drawing.Point(0, 69);
-            this.guna2Panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel8.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel8.Name = "guna2Panel8";
             this.guna2Panel8.Size = new System.Drawing.Size(898, 37);
             this.guna2Panel8.TabIndex = 2;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Animated = true;
+            this.btnDelete.BorderRadius = 4;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.Honeydew;
+            this.btnDelete.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Gray;
+            this.btnDelete.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.btnDelete.Location = new System.Drawing.Point(158, 5);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(85, 22);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Animated = true;
+            this.btnEdit.BorderRadius = 4;
+            this.btnEdit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEdit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEdit.FillColor = System.Drawing.Color.Honeydew;
+            this.btnEdit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.Gray;
+            this.btnEdit.HoverState.FillColor = System.Drawing.Color.Silver;
+            this.btnEdit.Location = new System.Drawing.Point(88, 6);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(64, 22);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "EDIT";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // lbNumberLike
+            // 
+            this.lbNumberLike.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lbNumberLike.ForeColor = System.Drawing.Color.Black;
+            this.lbNumberLike.Location = new System.Drawing.Point(35, 6);
+            this.lbNumberLike.Name = "lbNumberLike";
+            this.lbNumberLike.Size = new System.Drawing.Size(47, 22);
+            this.lbNumberLike.TabIndex = 1;
+            this.lbNumberLike.Text = "label1";
+            this.lbNumberLike.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
@@ -141,9 +203,9 @@
             this.flowLayoutPanel1.Controls.Add(this.lbCreateAt);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(898, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(898, 28);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // lbNameComment
@@ -166,7 +228,7 @@
             this.lbCreateAt.Location = new System.Drawing.Point(77, 0);
             this.lbCreateAt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCreateAt.Name = "lbCreateAt";
-            this.lbCreateAt.Size = new System.Drawing.Size(210, 33);
+            this.lbCreateAt.Size = new System.Drawing.Size(210, 24);
             this.lbCreateAt.TabIndex = 1;
             this.lbCreateAt.Text = "label2";
             this.lbCreateAt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,19 +238,10 @@
             this.panel1.Controls.Add(this.guna2CirclePictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(65, 106);
             this.panel1.TabIndex = 0;
-            // 
-            // fpnContent
-            // 
-            this.fpnContent.Controls.Add(this.lbComment);
-            this.fpnContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpnContent.Location = new System.Drawing.Point(0, 0);
-            this.fpnContent.Name = "fpnContent";
-            this.fpnContent.Size = new System.Drawing.Size(898, 36);
-            this.fpnContent.TabIndex = 0;
             // 
             // pictureBox3
             // 
@@ -215,17 +268,6 @@
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // lbNumberLike
-            // 
-            this.lbNumberLike.AutoSize = true;
-            this.lbNumberLike.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.lbNumberLike.ForeColor = System.Drawing.Color.Gray;
-            this.lbNumberLike.Location = new System.Drawing.Point(35, 13);
-            this.lbNumberLike.Name = "lbNumberLike";
-            this.lbNumberLike.Size = new System.Drawing.Size(47, 15);
-            this.lbNumberLike.TabIndex = 1;
-            this.lbNumberLike.Text = "label1";
-            // 
             // CompunentComment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,7 +276,7 @@
             this.ClientSize = new System.Drawing.Size(963, 106);
             this.Controls.Add(this.pnMainComment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CompunentComment";
             this.Text = "CompunentComment";
             this.Load += new System.EventHandler(this.CompunentComment_LoadAsync);
@@ -243,13 +285,12 @@
             this.pnContainToolComment.ResumeLayout(false);
             this.pnContainToolComment.PerformLayout();
             this.pnContainComment.ResumeLayout(false);
+            this.fpnContent.ResumeLayout(false);
+            this.fpnContent.PerformLayout();
             this.guna2Panel8.ResumeLayout(false);
-            this.guna2Panel8.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.fpnContent.ResumeLayout(false);
-            this.fpnContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -273,5 +314,7 @@
         private System.Windows.Forms.FlowLayoutPanel fpnContent;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lbNumberLike;
+        private Guna.UI2.WinForms.Guna2Button btnEdit;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
     }
 }

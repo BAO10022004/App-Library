@@ -68,6 +68,8 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.pnContainButtonBuy = new System.Windows.Forms.Panel();
+            this.btnPending = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbBtnPedding = new System.Windows.Forms.Label();
             this.pnReadBook = new Guna.UI2.WinForms.Guna2Panel();
             this.lbReadBook = new System.Windows.Forms.Label();
             this.btnBuy = new Guna.UI2.WinForms.Guna2Panel();
@@ -85,8 +87,6 @@
             this.picStar2 = new System.Windows.Forms.PictureBox();
             this.picStar4 = new System.Windows.Forms.PictureBox();
             this.picStar5 = new System.Windows.Forms.PictureBox();
-            this.btnPending = new Guna.UI2.WinForms.Guna2Panel();
-            this.lbBtnPedding = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.pnMainPropertiesBook.SuspendLayout();
             this.pnDescription.SuspendLayout();
@@ -112,6 +112,7 @@
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             this.pnContainButtonBuy.SuspendLayout();
+            this.btnPending.SuspendLayout();
             this.pnReadBook.SuspendLayout();
             this.btnBuy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -126,7 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar5)).BeginInit();
-            this.btnPending.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -541,6 +541,34 @@
             this.pnContainButtonBuy.Size = new System.Drawing.Size(622, 146);
             this.pnContainButtonBuy.TabIndex = 4;
             // 
+            // btnPending
+            // 
+            this.btnPending.BorderColor = System.Drawing.Color.Cyan;
+            this.btnPending.BorderRadius = 25;
+            this.btnPending.BorderThickness = 5;
+            this.btnPending.Controls.Add(this.lbBtnPedding);
+            this.btnPending.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPending.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnPending.Location = new System.Drawing.Point(166, 41);
+            this.btnPending.Name = "btnPending";
+            this.btnPending.Size = new System.Drawing.Size(172, 69);
+            this.btnPending.TabIndex = 2;
+            this.btnPending.Visible = false;
+            this.btnPending.Click += new System.EventHandler(this.lbBtnPedding_Click);
+            this.btnPending.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPending_Paint);
+            // 
+            // lbBtnPedding
+            // 
+            this.lbBtnPedding.AutoSize = true;
+            this.lbBtnPedding.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbBtnPedding.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbBtnPedding.Location = new System.Drawing.Point(28, 22);
+            this.lbBtnPedding.Name = "lbBtnPedding";
+            this.lbBtnPedding.Size = new System.Drawing.Size(119, 24);
+            this.lbBtnPedding.TabIndex = 0;
+            this.lbBtnPedding.Text = "PENDING...";
+            this.lbBtnPedding.Click += new System.EventHandler(this.lbBtnPedding_Click);
+            // 
             // pnReadBook
             // 
             this.pnReadBook.BorderColor = System.Drawing.Color.Cyan;
@@ -732,34 +760,6 @@
             this.picStar5.TabIndex = 4;
             this.picStar5.TabStop = false;
             // 
-            // btnPending
-            // 
-            this.btnPending.BorderColor = System.Drawing.Color.Cyan;
-            this.btnPending.BorderRadius = 25;
-            this.btnPending.BorderThickness = 5;
-            this.btnPending.Controls.Add(this.lbBtnPedding);
-            this.btnPending.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPending.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnPending.Location = new System.Drawing.Point(166, 41);
-            this.btnPending.Name = "btnPending";
-            this.btnPending.Size = new System.Drawing.Size(172, 69);
-            this.btnPending.TabIndex = 2;
-            this.btnPending.Visible = false;
-            this.btnPending.Click += new System.EventHandler(this.lbBtnPedding_Click);
-            this.btnPending.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPending_Paint);
-            // 
-            // lbBtnPedding
-            // 
-            this.lbBtnPedding.AutoSize = true;
-            this.lbBtnPedding.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbBtnPedding.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lbBtnPedding.Location = new System.Drawing.Point(28, 22);
-            this.lbBtnPedding.Name = "lbBtnPedding";
-            this.lbBtnPedding.Size = new System.Drawing.Size(119, 24);
-            this.lbBtnPedding.TabIndex = 0;
-            this.lbBtnPedding.Text = "PENDING...";
-            this.lbBtnPedding.Click += new System.EventHandler(this.lbBtnPedding_Click);
-            // 
             // PropertiesBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -806,6 +806,8 @@
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.pnContainButtonBuy.ResumeLayout(false);
+            this.btnPending.ResumeLayout(false);
+            this.btnPending.PerformLayout();
             this.pnReadBook.ResumeLayout(false);
             this.pnReadBook.PerformLayout();
             this.btnBuy.ResumeLayout(false);
@@ -823,8 +825,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar5)).EndInit();
-            this.btnPending.ResumeLayout(false);
-            this.btnPending.PerformLayout();
             this.ResumeLayout(false);
 
         }

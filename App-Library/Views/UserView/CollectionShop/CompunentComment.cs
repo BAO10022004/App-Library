@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Windows.Forms;
 
@@ -9,12 +10,12 @@ namespace App_Library.Views.Main.CollectionShop
     {
         User user;
         Comment Comment;
-        NewShopMain shop;
-        public CompunentComment(Comment comment, NewShopMain shop)
+        CommentForm parent;
+        public CompunentComment(Comment comment, CommentForm parent)
         {
             InitializeComponent();
             this.Comment = comment;
-            this.shop = shop;
+            this.parent = parent;
             lbNumberLike.Text = Comment.NumberOfLikes.ToString();
         }
 
@@ -42,21 +43,15 @@ namespace App_Library.Views.Main.CollectionShop
                     lbComment.Text = Comment.Content.Substring(100);
                     fpnContent.Controls.Add(lnMoreSeen);
                 }
-                
-                //fixed Size
-                //if (lbComment.Height <= pnContainComment.Height)
-                //    {
-                //        this.Height -= (pnContainComment.Height - lbComment.Height);
-                //    }
-                //    else
-                //    {
-                //        this.Height += 20;
-                //    }
                 int abs = pnContainComment.Height - lbComment.Height + 20;
                 this.Height -= abs;
+                User currentUser =await( new UserService()).GetCurrentUserAsync();
+                if(!Comment.UserId.Equals(currentUser.Id))
+                {
+                    btnDelete.Visible = false;
+                    btnEdit.Visible = false;
+                }
             }
-           
-
         }
 
         private void lnMoreSeen_Click(object sender, EventArgs e)
@@ -83,6 +78,23 @@ namespace App_Library.Views.Main.CollectionShop
             CommentService commentService = new CommentService();
             await commentService.LikeCommentAsync(Comment.Id);
             lbNumberLike.Text = Comment.NumberOfLikes.ToString();
+        }
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+          bool result =  await  parent.deleteComment(Comment.Id);
+            if (result)
+            {
+                (new AlertSuccess("Delete comment success")).ShowDialog();
+            }
+            else
+            {
+                (new AlertFail("Delete comment fail")).ShowDialog();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            parent.editCommentFor(Comment);
         }
     }
 }
