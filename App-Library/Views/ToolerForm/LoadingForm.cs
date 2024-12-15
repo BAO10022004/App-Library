@@ -12,12 +12,18 @@ namespace App_Library.Views.ToolerForm
 {
     public partial class LoadingForm : Form
     {
-        public LoadingForm()
+        public LoadingForm(Form form = null)
         {
             InitializeComponent();
             this.Location = Program.sp.Location;
-            this.Size = Program.sp.Size;
-           
+            if (form != null)
+            {
+                this.Size =new Size( form.Width,form.Height +40);
+            }
+            else
+            {
+                this.Size = Program.sp.Size;
+            }
         }
 
         private void LoadingForm_Load(object sender, EventArgs e)

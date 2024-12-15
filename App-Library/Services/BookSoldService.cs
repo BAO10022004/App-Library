@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 using System.Net.Http.Json;
+using Firebase.Auth;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using User = App_Library.Models.User;
 
 namespace App_Library.Services
 {
@@ -39,7 +42,31 @@ namespace App_Library.Services
         {
             return await _httpClient.GetFromJsonAsync<List<BookSold>>("api/booksold/user/bought-books");
         }
-
+        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
+        {
+            string usernameCurrent = _user.Username;
+            string passwordCurrent = _user.PasswordHash;
+            AuthService db = new AuthService();
+            bool result = await db.Login("admin", "123456", null);
+            if (!result)
+            {
+                await db.Login(usernameCurrent, passwordCurrent, null);
+                return null;
+            }
+            else
+            {
+                var dbBookSold = await GetBooksSoldAsync();
+                List<BookSold> bookSolds = new List<BookSold>();
+                dbBookSold.ForEach(x =>
+                {
+                    if (x.UserId == _user.Id &&( x.Status.Equals("Pending") || x.Status.Equals("Approved")))
+                    {
+                        bookSolds.Add(x);
+                    }
+                });
+                return bookSolds;
+            }
+        }
         // Lấy danh sách sách đã bán với phân trang và sắp xếp
         public async Task<SoldBooksResponse> GetSoldBooksAsync(string sort = "asc", int startIndex = 0, int limit = 10)
         {

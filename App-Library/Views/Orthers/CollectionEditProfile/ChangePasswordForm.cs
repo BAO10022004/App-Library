@@ -17,22 +17,47 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
     {
         Form actForm;
         User user;
-        public ChangePasswordForm()
+        public ChangePasswordForm(User user)
         {
             InitializeComponent();
-
+            this.user = user;
+            if(user == null)
+                nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
+            nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
         }
 
         private async void ChangePasswordForm_Load(object sender, EventArgs e)
         {
-            user = await (new Services.UserService()).GetCurrentUserAsync();
-            nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
-
+            
+            if(user != null)
+            {
+                try
+                {
+                    using (HttpClient client = new HttpClient())
+                    {
+                        var imageBytes = await client.GetByteArrayAsync(user.PhotoURL);
+                        using (var ms = new System.IO.MemoryStream(imageBytes))
+                        {
+                            picAvatar.Image = System.Drawing.Image.FromStream(ms);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("LOI");
+                }
+                lbUserName.Text = user.Username;
+                lbEmail.Text = user.Email;
+            }
+           
+        }
+        public async void updateFrame(User userUpdate)
+        {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var imageBytes = await client.GetByteArrayAsync(user.PhotoURL);
+                    var imageBytes = await client.GetByteArrayAsync(userUpdate.PhotoURL);
                     using (var ms = new System.IO.MemoryStream(imageBytes))
                     {
                         picAvatar.Image = System.Drawing.Image.FromStream(ms);
@@ -43,8 +68,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             {
                 MessageBox.Show("LOI");
             }
-            lbUserName.Text = user.Username;
-            lbEmail.Text = user.Email;
+            lbUserName.Text = userUpdate.Username;
+            lbEmail.Text = userUpdate.Email;
         }
         public void nextPage(Form form)
         {

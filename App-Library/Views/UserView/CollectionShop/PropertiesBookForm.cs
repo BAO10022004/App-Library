@@ -2,6 +2,7 @@
 using App_Library.Services;
 using App_Library.Views.Main.CollectionShop;
 using App_Library.Views.ToolerForm;
+using App_Library.Views.UserView.CollectionHome;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,8 @@ namespace App_Library.Views
 
         private async void PropertiesBookForm_LoadAsync(object sender, EventArgs e)
         {
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.Show();
             int count = 0;
             foreach(PictureBox pic in pnRating.Controls)
             {
@@ -90,6 +93,18 @@ namespace App_Library.Views
                     pnReadBook.Location = btnBuy.Location;
                     pnReadBook.Visible = true;
                     btnBuy.Visible = false;
+                    btnPending.Visible = false;
+                }
+            }
+            var dbBooks =await GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
+            foreach(var item in dbBooks)
+            {
+                if (item.BookId.Equals(getBookId) && item.Status == "Pending")
+                {
+                    btnPending.Location = btnBuy.Location;
+                    btnPending.Visible = true;
+                    btnBuy.Visible = false;
+                    pnReadBook.Visible = false;
                 }
             }
             CommentService _commentDb = new CommentService();
@@ -97,6 +112,35 @@ namespace App_Library.Views
             comments = await _commentDb.GetBookCommentsAsync(book.Id);
             pnToolComment.Height = 300 + comments.Count * 200;
             activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
+            loadingForm.Close();
+        }
+        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
+        {
+            string usernameCurrent = _user.Username;
+            string passwordCurrent = _user.PasswordHash;
+            string id = _user.Id;
+            AuthService db = new AuthService();
+            bool result = await db.Login("admin", "123456", null);
+            if (!result)
+            {
+                await db.Login(usernameCurrent, passwordCurrent, null);
+                return null;
+            }
+            else
+            {
+                var user = (await (new UserService()).GetUsersAsync()).ToList().FirstOrDefault(u => u.Username == usernameCurrent);
+                if (user == null)
+                {
+                    return null;
+                }
+                List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
+                var filteredBooks = (from b in list
+                                     where b.UserId == id &&
+                                           (b.Status == "Pending" || b.Status == "Approved")
+                                     select b).ToList();
+                await db.Login(usernameCurrent, passwordCurrent, null);
+                return filteredBooks;
+            }
         }
         Form form;
         Form formComment;
@@ -197,23 +241,41 @@ namespace App_Library.Views
 
         private async void btnBuy_Click(object sender, EventArgs e)
         {
+            User user =await ( new UserService()).GetCurrentUserAsync();
             BookSold bookSold = new BookSold()
             {
                 BookId = book.Id,
                 UserId = (await (new UserService()).GetCurrentUserAsync()).Id,
                 Username = (await (new UserService()).GetCurrentUserAsync()).Username,
                 Status = "Pending",
-                Slug = book.Slug
+                Slug = book.Slug,
+                Title = book.Title,
+                Email = user.Email,
+                Image = book.Image,
+                Genre = book.Genre,
+                Price = book.Price,
             };
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.Show();
             String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
-            int count = (await (new BookSoldService()).GetBooksInProgressAsync()).Count();
-            MessageBox.Show(mes + count);
-            
+            loadingForm.Close();
+            (new AlertSuccess("Your book is pedding")).ShowDialog();            
         }
         Form formAct;
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             activeFormChild(shop.parent.pnContent, new NewShopMain(shop.parent), null,ref formAct);
+        }
+
+        private void btnPending_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbBtnPedding_Click(object sender, EventArgs e)
+        {
+
+            shop.parent.nextPageToHistory(sender);
         }
     }
 }

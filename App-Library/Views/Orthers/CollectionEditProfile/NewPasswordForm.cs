@@ -27,6 +27,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             this.user = user;
             authService = new AuthService();
             userService = new UserService();
+            txtPassword.PasswordChar = '•';
+            txtConfirmPassword.PasswordChar = '•';
         }
         private void btnNext_MouseHover(object sender, EventArgs e)
         {
@@ -83,17 +85,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
                     PasswordHash = txtPassword.Text,
                     PhotoURL = user.PhotoURL
                 };
-
-                var result = await userService.UpdateUserAsync(Session.CurentUser.Id, updateuser);
-                if (result)
-                {
-                    MessageBox.Show("Cập nhật thành công");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Không thể cập nhật");
-                }
+                parent.Hide();
+                var result = await userService.UpdateUserAsync(user.Id, updateuser);
             }
         }
 
@@ -165,6 +158,98 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             else
             {
                 return true;
+            }
+        }
+        bool isEyeForConfirmClose = false;
+        bool isEyeForPassClose = false;
+        void closeEye(PictureBox pic)
+        {
+            try
+            {
+                pic.Image = global::App_Library.Properties.Resources.eye_slash;
+                if (pic.Name.Contains("C"))
+                {
+                    // Confirm
+                    isEyeForConfirmClose = true;
+                    txtConfirmPassword.PasswordChar = '•';
+                    picEyeConfirm.Click += new EventHandler(this.picEyeConfirm_Click);
+                }
+                else
+                {
+                    isEyeForPassClose = true;
+                    txtPassword.PasswordChar = '•';
+                    picEyePassword.Click += new EventHandler(this.picEyePassword_Click);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+        void openEyeFor(PictureBox pic)
+        {
+            try
+            {
+                pic.Image = global::App_Library.Properties.Resources.eye;
+                if (pic.Name.Contains("Confirm"))
+                {
+                    // Confirm
+                    isEyeForConfirmClose = false;
+                    txtConfirmPassword.PasswordChar = '\0';
+                    timerOpenEyeForConfirm.Start();
+                    picEyeConfirm.Click -= new EventHandler(this.picEyeConfirm_Click);
+                }
+                else
+                {
+                    isEyeForPassClose = false;
+                    txtPassword.PasswordChar = '\0';
+                    timerOpenEyeForPassWord.Start();
+                    picEyePassword.Click -= new EventHandler(this.picEyePassword_Click);
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void picEyeConfirm_Click(object sender, EventArgs e)
+        {
+            openEyeFor(picEyeConfirm);
+        }
+
+        private void picEyePassword_Click(object sender, EventArgs e)
+        {
+            openEyeFor(picEyePassword);
+        }
+        int countDown = 3;
+        private void timerOpenEyeForConfirm_Tick(object sender, EventArgs e)
+        {
+            if (countDown > 0)
+            {
+                countDown--;
+            }
+            else
+            {
+                countDown = 3;
+                timerOpenEyeForConfirm.Stop();
+                closeEye(picEyeConfirm);
+            }
+        }
+
+        private void timerOpenEyeForPassWord_Tick(object sender, EventArgs e)
+        {
+            if (countDown > 0)
+            {
+                countDown--;
+            }
+            else
+            {
+                countDown = 3;
+                timerOpenEyeForPassWord.Stop();
+                closeEye(picEyePassword);
             }
         }
     }

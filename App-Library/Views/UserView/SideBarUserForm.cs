@@ -26,8 +26,8 @@ namespace App_Library.Views.UserView
         {
             InitializeComponent();
             _mainForm = mainForm;
-            
-            
+
+
         }
         private void SideBarUserForm_Load(object sender, EventArgs e)
         {
@@ -42,7 +42,7 @@ namespace App_Library.Views.UserView
         }
         private void MouseHover(object sender, EventArgs e)
         {
-            
+
             Guna2Button myButton = sender as Guna2Button;
             if (!(isClick[myButton]))
             {
@@ -50,30 +50,30 @@ namespace App_Library.Views.UserView
                 myButton.ImageSize = new Size(45, 45);
                 myButton.FillColor = Color.LightCyan;
             }
-            
+
         }
-       
+
         private void MouseLeave(object sender, EventArgs e)
         {
             Guna2Button myButton = sender as Guna2Button;
-            if( !(isClick[myButton]))
+            if (!(isClick[myButton]))
             {
                 myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 myButton.ImageSize = new Size(35, 35);
                 myButton.FillColor = Color.White;
             }
-           
+
         }
 
-        void setIsClick(object sender)
+        public void setIsClick(object sender)
         {
             Guna2Button myButton = sender as Guna2Button;
             myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             myButton.FillColor = Color.SkyBlue;
             isClick[myButton] = true;
-            foreach(Guna2Button control in pnSideBar.Controls)
+            foreach (Guna2Button control in pnSideBar.Controls)
             {
-                if(!control.Name.Equals(myButton.Name))
+                if (!control.Name.Equals(myButton.Name))
                 {
                     control.Font = new System.Drawing.Font("Arial Rounded MT Bold", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     control.FillColor = Color.White;
@@ -103,5 +103,6 @@ namespace App_Library.Views.UserView
             setIsClick(sender as Control);
             _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm), e);
         }
+        
     }
 }

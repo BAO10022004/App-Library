@@ -110,7 +110,7 @@
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.picAvatar.Size = new System.Drawing.Size(150, 150);
-            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAvatar.TabIndex = 23;
             this.picAvatar.TabStop = false;
             // 
@@ -128,6 +128,7 @@
             // txbUsername
             // 
             this.txbUsername.BorderRadius = 10;
+            this.txbUsername.BorderThickness = 2;
             this.txbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbUsername.DefaultText = "";
             this.txbUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -149,6 +150,7 @@
             // txbEmail
             // 
             this.txbEmail.BorderRadius = 10;
+            this.txbEmail.BorderThickness = 2;
             this.txbEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbEmail.DefaultText = "";
             this.txbEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));

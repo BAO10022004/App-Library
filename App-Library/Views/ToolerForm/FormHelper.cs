@@ -185,7 +185,7 @@ namespace App_Library.Views.ToolerForm
             parent.btnRemind.Text = string.Empty;
             parent.btnRemind.Image = App_Library.Properties.Resources.Animation___1734104585214;
         }
-        public async void sendMailOtp(string body, string mailTo)
+        public  bool sendMailOtp(string body, string mailTo)
         {
 
             try
@@ -208,23 +208,19 @@ namespace App_Library.Views.ToolerForm
                 mail.To.Add(mailTo);
 
                 smtpClient.Send(mail);
-                MessageBox.Show("Email sent successfully!");
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-
+                return false;
             }
-
-
-
         }
 
         public void playMusic(string url)
         {
 
-            SoundPlayer player = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 10), "Content\\Music\\" + url));
-            player.PlaySync();
+            //SoundPlayer player = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 10), "Content\\Music\\" + url));
+            //player.PlaySync();
         }
     }
 

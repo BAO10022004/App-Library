@@ -58,7 +58,18 @@ namespace App_Library.Services
             (new AlertFail("Login Fail")).ShowDialog();
             return false;
         }
-
+        public async Task<bool> Login(string username, string password, Control uiControl)
+        {
+            var request = new LoginRequest { Username = username, Password = password };
+            var response = await _httpClient.PostAsJsonAsync("api/auth/login", request);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
+                Session.Token = result.Token;
+                return true;
+            }
+            return false;
+        }
 
 
 

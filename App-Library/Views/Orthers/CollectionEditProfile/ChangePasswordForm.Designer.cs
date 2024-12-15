@@ -84,16 +84,18 @@
             // lbEmail
             // 
             this.lbEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbEmail.Location = new System.Drawing.Point(3, 280);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(363, 51);
             this.lbEmail.TabIndex = 4;
-            this.lbEmail.Text = "USER NAME";
+            this.lbEmail.Text = "MAIL";
             this.lbEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbUserName
             // 
             this.lbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserName.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbUserName.Location = new System.Drawing.Point(3, 229);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(363, 51);
@@ -103,6 +105,7 @@
             // 
             // picAvatar
             // 
+            this.picAvatar.Image = global::App_Library.Properties.Resources.user;
             this.picAvatar.ImageRotate = 0F;
             this.picAvatar.Location = new System.Drawing.Point(85, 3);
             this.picAvatar.Name = "picAvatar";
@@ -124,10 +127,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Beige;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1014, 641);
             this.Controls.Add(this.pnMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ChangePasswordForm";
             this.Text = "ChangePasswordForm";
             this.Load += new System.EventHandler(this.ChangePasswordForm_Load);

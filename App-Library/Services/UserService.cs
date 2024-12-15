@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Net.Http.Json;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using App_Library.Views.ToolerForm;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace App_Library.Services
 {
@@ -75,9 +77,27 @@ namespace App_Library.Services
         // Cap nhat nguoi dung theo ID
         public async Task<bool> UpdateUserAsync(string id, UpdateUserDTO updatedUser)
         {
+            LoadingForm loadingForm = new LoadingForm();
+
+            // Hiển thị LoadingForm ngay lập tức
+            loadingForm.Show();
             var response = await _httpClient.PutAsJsonAsync($"api/users/update/{id}", updatedUser);
             Session.CurentUser = await response.Content.ReadFromJsonAsync<User>();
-            return response.IsSuccessStatusCode;
+            // Sau khi hoàn thành yêu cầu HTTP, kiểm tra kết quả
+            if (response.IsSuccessStatusCode)
+            {
+             
+                // Đóng LoadingForm khi thành công
+                loadingForm.Hide();
+                loadingForm.Close();
+                (new AlertSuccess("SAVES SUCCESS" + "\n" + "RE-LOGIN TO COUNTINUE")).ShowDialog();
+                return true;
+            }
+            // Nếu đăng nhập thất bại, đóng LoadingForm
+            loadingForm.Hide();
+            loadingForm.Close();
+            (new AlertFail(" Fail")).ShowDialog();
+            return false;
         }
         // Tắc người dùng
         public async Task<bool> SoftDeleteUserAsync(string id)

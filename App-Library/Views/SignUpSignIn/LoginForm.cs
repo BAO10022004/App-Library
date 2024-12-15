@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.Orthers.CollectionEditProfile;
 using App_Library.Views.SignIn;
 using App_Library.Views.ToolerForm;
 using DnsClient.Protocol;
@@ -130,7 +131,7 @@ namespace App_Library.Views
             try
             {
                 isEyeClose = true;
-                this.picEye.Image = global::App_Library.Properties.Resources.view;
+                this.picEye.Image = global::App_Library.Properties.Resources.eye;
                 txbPassword.PasswordChar = '•';
 
                 picEye.Click += new EventHandler(this.picEye_Click);
@@ -146,7 +147,7 @@ namespace App_Library.Views
             try
             {
                 isEyeClose = false;
-                this.picEye.Image = global::App_Library.Properties.Resources.close_eye;
+                this.picEye.Image = global::App_Library.Properties.Resources.eye_slash;
                 txbPassword.PasswordChar = '\0';
                 timerEyeOpen.Start();
                 picEye.Click -= new EventHandler(this.picEye_Click);
@@ -258,11 +259,9 @@ namespace App_Library.Views
             }
         }
 
-        private async void lbForgotPassword_Click(object sender, EventArgs e)
+        private  void lbForgotPassword_Click(object sender, EventArgs e)
         {
-            UserService userService = new UserService();
-           // sendMail((await userService.GetCurrentUserAsync()).PasswordHash, (await userService.GetCurrentUserAsync()).Email);
-            MessageBox.Show("Password sended to your mail");
+            (new ChangePasswordForm(null)).ShowDialog();
         }
 
         private void lbCreateAccount_MouseHover(object sender, EventArgs e)

@@ -94,6 +94,7 @@
             this.btnChangePass.Size = new System.Drawing.Size(170, 51);
             this.btnChangePass.TabIndex = 6;
             this.btnChangePass.Text = "CHANGE PASSWORD";
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // guna2Button1
             // 
@@ -134,7 +135,7 @@
             this.lbStock.Name = "lbStock";
             this.lbStock.Size = new System.Drawing.Size(122, 39);
             this.lbStock.TabIndex = 1;
-            this.lbStock.Text = "1";
+            this.lbStock.Text = "0";
             this.lbStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -170,7 +171,7 @@
             this.lbPending.Name = "lbPending";
             this.lbPending.Size = new System.Drawing.Size(122, 39);
             this.lbPending.TabIndex = 1;
-            this.lbPending.Text = "1";
+            this.lbPending.Text = "0";
             this.lbPending.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3

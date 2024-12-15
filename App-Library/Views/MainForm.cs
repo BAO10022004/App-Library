@@ -8,6 +8,7 @@ using App_Library.Views.Orthers.CollectionProfile;
 using App_Library.Views.Orthers.CollectionSetting;
 using App_Library.Views.ToolerForm;
 using App_Library.Views.UserView;
+using App_Library.Views.UserView.CollectionHome;
 using Guna.UI2.WinForms;
 using MongoDB.Driver;
 using System;
@@ -36,7 +37,7 @@ namespace App_Library.Views
         private Control draggedControl;
         internal StockForm homeForm;
         private NewShopMain shopForm;
-
+        SideBarUserForm sidebar;
         // compunent shop 
         List<Panel> listBookAd;
         List<Book> books;
@@ -102,7 +103,8 @@ namespace App_Library.Views
             else
             {
                 lbRole.Text = "User";
-                activeFormChild(pnSideBar, new SideBarUserForm(this));
+                sidebar = new SideBarUserForm(this);
+                activeFormChild(pnSideBar, sidebar);
                 activeFormChildForMainForm(shopForm, e);
             }
 
@@ -169,10 +171,6 @@ namespace App_Library.Views
             }
         }
         Form formShopMain;
-        internal void openShopMain()
-        {
-            activeFormChild(pnContent, new NewShopMain(this), null,ref formShopMain);
-        }
         Form ActForm;
         public void activeFormChildForMainForm(Form formDes, object obj)
         {
@@ -191,18 +189,6 @@ namespace App_Library.Views
         }
 
 
-        private void lbSetting_Click(object sender, EventArgs e)
-        {
-            setIsClick(sender as Control);
-            activeFormChildForMainForm(new SettingForm(), e);
-        }
-
-        private void lbHelp_Click(object sender, EventArgs e)
-        {
-            setIsClick(sender as Control);
-            activeFormChildForMainForm(new HelpForm(), e);
-        }
-
         Form actForm;
         private void btnLogOut_Click(object sender, EventArgs e)
         {
@@ -211,77 +197,6 @@ namespace App_Library.Views
             Program.sp = new SplashForm();
 
             Program.sp.ShowDialog();
-        }
-
-        private void pnContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lbRole_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnUser_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void timerPicShop_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void pnMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void profileToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void pnSideBar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnLeft_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void picAvatar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logOutToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timerPicHome_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnFooter_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogOut_MouseHover(object sender, EventArgs e)
@@ -294,6 +209,10 @@ namespace App_Library.Views
         {
             pnContainLogOut.BorderColor = Color.Black;
             picLogOut.Visible=false;
+        }
+        public void nextPageToHistory (object e)
+        {
+            activeFormChildForMainForm(new History(this, sidebar), e);
         }
     }
 }

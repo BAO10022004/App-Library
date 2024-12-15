@@ -47,12 +47,17 @@ namespace App_Library.Views.UserView.CollectionHome
         }
         Guna2Panel createPanel(BookSold bookSold,int width,  int index)
         {
-            Form form = null;   
             Guna2Panel gn = new Guna2Panel();
-            gn.Size = new System.Drawing.Size(1023, 64);
-            gn.Name = bookSold.Title;
-            gn.TabIndex = index;
-            activeFormChild(gn,new  HistoryChild(this, bookSold), null, ref form);
+            if ( bookSold != null )
+            {
+                Form form = null;
+                
+                gn.Size = new System.Drawing.Size(1023, 64);
+                gn.Name = bookSold.Title;
+                gn.TabIndex = index;
+                activeFormChild(gn, new HistoryChild(this, bookSold), null, ref form);
+               
+            }
             return gn;
         }
         private void label1_Resize(object sender, EventArgs e)

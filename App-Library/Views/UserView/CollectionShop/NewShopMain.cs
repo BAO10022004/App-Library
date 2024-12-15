@@ -311,5 +311,55 @@ namespace App_Library.Views.Main.CollectionShop
             //MessageBox.Show("HI");
             ReSize();
         }
+
+        private void txtSearch_Click(object sender, EventArgs e)
+        {
+           
+        }
+        public Guna2Panel createPanelSearch(Book book, int index)
+        {
+            Form form = null;
+            Guna2Panel gn = new Guna2Panel();
+            gn.Size = new System.Drawing.Size(500, 100);
+            gn.TabIndex = index;
+            gn.Margin = new Padding(5);
+            activeFormChild(gn, new BookItemSearch(book, this), null, ref form);
+            return gn;
+        }
+        private async void picSearch_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in pnMainSearch.Controls)
+            {
+                if(control is Guna2Panel || control is Panel)
+                {
+                    pnMainSearch.Controls.Remove(control);
+                }
+            }
+
+            BookService dbBook = new BookService();
+            List<Book> result = (await dbBook.SearchBooksAsync(txtSearch.Text)).Books;
+            pnSearchShop.Height = 550;
+
+            pnSearchShop.Size = new Size(pnSearchShop.Width,50 + txtSearch.Margin.Top + txtSearch.Margin.Bottom + txtSearch.Height + (result.Count +1)*105);
+            pnContainSearch.Size = new Size(pnContainSearch.Width, pnSearchShop.Height +50);
+            for (int i = 0; i < result.Count; i++)
+            {
+                pnMainSearch.Controls.Add(createPanelSearch(result[i], i)); 
+            }
+
+        }
+
+        private void pnSearch_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in pnMainSearch.Controls)
+            {
+                if (control is Guna2Panel || control is Panel)
+                {
+                    pnMainSearch.Controls.Remove(control);
+                }
+            }
+            pnSearchShop.Size = new Size(581, 62);
+            pnContainSearch.Size = new Size(pnContainSearch.Width, pnSearchShop.Height + 50);
+        }
     }
 }

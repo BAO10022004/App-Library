@@ -61,7 +61,6 @@ namespace App_Library.Views
             // timerPicHome
             // 
             this.timerPicHome.Interval = 5;
-            this.timerPicHome.Tick += new System.EventHandler(this.timerPicHome_Tick);
             // 
             // pnContent
             // 
@@ -72,7 +71,6 @@ namespace App_Library.Views
             this.pnContent.Name = "pnContent";
             this.pnContent.Size = new System.Drawing.Size(1027, 680);
             this.pnContent.TabIndex = 5;
-            this.pnContent.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContent_Paint);
             // 
             // pnMain
             // 
@@ -81,7 +79,6 @@ namespace App_Library.Views
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(1280, 680);
             this.pnMain.TabIndex = 0;
-            this.pnMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMain_Paint);
             // 
             // pnFooter
             // 
@@ -94,7 +91,6 @@ namespace App_Library.Views
             this.pnFooter.Name = "pnFooter";
             this.pnFooter.Size = new System.Drawing.Size(253, 134);
             this.pnFooter.TabIndex = 4;
-            this.pnFooter.Paint += new System.Windows.Forms.PaintEventHandler(this.pnFooter_Paint);
             // 
             // pnContainLogOut
             // 
@@ -158,7 +154,6 @@ namespace App_Library.Views
             this.pnLeft.Name = "pnLeft";
             this.pnLeft.Size = new System.Drawing.Size(253, 680);
             this.pnLeft.TabIndex = 4;
-            this.pnLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.pnLeft_Paint);
             // 
             // pnSideBar
             // 
@@ -169,7 +164,6 @@ namespace App_Library.Views
             this.pnSideBar.Name = "pnSideBar";
             this.pnSideBar.Size = new System.Drawing.Size(253, 436);
             this.pnSideBar.TabIndex = 5;
-            this.pnSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSideBar_Paint);
             // 
             // pnUser
             // 
@@ -183,7 +177,6 @@ namespace App_Library.Views
             this.pnUser.Name = "pnUser";
             this.pnUser.Size = new System.Drawing.Size(253, 110);
             this.pnUser.TabIndex = 3;
-            this.pnUser.Paint += new System.Windows.Forms.PaintEventHandler(this.pnUser_Paint);
             // 
             // lbRole
             // 
@@ -196,7 +189,6 @@ namespace App_Library.Views
             this.lbRole.TabIndex = 4;
             this.lbRole.Text = "Role";
             this.lbRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbRole.Click += new System.EventHandler(this.lbRole_Click);
             // 
             // lbName
             // 
@@ -209,7 +201,6 @@ namespace App_Library.Views
             this.lbName.TabIndex = 3;
             this.lbName.Text = "Name";
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // picAvatar
             // 
@@ -223,7 +214,6 @@ namespace App_Library.Views
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAvatar.TabIndex = 1;
             this.picAvatar.TabStop = false;
-            this.picAvatar.Click += new System.EventHandler(this.picAvatar_Click);
             // 
             // guna2ContextMenuStrip1
             // 
@@ -245,7 +235,6 @@ namespace App_Library.Views
             this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(134, 30);
-            this.guna2ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.guna2ContextMenuStrip1_Opening);
             // 
             // logOutToolStripMenuItem
             // 
@@ -253,12 +242,10 @@ namespace App_Library.Views
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.logOutToolStripMenuItem.Text = "LogOut";
-            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click_1);
             // 
             // timerPicShop
             // 
             this.timerPicShop.Interval = 5;
-            this.timerPicShop.Tick += new System.EventHandler(this.timerPicShop_Tick);
             // 
             // profileToolStripMenuItem
             // 
@@ -266,7 +253,6 @@ namespace App_Library.Views
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
             this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.profileToolStripMenuItem.Text = "Profile";
-            this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click_1);
             // 
             // MainForm
             // 
@@ -300,7 +286,7 @@ namespace App_Library.Views
         private Panel pnFooter;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Panel pnLeft;
-        private Panel pnSideBar;
+        public Panel pnSideBar;
         private Panel pnUser;
         private Label lbRole;
         private Label lbName;

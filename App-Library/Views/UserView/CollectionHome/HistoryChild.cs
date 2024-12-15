@@ -27,7 +27,6 @@ namespace App_Library.Views.UserView.CollectionHome
 
         private async void HistoryChild_Load(object sender, EventArgs e)
         {
-            
             BookService bookService = new BookService();
             Book book =await bookService.GetBookBySlugAsync(bookSold.Slug);
             lbBookName.Text = book.Title;

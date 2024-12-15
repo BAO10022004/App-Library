@@ -169,6 +169,7 @@ namespace App_Library.Views
             // picEye
             // 
             this.picEye.FillColor = System.Drawing.Color.Black;
+            this.picEye.Image = global::App_Library.Properties.Resources.eye;
             this.picEye.ImageRotate = 0F;
             this.picEye.Location = new System.Drawing.Point(274, 10);
             this.picEye.Name = "picEye";

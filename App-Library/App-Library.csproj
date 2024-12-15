@@ -571,6 +571,12 @@
     <Compile Include="Views\UserView\CollectionShop\BookItem.Designer.cs">
       <DependentUpon>BookItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserView\CollectionShop\BookItemSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\BookItemSearch.Designer.cs">
+      <DependentUpon>BookItemSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserView\CollectionShop\CommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -681,11 +687,17 @@
     <EmbeddedResource Include="Views\AdminView\SideBarAdminForm.resx">
       <DependentUpon>SideBarAdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\ConfirmPasswordForm.resx">
       <DependentUpon>ConfirmPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\EditprofileForm.resx">
       <DependentUpon>EditprofileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Orthers\CollectionEditProfile\NewPasswordForm.resx">
+      <DependentUpon>NewPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Orthers\CollectionHelp\HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
@@ -744,6 +756,9 @@
     <EmbeddedResource Include="Views\UserView\CollectionShop\BookItem.resx">
       <DependentUpon>BookItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\BookItemSearch.resx">
+      <DependentUpon>BookItemSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -797,7 +812,6 @@
     <Analyzer Include="packages\AWSSDK.SecurityToken.3.7.100.14\analyzers\dotnet\cs\AWSSDK.SecurityToken.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Music\click.wav" />
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />

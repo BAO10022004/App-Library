@@ -133,7 +133,7 @@ namespace App_Library.Views
        
         private bool checkEmail(bool checkValid, Guna2Button messege)
         {
-            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            
             // Kiểm tra rổng
             if (string.IsNullOrWhiteSpace(txbEmail.Text) || txbEmail.Text == "Email")
             {
@@ -143,6 +143,7 @@ namespace App_Library.Views
                 return checkValid;
             }
             // Kiểm tra định dạng
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             if (!Regex.IsMatch(txbEmail.Text, emailPattern))
             {
 

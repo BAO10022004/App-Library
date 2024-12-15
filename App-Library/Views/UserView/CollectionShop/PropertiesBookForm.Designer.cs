@@ -85,6 +85,8 @@
             this.picStar2 = new System.Windows.Forms.PictureBox();
             this.picStar4 = new System.Windows.Forms.PictureBox();
             this.picStar5 = new System.Windows.Forms.PictureBox();
+            this.btnPending = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbBtnPedding = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.pnMainPropertiesBook.SuspendLayout();
             this.pnDescription.SuspendLayout();
@@ -124,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar5)).BeginInit();
+            this.btnPending.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -530,6 +533,7 @@
             // 
             // pnContainButtonBuy
             // 
+            this.pnContainButtonBuy.Controls.Add(this.btnPending);
             this.pnContainButtonBuy.Controls.Add(this.pnReadBook);
             this.pnContainButtonBuy.Controls.Add(this.btnBuy);
             this.pnContainButtonBuy.Location = new System.Drawing.Point(3, 251);
@@ -728,6 +732,34 @@
             this.picStar5.TabIndex = 4;
             this.picStar5.TabStop = false;
             // 
+            // btnPending
+            // 
+            this.btnPending.BorderColor = System.Drawing.Color.Cyan;
+            this.btnPending.BorderRadius = 25;
+            this.btnPending.BorderThickness = 5;
+            this.btnPending.Controls.Add(this.lbBtnPedding);
+            this.btnPending.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPending.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnPending.Location = new System.Drawing.Point(166, 41);
+            this.btnPending.Name = "btnPending";
+            this.btnPending.Size = new System.Drawing.Size(172, 69);
+            this.btnPending.TabIndex = 2;
+            this.btnPending.Visible = false;
+            this.btnPending.Click += new System.EventHandler(this.lbBtnPedding_Click);
+            this.btnPending.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPending_Paint);
+            // 
+            // lbBtnPedding
+            // 
+            this.lbBtnPedding.AutoSize = true;
+            this.lbBtnPedding.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbBtnPedding.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbBtnPedding.Location = new System.Drawing.Point(28, 22);
+            this.lbBtnPedding.Name = "lbBtnPedding";
+            this.lbBtnPedding.Size = new System.Drawing.Size(119, 24);
+            this.lbBtnPedding.TabIndex = 0;
+            this.lbBtnPedding.Text = "PENDING...";
+            this.lbBtnPedding.Click += new System.EventHandler(this.lbBtnPedding_Click);
+            // 
             // PropertiesBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -791,6 +823,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStar5)).EndInit();
+            this.btnPending.ResumeLayout(false);
+            this.btnPending.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -854,5 +888,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel btnPending;
+        private System.Windows.Forms.Label lbBtnPedding;
     }
 }

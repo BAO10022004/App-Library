@@ -56,7 +56,7 @@ namespace App_Library.Services
         }
 
         // Tìm kiếm sách
-        public async Task<SearchBooksResponse> SearchBooksAsync(string searchTerm, string sort = "desc", string genre = null, int startIndex = 0, int limit = 6)
+        public async Task<SearchBooksResponse> SearchBooksAsync(string searchTerm, string sort = "desc", string genre = null, int startIndex = 0, int limit = 4)
         {
             var url = $"api/books/search?searchTerm={searchTerm}&sort={sort}&genre={genre}&startIndex={startIndex}&limit={limit}";
             var response = await _httpClient.GetAsync(url);

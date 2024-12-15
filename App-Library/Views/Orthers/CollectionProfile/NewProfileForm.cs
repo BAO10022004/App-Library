@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.Orthers.CollectionEditProfile;
 using App_Library.Views.ToolerForm;
 using App_Library.Views.UserView;
 using Guna.UI2.WinForms;
@@ -38,12 +39,27 @@ namespace App_Library.Views.Orthers.CollectionProfile
             catch (Exception ex)
             {
             }
+            //lbPending.Text = (await (new BookSoldService()).GetPendingBooksSoldAsync()).Count + "";
+            //lbStock.Text = (await (new BookSoldService()).GetBoughtBooksAsync()).Count + "";
         }
         Form actFormEdit;
         Form actFormChange;
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             activeFormChild(mainForm.pnContent, new CollectionEditProfile.EditprofileForm(this), null, ref actFormEdit); 
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            if (Program.checkLoginGG)
+            {
+                (new AlertFail("Acount login with Google cann't change password")).ShowDialog();
+            }
+            else
+            {
+                (new ChangePasswordForm(user)).ShowDialog();
+            }
+            
         }
     }
 }
