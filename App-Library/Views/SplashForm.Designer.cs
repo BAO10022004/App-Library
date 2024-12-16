@@ -41,10 +41,10 @@ namespace App_Library.Views
             this.pnLoginSignupContent = new System.Windows.Forms.Panel();
             this.lbWellcome = new System.Windows.Forms.Label();
             this.pnHeader = new System.Windows.Forms.Panel();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.btnMaximize = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnClose = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timerClickButtonSignUp = new System.Windows.Forms.Timer(this.components);
             this.gneContentLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -52,6 +52,7 @@ namespace App_Library.Views
             this.gneBtnSingIn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerOpenMainForm = new System.Windows.Forms.Timer(this.components);
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.pnSubLogin.SuspendLayout();
             this.pnFrameOption.SuspendLayout();
             this.pnContainButtonSignUp.SuspendLayout();
@@ -60,7 +61,6 @@ namespace App_Library.Views
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // pnSubLogin
@@ -169,10 +169,10 @@ namespace App_Library.Views
             // pnHeader
             // 
             this.pnHeader.BackColor = System.Drawing.Color.Cyan;
+            this.pnHeader.Controls.Add(this.btnClose);
             this.pnHeader.Controls.Add(this.btnMinimize);
             this.pnHeader.Controls.Add(this.btnMaximize);
             this.pnHeader.Controls.Add(this.pictureBox1);
-            this.pnHeader.Controls.Add(this.btnClose);
             this.pnHeader.Controls.Add(this.label1);
             this.pnHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnHeader.Location = new System.Drawing.Point(0, 0);
@@ -180,6 +180,22 @@ namespace App_Library.Views
             this.pnHeader.Name = "pnHeader";
             this.pnHeader.Size = new System.Drawing.Size(460, 40);
             this.pnHeader.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(419, 10);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(29, 22);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnMinimize
             // 
@@ -217,19 +233,6 @@ namespace App_Library.Views
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Image = global::App_Library.Properties.Resources.cross;
-            this.btnClose.Location = new System.Drawing.Point(430, 10);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 20);
-            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnClose.TabIndex = 2;
-            this.btnClose.TabStop = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label1
             // 
@@ -276,6 +279,7 @@ namespace App_Library.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(460, 640);
             this.Controls.Add(this.pnSubLogin);
             this.Controls.Add(this.pnHeader);
@@ -293,7 +297,6 @@ namespace App_Library.Views
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,7 +313,6 @@ namespace App_Library.Views
         private PictureBox btnMinimize;
         private PictureBox btnMaximize;
         private PictureBox pictureBox1;
-        private PictureBox btnClose;
         private Label label1;
         private Timer timerClickButtonSignUp;
         private Guna.UI2.WinForms.Guna2Elipse gneContentLogin;
@@ -320,8 +322,9 @@ namespace App_Library.Views
         private Timer timerOpenMainForm;
         private Guna.UI2.WinForms.Guna2Panel pnContainButtonSignIn;
         private Guna.UI2.WinForms.Guna2Panel pnContainButtonSignUp;
+        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private Guna.UI2.WinForms.Guna2Button btnClose;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
-        public PictureBox BtnExit { get => btnClose; set => btnClose = value; }
     }
 }

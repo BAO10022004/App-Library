@@ -158,14 +158,14 @@ namespace App_Library.Views.Main.CollectionShop
                 flowpnNewItem.AutoScrollMinSize=new Size( (books.Count + 1) * 400, 400 );
                 for(int i=0; i< 7; i++)
                 {
-                    flowpnNewItem.Controls.Add(createPanel(bookNewItem[i], i));
+                    flowpnNewItem.Controls.Add(createPanel(bookNewItem[i], i, pnNewItem));
                 }
                 var bookHotDeal = books.OrderBy(book => book.Price).ToList();
-                flowpnHotDeal.AutoScroll = true;
-                flowpnHotDeal.AutoScrollMinSize = new Size((bookHotDeal.Count + 1) * 400, 400);
+                flowpnBestDeal.AutoScroll = true;
+                flowpnBestDeal.AutoScrollMinSize = new Size((bookHotDeal.Count + 1) * 200, 400);
                 for (int i = 0; i < bookHotDeal.Count; i++)
                 {
-                    flowpnHotDeal.Controls.Add(createPanel(bookHotDeal[i], i));
+                    flowpnBestDeal.Controls.Add(createPanel(bookHotDeal[i], i, pnBestDeal));
                 }
                 guna2ProgressIndicator.Stop();
                 this.Controls.Remove(guna2ProgressIndicator);
@@ -175,13 +175,13 @@ namespace App_Library.Views.Main.CollectionShop
                 ReSize();
             }
         }
-        public Guna2Panel createPanel(Book book, int index)
+        public Guna2Panel createPanel(Book book, int index, Panel parent)
         {
             Form form = null;
-            Guna2Panel gn = new Guna2Panel();
-            gn.Size = new System.Drawing.Size(250, 380);
+            PanelBook gn = new PanelBook(book, parent);
+            gn.Size = new System.Drawing.Size(250, 400);
             gn.TabIndex = index;
-            activeFormChild(gn, new BookItem(book, this), null, ref form);
+            activeFormChild(gn, new BookItem(gn, this), null, ref form);
             return gn;
         }
         Form formContent;
@@ -195,46 +195,90 @@ namespace App_Library.Views.Main.CollectionShop
             ReSize();
         }
         Form actFormProperti;
-        internal async void bookClick(Book book)
+        public void openProp(PropertiesBookForm form)
+        {
+            activeFormChild(parent.pnContent, form, null, ref actFormProperti);
+        }
+        internal async void bookClick(Book book, PanelBook panelBook = null)
         {
             this.Controls.Clear();
+            var dbBooks = await GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
             StarsRatingService ratingService = new StarsRatingService();
             BookRating starsRating = await ratingService.GetBookRatingAsync(book.Id);
-            if(starsRating == null)
+            PropertiesBookForm form;
+            if (starsRating == null)
             {
-                activeFormChild(parent.pnContent, new PropertiesBookForm(book, 4, this), null, ref actFormProperti);
+                form = new PropertiesBookForm(book, 4, this, dbBooks);
             }
             else
             {
-                activeFormChild(parent.pnContent, new PropertiesBookForm(book, starsRating.TotalRatings, this), null, ref actFormProperti);
-
+                form = new PropertiesBookForm(book, starsRating.TotalRatings, this, dbBooks);
             }
             
-
-            //this.Controls.Remove(pnMainForm);
-            //this.Controls.Add(this.pnProperties);
-            //isOpenProperti = true;
-            //pnProperties.Dock = DockStyle.Fill;
-            //this.Controls.Add(pnContainSearch);
+            if (panelBook != null)
+            {
+                activeFormChild(parent.pnContent, new AnimationProperties(panelBook, this, form), null, ref actFormProperti);
+            }
+            else
+            {
+                openProp(form);
+            }
             
         }
-        public void bookHotDeal_Click(object sender, EventArgs e)
+        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
         {
-            Book book = new Book();
-            PanelBook panelBook;
-            if (sender is PanelBook)
+            string usernameCurrent = _user.Username;
+            string passwordCurrent = _user.PasswordHash;
+            string id = _user.Id;
+
+            // Tạo đối tượng dịch vụ và login
+            AuthService db = new AuthService();
+
+            // Thực hiện đăng nhập một lần
+            bool result = await db.Login("admin", "123456", null);
+            if (!result)
             {
-                panelBook = (PanelBook)sender;
-              
+                // Nếu không đăng nhập admin thành công, cố gắng đăng nhập người dùng bình thường
+                result = await db.Login(usernameCurrent, passwordCurrent, null);
+                if (!result)
+                {
+                    return null; // Trả về null nếu đăng nhập thất bại
+                }
             }
-            else
+
+            // Lấy thông tin người dùng từ service mà không cần phải gọi ToList()
+            var user = (await (new UserService()).GetUsersAsync()).Find(u => u.Username == usernameCurrent);
+            if (user == null)
             {
-                panelBook = (PanelBook)FindControlContainer(collectionPanelHotDeal, sender as Control);
+                return null;
             }
-           
-            bookClick(panelBook.Data1);
+
+            // Lấy sách đã bán và lọc theo điều kiện
+            List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
+            var filteredBooks = list.Where(b => b.UserId == id && (b.Status == "Pending" || b.Status == "Approved")).ToList();
+
+            // Đăng nhập lại với người dùng hiện tại (nếu cần)
+            await db.Login(usernameCurrent, passwordCurrent, null);
+
+            return filteredBooks;
         }
-       
+        //public void bookHotDeal_Click(object sender, EventArgs e)
+        //{
+        //    Book book = new Book();
+        //    PanelBook panelBook;
+        //    if (sender is PanelBook)
+        //    {
+        //        panelBook = (PanelBook)sender;
+
+        //    }
+        //    else
+        //    {
+        //        panelBook = (PanelBook)FindControlContainer(collectionPanelHotDeal, sender as Control);
+        //    }
+
+        //    bookClick(panelBook.Data);
+        //}
+
         Guna2Panel btnClicked = new Guna2Panel();
         Label txtClicked = new Label();
         private void timerClick_Tick(object sender, EventArgs e)
@@ -296,8 +340,8 @@ namespace App_Library.Views.Main.CollectionShop
                 pnMainForm.Size = new Size(this.Width - 30, pnMainForm.Height);
                 pnContainSearch.Size = new Size(this.Width - 30, pnContainSearch.Height);
                 pnAd.Size = new Size(pnMainForm.Width, pnAd.Height);
-                pnBestSelling.Size = new Size(pnMainForm.Width, pnBestSelling.Height);
-                pnHotDeal.Size = new Size(pnMainForm.Width, pnHotDeal.Height);
+                pnBestDeal.Size = new Size(pnMainForm.Width, pnBestDeal.Height);
+                pnNewItem.Size = new Size(pnMainForm.Width, pnNewItem.Height);
                 pnContainAd.Location = new Point((pnAd.Width - pnContainAd.Width) / 2, (pnAd.Height - pnContainAd.Height) / 2);  
             }
             else
@@ -360,6 +404,72 @@ namespace App_Library.Views.Main.CollectionShop
             }
             pnSearchShop.Size = new Size(581, 62);
             pnContainSearch.Size = new Size(pnContainSearch.Width, pnSearchShop.Height + 50);
+        }
+        public Point GetLocationFormNewItem(Panel panel)
+        {
+            // Lấy tọa độ của panel trong form
+            Point controlPosition = panel.Location;
+
+            // Lấy vị trí cuộn hiện tại của flowpnNewItem
+            Point scrollPosition = flowpnNewItem.AutoScrollPosition;
+
+            // Điều chỉnh lại tọa độ của control trong panel theo vị trí cuộn
+            Point controlPositionInPanel = new Point(
+                controlPosition.X - scrollPosition.X,
+                controlPosition.Y - scrollPosition.Y
+            );
+
+            // Tính toán lại vị trí của item trong panel với một offset nhất định
+            // Lấy vị trí của panel cha và cộng thêm offset
+            Point result = new Point();
+            result.X = controlPositionInPanel.X + scrollPosition.X;
+            result.Y = getLocationFormMain(pnNewItem).Y + 100; // Cộng thêm một offset để điều chỉnh vị trí
+
+            return result;
+        }
+
+        public Point getLocationFormMain(Panel panel)
+        {
+            // Lấy tọa độ của panel trong form
+            Point controlPosition = panel.Location;
+
+            // Lấy vị trí cuộn hiện tại của pnMainForm
+            Point scrollPosition = pnMainForm.AutoScrollPosition;
+            Point controlPositionInPanel = new Point(
+                controlPosition.X - scrollPosition.X,
+                controlPosition.Y - scrollPosition.Y
+            );
+            // Điều chỉnh lại tọa độ của control trong panel cha theo vị trí cuộn
+            Point result = new Point();
+            result.X = controlPosition.X + scrollPosition.X;
+            result.Y = controlPositionInPanel.Y + scrollPosition.Y; // Cộng thêm một offset để điều chỉnh vị trí
+
+            return result;
+        }
+        public Point GetLocationFormsBestDeal(Panel panel)
+        {
+            Point controlPosition = panel.Location;
+
+            // Lấy vị trí cuộn hiện tại của flowpnNewItem
+            Point scrollPosition = flowpnBestDeal.AutoScrollPosition;
+
+            // Điều chỉnh lại tọa độ của control trong panel theo vị trí cuộn
+            Point controlPositionInPanel = new Point(
+                controlPosition.X - scrollPosition.X,
+                controlPosition.Y - scrollPosition.Y
+            );
+
+            // Tính toán lại vị trí của item trong panel với một offset nhất định
+            // Lấy vị trí của panel cha và cộng thêm offset
+            Point result = new Point();
+            result.X = controlPositionInPanel.X + scrollPosition.X;
+            result.Y = getLocationFormMain(pnBestDeal).Y + 100; // Cộng thêm một offset để điều chỉnh vị trí
+
+            return result;
+        }
+
+        private void flowpnNewItem_Scroll(object sender, ScrollEventArgs e)
+        {
         }
     }
 }

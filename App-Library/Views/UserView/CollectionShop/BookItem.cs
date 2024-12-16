@@ -1,6 +1,7 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
 using App_Library.Views.Main.CollectionShop;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,11 +19,13 @@ namespace App_Library.Views.UserView.CollectionShop
     {
         NewShopMain parent;
         Book book;
-        public BookItem(Book book, NewShopMain parent )
+        PanelBook bookBook;
+        public BookItem(PanelBook pnBook, NewShopMain parent )
         {
             InitializeComponent();
             this.parent = parent;
-            this.book = book;
+            this.book = pnBook.Data;
+            bookBook = pnBook;
 
         }
 
@@ -43,6 +46,7 @@ namespace App_Library.Views.UserView.CollectionShop
             catch (Exception)
             {
             }
+            lbPrice.Text = book.Price + "$";
             lbNameBook.Text = book.Title;
             var bookRating = (await (new StarsRatingService()).GetBookRatingAsync(book.Id));
             int start = bookRating != null? bookRating.TotalRatings : 0;
@@ -51,7 +55,17 @@ namespace App_Library.Views.UserView.CollectionShop
 
         private void picImage_Click(object sender, EventArgs e)
         {
+            if (bookBook.Parent != null)
+            {
+                parent.bookClick(book, bookBook);
+            }else
             parent.bookClick(book);
+
+        }
+
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

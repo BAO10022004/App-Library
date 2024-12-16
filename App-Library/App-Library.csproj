@@ -559,6 +559,12 @@
     <Compile Include="Views\UserView\CollectionShop\Advertisement.Designer.cs">
       <DependentUpon>Advertisement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserView\CollectionShop\AnimationProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\AnimationProperties.Designer.cs">
+      <DependentUpon>AnimationProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserView\CollectionShop\BookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -594,12 +600,6 @@
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\CompunentComment.Designer.cs">
       <DependentUpon>CompunentComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionShop\HotDealForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionShop\HotDealForm.Designer.cs">
-      <DependentUpon>HotDealForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\NewShopMain.cs">
       <SubType>Form</SubType>
@@ -756,6 +756,9 @@
     <EmbeddedResource Include="Views\UserView\CollectionShop\Advertisement.resx">
       <DependentUpon>Advertisement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\AnimationProperties.resx">
+      <DependentUpon>AnimationProperties.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -773,9 +776,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\CompunentComment.resx">
       <DependentUpon>CompunentComment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionShop\HotDealForm.resx">
-      <DependentUpon>HotDealForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\NewShopMain.resx">
       <DependentUpon>NewShopMain.cs</DependentUpon>

@@ -9,15 +9,17 @@ using System.Windows.Forms;
 
 namespace App_Library.Views.ToolerForm
 {
-    internal class PanelBook : Guna2Panel
+    public class PanelBook : Guna2Panel
     {
         Book data;
-
-        public PanelBook(Book data)
+        Panel parent;
+        public PanelBook(Book data, Panel parent )
         {
             this.data = data;
+            this.parent = parent;
         }
-        
-        public Book Data1 { get => data; set => data = value; }
+
+        public Book Data { get => data; set => data = value; }
+        public Panel Parent { get => parent; set => parent = value; }
     }
 }
