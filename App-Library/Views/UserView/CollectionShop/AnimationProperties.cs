@@ -69,12 +69,18 @@ namespace App_Library.Views.UserView.CollectionShop
         {
             if (currentStep < stepCount)
             {
-                int newX = Xo + (Xf - Xo) * currentStep / stepCount;
-                int newY = Yo + (Yf - Yo) * currentStep / stepCount;
+                // Tính tỷ lệ hoàn thành (từ 0 đến 1)
+                float t = (float)currentStep / stepCount;
 
-                // Tính toán sự thay đổi kích thước
-                int newWidth = Widtho + (Widthf - Widtho) * currentStep / stepCount;
-                int newHeight = Heighto + (Heightf - Heighto) * currentStep / stepCount;
+                // Hàm easing-out (chậm dần khi gần đích): 1 - (1 - t) * (1 - t)
+                float easedT = 1 - (1 - t) * (1 - t);  // Easing-out: nhanh đầu, chậm cuối
+
+                // Tính toán sự thay đổi vị trí và kích thước với easing-out
+                int newX = Xo + (int)((Xf - Xo) * easedT);
+                int newY = Yo + (int)((Yf - Yo) * easedT);
+
+                int newWidth = Widtho + (int)((Widthf - Widtho) * easedT);
+                int newHeight = Heighto + (int)((Heightf - Heighto) * easedT);
 
                 // Cập nhật vị trí và kích thước của control
                 picImage.Location = new System.Drawing.Point(newX, newY);
@@ -88,6 +94,7 @@ namespace App_Library.Views.UserView.CollectionShop
                 timerGoHome.Stop();
                 Controller.openProp(bookForm);
             }
+
         }
     }
 }
