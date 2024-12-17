@@ -1,5 +1,5 @@
-.vs/
-obj/
-bin/
+App-Library/.vs/
+App-Library/obj/
+App-Library/bin/
 serviceAccountKey.json
 appsettings.json
