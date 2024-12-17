@@ -11,18 +11,40 @@ using System.Net.Http.Json;
 using Firebase.Auth;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using User = App_Library.Models.User;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace App_Library.Services
 {
     internal class BookSoldService
     {
         private readonly HttpClient _httpClient;
-
+        private readonly string _baseUrl;
         public BookSoldService()
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://books-webapplication-plh6.onrender.com/");
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
+            try
+            {
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("appsettings.json file not found in the application directory.");
+                }
+
+                var json = File.ReadAllText(filePath);
+
+                var settings = JsonConvert.DeserializeObject<AppConfig>(json);
+
+                _baseUrl = settings?.ApiSettings?.BaseUrl ?? throw new Exception("BaseUrl is not configured in appsettings.json");
+
+                _httpClient = new HttpClient();
+                _httpClient.BaseAddress = new Uri(_baseUrl);
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error initializing AuthService: {ex.Message}", ex);
+            }
         }
 
         // Lấy danh sách các sách đã bán
@@ -42,6 +64,7 @@ namespace App_Library.Services
         {
             return await _httpClient.GetFromJsonAsync<List<BookSold>>("api/booksold/user/bought-books");
         }
+
         public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
         {
             string usernameCurrent = _user.Username;
@@ -59,7 +82,7 @@ namespace App_Library.Services
                 List<BookSold> bookSolds = new List<BookSold>();
                 dbBookSold.ForEach(x =>
                 {
-                    if (x.UserId == _user.Id &&( x.Status.Equals("Pending") || x.Status.Equals("Approved")))
+                    if (x.UserId == _user.Id && (x.Status.Equals("Pending") || x.Status.Equals("Approved")))
                     {
                         bookSolds.Add(x);
                     }

@@ -97,7 +97,6 @@
             this.pnMainContentLogin.Name = "pnMainContentLogin";
             this.pnMainContentLogin.Size = new System.Drawing.Size(460, 475);
             this.pnMainContentLogin.TabIndex = 5;
-            this.pnMainContentLogin.Paint += new System.Windows.Forms.PaintEventHandler(this.pnMainContentLogin_Paint);
             // 
             // btnSignInGG
             // 
@@ -137,6 +136,7 @@
             this.lbGG.TabIndex = 0;
             this.lbGG.Text = "Continue with Google";
             this.lbGG.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbGG.Click += new System.EventHandler(this.btnSignInGG_Click);
             this.lbGG.MouseHover += new System.EventHandler(this.lbGG_MouseHover);
             // 
             // MessegeConfirm
@@ -247,7 +247,7 @@
             // 
             // picEyeOfConfirm
             // 
-            this.picEyeOfConfirm.Image = global::App_Library.Properties.Resources.view;
+            this.picEyeOfConfirm.Image = global::App_Library.Properties.Resources.eye_slash;
             this.picEyeOfConfirm.ImageRotate = 0F;
             this.picEyeOfConfirm.Location = new System.Drawing.Point(270, 10);
             this.picEyeOfConfirm.Name = "picEyeOfConfirm";
@@ -270,7 +270,6 @@
             this.txbConfirmPassword.TabIndex = 4;
             this.txbConfirmPassword.Text = "Confirm Password";
             this.txbConfirmPassword.Click += new System.EventHandler(this.txbConfirmPassword_Click);
-            this.txbConfirmPassword.TextChanged += new System.EventHandler(this.txbConfirmPassword_TextChanged);
             this.txbConfirmPassword.Leave += new System.EventHandler(this.txbConfirmPassword_Leave);
             this.txbConfirmPassword.MouseHover += new System.EventHandler(this.txbEmail_MouseHover_1);
             // 
@@ -322,6 +321,7 @@
             // picEyeOfPass
             // 
             this.picEyeOfPass.FillColor = System.Drawing.Color.Black;
+            this.picEyeOfPass.Image = global::App_Library.Properties.Resources.eye_slash;
             this.picEyeOfPass.ImageRotate = 0F;
             this.picEyeOfPass.Location = new System.Drawing.Point(270, 10);
             this.picEyeOfPass.Name = "picEyeOfPass";
@@ -344,7 +344,6 @@
             this.txbPassword.TabIndex = 4;
             this.txbPassword.Text = "Password";
             this.txbPassword.Click += new System.EventHandler(this.txbPassword_Click);
-            this.txbPassword.TextChanged += new System.EventHandler(this.txbPassword_TextChanged);
             this.txbPassword.Leave += new System.EventHandler(this.txbPassword_Leave);
             this.txbPassword.MouseHover += new System.EventHandler(this.txbEmail_MouseHover_1);
             // 

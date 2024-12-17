@@ -20,33 +20,36 @@ namespace App_Library.Views.Orthers.CollectionProfile
     {
         User user;
         public MainForm mainForm;
+        private BookSoldService _bookSoldService;
+
         public NewProfileForm(MainForm parent)
         {
             InitializeComponent();
+            _bookSoldService = new BookSoldService();
             this.mainForm = parent;
         }
 
         private async void NewProfileForm_Load(object sender, EventArgs e)
         {
-            user =await (new UserService()).GetCurrentUserAsync();
-            lbEmail.Text = user.Email;
-            lbUsername.Text = user.Username;
+            lbEmail.Text = Session.CurentUser.Email;
+            lbUsername.Text = Session.CurentUser.Username;
             try
             {
-                picAvatar.Load(user.PhotoURL);
-
+                picAvatar.Load(Session.CurentUser.PhotoURL);
             }
             catch (Exception ex)
             {
             }
-            //lbPending.Text = (await (new BookSoldService()).GetPendingBooksSoldAsync()).Count + "";
-            //lbStock.Text = (await (new BookSoldService()).GetBoughtBooksAsync()).Count + "";
+            var result = await _bookSoldService.GetBooksInProgressAsync();
+            lbPending.Text = result.Where(n=>n.Status == "Pending").Count().ToString();
+            lbStock.Text = result.Where(n => n.Status == "Approved").Count().ToString();
         }
+
         Form actFormEdit;
-        Form actFormChange;
+        //Form actFormChange;
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            activeFormChild(mainForm.pnContent, new CollectionEditProfile.EditprofileForm(this), null, ref actFormEdit); 
+            activeFormChild(mainForm.pnContent, new EditprofileForm(this), null, ref actFormEdit);
         }
 
         private void btnChangePass_Click(object sender, EventArgs e)
@@ -59,7 +62,6 @@ namespace App_Library.Views.Orthers.CollectionProfile
             {
                 (new ChangePasswordForm(user)).ShowDialog();
             }
-            
         }
     }
 }

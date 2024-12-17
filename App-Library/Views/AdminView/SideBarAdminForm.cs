@@ -33,88 +33,48 @@ namespace App_Library.Views.AdminView
         {
             foreach (Control item in pnSideBar.Controls)
             {
-                if (item is Panel)
-                {
-                    var controls = item.Controls;
-                    foreach (Control control in controls)
-                    {
-                        control.MouseLeave += new System.EventHandler(this.MouseLeave);
-                        control.MouseHover += new System.EventHandler(this.MouseHover);
-                    }
-                }
+                //item.MouseLeave += new System.EventHandler(this.MouseLeave);
+                //item.MouseHover += new System.EventHandler(this.MouseHover);
+                isClick[item] = false;
             }
-
-            foreach (var item in pnSideBar.Controls)
-            {
-                Panel panel = item as Panel;
-                foreach (Control control in panel.Controls)
-                {
-                    if (control is Label)
-                    {
-                        isClick[control] = false;
-                    }
-                }
-            }
+            setIsClick(btnStatistics);
         }
 
         private void MouseHover(object sender, EventArgs e)
         {
-            var _lbShop = (Control)sender;
-            var panel = FindControlContainer(pnSideBar.Controls, _lbShop);
-            panel.BackColor = Color.DeepSkyBlue;
-            _lbShop.BackColor = Color.DeepSkyBlue;
+            Guna2Button myButton = sender as Guna2Button;
+            if (!(isClick[myButton]))
+            {
+                myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                myButton.ImageSize = new Size(45, 45);
+                myButton.FillColor = Color.LightCyan;
+            }
         }
 
         private void MouseLeave(object sender, EventArgs e)
         {
-            var _lbShop = (Control)sender;
-            var panel = FindControlContainer(pnSideBar.Controls, _lbShop);
-
-            if (sender is Label)
+            Guna2Button myButton = sender as Guna2Button;
+            if (!(isClick[myButton]))
             {
-                if (!isClick[sender as Control])
-                {
-                    panel.BackColor = Color.White;
-                    _lbShop.BackColor = Color.White;
-                }
+                myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                myButton.ImageSize = new Size(35, 35);
+                myButton.FillColor = Color.White;
             }
 
         }
         void setIsClick(object sender)
         {
-            Guna2Panel panel = new Guna2Panel();
-            foreach (var item in pnSideBar.Controls)
+            Guna2Button myButton = sender as Guna2Button;
+            myButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            myButton.FillColor = Color.SkyBlue;
+            isClick[myButton] = true;
+            foreach (Guna2Button control in pnSideBar.Controls)
             {
-                panel = item as Guna2Panel;
-                foreach (Control control in panel.Controls)
+                if (!control.Name.Equals(myButton.Name))
                 {
-                    if (control is Label)
-                    {
-                        isClick[control] = false;
-                    }
-                }
-            }
-            isClick[sender as Control] = true;
-            foreach (var item in pnSideBar.Controls)
-            {
-                panel = item as Guna2Panel;
-                foreach (Control control in panel.Controls)
-                {
-                    if (control is Label)
-                    {
-                        if (isClick[control])
-                        {
-                            panel.BackColor = Color.DeepSkyBlue;
-                            control.BackColor = Color.DeepSkyBlue;
-
-                        }
-                        else
-                        {
-                            panel.BackColor = Color.White;
-                            control.BackColor = (Color)Color.White;
-                        }
-                    }
-
+                    control.Font = new System.Drawing.Font("Arial Rounded MT Bold", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    control.FillColor = Color.White;
+                    isClick[control] = false;
                 }
             }
         }

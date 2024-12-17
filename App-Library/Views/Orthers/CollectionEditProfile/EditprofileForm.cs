@@ -24,12 +24,13 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
     {
         private User currentUser;
         private UserService _userService;
-        private static readonly string firebaseStorageUrl = "https://firebasestorage.googleapis.com/v0/b/reading-book-web.appspot.com/o/";
-        private static readonly string filePath = @"path\to\your\image.jpg";  // Đường dẫn đến file ảnh
+        //private static readonly string firebaseStorageUrl = "https://firebasestorage.googleapis.com/v0/b/reading-book-web.appspot.com/o/";
+        //private static readonly string filePath = @"path\to\your\image.jpg";  // Đường dẫn đến file ảnh
         UpdateUserDTO updateBookDTO = new UpdateUserDTO();
         NewProfileForm parent;
-        private static readonly string fileName = "image.jpg";
-        string pathImage = "";
+        //private static readonly string fileName = "image.jpg";
+        //string pathImage = "";
+
         public EditprofileForm(NewProfileForm parent)
         {
             InitializeComponent();
@@ -38,27 +39,28 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         }
         private async void EditprofileForm_Load(object sender, EventArgs e)
         {
-            currentUser = await _userService.GetCurrentUserAsync();
-            txbUsername.Text = currentUser.Username;
-            txbEmail.Text = currentUser.Email;
+            txbEmail.Text = Session.CurentUser.Email;
+            txbUsername.Text = Session.CurentUser.Username;
             try
             {
-                picAvatar.Load(currentUser.PhotoURL);
-
+                picAvatar.Load(Session.CurentUser.PhotoURL);
             }
             catch (Exception ex)
             {
             }
+
             updateBookDTO.PhotoURL = currentUser.PhotoURL;
             updateBookDTO.Email = currentUser.Email;
             updateBookDTO.Username = currentUser.Username;
             updateBookDTO.PasswordHash = currentUser.PasswordHash;
+
             if (Program.checkLoginGG)
             {
                 txbEmail.Enabled = true;
                 txbEmail.ReadOnly = true;
             }
         }
+
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
@@ -67,7 +69,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
 
             // Hiển thị LoadingForm ngay lập tức
             loadingForm.Show();
-            bool checkUsername =await checkUsernameOutLimit(currentUser,txbUsername.Text);
+            bool checkUsername = await checkUsernameOutLimit(currentUser, txbUsername.Text);
             // check Mail
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             checkMail = Regex.IsMatch(txbEmail.Text, emailPattern);
@@ -79,14 +81,14 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 txbEmail.BorderColor = Color.Red;
                 (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
             }
-            if(!checkUsername)
+            if (!checkUsername)
             {
                 loadingForm.Hide();
                 loadingForm.Close();
                 txbUsername.BorderColor = Color.Red;
                 (new AlertFail(" Fail" + "\n" + "Username is exist")).ShowDialog();
             }
-            if(checkMail && checkUsername)
+            if (checkMail && checkUsername)
             {
                 bool confirm = false;
                 using (var alert = (new AlertConfirm()))
@@ -109,12 +111,13 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             txbUsername.Text = currentUser.Username;
             txbEmail.Text = currentUser.Email;
         }
-        public static async Task<bool> checkUsernameOutLimit(User _user ,string username)
+
+        public static async Task<bool> checkUsernameOutLimit(User _user, string username)
         {
             string usernameCurrent = _user.Username;
             string passwordCurrent = _user.PasswordHash;
             AuthService db = new AuthService();
-            bool result =await  db.Login("admin", "123456", null);
+            bool result = await db.Login("admin", "123456", null);
             if (!result)
             {
                 MessageBox.Show(result.ToString());
@@ -123,10 +126,10 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             }
             else
             {
-                var listAccount =await (new UserService()).GetUsersAsync();
+                var listAccount = await (new UserService()).GetUsersAsync();
                 foreach (var user in listAccount)
                 {
-                    if(user.Username.Equals(username))
+                    if (user.Username.Equals(username))
                     {
                         await db.Login(usernameCurrent, passwordCurrent, null);
                         return false;
@@ -196,13 +199,13 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                         MessageBox.Show("Error uploading file: " + ex.Message);
                     }
                 }
-
             }
         }
+
         Form actForm2;
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            activeFormChild(parent.mainForm.pnContent, new NewProfileForm(parent.mainForm), null, ref actForm2); 
+            activeFormChild(parent.mainForm.pnContent, new NewProfileForm(parent.mainForm), null, ref actForm2);
         }
     }
 }

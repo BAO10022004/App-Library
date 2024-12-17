@@ -1,3 +1,2 @@
-2024/12/15-21:18:19.290 6f70 Reusing MANIFEST C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\bin\Debug\App-Library.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2024/12/15-21:18:19.302 6f70 Recovering log #3
-2024/12/15-21:18:19.306 6f70 Reusing old log C:\Users\giaba\source\repos\3\Dir.App-Project\App-Library-6\App-Library\bin\Debug\App-Library.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000003.log 
+2024/12/17-04:03:19.979 3b00 Creating DB C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\bin\Debug\App-Library.exe.WebView2\EBWebView\Default\Local Storage\leveldb since it was missing.
+2024/12/17-04:03:19.996 3b00 Reusing MANIFEST C:\Users\ADMIN\Desktop\BTL_WIN\App-Library\App-Library\bin\Debug\App-Library.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001

@@ -13,21 +13,16 @@ namespace App_Library.Views.ToolerForm
     public partial class AlertSuccess : Form
     {
         LoginForm parent;
-        public AlertSuccess( String messege)
+        public AlertSuccess(String messege)
         {
             InitializeComponent();
-            lbMessge .Text = messege;
+            lbMessge.Text = messege;
             this.Location = Program.sp.Location;
         }
 
         public void pnOk_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void guna2PictureBox2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

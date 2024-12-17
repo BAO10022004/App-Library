@@ -34,6 +34,8 @@ namespace App_Library.Views
             this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnLogIn = new System.Windows.Forms.Button();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
+            this.MessegePassword = new Guna.UI2.WinForms.Guna2Button();
+            this.MessegeUsername = new Guna.UI2.WinForms.Guna2Button();
             this.btnSignInGG = new Guna.UI2.WinForms.Guna2Panel();
             this.picGG = new System.Windows.Forms.PictureBox();
             this.lbGG = new System.Windows.Forms.Label();
@@ -82,6 +84,8 @@ namespace App_Library.Views
             // pnMainContentLogin
             // 
             this.pnMainContentLogin.BackColor = System.Drawing.Color.Black;
+            this.pnMainContentLogin.Controls.Add(this.MessegePassword);
+            this.pnMainContentLogin.Controls.Add(this.MessegeUsername);
             this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
             this.pnMainContentLogin.Controls.Add(this.lbOr);
             this.pnMainContentLogin.Controls.Add(this.gnPanelPassword);
@@ -94,7 +98,44 @@ namespace App_Library.Views
             this.pnMainContentLogin.Name = "pnMainContentLogin";
             this.pnMainContentLogin.Size = new System.Drawing.Size(460, 475);
             this.pnMainContentLogin.TabIndex = 4;
-            this.pnMainContentLogin.Click += new System.EventHandler(this.pnMainContentLogin_Click);
+            // 
+            // MessegePassword
+            // 
+            this.MessegePassword.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegePassword.FillColor = System.Drawing.Color.Black;
+            this.MessegePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegePassword.ForeColor = System.Drawing.Color.Red;
+            this.MessegePassword.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegePassword.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegePassword.Location = new System.Drawing.Point(75, 205);
+            this.MessegePassword.Name = "MessegePassword";
+            this.MessegePassword.Size = new System.Drawing.Size(310, 18);
+            this.MessegePassword.TabIndex = 26;
+            this.MessegePassword.Text = "guna2Button1";
+            this.MessegePassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegePassword.Visible = false;
+            // 
+            // MessegeUsername
+            // 
+            this.MessegeUsername.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeUsername.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MessegeUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MessegeUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MessegeUsername.FillColor = System.Drawing.Color.Black;
+            this.MessegeUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MessegeUsername.ForeColor = System.Drawing.Color.Red;
+            this.MessegeUsername.Image = global::App_Library.Properties.Resources.mark;
+            this.MessegeUsername.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeUsername.Location = new System.Drawing.Point(75, 129);
+            this.MessegeUsername.Name = "MessegeUsername";
+            this.MessegeUsername.Size = new System.Drawing.Size(310, 18);
+            this.MessegeUsername.TabIndex = 25;
+            this.MessegeUsername.Text = "guna2Button1";
+            this.MessegeUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.MessegeUsername.Visible = false;
             // 
             // btnSignInGG
             // 
@@ -158,7 +199,7 @@ namespace App_Library.Views
             this.gnPanelPassword.BorderThickness = 2;
             this.gnPanelPassword.Controls.Add(this.picEye);
             this.gnPanelPassword.Controls.Add(this.txbPassword);
-            this.gnPanelPassword.Location = new System.Drawing.Point(75, 162);
+            this.gnPanelPassword.Location = new System.Drawing.Point(75, 152);
             this.gnPanelPassword.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelPassword.Name = "gnPanelPassword";
             this.gnPanelPassword.Size = new System.Drawing.Size(310, 47);
@@ -192,12 +233,9 @@ namespace App_Library.Views
             this.txbPassword.TabIndex = 4;
             this.txbPassword.Text = "Password";
             this.txbPassword.Click += new System.EventHandler(this.txbPassword_Click);
-            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPassword_KeyDown_1);
-            this.txbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPassword_KeyPress);
             this.txbPassword.Leave += new System.EventHandler(this.txbPassword_Leave);
             this.txbPassword.MouseLeave += new System.EventHandler(this.txbPassword_MouseLeave);
             this.txbPassword.MouseHover += new System.EventHandler(this.txbPassword_MouseHover);
-            this.txbPassword.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txbPassword_PreviewKeyDown);
             // 
             // gnPanelLogIn
             // 
@@ -205,7 +243,7 @@ namespace App_Library.Views
             this.gnPanelLogIn.BorderRadius = 10;
             this.gnPanelLogIn.BorderThickness = 2;
             this.gnPanelLogIn.Controls.Add(this.txbUserName);
-            this.gnPanelLogIn.Location = new System.Drawing.Point(75, 100);
+            this.gnPanelLogIn.Location = new System.Drawing.Point(75, 76);
             this.gnPanelLogIn.Margin = new System.Windows.Forms.Padding(2);
             this.gnPanelLogIn.Name = "gnPanelLogIn";
             this.gnPanelLogIn.Size = new System.Drawing.Size(310, 47);
@@ -293,7 +331,6 @@ namespace App_Library.Views
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.pnMainContentLogin.ResumeLayout(false);
             this.pnMainContentLogin.PerformLayout();
             this.btnSignInGG.ResumeLayout(false);
@@ -326,5 +363,7 @@ namespace App_Library.Views
         private PictureBox picGG;
         private Label lbGG;
         internal Guna.UI2.WinForms.Guna2Panel btnSignInGG;
+        private Guna.UI2.WinForms.Guna2Button MessegeUsername;
+        private Guna.UI2.WinForms.Guna2Button MessegePassword;
     }
 }

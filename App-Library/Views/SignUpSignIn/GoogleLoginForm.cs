@@ -3,12 +3,14 @@ using App_Library.Views.ToolerForm;
 using Firebase.Auth;
 using Guna.UI2.WinForms;
 using Microsoft.Web.WebView2.Core;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,16 +24,38 @@ namespace App_Library.Views.SignIn
 {
     public partial class GoogleLoginForm : Form
     {
-        private string clientId = "399731708640-c3s7bv2pqmba4rk388mdknfqn1ffn4ti.apps.googleusercontent.com";
-        private string clientSecret = "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";
-        private string redirectUri = "http://localhost"; // Thay bằng Redirect URI bạn đã cấu hình
+        private string clientId;
+        private string clientSecret;
+        private string redirectUri;
+        private string tokenEndpoint;
         public string AuthorizationCode { get; private set; }
-        private string tokenEndpoint = "https://oauth2.googleapis.com/token";
 
         private AuthService authService;
 
         public GoogleLoginForm()
         {
+            try
+            {
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("appsettings.json file not found in the application directory.");
+                }
+
+                var json = File.ReadAllText(filePath);
+
+                var settings = JsonConvert.DeserializeObject<AppConfig>(json);
+
+                clientId = settings?.GGSettings?.clientId ?? throw new Exception("Client ID is not configured in appsettings.json");
+                clientSecret = settings?.GGSettings?.clientSecret ?? throw new Exception("Client Secret is not configured in appsettings.json");
+                redirectUri = settings?.GGSettings?.redirectUri ?? throw new Exception("Redirect Uri is not configured in appsettings.json");
+                tokenEndpoint = settings?.GGSettings?.tokenEndpoint ?? throw new Exception("Token Endpoint is not configured in appsettings.json");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error initializing AuthService: {ex.Message}", ex);
+            }
             InitializeComponent();
             authService = new AuthService();
             webViewGoogle.SourceChanged += WebViewGoogle_SourceChanged;
@@ -78,7 +102,7 @@ namespace App_Library.Views.SignIn
 
             response.EnsureSuccessStatusCode();
             var responseBody = await response.Content.ReadAsStringAsync();
-            var tokenData = JsonSerializer.Deserialize<JsonDocument>(responseBody);
+            var tokenData = System.Text.Json.JsonSerializer.Deserialize<JsonDocument>(responseBody);
             return tokenData.RootElement.GetProperty("id_token").GetString();
         }
         public GoogleLoginRequest DecodeIdToken(string idToken)

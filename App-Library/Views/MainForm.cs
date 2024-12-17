@@ -30,50 +30,50 @@ namespace App_Library.Views
     public partial class MainForm : FormHelper
     {
         private readonly UserService _userService;
-        private readonly BookService _bookService;
-        private readonly StarsRatingService _starsRating;
-        private bool isDragging = false;
-        private Point dragStartPoint;
-        private Control draggedControl;
+        //private readonly BookService _bookService;
+        //private readonly StarsRatingService _starsRating;
+        //private bool isDragging = false;
+        //private Point dragStartPoint;
+        //private Control draggedControl;
         internal StockForm homeForm;
         private NewShopMain shopForm;
         SideBarUserForm sidebar;
         // compunent shop 
-        List<Panel> listBookAd;
-        List<Book> books;
-        Dictionary<Control, Form> formDictionary;
-        Form currentForm;
+        //List<Panel> listBookAd;
+        //List<Book> books;
+        //Dictionary<Control, Form> formDictionary;
+        //Form currentForm;
         Dictionary<Control, bool> isClick;
-        SplashForm Parent;
-        public MainForm(SplashForm _Parent )
+        //SplashForm Parent;
+        public MainForm(SplashForm _Parent)
         {
             InitializeComponent();
             _userService = new UserService();
-            _bookService = new BookService();
-            _starsRating = new StarsRatingService();
-            books = new List<Book>();
-            listBookAd = new List<Panel>();
+            //_bookService = new BookService();
+            //_starsRating = new StarsRatingService();
+            //books = new List<Book>();
+            //listBookAd = new List<Panel>();
             isClick = new Dictionary<Control, bool>();
             //Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
-            this.Parent = _Parent;
+            //this.Parent = _Parent;
         }
-        public async void refresh()
-        {
-            var currentUser = await _userService.GetCurrentUserAsync();
-            Session.CurentUser = currentUser;
-            lbName.Text = currentUser.Username;
-            try
-            {
-                picAvatar.Load(currentUser.PhotoURL); // Đường dẫn hoặc URL của ảnh
-            }
-            catch (Exception)
-            {
-                // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
-                this.picAvatar.Image = global::App_Library.Properties.Resources.account;
-            }
-            // Hiển thị sidebar
-            
-        }
+
+        //public async void refresh()
+        //{
+        //    var currentUser = await _userService.GetCurrentUserAsync();
+        //    Session.CurentUser = currentUser;
+        //    lbName.Text = currentUser.Username;
+        //    try
+        //    {
+        //        picAvatar.Load(currentUser.PhotoURL); // Đường dẫn hoặc URL của ảnh
+        //    }
+        //    catch (Exception)
+        //    {
+        //        // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
+        //        this.picAvatar.Image = global::App_Library.Properties.Resources.account;
+        //    }
+        //}
+
         private async void MainForm_Load(object sender, EventArgs e)
         {
             // Hiển thị thông tin người dùng hiện tại
@@ -104,20 +104,21 @@ namespace App_Library.Views
             {
                 lbRole.Text = "User";
                 sidebar = new SideBarUserForm(this);
-                activeFormChild(pnSideBar, sidebar);
+                activeFormChild(pnSideBar, new SideBarUserForm(this));
                 activeFormChildForMainForm(shopForm, e);
             }
 
             //homeForm = new HomeForm(this);
             //shopForm = new NewShopMain();
-            books = await _bookService.GetBooksAsync();
+            //books = await _bookService.GetBooksAsync();
         }
-       
+
         public void clickBackHome(object sender, EventArgs e)
         {
             homeForm = new StockForm(this);
             activeFormChildForMainForm(homeForm, e);
         }
+
         private void MouseLeave(object sender, EventArgs e)
         {
             var _lbShop = (Control)sender;
@@ -170,6 +171,7 @@ namespace App_Library.Views
                 }
             }
         }
+
         Form formShopMain;
         Form ActForm;
         public void activeFormChildForMainForm(Form formDes, object obj)
@@ -195,7 +197,6 @@ namespace App_Library.Views
             this.Size = new Size(460, 700);
             Program.sp.Hide();
             Program.sp = new SplashForm();
-
             Program.sp.ShowDialog();
         }
 
@@ -208,11 +209,21 @@ namespace App_Library.Views
         private void pnContainLogOut_MouseLeave(object sender, EventArgs e)
         {
             pnContainLogOut.BorderColor = Color.Black;
-            picLogOut.Visible=false;
+            picLogOut.Visible = false;
         }
-        public void nextPageToHistory (object e)
+        public void nextPageToHistory(object e)
         {
             activeFormChildForMainForm(new History(this, sidebar), e);
+        }
+
+        private void profileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

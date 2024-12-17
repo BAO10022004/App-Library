@@ -12,18 +12,39 @@ using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using App_Library.Views.ToolerForm;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.IO;
 
 namespace App_Library.Services
 {
     internal class UserService
     {
         private readonly HttpClient _httpClient;
-
+        private readonly string _baseUrl;
         public UserService()
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://books-webapplication-plh6.onrender.com/");
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
+            try
+            {
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("appsettings.json file not found in the application directory.");
+                }
+
+                var json = File.ReadAllText(filePath);
+
+                var settings = JsonConvert.DeserializeObject<AppConfig>(json);
+
+                _baseUrl = settings?.ApiSettings?.BaseUrl ?? throw new Exception("BaseUrl is not configured in appsettings.json");
+
+                _httpClient = new HttpClient();
+                _httpClient.BaseAddress = new Uri(_baseUrl);
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session.Token);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error initializing AuthService: {ex.Message}", ex);
+            }
         }
         // Lấy danh sách tất cẩ người dùng
         public async Task<List<User>> GetUsersAsync()
@@ -86,7 +107,7 @@ namespace App_Library.Services
             // Sau khi hoàn thành yêu cầu HTTP, kiểm tra kết quả
             if (response.IsSuccessStatusCode)
             {
-             
+
                 // Đóng LoadingForm khi thành công
                 loadingForm.Hide();
                 loadingForm.Close();

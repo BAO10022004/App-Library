@@ -13,58 +13,124 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
-// $2a$10$eITLrNBDrQ5zvpaAToD2GO20B5hYEzKY2gtvvpirHIeJiXUECnAf2
 namespace App_Library.Views
 {
     public partial class LoginForm : Views.ToolerForm.FormHelper
     {
         private SplashForm _splashForm;
         private readonly AuthService _authService;
-        internal MainForm mainform;
-        bool isEyeClose = true;
-        int second =2;
-        // animation hover GG
+        int second = 2;
         int xPicGG;
+
         public LoginForm(SplashForm splashForm)
         {
             InitializeComponent();
             _splashForm = splashForm;
             _authService = new AuthService();
-
             xPicGG = picGG.Location.X;
-           
         }
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-        public SplashForm  getParent()
-        {
-            return _splashForm;
-        }
+
+        //public SplashForm getParent()
+        //{
+        //    return _splashForm;
+        //}
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-           
-            bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text, this);
-            if (checkLoginSuccess)
+            List<TextBox> listCotrol = new List<TextBox>();
+            listCotrol.Add(txbUserName);
+            listCotrol.Add(txbPassword);
+            Dictionary<Control, bool> checkValid = new Dictionary<Control, bool>();
+            Dictionary<Control, Guna2Button> messegeError = new Dictionary<Control, Guna2Button>();
+            foreach (TextBox item in listCotrol)
             {
-                Program.checkLoginGG = false;
-                _splashForm.OpenMainForm();
+                checkValid[item] = false;
+                switch (item.Name)
+                {
+                    case "txbUserName":
+                        {
+                            messegeError.Add(item, MessegeUsername);
+                            break;
+                        }
+                    case "txbPassword":
+                        {
+                            messegeError.Add(item, MessegePassword);
+                            break;
+                        }
+                }
+                messegeError[item].Text = "";
             }
+            checkValid[txbUserName] = checkUsername(messegeError[txbUserName]);
+            checkValid[txbPassword] = checkPassword(messegeError[txbPassword]);
+
+            MessegeUsername.Visible = !checkValid[txbUserName];
+            MessegePassword.Visible = !checkValid[txbPassword];
+
+            bool check = true;
+            listCotrol.ForEach(x => check = (check && checkValid[x]));
+            if (check)
+            {
+                bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text, this);
+                if (checkLoginSuccess)
+                {
+                    Program.checkLoginGG = false;
+                    _splashForm.OpenMainForm();
+                }
+            }
+            //else
+            //{
+            //    listCotrol.ForEach(x =>
+            //    {
+            //        if (!checkValid[x])
+            //        {
+            //            Guna2Panel pn = FindControlContainer(this.Controls, x) as Guna2Panel;
+            //            pn.BorderColor = Color.Red;
+            //        }
+            //    });
+            //}
         }
+
         private async void btnSignInGG_Click(object sender, EventArgs e)
         {
-            //(new ActionClickLoginWithGG(this)).ShowDialog();
             var googleLoginForm = new GoogleLoginForm();
-
             bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync(_splashForm);
             if (checkLoginSuccess)
             {
                 Program.checkLoginGG = true;
                 _splashForm.OpenMainForm();
+            }
+        }
+
+        private bool checkUsername(Guna2Button messege)
+        {
+            // Kiểm tra rổng
+            if (string.IsNullOrWhiteSpace(txbUserName.Text) || txbUserName.Text == "Username")
+            {
+                messege.Text = "Please enter username";
+                return false;
+            }
+            else
+            {
+                messege.Text = "";
+                return true;
+            }
+        }
+
+        private bool checkPassword(Guna2Button messege)
+        {
+            // Kiểm tra rổng
+            if (string.IsNullOrWhiteSpace(txbPassword.Text) || txbPassword.Text == "Password")
+            {
+                messege.Text = "Please enter password";
+                return false;
+            }
+            else
+            {
+                messege.Text = "";
+                return true;
             }
         }
 
@@ -88,9 +154,6 @@ namespace App_Library.Views
             {
                 txbUserName.Text = "Username";
                 txbUserName.ForeColor = Color.DarkGray;
-            }
-            if (txbUserName.Text.Equals("User Name") || txbUserName.Text.Equals(""))
-            {
                 gnPanelLogIn.BorderColor = Color.DarkGray;
             }
         }
@@ -100,53 +163,40 @@ namespace App_Library.Views
             if (txbPassword.Text == "Password")
             {
                 txbPassword.Text = string.Empty;
-                closeEye();
+                txbPassword.PasswordChar = '*';
                 txbPassword.ForeColor = Color.Aqua;
             }
         }
 
         private void txbPassword_Leave(object sender, EventArgs e)
         {
-                      
             if (txbPassword.Text == string.Empty)
             {
                 txbPassword.Text = "Password";
                 txbPassword.PasswordChar = '\0';
-                isEyeClose = true;
-                this.picEye.Image = null;
                 txbPassword.ForeColor = Color.DarkGray;
             }
-            if(txbPassword.Text.Equals("Password"))
-            {
-                txbPassword.PasswordChar= '•';
-            }
-            if(picEye.Image == null)
-            {
-                txbPassword.PasswordChar = '\0';
-            }
-           
         }
         void closeEye()
         {
             try
             {
-                isEyeClose = true;
                 this.picEye.Image = global::App_Library.Properties.Resources.eye;
-                txbPassword.PasswordChar = '•';
-
+                if (!(txbPassword.Text == "Password"))
+                {
+                    txbPassword.PasswordChar = '*';
+                }
                 picEye.Click += new EventHandler(this.picEye_Click);
             }
             catch (Exception e)
             {
-
             }
-            
         }
-        void openEye()
+
+        private void picEye_Click(object sender, EventArgs e)
         {
             try
             {
-                isEyeClose = false;
                 this.picEye.Image = global::App_Library.Properties.Resources.eye_slash;
                 txbPassword.PasswordChar = '\0';
                 timerEyeOpen.Start();
@@ -155,27 +205,6 @@ namespace App_Library.Views
             catch (Exception ex)
             {
             }
-            
-        }
-
-        private void picEye_Click(object sender, EventArgs e)
-        {     
-            openEye();
-        }
-
-        private void txbPassword_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-           
-        }
-
-        private void pnMainContentLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbPassword_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            
         }
 
         private void timerEyeOpen_Tick(object sender, EventArgs e)
@@ -186,31 +215,26 @@ namespace App_Library.Views
             }
             else
             {
-                second =2;
+                second = 2;
                 timerEyeOpen.Stop();
                 closeEye();
             }
         }
 
-        private void txbPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
-        
         private void lbGG_MouseHover(object sender, EventArgs e)
         {
             lbGG.Text = "";
             timerHoverGg.Start();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(picGG.Location.X < lbGG.Width/2)
+            if (picGG.Location.X < lbGG.Width / 2)
             {
                 picGG.Location = new Point(picGG.Location.X + 5, lbGG.Location.Y);
             }
             else
             {
+                lbGG.Text = "";
                 timerHoverGg.Stop();
             }
         }
@@ -231,6 +255,7 @@ namespace App_Library.Views
                 timerLeaveGG.Stop();
             }
         }
+
         private void txbUserName_MouseHover(object sender, EventArgs e)
         {
             gnPanelLogIn.BorderColor = Color.Aqua;
@@ -244,12 +269,10 @@ namespace App_Library.Views
             }
         }
 
-
         private void txbPassword_MouseHover(object sender, EventArgs e)
         {
             gnPanelPassword.BorderColor = Color.Aqua;
         }
-
 
         private void txbPassword_MouseLeave(object sender, EventArgs e)
         {
@@ -258,8 +281,8 @@ namespace App_Library.Views
                 gnPanelPassword.BorderColor = Color.DarkGray;
             }
         }
-
-        private  void lbForgotPassword_Click(object sender, EventArgs e)
+        // Bấm quên password
+        private void lbForgotPassword_Click(object sender, EventArgs e)
         {
             (new ChangePasswordForm(null)).ShowDialog();
         }
@@ -267,33 +290,25 @@ namespace App_Library.Views
         private void lbCreateAccount_MouseHover(object sender, EventArgs e)
         {
             Label lb = sender as Label;
-           lb.Font =  new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
         }
 
         private void lbCreateAccount_MouseLeave(object sender, EventArgs e)
         {
             Label lb = sender as Label;
             lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-
         }
 
         private void lbForgotPassword_MouseHover(object sender, EventArgs e)
         {
             Label lb = sender as Label;
             lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
         }
 
         private void lbForgotPassword_MouseLeave(object sender, EventArgs e)
         {
             Label lb = sender as Label;
             lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-        }
-
-        private void s(object sender, EventArgs e)
-        {
-
         }
     }
 }

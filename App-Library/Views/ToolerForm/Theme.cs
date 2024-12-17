@@ -10,7 +10,7 @@ namespace App_Library.Views.ToolerForm
 {
     internal class Theme
     {
-       public  Dictionary<Form, Color> BackRound { get; set; }
+        public Dictionary<Form, Color> BackRound { get; set; }
         public Dictionary<Form, Color> ForeColor { get; set; }
         public Theme()
         {

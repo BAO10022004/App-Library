@@ -18,17 +18,12 @@ namespace App_Library.Views.ToolerForm
             this.Location = Program.sp.Location;
             if (form != null)
             {
-                this.Size =new Size( form.Width,form.Height +40);
+                this.Size = new Size(form.Width, form.Height + 40);
             }
             else
             {
                 this.Size = Program.sp.Size;
             }
-        }
-
-        private void LoadingForm_Load(object sender, EventArgs e)
-        {
-           
         }
 
         private void timerStart_Tick(object sender, EventArgs e)

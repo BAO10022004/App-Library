@@ -17,7 +17,6 @@ namespace App_Library.Views.ToolerForm
         {
             InitializeComponent();
             this.Location = Program.sp.Location;
-            
         }
 
         private void btnOk_MouseHover(object sender, EventArgs e)
@@ -50,11 +49,6 @@ namespace App_Library.Views.ToolerForm
         {
             ConfirmResult = true;
             this.Close();
-        }
-
-        private void AlertConfirm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
     }
 }

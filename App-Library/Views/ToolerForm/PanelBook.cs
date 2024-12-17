@@ -17,7 +17,7 @@ namespace App_Library.Views.ToolerForm
         {
             this.data = data;
         }
-        
+
         public Book Data1 { get => data; set => data = value; }
     }
 }

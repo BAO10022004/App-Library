@@ -31,8 +31,6 @@ namespace App_Library.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timerPicHome = new System.Windows.Forms.Timer(this.components);
             this.pnContent = new System.Windows.Forms.Panel();
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
             this.pnFooter = new System.Windows.Forms.Panel();
@@ -45,9 +43,9 @@ namespace App_Library.Views
             this.lbRole = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.menuStripUser = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.profileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerPicShop = new System.Windows.Forms.Timer(this.components);
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnFooter.SuspendLayout();
             this.pnContainLogOut.SuspendLayout();
@@ -55,12 +53,8 @@ namespace App_Library.Views
             this.pnLeft.SuspendLayout();
             this.pnUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
-            this.guna2ContextMenuStrip1.SuspendLayout();
+            this.menuStripUser.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // timerPicHome
-            // 
-            this.timerPicHome.Interval = 5;
             // 
             // pnContent
             // 
@@ -120,6 +114,7 @@ namespace App_Library.Views
             // 
             // btnLogOut
             // 
+            this.btnLogOut.BorderColor = System.Drawing.Color.White;
             this.btnLogOut.BorderRadius = 5;
             this.btnLogOut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogOut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -204,7 +199,7 @@ namespace App_Library.Views
             // 
             // picAvatar
             // 
-            this.picAvatar.ContextMenuStrip = this.guna2ContextMenuStrip1;
+            this.picAvatar.ContextMenuStrip = this.menuStripUser;
             this.picAvatar.ImageRotate = 0F;
             this.picAvatar.Location = new System.Drawing.Point(4, 28);
             this.picAvatar.Margin = new System.Windows.Forms.Padding(2);
@@ -215,26 +210,34 @@ namespace App_Library.Views
             this.picAvatar.TabIndex = 1;
             this.picAvatar.TabStop = false;
             // 
-            // guna2ContextMenuStrip1
+            // menuStripUser
             // 
-            this.guna2ContextMenuStrip1.BackColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.guna2ContextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.guna2ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripUser.BackColor = System.Drawing.Color.White;
+            this.menuStripUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.menuStripUser.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStripUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profileToolStripMenuItem1,
             this.logOutToolStripMenuItem});
-            this.guna2ContextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.guna2ContextMenuStrip1.Margin = new System.Windows.Forms.Padding(10);
-            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.Aqua;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(134, 30);
+            this.menuStripUser.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStripUser.Margin = new System.Windows.Forms.Padding(10);
+            this.menuStripUser.Name = "guna2ContextMenuStrip1";
+            this.menuStripUser.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.menuStripUser.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.menuStripUser.RenderStyle.ColorTable = null;
+            this.menuStripUser.RenderStyle.RoundedEdges = true;
+            this.menuStripUser.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.menuStripUser.RenderStyle.SelectionBackColor = System.Drawing.Color.Aqua;
+            this.menuStripUser.RenderStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.menuStripUser.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.menuStripUser.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.menuStripUser.Size = new System.Drawing.Size(134, 56);
+            // 
+            // profileToolStripMenuItem1
+            // 
+            this.profileToolStripMenuItem1.Name = "profileToolStripMenuItem1";
+            this.profileToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
+            this.profileToolStripMenuItem1.Text = "Profile";
+            this.profileToolStripMenuItem1.Click += new System.EventHandler(this.profileToolStripMenuItem1_Click);
             // 
             // logOutToolStripMenuItem
             // 
@@ -242,10 +245,7 @@ namespace App_Library.Views
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             this.logOutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.logOutToolStripMenuItem.Text = "LogOut";
-            // 
-            // timerPicShop
-            // 
-            this.timerPicShop.Interval = 5;
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // profileToolStripMenuItem
             // 
@@ -274,14 +274,12 @@ namespace App_Library.Views
             this.pnLeft.ResumeLayout(false);
             this.pnUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
-            this.guna2ContextMenuStrip1.ResumeLayout(false);
+            this.menuStripUser.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Timer timerPicHome;
         private Guna.UI2.WinForms.Guna2Panel pnMain;
         private Panel pnFooter;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
@@ -291,12 +289,12 @@ namespace App_Library.Views
         private Label lbRole;
         private Label lbName;
         private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip menuStripUser;
         private ToolStripMenuItem logOutToolStripMenuItem;
         private ToolStripMenuItem profileToolStripMenuItem;
-        private Timer timerPicShop;
         private Guna.UI2.WinForms.Guna2Panel pnContainLogOut;
         private Guna.UI2.WinForms.Guna2PictureBox picLogOut;
         public Panel pnContent;
+        private ToolStripMenuItem profileToolStripMenuItem1;
     }
 }

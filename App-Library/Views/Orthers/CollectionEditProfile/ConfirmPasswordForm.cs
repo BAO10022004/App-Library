@@ -41,13 +41,13 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
                 txtPassword.PasswordChar = '•';
                 txtUserName.Text = user.Username;
             }
-           
+
 
         }
 
         private void ConfirmPasswordForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnNext_MouseHover(object sender, EventArgs e)
@@ -95,20 +95,20 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
 
         private async void btnSendOtp_Click(object sender, EventArgs e)
         {
-            if(!forgotPass)
+            if (!forgotPass)
             {
                 sendOTP(user.Email);
             }
             else
             {
-                if(txtPassword.Text == "")
+                if (txtPassword.Text == "")
                 {
                     (new AlertFail("Fail !!" + "\n" + "Mail is epmty")).ShowDialog();
                 }
                 else
                 {
-                    var db =await (new AuthService()).GetUserByEmail(txtPassword.Text);
-                    if(db == null)
+                    var db = await (new AuthService()).GetUserByEmail(txtPassword.Text);
+                    if (db == null)
                     {
                         (new AlertFail("Fail !!" + "\n" + "Account not exist")).ShowDialog();
                     }
@@ -116,7 +116,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
                     {
                         sendOTP(db.Email);
                     }
-                } 
+                }
             }
         }
         void sendOTP(string mail)
@@ -171,7 +171,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if(forgotPass)
+            if (forgotPass)
             {
                 handleForgotPassword();
             }
@@ -179,8 +179,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             {
                 handleChangePassword();
             }
-           
-            
+
+
         }
         async void handleForgotPassword()
         {
@@ -274,10 +274,10 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
         {
             openEye();
         }
-       
+
         private void timerEyeOpen_Tick(object sender, EventArgs e)
         {
-            if(countDown >0)
+            if (countDown > 0)
             {
                 countDown--;
             }
@@ -290,7 +290,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
 
         private async void txtPassword_MouseLeave(object sender, EventArgs e)
         {
-            if(forgotPass)
+            if (forgotPass)
             {
                 if (txtPassword.Text == "")
                 {

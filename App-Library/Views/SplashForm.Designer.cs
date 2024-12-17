@@ -284,7 +284,6 @@ namespace App_Library.Views
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
-            this.Load += new System.EventHandler(this.SplashForm_Load);
             this.pnSubLogin.ResumeLayout(false);
             this.pnFrameOption.ResumeLayout(false);
             this.pnContainButtonSignUp.ResumeLayout(false);

@@ -1,7 +1,9 @@
 ﻿using App_Library.Models;
 using App_Library.Views.ToolerForm;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -16,11 +18,33 @@ namespace App_Library.Services
     internal class AuthService
     {
         private readonly HttpClient _httpClient;
+        private readonly string _baseUrl;
 
         public AuthService()
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://books-webapplication-plh6.onrender.com/");
+            Console.WriteLine("Khoi tao AuthService");
+            try
+            {
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("appsettings.json file not found in the application directory.");
+                }
+
+                var json = File.ReadAllText(filePath);
+
+                var settings = JsonConvert.DeserializeObject<AppConfig>(json);
+
+                _baseUrl = settings?.ApiSettings?.BaseUrl ?? throw new Exception("BaseUrl is not configured in appsettings.json");
+
+                _httpClient = new HttpClient();
+                _httpClient.BaseAddress = new Uri(_baseUrl);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error initializing AuthService: {ex.Message}", ex);
+            }
         }
 
         // Gọi API đăng nhập
@@ -102,7 +126,7 @@ namespace App_Library.Services
             loadingForm.Hide();
             loadingForm.Close();
 
-            (new AlertFail("Login Fail")).ShowDialog();
+            (new AlertFail("SignUp Fail")).ShowDialog();
             return await response.Content.ReadAsStringAsync();
         }
 

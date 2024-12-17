@@ -21,15 +21,14 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         {
             InitializeComponent();
             this.user = user;
-            if(user == null)
-                nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
+            if (user == null)
+                //nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
             nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
         }
 
         private async void ChangePasswordForm_Load(object sender, EventArgs e)
         {
-            
-            if(user != null)
+            if (user != null)
             {
                 try
                 {
@@ -49,8 +48,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 lbUserName.Text = user.Username;
                 lbEmail.Text = user.Email;
             }
-           
         }
+
         public async void updateFrame(User userUpdate)
         {
             try
@@ -71,6 +70,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             lbUserName.Text = userUpdate.Username;
             lbEmail.Text = userUpdate.Email;
         }
+
         public void nextPage(Form form)
         {
             activeFormChild(pnInformation, form, null, ref actForm);
