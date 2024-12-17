@@ -46,14 +46,14 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnMainForm = new System.Windows.Forms.FlowLayoutPanel();
             this.pnAd = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainAd = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnHotDeal = new Guna.UI2.WinForms.Guna2Panel();
-            this.flowpnNewItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnNewItem = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pnBestSelling = new Guna.UI2.WinForms.Guna2Panel();
-            this.flowpnHotDeal = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowpnNewItem = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnBestDeal = new Guna.UI2.WinForms.Guna2Panel();
+            this.flowpnBestDeal = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,11 +66,11 @@ namespace App_Library.Views.Main.CollectionShop
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
             this.pnMainForm.SuspendLayout();
             this.pnAd.SuspendLayout();
-            this.pnHotDeal.SuspendLayout();
+            this.pnNewItem.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.pnBestSelling.SuspendLayout();
+            this.pnBestDeal.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
@@ -185,8 +185,8 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnMainForm.AutoScroll = true;
             this.pnMainForm.BackColor = System.Drawing.Color.Honeydew;
             this.pnMainForm.Controls.Add(this.pnAd);
-            this.pnMainForm.Controls.Add(this.pnHotDeal);
-            this.pnMainForm.Controls.Add(this.pnBestSelling);
+            this.pnMainForm.Controls.Add(this.pnNewItem);
+            this.pnMainForm.Controls.Add(this.pnBestDeal);
             this.pnMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainForm.Location = new System.Drawing.Point(0, 100);
             this.pnMainForm.Name = "pnMainForm";
@@ -209,24 +209,16 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnContainAd.Size = new System.Drawing.Size(1011, 347);
             this.pnContainAd.TabIndex = 0;
             // 
-            // pnHotDeal
+            // pnNewItem
             // 
-            this.pnHotDeal.BackColor = System.Drawing.Color.Transparent;
-            this.pnHotDeal.Controls.Add(this.flowpnNewItem);
-            this.pnHotDeal.Controls.Add(this.guna2Panel2);
-            this.pnHotDeal.Location = new System.Drawing.Point(0, 356);
-            this.pnHotDeal.Margin = new System.Windows.Forms.Padding(0);
-            this.pnHotDeal.Name = "pnHotDeal";
-            this.pnHotDeal.Size = new System.Drawing.Size(1030, 500);
-            this.pnHotDeal.TabIndex = 3;
-            // 
-            // flowpnNewItem
-            // 
-            this.flowpnNewItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpnNewItem.Location = new System.Drawing.Point(0, 70);
-            this.flowpnNewItem.Name = "flowpnNewItem";
-            this.flowpnNewItem.Size = new System.Drawing.Size(1030, 430);
-            this.flowpnNewItem.TabIndex = 1;
+            this.pnNewItem.BackColor = System.Drawing.Color.Transparent;
+            this.pnNewItem.Controls.Add(this.guna2Panel2);
+            this.pnNewItem.Controls.Add(this.flowpnNewItem);
+            this.pnNewItem.Location = new System.Drawing.Point(0, 356);
+            this.pnNewItem.Margin = new System.Windows.Forms.Padding(0);
+            this.pnNewItem.Name = "pnNewItem";
+            this.pnNewItem.Size = new System.Drawing.Size(1030, 500);
+            this.pnNewItem.TabIndex = 3;
             // 
             // guna2Panel2
             // 
@@ -274,24 +266,33 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // pnBestSelling
+            // flowpnNewItem
             // 
-            this.pnBestSelling.BackColor = System.Drawing.Color.Transparent;
-            this.pnBestSelling.Controls.Add(this.flowpnHotDeal);
-            this.pnBestSelling.Controls.Add(this.guna2Panel4);
-            this.pnBestSelling.Location = new System.Drawing.Point(0, 856);
-            this.pnBestSelling.Margin = new System.Windows.Forms.Padding(0);
-            this.pnBestSelling.Name = "pnBestSelling";
-            this.pnBestSelling.Size = new System.Drawing.Size(1030, 500);
-            this.pnBestSelling.TabIndex = 4;
+            this.flowpnNewItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpnNewItem.Location = new System.Drawing.Point(0, 0);
+            this.flowpnNewItem.Name = "flowpnNewItem";
+            this.flowpnNewItem.Size = new System.Drawing.Size(1030, 500);
+            this.flowpnNewItem.TabIndex = 1;
+            this.flowpnNewItem.Scroll += new System.Windows.Forms.ScrollEventHandler(this.flowpnNewItem_Scroll);
             // 
-            // flowpnHotDeal
+            // pnBestDeal
             // 
-            this.flowpnHotDeal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowpnHotDeal.Location = new System.Drawing.Point(0, 70);
-            this.flowpnHotDeal.Name = "flowpnHotDeal";
-            this.flowpnHotDeal.Size = new System.Drawing.Size(1030, 430);
-            this.flowpnHotDeal.TabIndex = 1;
+            this.pnBestDeal.BackColor = System.Drawing.Color.Transparent;
+            this.pnBestDeal.Controls.Add(this.flowpnBestDeal);
+            this.pnBestDeal.Controls.Add(this.guna2Panel4);
+            this.pnBestDeal.Location = new System.Drawing.Point(0, 856);
+            this.pnBestDeal.Margin = new System.Windows.Forms.Padding(0);
+            this.pnBestDeal.Name = "pnBestDeal";
+            this.pnBestDeal.Size = new System.Drawing.Size(1030, 500);
+            this.pnBestDeal.TabIndex = 4;
+            // 
+            // flowpnBestDeal
+            // 
+            this.flowpnBestDeal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowpnBestDeal.Location = new System.Drawing.Point(0, 70);
+            this.flowpnBestDeal.Name = "flowpnBestDeal";
+            this.flowpnBestDeal.Size = new System.Drawing.Size(1030, 430);
+            this.flowpnBestDeal.TabIndex = 1;
             // 
             // guna2Panel4
             // 
@@ -378,12 +379,12 @@ namespace App_Library.Views.Main.CollectionShop
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
             this.pnMainForm.ResumeLayout(false);
             this.pnAd.ResumeLayout(false);
-            this.pnHotDeal.ResumeLayout(false);
+            this.pnNewItem.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.pnBestSelling.ResumeLayout(false);
+            this.pnBestDeal.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
@@ -405,14 +406,14 @@ namespace App_Library.Views.Main.CollectionShop
         private Guna.UI2.WinForms.Guna2Elipse geButtonSearch;
         private System.Windows.Forms.Timer timerDownClick;
         private System.Windows.Forms.Timer timerUpClick;
-        private Guna.UI2.WinForms.Guna2Panel pnHotDeal;
+        private Guna.UI2.WinForms.Guna2Panel pnNewItem;
         private System.Windows.Forms.Panel pnSearch;
         private Guna.UI2.WinForms.Guna2Panel pnSearchShop;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.PictureBox picSearch;
         private Guna.UI2.WinForms.Guna2Panel pnAd;
-        private Guna.UI2.WinForms.Guna2Panel pnBestSelling;
+        private Guna.UI2.WinForms.Guna2Panel pnBestDeal;
         private Guna.UI2.WinForms.Guna2Panel pnContainAd;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpnNewItem;
@@ -423,7 +424,7 @@ namespace App_Library.Views.Main.CollectionShop
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowpnHotDeal;
+        private System.Windows.Forms.FlowLayoutPanel flowpnBestDeal;
         private System.Windows.Forms.FlowLayoutPanel pnMainSearch;
     }
 }

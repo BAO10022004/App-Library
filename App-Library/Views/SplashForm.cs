@@ -1,5 +1,6 @@
 ﻿using App_Library.Views.Main.CollectionShop;
 using App_Library.Views.ToolerForm;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,22 @@ namespace App_Library.Views
     public partial class SplashForm : Views.ToolerForm.FormHelper
     {
         Point pointLbWelcome;
-        //Theme theme;
+        Theme theme;
         public SplashForm()
         {
             InitializeComponent();
-            //theme = new Theme();
-            //theme.BackRound.Add(this, this.pnFrameOption.BackColor);
-            //pnFrameOption.BackColor = theme.BackRound[this];
-            //lbWellcome.ForeColor = theme.BackRound[this];
+            theme = new Theme();
+            theme.BackRound.Add(this,this.pnFrameOption.BackColor);
+            pnFrameOption.BackColor = theme.BackRound[this];
+            lbWellcome.ForeColor = theme.BackRound[this];
+        }
+
+        private void SplashForm_Load(object sender, EventArgs e)
+        {
+            Guna2AnimateWindow gunaAnimateWindow = new Guna2AnimateWindow();
+
+            // Áp dụng hiệu ứng "Blend" (fade-in) khi mở cửa sổ
+            gunaAnimateWindow.SetAnimateWindow(this, Guna2AnimateWindow.AnimateWindowType.AW_CENTER, 500);
         }
         // Bấm nút thoát
         //private void btnExit_Click(object sender, EventArgs e)
@@ -148,7 +157,18 @@ namespace App_Library.Views
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Guna2AnimateWindow gunaAnimateWindow = new Guna2AnimateWindow();
+            gunaAnimateWindow.SetAnimateWindow(this, Guna2AnimateWindow.AnimateWindowType.AW_CENTER, 500);
+
+            // Đóng cửa sổ sau khi hiệu ứng fade-out hoàn tất
+            Timer timer = new Timer();
+            timer.Interval = 500; // Đặt thời gian trùng với thời gian của hiệu ứng fade-out
+            timer.Tick += (s, x) =>
+            {
+                this.Close();
+                timer.Stop();
+            };
+            timer.Start();
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -167,6 +187,7 @@ namespace App_Library.Views
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
+            
             this.WindowState = FormWindowState.Minimized;
         }
     }

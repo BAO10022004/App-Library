@@ -28,12 +28,14 @@ namespace App_Library.Views
         Book book;int ranting;
         NewShopMain shop;
         List<Comment> comments;
-        public PropertiesBookForm(Book book, int ranting, NewShopMain shop)
+        List<BookSold> bookSolds;
+        public PropertiesBookForm(Book book, int ranting, NewShopMain shop, List<BookSold> bookSolds)
         {
             InitializeComponent();
             this.book = book;
             this.ranting = ranting;
             this.shop = shop;
+            this.bookSolds = bookSolds;
         }
 
         private async void PropertiesBookForm_LoadAsync(object sender, EventArgs e)
@@ -73,7 +75,9 @@ namespace App_Library.Views
             
             for(int i=0; i<4; i++ )
             {
-                flowpnRecommed.Controls.Add(shop.createPanel( books[(new Random()).Next(books.Count)],i));
+                var book = books[(new Random()).Next(books.Count)];
+                books.Remove(book);
+                flowpnRecommed.Controls.Add(shop.createPanel( book,i, null));
             }
             // fixed scroll
             int HEIGHT = 0;
@@ -96,8 +100,8 @@ namespace App_Library.Views
                     btnPending.Visible = false;
                 }
             }
-            var dbBooks =await GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
-            foreach(var item in dbBooks)
+            
+            foreach(var item in bookSolds)
             {
                 if (item.BookId.Equals(getBookId) && item.Status == "Pending")
                 {
@@ -114,41 +118,10 @@ namespace App_Library.Views
             activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
             loadingForm.Close();
         }
-        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
-        {
-            string usernameCurrent = _user.Username;
-            string passwordCurrent = _user.PasswordHash;
-            string id = _user.Id;
-            AuthService db = new AuthService();
-            bool result = await db.Login("admin", "123456", null);
-            if (!result)
-            {
-                await db.Login(usernameCurrent, passwordCurrent, null);
-                return null;
-            }
-            else
-            {
-                var user = (await (new UserService()).GetUsersAsync()).ToList().FirstOrDefault(u => u.Username == usernameCurrent);
-                if (user == null)
-                {
-                    return null;
-                }
-                List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
-                var filteredBooks = (from b in list
-                                     where b.UserId == id &&
-                                           (b.Status == "Pending" || b.Status == "Approved")
-                                     select b).ToList();
-                await db.Login(usernameCurrent, passwordCurrent, null);
-                return filteredBooks;
-            }
-        }
+        
+
         Form form;
         Form formComment;
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 

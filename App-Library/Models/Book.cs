@@ -75,7 +75,7 @@ namespace App_Library.Models
         public async Task<Panel> CreateBookPanelAsync(int index, int rating = 4)
         {
             // Tạo panel mới với kích thước cố định
-            PanelBook panel = new PanelBook(this);
+            PanelBook panel = new PanelBook(this, null);
             panel.Size = new Size(200, 350); // Kích thước giữ nguyên
 
             panel.BackColor = Color.FromArgb(240, 240, 255); // Màu nền tương tự hình
@@ -140,95 +140,6 @@ namespace App_Library.Models
             //    control.Name = "Book" + control.Name + index;
             //}
             return panel;
-        }
-        public Panel CreateBookPanel(BoughtBook boughtBook)
-        {
-            Book book = this;
-            // Tạo Panel chính
-            PanelBook panel = new PanelBook(this);
-            panel.Size = new Size(300, 400);
-            panel.BackColor = System.Drawing.Color.White;
-            panel.BorderColor = System.Drawing.Color.Blue;
-            panel.BorderRadius = 15;
-            panel.BorderThickness = 3;
-
-            // Tạo PictureBox cho hình ảnh sách
-            PictureBox pictureBox = new PictureBox
-            {
-                Size = new Size(280, 200), // Kích thước hình ảnh
-                Location = new Point(10, 10), // Vị trí trên Panel
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                BorderStyle = BorderStyle.None,
-                ImageLocation = this.Image // Đường dẫn đến ảnh của sách
-            };
-
-            // Tạo Label cho tiêu đề
-            Label titleLabel = new Label
-            {
-                Text = this.Title,
-                Font = new Font("Arial", 15, FontStyle.Bold),
-                AutoSize = false,
-                Size = new Size(280, 30),
-                Location = new Point(10, 220),
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-
-            // Tạo Label cho thể loại (Genre)
-            Label genreLabel = new Label
-            {
-                Text = this.Genre,
-                Font = new Font("Arial", 10, FontStyle.Italic),
-                AutoSize = false,
-                Size = new Size(280, 20),
-                Location = new Point(10, 260),
-                TextAlign = ContentAlignment.MiddleCenter,
-                ForeColor = Color.Gray
-            };
-
-            // Tạo Label cho tác giả (Author)
-            Label authorLabel = new Label
-            {
-                Text = $"Author: {this.Author}",
-                Font = new Font("Arial", 10, FontStyle.Regular),
-                AutoSize = false,
-                Size = new Size(280, 20),
-                Location = new Point(10, 290),
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-
-            // Tạo Button để mở PDF
-            Button openPdfButton = new Button
-            {
-                Name = book.Title,
-                Text = "Read PDF",
-                Font = new Font("Arial", 10, FontStyle.Bold),
-                Size = new Size(120, 30),
-                Location = new Point(90, 330),
-                BackColor = Color.LightBlue,
-                FlatStyle = FlatStyle.Flat
-            };
-
-            // Gắn sự kiện cho nút "Read PDF"
-            openPdfButton.Click += new EventHandler(boughtBook.clickRead);
-
-            // Thêm các control vào Panel
-            panel.Controls.Add(pictureBox);
-            panel.Controls.Add(titleLabel);
-            panel.Controls.Add(genreLabel);
-            panel.Controls.Add(authorLabel);
-            panel.Controls.Add(openPdfButton);
-
-            return panel;
-        }
-
-        internal void CreateBookAdPanel()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal async Task<Panel> CreateBookPanelAsync()
-        {
-            throw new NotImplementedException();
         }
     }
     public class SearchBooksResponse
