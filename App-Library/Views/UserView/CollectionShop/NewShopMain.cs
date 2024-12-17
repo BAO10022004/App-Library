@@ -57,6 +57,7 @@ namespace App_Library.Views.Main.CollectionShop
         bool isOpenProperti = false;
         // Save main form 
         FlowLayoutPanel pnSaveForm = new FlowLayoutPanel();
+        
         public NewShopMain(MainForm _parent)
         {
             _bookService = new BookService();
@@ -145,7 +146,7 @@ namespace App_Library.Views.Main.CollectionShop
             else
             {
                 listPanelAllBook = ((await Task.WhenAll(listTask)).ToList());
-                
+                listBookSold =await parent.getListSold();
                 foreach (Control control in this.Controls)
                 {
                     control.Visible = true;
@@ -202,9 +203,9 @@ namespace App_Library.Views.Main.CollectionShop
         internal async void bookClick(Book book, PanelBook panelBook = null)
         {
             this.Controls.Clear();
-            var dbBooks = await GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
+            var dbBooks = listBookSold;
             StarsRatingService ratingService = new StarsRatingService();
-            BookRating starsRating = await ratingService.GetBookRatingAsync(book.Id);
+            BookRating starsRating = await (new StarsRatingService()).GetBookRatingAsync(book.Id);
             PropertiesBookForm form;
             if (starsRating == null)
             {
@@ -225,43 +226,7 @@ namespace App_Library.Views.Main.CollectionShop
             }
             
         }
-        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
-        {
-            string usernameCurrent = _user.Username;
-            string passwordCurrent = _user.PasswordHash;
-            string id = _user.Id;
-
-            // Tạo đối tượng dịch vụ và login
-            AuthService db = new AuthService();
-
-            // Thực hiện đăng nhập một lần
-            bool result = await db.Login("admin", "123456", null);
-            if (!result)
-            {
-                // Nếu không đăng nhập admin thành công, cố gắng đăng nhập người dùng bình thường
-                result = await db.Login(usernameCurrent, passwordCurrent, null);
-                if (!result)
-                {
-                    return null; // Trả về null nếu đăng nhập thất bại
-                }
-            }
-
-            // Lấy thông tin người dùng từ service mà không cần phải gọi ToList()
-            var user = (await (new UserService()).GetUsersAsync()).Find(u => u.Username == usernameCurrent);
-            if (user == null)
-            {
-                return null;
-            }
-
-            // Lấy sách đã bán và lọc theo điều kiện
-            List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
-            var filteredBooks = list.Where(b => b.UserId == id && (b.Status == "Pending" || b.Status == "Approved")).ToList();
-
-            // Đăng nhập lại với người dùng hiện tại (nếu cần)
-            await db.Login(usernameCurrent, passwordCurrent, null);
-
-            return filteredBooks;
-        }
+       
         //public void bookHotDeal_Click(object sender, EventArgs e)
         //{
         //    Book book = new Book();

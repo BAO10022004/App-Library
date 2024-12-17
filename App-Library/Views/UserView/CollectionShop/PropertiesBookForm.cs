@@ -75,7 +75,9 @@ namespace App_Library.Views
             
             for(int i=0; i<4; i++ )
             {
-                flowpnRecommed.Controls.Add(shop.createPanel( books[(new Random()).Next(books.Count)],i, null));
+                var book = books[(new Random()).Next(books.Count)];
+                books.Remove(book);
+                flowpnRecommed.Controls.Add(shop.createPanel( book,i, null));
             }
             // fixed scroll
             int HEIGHT = 0;

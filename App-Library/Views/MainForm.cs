@@ -41,6 +41,7 @@ namespace App_Library.Views
         // compunent shop 
         List<Panel> listBookAd;
         List<Book> books;
+        Task<List<BookSold>> bookSold;
         Dictionary<Control, Form> formDictionary;
         Form currentForm;
         Dictionary<Control, bool> isClick;
@@ -108,67 +109,14 @@ namespace App_Library.Views
                 activeFormChildForMainForm(shopForm, e);
             }
 
-            //homeForm = new HomeForm(this);
-            //shopForm = new NewShopMain();
             books = await _bookService.GetBooksAsync();
+            bookSold = GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
+
         }
        
-        public void clickBackHome(object sender, EventArgs e)
+        public Task<List<BookSold>> getListSold()
         {
-            homeForm = new StockForm(this);
-            activeFormChildForMainForm(homeForm, e);
-        }
-        private void MouseLeave(object sender, EventArgs e)
-        {
-            var _lbShop = (Control)sender;
-            var panel = FindControlContainer(pnFooter.Controls, _lbShop);
-
-            if (sender is Label)
-            {
-                if (!isClick[sender as Control])
-                {
-                    panel.BackColor = Color.White;
-                    _lbShop.BackColor = Color.White;
-                }
-            }
-
-        }
-
-        void setIsClick(object sender)
-        {
-            Guna2Panel panel = new Guna2Panel();
-            foreach (var item in pnFooter.Controls)
-            {
-                panel = item as Guna2Panel;
-                foreach (Control control in panel.Controls)
-                {
-                    if (control is Label)
-                    {
-                        isClick[control] = false;
-                    }
-                }
-            }
-            isClick[sender as Control] = true;
-            foreach (var item in pnFooter.Controls)
-            {
-                panel = item as Guna2Panel;
-                foreach (Control control in panel.Controls)
-                {
-                    if (control is Label)
-                    {
-                        if (isClick[control])
-                        {
-                            panel.BackColor = Color.DeepSkyBlue;
-                            control.BackColor = Color.DeepSkyBlue;
-                        }
-                        else
-                        {
-                            panel.BackColor = Color.White;
-                            control.BackColor = (Color)Color.White;
-                        }
-                    }
-                }
-            }
+            return bookSold;
         }
         Form formShopMain;
         Form ActForm;
@@ -213,6 +161,43 @@ namespace App_Library.Views
         public void nextPageToHistory (object e)
         {
             activeFormChildForMainForm(new History(this, sidebar), e);
+        }
+        public async Task<List<BookSold>> GetBooksInProgressByOnGiaBao(User _user)
+        {
+            string usernameCurrent = _user.Username;
+            string passwordCurrent = _user.PasswordHash;
+            string id = _user.Id;
+
+            // Tạo đối tượng dịch vụ và login
+            AuthService db = new AuthService();
+
+            // Thực hiện đăng nhập một lần
+            bool result = await db.Login("admin", "123456", null);
+            if (!result)
+            {
+                // Nếu không đăng nhập admin thành công, cố gắng đăng nhập người dùng bình thường
+                result = await db.Login(usernameCurrent, passwordCurrent, null);
+                if (!result)
+                {
+                    return null; // Trả về null nếu đăng nhập thất bại
+                }
+            }
+
+            // Lấy thông tin người dùng từ service mà không cần phải gọi ToList()
+            var user = (await (new UserService()).GetUsersAsync()).Find(u => u.Username == usernameCurrent);
+            if (user == null)
+            {
+                return null;
+            }
+
+            // Lấy sách đã bán và lọc theo điều kiện
+            List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
+            var filteredBooks = list.Where(b => b.UserId == id && (b.Status == "Pending" || b.Status == "Approved")).ToList();
+
+            // Đăng nhập lại với người dùng hiện tại (nếu cần)
+            await db.Login(usernameCurrent, passwordCurrent, null);
+
+            return filteredBooks;
         }
     }
 }
