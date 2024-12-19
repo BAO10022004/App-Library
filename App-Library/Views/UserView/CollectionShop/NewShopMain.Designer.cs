@@ -35,14 +35,12 @@ namespace App_Library.Views.Main.CollectionShop
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.geSearch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnSearchShop = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnMainSearch = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnMainSearch = new Guna.UI2.WinForms.Guna2Panel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.picSearch = new System.Windows.Forms.PictureBox();
             this.geTextBoxSerch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.geButtonSearch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.timerDownClick = new System.Windows.Forms.Timer(this.components);
-            this.timerUpClick = new System.Windows.Forms.Timer(this.components);
             this.pnMainForm = new System.Windows.Forms.FlowLayoutPanel();
             this.pnAd = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainAd = new Guna.UI2.WinForms.Guna2Panel();
@@ -58,8 +56,12 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnContainAllBook = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.pnContainSearch = new Guna.UI2.WinForms.Guna2Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
+            this.pnResultSearch = new System.Windows.Forms.FlowLayoutPanel();
             this.pnSearchShop.SuspendLayout();
             this.pnMainSearch.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -74,6 +76,8 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel6.SuspendLayout();
+            this.pnContainAllBook.SuspendLayout();
             this.pnContainSearch.SuspendLayout();
             this.pnSearch.SuspendLayout();
             this.SuspendLayout();
@@ -101,18 +105,20 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearchShop.Controls.Add(this.guna2Panel1);
             this.pnSearchShop.Location = new System.Drawing.Point(294, 12);
             this.pnSearchShop.Name = "pnSearchShop";
-            this.pnSearchShop.Size = new System.Drawing.Size(581, 62);
+            this.pnSearchShop.Size = new System.Drawing.Size(581, 82);
             this.pnSearchShop.TabIndex = 2;
             // 
             // pnMainSearch
             // 
             this.pnMainSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pnMainSearch.Controls.Add(this.pnResultSearch);
             this.pnMainSearch.Controls.Add(this.txtSearch);
             this.pnMainSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainSearch.Location = new System.Drawing.Point(0, 0);
             this.pnMainSearch.Name = "pnMainSearch";
-            this.pnMainSearch.Size = new System.Drawing.Size(505, 62);
-            this.pnMainSearch.TabIndex = 2;
+            this.pnMainSearch.Padding = new System.Windows.Forms.Padding(10);
+            this.pnMainSearch.Size = new System.Drawing.Size(505, 82);
+            this.pnMainSearch.TabIndex = 1;
             // 
             // txtSearch
             // 
@@ -123,19 +129,21 @@ namespace App_Library.Views.Main.CollectionShop
             this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.White;
-            this.txtSearch.Location = new System.Drawing.Point(6, 7);
+            this.txtSearch.Location = new System.Drawing.Point(10, 10);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(6, 7, 6, 20);
             this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(10);
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Lime;
             this.txtSearch.PlaceholderText = "";
             this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(493, 46);
+            this.txtSearch.Size = new System.Drawing.Size(485, 46);
             this.txtSearch.TabIndex = 0;
-            this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged_1);
             // 
             // guna2Panel1
             // 
@@ -145,7 +153,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2Panel1.Location = new System.Drawing.Point(505, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(76, 62);
+            this.guna2Panel1.Size = new System.Drawing.Size(76, 82);
             this.guna2Panel1.TabIndex = 1;
             // 
             // picSearch
@@ -158,7 +166,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picSearch.TabIndex = 0;
             this.picSearch.TabStop = false;
-            this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
+            this.picSearch.Click += new System.EventHandler(this.picSearch_Click_1);
             // 
             // geTextBoxSerch
             // 
@@ -170,16 +178,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.geButtonSearch.BorderRadius = 30;
             this.geButtonSearch.TargetControl = this.picSearch;
             // 
-            // timerDownClick
-            // 
-            this.timerDownClick.Interval = 5;
-            this.timerDownClick.Tick += new System.EventHandler(this.timerClick_Tick);
-            // 
-            // timerUpClick
-            // 
-            this.timerUpClick.Interval = 5;
-            this.timerUpClick.Tick += new System.EventHandler(this.timerUpClick_Tick);
-            // 
             // pnMainForm
             // 
             this.pnMainForm.AutoScroll = true;
@@ -187,6 +185,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnMainForm.Controls.Add(this.pnAd);
             this.pnMainForm.Controls.Add(this.pnNewItem);
             this.pnMainForm.Controls.Add(this.pnBestDeal);
+            this.pnMainForm.Controls.Add(this.guna2Panel6);
             this.pnMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMainForm.Location = new System.Drawing.Point(0, 100);
             this.pnMainForm.Name = "pnMainForm";
@@ -340,6 +339,43 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2PictureBox2.TabIndex = 0;
             this.guna2PictureBox2.TabStop = false;
             // 
+            // guna2Panel6
+            // 
+            this.guna2Panel6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel6.Controls.Add(this.pnContainAllBook);
+            this.guna2Panel6.Location = new System.Drawing.Point(0, 1356);
+            this.guna2Panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.guna2Panel6.Name = "guna2Panel6";
+            this.guna2Panel6.Size = new System.Drawing.Size(1030, 70);
+            this.guna2Panel6.TabIndex = 5;
+            // 
+            // pnContainAllBook
+            // 
+            this.pnContainAllBook.BackColor = System.Drawing.Color.Honeydew;
+            this.pnContainAllBook.Controls.Add(this.guna2Button1);
+            this.pnContainAllBook.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnContainAllBook.Location = new System.Drawing.Point(0, 0);
+            this.pnContainAllBook.Name = "pnContainAllBook";
+            this.pnContainAllBook.Size = new System.Drawing.Size(1030, 70);
+            this.pnContainAllBook.TabIndex = 0;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2Button1.FocusedColor = System.Drawing.Color.Green;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Green;
+            this.guna2Button1.Location = new System.Drawing.Point(466, 6);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button1.TabIndex = 0;
+            this.guna2Button1.Text = "SEE MORE ...";
+            this.guna2Button1.Click += new System.EventHandler(this.btnViewAllBook_Click);
+            // 
             // pnContainSearch
             // 
             this.pnContainSearch.BackColor = System.Drawing.Color.Transparent;
@@ -358,7 +394,14 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearch.Name = "pnSearch";
             this.pnSearch.Size = new System.Drawing.Size(1030, 100);
             this.pnSearch.TabIndex = 6;
-            this.pnSearch.Click += new System.EventHandler(this.pnSearch_Click);
+            // 
+            // pnResultSearch
+            // 
+            this.pnResultSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnResultSearch.Location = new System.Drawing.Point(10, 56);
+            this.pnResultSearch.Name = "pnResultSearch";
+            this.pnResultSearch.Size = new System.Drawing.Size(485, 16);
+            this.pnResultSearch.TabIndex = 0;
             // 
             // NewShopMain
             // 
@@ -389,6 +432,8 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.guna2Panel6.ResumeLayout(false);
+            this.pnContainAllBook.ResumeLayout(false);
             this.pnContainSearch.ResumeLayout(false);
             this.pnSearch.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -404,8 +449,6 @@ namespace App_Library.Views.Main.CollectionShop
         private Guna.UI2.WinForms.Guna2Elipse geSearch;
         private Guna.UI2.WinForms.Guna2Elipse geTextBoxSerch;
         private Guna.UI2.WinForms.Guna2Elipse geButtonSearch;
-        private System.Windows.Forms.Timer timerDownClick;
-        private System.Windows.Forms.Timer timerUpClick;
         private Guna.UI2.WinForms.Guna2Panel pnNewItem;
         private System.Windows.Forms.Panel pnSearch;
         private Guna.UI2.WinForms.Guna2Panel pnSearchShop;
@@ -425,6 +468,10 @@ namespace App_Library.Views.Main.CollectionShop
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private System.Windows.Forms.FlowLayoutPanel flowpnBestDeal;
-        private System.Windows.Forms.FlowLayoutPanel pnMainSearch;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+        private Guna.UI2.WinForms.Guna2Panel pnContainAllBook;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Panel pnMainSearch;
+        private System.Windows.Forms.FlowLayoutPanel pnResultSearch;
     }
 }

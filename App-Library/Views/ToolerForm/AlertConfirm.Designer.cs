@@ -107,15 +107,13 @@
             this.btnOk.FillColor = System.Drawing.Color.DarkOrange;
             this.btnOk.Font = new System.Drawing.Font("Cooper Black", 18F);
             this.btnOk.ForeColor = System.Drawing.Color.White;
-            this.btnOk.Image = global::App_Library.Properties.Resources.Animation___1734150991827;
             this.btnOk.ImageSize = new System.Drawing.Size(60, 60);
             this.btnOk.Location = new System.Drawing.Point(226, 343);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(133, 55);
             this.btnOk.TabIndex = 6;
+            this.btnOk.Text = "OK";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            this.btnOk.MouseLeave += new System.EventHandler(this.btnOk_MouseLeave);
-            this.btnOk.MouseHover += new System.EventHandler(this.btnOk_MouseHover);
             // 
             // label1
             // 

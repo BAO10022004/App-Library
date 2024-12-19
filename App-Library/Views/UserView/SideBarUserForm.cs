@@ -92,16 +92,16 @@ namespace App_Library.Views.UserView
             setIsClick(sender as Control);
             _mainForm.activeFormChildForMainForm(new StockForm(_mainForm), e);
         }
-        private void btnHistory_Click(object sender, EventArgs e)
+        private async void btnHistory_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new History(_mainForm, this), e);
+            _mainForm.activeFormChildForMainForm(new History(this,await _mainForm.getListSold()), e);
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private async void guna2Button2_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm), e);
+            _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm, await _mainForm.getListSold()), e);
         }
         
     }

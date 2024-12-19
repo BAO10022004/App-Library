@@ -21,14 +21,21 @@ namespace App_Library.Views.Orthers.CollectionProfile
         User user;
         public MainForm mainForm;
         private BookSoldService _bookSoldService;
-
-        public NewProfileForm(MainForm parent)
+        List<BookSold> _books;
+        public NewProfileForm(MainForm parent, List<BookSold> models)
         {
             InitializeComponent();
             _bookSoldService = new BookSoldService();
             this.mainForm = parent;
+            this._books = models;
         }
-
+        public NewProfileForm(NewProfileForm copyPage)
+        {
+            InitializeComponent();
+            _bookSoldService = new BookSoldService();
+            this.mainForm = copyPage.mainForm;
+            this._books = copyPage._books;
+        }
         private async void NewProfileForm_Load(object sender, EventArgs e)
         {
             lbEmail.Text = Session.CurentUser.Email;
@@ -40,9 +47,8 @@ namespace App_Library.Views.Orthers.CollectionProfile
             catch (Exception ex)
             {
             }
-            var result = await _bookSoldService.GetBooksInProgressAsync();
-            lbPending.Text = result.Where(n=>n.Status == "Pending").Count().ToString();
-            lbStock.Text = result.Where(n => n.Status == "Approved").Count().ToString();
+            lbPending.Text = _books.Where(n=>n.Status == "Pending").Count().ToString();
+            lbStock.Text = _books.Where(n => n.Status == "Approved").Count().ToString();
         }
 
         Form actFormEdit;

@@ -114,7 +114,6 @@ namespace App_Library.Views.Main.CollectionShop
                 comment.Likes = null;
 
                 await dbComments.CreateCommentAsync(comment);
-                comments = await dbComments.GetBookCommentsAsync(book.Id);
                 refeshFrame();
                 //shop.bookClick(book);
                 loadingForm.Close();

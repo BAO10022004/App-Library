@@ -77,7 +77,7 @@ namespace App_Library.Views
             // pnFooter
             // 
             this.pnFooter.AutoScroll = true;
-            this.pnFooter.BackColor = System.Drawing.Color.Black;
+            this.pnFooter.BackColor = System.Drawing.Color.White;
             this.pnFooter.Controls.Add(this.pnContainLogOut);
             this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnFooter.Location = new System.Drawing.Point(0, 546);
@@ -95,7 +95,7 @@ namespace App_Library.Views
             this.pnContainLogOut.Controls.Add(this.btnLogOut);
             this.pnContainLogOut.Location = new System.Drawing.Point(3, 63);
             this.pnContainLogOut.Name = "pnContainLogOut";
-            this.pnContainLogOut.Padding = new System.Windows.Forms.Padding(10);
+            this.pnContainLogOut.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.pnContainLogOut.Size = new System.Drawing.Size(248, 68);
             this.pnContainLogOut.TabIndex = 0;
             this.pnContainLogOut.MouseHover += new System.EventHandler(this.btnLogOut_MouseHover);
@@ -121,10 +121,10 @@ namespace App_Library.Views
             this.btnLogOut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogOut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogOut.FillColor = System.Drawing.Color.Black;
-            this.btnLogOut.FocusedColor = System.Drawing.Color.LightCyan;
+            this.btnLogOut.FillColor = System.Drawing.Color.White;
+            this.btnLogOut.FocusedColor = System.Drawing.Color.Blue;
             this.btnLogOut.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F);
-            this.btnLogOut.ForeColor = System.Drawing.Color.Aqua;
+            this.btnLogOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnLogOut.Image = global::App_Library.Properties.Resources.icons8_log_out2;
             this.btnLogOut.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogOut.ImageSize = new System.Drawing.Size(40, 40);
@@ -152,7 +152,7 @@ namespace App_Library.Views
             // 
             // pnSideBar
             // 
-            this.pnSideBar.BackColor = System.Drawing.Color.Salmon;
+            this.pnSideBar.BackColor = System.Drawing.Color.White;
             this.pnSideBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnSideBar.Location = new System.Drawing.Point(0, 110);
             this.pnSideBar.Margin = new System.Windows.Forms.Padding(2);
@@ -162,7 +162,7 @@ namespace App_Library.Views
             // 
             // pnUser
             // 
-            this.pnUser.BackColor = System.Drawing.Color.Black;
+            this.pnUser.BackColor = System.Drawing.Color.White;
             this.pnUser.Controls.Add(this.lbRole);
             this.pnUser.Controls.Add(this.lbName);
             this.pnUser.Controls.Add(this.picAvatar);
@@ -176,7 +176,7 @@ namespace App_Library.Views
             // lbRole
             // 
             this.lbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbRole.ForeColor = System.Drawing.Color.Aqua;
+            this.lbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lbRole.Location = new System.Drawing.Point(64, 56);
             this.lbRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRole.Name = "lbRole";
@@ -188,7 +188,7 @@ namespace App_Library.Views
             // lbName
             // 
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbName.ForeColor = System.Drawing.Color.Aqua;
+            this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lbName.Location = new System.Drawing.Point(64, 32);
             this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnMain = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.picAvatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnChangePass = new Guna.UI2.WinForms.Guna2Button();
@@ -35,35 +36,47 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbStock = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbPending = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
+            this.guna2Panel1.SuspendLayout();
             this.pnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.guna2Panel2.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackgroundImage = global::App_Library.Properties.Resources.pexels_eberhardgross_1287145;
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.guna2Panel1.Controls.Add(this.pnMain);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1014, 641);
+            this.guna2Panel1.TabIndex = 0;
             // 
             // pnMain
             // 
             this.pnMain.BackColor = System.Drawing.Color.Transparent;
-            this.pnMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnMain.Controls.Add(this.picAvatar);
             this.pnMain.Controls.Add(this.btnChangePass);
             this.pnMain.Controls.Add(this.guna2Button1);
             this.pnMain.Controls.Add(this.guna2Panel2);
-            this.pnMain.Controls.Add(this.guna2Panel1);
+            this.pnMain.Controls.Add(this.guna2Panel3);
             this.pnMain.Controls.Add(this.lbEmail);
             this.pnMain.Controls.Add(this.lbUsername);
             this.pnMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.pnMain.Location = new System.Drawing.Point(244, 43);
+            this.pnMain.Location = new System.Drawing.Point(209, 60);
             this.pnMain.Name = "pnMain";
             this.pnMain.Radius = 10;
             this.pnMain.ShadowColor = System.Drawing.Color.Black;
             this.pnMain.Size = new System.Drawing.Size(570, 500);
-            this.pnMain.TabIndex = 0;
+            this.pnMain.TabIndex = 1;
             // 
             // picAvatar
             // 
@@ -87,7 +100,7 @@
             this.btnChangePass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnChangePass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnChangePass.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.btnChangePass.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePass.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
             this.btnChangePass.ForeColor = System.Drawing.Color.White;
             this.btnChangePass.Location = new System.Drawing.Point(308, 401);
             this.btnChangePass.Name = "btnChangePass";
@@ -150,17 +163,17 @@
             this.label6.Text = "STOCK";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // guna2Panel1
+            // guna2Panel3
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.Controls.Add(this.lbPending);
-            this.guna2Panel1.Controls.Add(this.label3);
-            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.guna2Panel1.Location = new System.Drawing.Point(111, 296);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(122, 83);
-            this.guna2Panel1.TabIndex = 3;
+            this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel3.BorderRadius = 10;
+            this.guna2Panel3.Controls.Add(this.lbPending);
+            this.guna2Panel3.Controls.Add(this.label3);
+            this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.guna2Panel3.Location = new System.Drawing.Point(111, 296);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(122, 83);
+            this.guna2Panel3.TabIndex = 3;
             // 
             // lbPending
             // 
@@ -210,38 +223,38 @@
             // 
             // NewProfileForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::App_Library.Properties.Resources.pexels_baskincreativeco_1766838;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1014, 641);
-            this.Controls.Add(this.pnMain);
+            this.Controls.Add(this.guna2Panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewProfileForm";
             this.Text = "NewProfileForm";
             this.Load += new System.EventHandler(this.NewProfileForm_Load);
+            this.guna2Panel1.ResumeLayout(false);
             this.pnMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2ShadowPanel pnMain;
-        private System.Windows.Forms.Label lbUsername;
-        private System.Windows.Forms.Label lbEmail;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbPending;
+        private Guna.UI2.WinForms.Guna2ShadowPanel pnMain;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
+        private Guna.UI2.WinForms.Guna2Button btnChangePass;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label lbStock;
         private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button btnChangePass;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox picAvatar;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private System.Windows.Forms.Label lbPending;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbEmail;
+        private System.Windows.Forms.Label lbUsername;
     }
 }
