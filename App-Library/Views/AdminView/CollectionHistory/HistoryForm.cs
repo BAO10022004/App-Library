@@ -145,6 +145,47 @@ namespace App_Library.Views.AdminView.CollectionHistory
         {
             LoadData();
         }
+        private void dataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dataGridView.ClearSelection();
+                dataGridView.Rows[e.RowIndex].Selected = true;
+                contextMenuStrip.Show(dataGridView, dataGridView.PointToClient(Cursor.Position));
+            }
+        }
 
+        private async void btnTimKiem_ClickAsync(object sender, EventArgs e)
+        {
+            _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+            LoadData();
+        }
+
+        private async void txbTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+                LoadData();
+            }
+        }
+
+        private void txbTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txbTimKiem.Text == "Search")
+            {
+                txbTimKiem.Text = string.Empty;
+                txbTimKiem.ForeColor = Color.Black;
+            }
+        }
+
+        private void txbTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbTimKiem.Text) || txbTimKiem.Text == "Search")
+            {
+                txbTimKiem.Text = "Search";
+                txbTimKiem.ForeColor = Color.DarkGray;
+            }
+        }
     }
 }
