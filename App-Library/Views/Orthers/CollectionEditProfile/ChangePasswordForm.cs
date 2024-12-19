@@ -43,7 +43,6 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("LOI");
                 }
                 lbUserName.Text = user.Username;
                 lbEmail.Text = user.Email;

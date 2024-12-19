@@ -87,7 +87,7 @@ namespace App_Library.Views
             }
             pnDescription.Height = HEIGHT;
             // set button Buy
-            var getUserId = (await shop._user.GetCurrentUserAsync()).Id;
+            var getUserId = (await( new UserService()).GetCurrentUserAsync()).Id;
             var getBookId = book.Id;
             var getBookBought = shop.listBookSold;
             foreach (var item in getBookBought)
@@ -218,8 +218,8 @@ namespace App_Library.Views
             BookSold bookSold = new BookSold()
             {
                 BookId = book.Id,
-                UserId = (await (new UserService()).GetCurrentUserAsync()).Id,
-                Username = (await (new UserService()).GetCurrentUserAsync()).Username,
+                UserId = user.Id,
+                Username = user.Username,
                 Status = "Pending",
                 Slug = book.Slug,
                 Title = book.Title,

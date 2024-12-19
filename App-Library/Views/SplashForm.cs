@@ -128,6 +128,7 @@ namespace App_Library.Views
             timerOpenMainForm.Stop();
             Size = new Size(1280, 720);
             PnSubLogin.Controls.Clear();
+
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
             Location = new Point(screenWidth / 2 - 1280 / 2, screenHeight / 2 - 720 / 2);

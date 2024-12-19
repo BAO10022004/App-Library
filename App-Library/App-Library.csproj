@@ -656,6 +656,12 @@
     <Compile Include="Views\ToolerForm\PanelBook.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\UserView\CollectionShop\ViewBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\ViewBookForm.Designer.cs">
+      <DependentUpon>ViewBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserView\SideBarUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -799,12 +805,12 @@
     <EmbeddedResource Include="Views\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\ViewBookForm.resx">
+      <DependentUpon>ViewBookForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\SideBarUserForm.resx">
       <DependentUpon>SideBarUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="libmongocrypt.dylib" />
     <None Include="libmongocrypt.so" />
     <None Include="packages.config" />
@@ -817,6 +823,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="serviceAccountKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -831,6 +840,15 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <Content Include="TextFile1.txt" />
+    <None Include="Resources\cheap.png" />
+    <None Include="Resources\money-growth.png" />
+    <None Include="Resources\low-price.png" />
+    <None Include="Resources\sort-down.png" />
+    <None Include="Resources\sort-az %281%29.png" />
+    <None Include="Resources\arrange %281%29.png" />
+    <None Include="Resources\sort-az.png" />
+    <None Include="Resources\sort.png" />
     <None Include="Resources\bo_17091774 %281%29.gif" />
     <None Include="Resources\Animation - 1734151314083.gif" />
     <None Include="Resources\Animation - 1734150991827.gif" />

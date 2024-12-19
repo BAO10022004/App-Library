@@ -60,24 +60,9 @@ namespace App_Library.Views
             //this.Parent = _Parent;
         }
 
-        //public async void refresh()
-        //{
-        //    var currentUser = await _userService.GetCurrentUserAsync();
-        //    Session.CurentUser = currentUser;
-        //    lbName.Text = currentUser.Username;
-        //    try
-        //    {
-        //        picAvatar.Load(currentUser.PhotoURL); // Đường dẫn hoặc URL của ảnh
-        //    }
-        //    catch (Exception)
-        //    {
-        //        // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
-        //        this.picAvatar.Image = global::App_Library.Properties.Resources.account;
-        //    }
-        //}
-
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            bookSold = GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
             // Hiển thị thông tin người dùng hiện tại
             var currentUser = await _userService.GetCurrentUserAsync();
             Session.CurentUser = currentUser;
@@ -111,13 +96,14 @@ namespace App_Library.Views
             }
 
             books = await _bookService.GetBooksAsync();
-            bookSold = GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
-
+            
+            //MessageBox.Show((await bookSold).Count.ToString());
         }
        
-        public Task<List<BookSold>> getListSold()
+        public async Task< List<BookSold>> getListSold()
         {
-            return bookSold;
+            
+            return await bookSold;
         }
 
         Form formShopMain;
@@ -159,9 +145,9 @@ namespace App_Library.Views
             pnContainLogOut.BorderColor = Color.Black;
             picLogOut.Visible = false;
         }
-        public void nextPageToHistory(object e)
+        public async void nextPageToHistory(object e)
         {
-            activeFormChildForMainForm(new History(this, sidebar), e);
+            activeFormChildForMainForm(new History(sidebar,await bookSold), e);
         }
 
         private void profileToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -182,9 +168,11 @@ namespace App_Library.Views
             AuthService db = new AuthService();
 
             // Thực hiện đăng nhập một lần
-            bool result = await db.Login("admin", "123456", null);
+            bool result = await db.Login("khoa", "$2a$11$t/oDyvOVo7cqOhdZ/wS/I.XDp78gBFz/zLU1/fzFUcuDZxe5ErvUW", null);
+
             if (!result)
             {
+                MessageBox.Show("hi");
                 // Nếu không đăng nhập admin thành công, cố gắng đăng nhập người dùng bình thường
                 result = await db.Login(usernameCurrent, passwordCurrent, null);
                 if (!result)
@@ -197,16 +185,13 @@ namespace App_Library.Views
             var user = (await (new UserService()).GetUsersAsync()).Find(u => u.Username == usernameCurrent);
             if (user == null)
             {
+                await db.Login(usernameCurrent, passwordCurrent, null);
                 return null;
             }
-
-            // Lấy sách đã bán và lọc theo điều kiện
             List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
             var filteredBooks = list.Where(b => b.UserId == id && (b.Status == "Pending" || b.Status == "Approved")).ToList();
 
-            // Đăng nhập lại với người dùng hiện tại (nếu cần)
             await db.Login(usernameCurrent, passwordCurrent, null);
-
             return filteredBooks;
         }
     }
