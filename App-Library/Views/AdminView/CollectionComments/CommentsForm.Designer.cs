@@ -284,6 +284,9 @@
             this.txbTimKiem.SelectedText = "";
             this.txbTimKiem.Size = new System.Drawing.Size(597, 30);
             this.txbTimKiem.TabIndex = 15;
+            this.txbTimKiem.Click += new System.EventHandler(this.txbTimKiem_Click);
+            this.txbTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTimKiem_KeyPress);
+            this.txbTimKiem.Leave += new System.EventHandler(this.txbTimKiem_Leave);
             // 
             // pnHeader
             // 
@@ -309,6 +312,7 @@
             this.btnTimKiem.TabIndex = 14;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_ClickAsync);
             // 
             // cbbCot
             // 

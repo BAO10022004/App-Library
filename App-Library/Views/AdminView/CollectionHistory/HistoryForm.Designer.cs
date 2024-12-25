@@ -41,6 +41,12 @@
             this.btnTrangKe = new System.Windows.Forms.Button();
             this.lblSoTrang = new System.Windows.Forms.Label();
             this.dataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Bookname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txbTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -52,12 +58,6 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Bookname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnContent.SuspendLayout();
             this.pnFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -221,6 +221,43 @@
             this.dataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // Bookname
+            // 
+            this.Bookname.FillWeight = 66.1519F;
+            this.Bookname.HeaderText = "Book\'s name";
+            this.Bookname.Name = "Bookname";
+            // 
+            // Price
+            // 
+            this.Price.FillWeight = 66.1519F;
+            this.Price.HeaderText = "Price ($)";
+            this.Price.Name = "Price";
+            // 
+            // Username
+            // 
+            this.Username.FillWeight = 66.1519F;
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Email
+            // 
+            this.Email.FillWeight = 66.1519F;
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            // 
+            // TimeStamp
+            // 
+            this.TimeStamp.FillWeight = 66.1519F;
+            this.TimeStamp.HeaderText = "Time Stamp";
+            this.TimeStamp.Name = "TimeStamp";
+            // 
             // txbTimKiem
             // 
             this.txbTimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -242,6 +279,9 @@
             this.txbTimKiem.SelectedText = "";
             this.txbTimKiem.Size = new System.Drawing.Size(597, 30);
             this.txbTimKiem.TabIndex = 15;
+            this.txbTimKiem.Click += new System.EventHandler(this.txbTimKiem_Click);
+            this.txbTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTimKiem_KeyPress);
+            this.txbTimKiem.Leave += new System.EventHandler(this.txbTimKiem_Leave);
             // 
             // pnHeader
             // 
@@ -267,6 +307,7 @@
             this.btnTimKiem.TabIndex = 14;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_ClickAsync);
             // 
             // cbbCot
             // 
@@ -344,43 +385,6 @@
             this.pDFToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip1";
             this.contextMenuStrip.Size = new System.Drawing.Size(118, 70);
-            // 
-            // Bookname
-            // 
-            this.Bookname.FillWeight = 66.1519F;
-            this.Bookname.HeaderText = "Book\'s name";
-            this.Bookname.Name = "Bookname";
-            // 
-            // Price
-            // 
-            this.Price.FillWeight = 66.1519F;
-            this.Price.HeaderText = "Price ($)";
-            this.Price.Name = "Price";
-            // 
-            // Username
-            // 
-            this.Username.FillWeight = 66.1519F;
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Email
-            // 
-            this.Email.FillWeight = 66.1519F;
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            // 
-            // TimeStamp
-            // 
-            this.TimeStamp.FillWeight = 66.1519F;
-            this.TimeStamp.HeaderText = "Time Stamp";
-            this.TimeStamp.Name = "TimeStamp";
             // 
             // HistoryForm
             // 

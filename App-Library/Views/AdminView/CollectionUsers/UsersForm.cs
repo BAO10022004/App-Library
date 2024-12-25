@@ -46,6 +46,17 @@ namespace App_Library.Views.AdminView.CollectionUsers
                 _users = await _userService.GetUsersAsync();
             }
 
+            if (!string.IsNullOrWhiteSpace(txbTimKiem.Text) && txbTimKiem.Text != "Search")
+            {
+                var fillterSearch = _users.Where(n => n.Id.Contains(txbTimKiem.Text) || n.Username.Contains(txbTimKiem.Text) || n.Email.Contains(txbTimKiem.Text)).ToList();
+                if (fillterSearch == null)
+                {
+                    MessageBox.Show("Không tìm thấy kết quả");
+                    return;
+                }
+                _users = fillterSearch;
+            }
+
             var count = _users.Count;
             countLine = int.Parse(cbbSoDong.SelectedItem.ToString());
             totalPage = (float)count / countLine;
@@ -195,19 +206,34 @@ namespace App_Library.Views.AdminView.CollectionUsers
             LoadData();
         }
 
+        private async void btnTimKiem_ClickAsync(object sender, EventArgs e)
+        {
+            _users = await _userService.GetUsersAsync();
+            LoadData();
+        }
 
-        //private void btnTimKiem_Click(object sender, EventArgs e)
-        //{
-        //    var result = _context.Customers.AsQueryable();
-        //    result = result.Where(c => c.LastName.Contains(txbTimKiem.Text));
-        //    var count = result.Count();
-        //    countLine = int.Parse(cbbSoDong.SelectedItem.ToString());
-        //    totalPage = (float)count / countLine;
-        //    totalPage = totalPage > (int)totalPage ? (int)totalPage + 1 : (int)totalPage;
-        //    dataGridView.DataSource = result.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+        private async void txbTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                _users = await _userService.GetUsersAsync();
+                LoadData();
+            }
+        }
 
-        //    lblSoTrang.Text = $"Trang: {curentPage}/{totalPage}";
-        //}
+        private void txbTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbTimKiem.Text) || txbTimKiem.Text == "Search")
+            {
+                txbTimKiem.Text = "Search";
+                txbTimKiem.ForeColor = Color.DarkGray;
+            }
+        }
 
     }
 }

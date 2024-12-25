@@ -40,9 +40,20 @@ namespace App_Library.Views.AdminView.CollectionPending
 
         private async void LoadData()
         {
-            if (_bookSolds == null)
+            if (_bookSolds == null || string.IsNullOrWhiteSpace(txbTimKiem.Text) && txbTimKiem.Text == "Search")
             {
                 _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+            }
+
+            if (!string.IsNullOrWhiteSpace(txbTimKiem.Text) && txbTimKiem.Text != "Search")
+            {
+                var fillterSearch = _bookSolds.Where(n => n.Id.Contains(txbTimKiem.Text) || n.Username.Contains(txbTimKiem.Text) || n.Title.Contains(txbTimKiem.Text) || n.Email.Contains(txbTimKiem.Text)).ToList();
+                if (fillterSearch == null)
+                {
+                    MessageBox.Show("Không tìm thấy kết quả");
+                    return;
+                }
+                _bookSolds = fillterSearch;
             }
 
             var count = _bookSolds.Count;
@@ -66,10 +77,10 @@ namespace App_Library.Views.AdminView.CollectionPending
                 _bookSolds = _bookSolds.OrderByDescending(c => c.GetType().GetProperty(columnName)?.GetValue(c, null)).ToList();
             }
 
-            var lstBookSoldView = _bookSolds.Select(n => new { BookID = n.BookId, TimeStamp = n.CreatedAt, Bookname = n.Title, Price = n.Price, Username = n.Username, Email = n.Email }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            var lstBookSoldView = _bookSolds.Select(n => new { ID = n.Id, TimeStamp = n.CreatedAt, Bookname = n.Title, Price = n.Price, Username = n.Username, Email = n.Email }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
 
             dataGridView.AutoGenerateColumns = false;
-            dataGridView.Columns["BookID"].DataPropertyName = "BookID";
+            dataGridView.Columns["ID"].DataPropertyName = "ID";
             dataGridView.Columns["TimeStamp"].DataPropertyName = "TimeStamp";
             dataGridView.Columns["Bookname"].DataPropertyName = "Bookname";
             dataGridView.Columns["Price"].DataPropertyName = "Price";
@@ -163,20 +174,19 @@ namespace App_Library.Views.AdminView.CollectionPending
         private async void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView.Rows[e.RowIndex];
-            var id = row.Cells["BookID"].Value.ToString();
+            var id = row.Cells["ID"].Value.ToString();
             // Duyệt
-
             if (e.ColumnIndex == dataGridView.Columns["Action"].Index && e.RowIndex >= 0)
             {
                 var result = await _bookSoldService.ApproveBookSoldAsync(id);
                 if (result)
                 {
-                    MessageBox.Show("Đã kích hoạt người dùng");
+                    MessageBox.Show("Đã duyệt thành công");
                     _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
                 }
                 else
                 {
-                    MessageBox.Show("Không thể kích hoạt người dùng");
+                    MessageBox.Show("Không thể duyệt");
                 }
             }
             // Từ chối
@@ -185,30 +195,48 @@ namespace App_Library.Views.AdminView.CollectionPending
                 var result = await _bookSoldService.RejectBookSoldAsync(id);
                 if (result)
                 {
-                    MessageBox.Show("Đã ngưng hoạt động người dùng");
+                    MessageBox.Show("Đã từ chối thành công");
                     _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
                 }
                 else
                 {
-                    MessageBox.Show("Không thể ngưng hoạt động người dùng");
+                    MessageBox.Show("Không thể từ chối");
                 }
             }
             LoadData();
         }
 
+        private async void btnTimKiem_ClickAsync(object sender, EventArgs e)
+        {
+            _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+            LoadData();
+        }
 
-        //private void btnTimKiem_Click(object sender, EventArgs e)
-        //{
-        //    var result = _context.Customers.AsQueryable();
-        //    result = result.Where(c => c.LastName.Contains(txbTimKiem.Text));
-        //    var count = result.Count();
-        //    countLine = int.Parse(cbbSoDong.SelectedItem.ToString());
-        //    totalPage = (float)count / countLine;
-        //    totalPage = totalPage > (int)totalPage ? (int)totalPage + 1 : (int)totalPage;
-        //    dataGridView.DataSource = result.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+        private async void txbTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+                LoadData();
+            }
+        }
 
-        //    lblSoTrang.Text = $"Trang: {curentPage}/{totalPage}";
-        //}
+        private void txbTimKiem_Click(object sender, EventArgs e)
+        {
+            if (txbTimKiem.Text == "Search")
+            {
+                txbTimKiem.Text = string.Empty;
+                txbTimKiem.ForeColor = Color.Black;
+            }
+        }
 
+        private void txbTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbTimKiem.Text) || txbTimKiem.Text == "Search")
+            {
+                txbTimKiem.Text = "Search";
+                txbTimKiem.ForeColor = Color.DarkGray;
+            }
+        }
     }
 }

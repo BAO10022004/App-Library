@@ -52,7 +52,7 @@
             this.lblSoTrang = new System.Windows.Forms.Label();
             this.pnFooter = new System.Windows.Forms.Panel();
             this.pnContent = new Guna.UI2.WinForms.Guna2Panel();
-            this.BookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bookname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +105,7 @@
             this.btnTimKiem.TabIndex = 14;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_ClickAsync);
             // 
             // cbbCot
             // 
@@ -190,6 +191,9 @@
             this.txbTimKiem.SelectedText = "";
             this.txbTimKiem.Size = new System.Drawing.Size(597, 30);
             this.txbTimKiem.TabIndex = 15;
+            this.txbTimKiem.Click += new System.EventHandler(this.txbTimKiem_Click);
+            this.txbTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTimKiem_KeyPress);
+            this.txbTimKiem.Leave += new System.EventHandler(this.txbTimKiem_Leave);
             // 
             // dataGridView
             // 
@@ -206,7 +210,7 @@
             this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.ColumnHeadersHeight = 30;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BookID,
+            this.ID,
             this.TimeStamp,
             this.Bookname,
             this.Price,
@@ -350,11 +354,11 @@
             this.pnContent.Size = new System.Drawing.Size(1010, 350);
             this.pnContent.TabIndex = 23;
             // 
-            // BookID
+            // ID
             // 
-            this.BookID.HeaderText = "BookID";
-            this.BookID.Name = "BookID";
-            this.BookID.Visible = false;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
             // 
             // TimeStamp
             // 
@@ -451,7 +455,7 @@
         private System.Windows.Forms.Label lblSoTrang;
         private System.Windows.Forms.Panel pnFooter;
         private Guna.UI2.WinForms.Guna2Panel pnContent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BookID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeStamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bookname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
