@@ -21,12 +21,14 @@ namespace App_Library.Views
         BookSoldService bookSoldService;
         MainForm main;
         Form actForm;
+        List<BookSold> listBook;
         private readonly AuthService _authService;
-        public StockForm(MainForm main)
+        public StockForm(MainForm main , List<BookSold> listBook)
         {
             this.Size = main.Size;
             InitializeComponent();
             bookSoldService = new BookSoldService();
+            this.listBook = listBook;   
             this.main = main;
             
         }
@@ -34,13 +36,13 @@ namespace App_Library.Views
         private async void StockForm_Load(object sender, EventArgs e)
         {
             BookService bookService = new BookService();
-            var dbBookBold =await (new BookSoldService()).GetBoughtBooksAsync();
-            List<Book> listBook = new List<Book>();
-            foreach (var book in dbBookBold)
+            List<Book> listBookBought = new List<Book>();
+            foreach (var book in listBook)
             {
-                listBook.Add(await bookService.GetBookBySlugAsync(book.Slug));
+                if(book.Status.Equals("Approved"))
+                    listBookBought.Add(await (new BookService()).GetBookBySlugAsync(book.Slug));
             }
-            activeFormChild(pnMain, new BoughtBook(listBook), null, ref actForm);
+            activeFormChild(pnMain, new BoughtBook(listBookBought), null, ref actForm);
         }
     }
 }

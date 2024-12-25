@@ -35,9 +35,7 @@ namespace App_Library.Views
             this.pnSubLogin = new System.Windows.Forms.Panel();
             this.pnFrameOption = new System.Windows.Forms.Panel();
             this.pnContainButtonSignUp = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnSignUp = new System.Windows.Forms.Button();
             this.pnContainButtonSignIn = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnLogIn = new System.Windows.Forms.Button();
             this.pnLoginSignupContent = new System.Windows.Forms.Panel();
             this.lbWellcome = new System.Windows.Forms.Label();
             this.pnHeader = new System.Windows.Forms.Panel();
@@ -53,6 +51,8 @@ namespace App_Library.Views
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerOpenMainForm = new System.Windows.Forms.Timer(this.components);
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.btnLogIn = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSignUp = new Guna.UI2.WinForms.Guna2Button();
             this.pnSubLogin.SuspendLayout();
             this.pnFrameOption.SuspendLayout();
             this.pnContainButtonSignUp.SuspendLayout();
@@ -65,7 +65,7 @@ namespace App_Library.Views
             // 
             // pnSubLogin
             // 
-            this.pnSubLogin.BackColor = System.Drawing.Color.Cyan;
+            this.pnSubLogin.BackColor = System.Drawing.Color.DodgerBlue;
             this.pnSubLogin.Controls.Add(this.pnFrameOption);
             this.pnSubLogin.Controls.Add(this.lbWellcome);
             this.pnSubLogin.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -77,7 +77,7 @@ namespace App_Library.Views
             // 
             // pnFrameOption
             // 
-            this.pnFrameOption.BackColor = System.Drawing.Color.Black;
+            this.pnFrameOption.BackColor = System.Drawing.Color.White;
             this.pnFrameOption.Controls.Add(this.pnContainButtonSignUp);
             this.pnFrameOption.Controls.Add(this.pnContainButtonSignIn);
             this.pnFrameOption.Controls.Add(this.pnLoginSignupContent);
@@ -89,61 +89,25 @@ namespace App_Library.Views
             // 
             // pnContainButtonSignUp
             // 
-            this.pnContainButtonSignUp.BorderColor = System.Drawing.Color.Aqua;
+            this.pnContainButtonSignUp.BorderColor = System.Drawing.Color.Blue;
             this.pnContainButtonSignUp.BorderRadius = 14;
             this.pnContainButtonSignUp.BorderThickness = 2;
             this.pnContainButtonSignUp.Controls.Add(this.btnSignUp);
             this.pnContainButtonSignUp.Location = new System.Drawing.Point(118, 132);
             this.pnContainButtonSignUp.Name = "pnContainButtonSignUp";
-            this.pnContainButtonSignUp.Padding = new System.Windows.Forms.Padding(10);
             this.pnContainButtonSignUp.Size = new System.Drawing.Size(237, 63);
             this.pnContainButtonSignUp.TabIndex = 5;
             // 
-            // btnSignUp
-            // 
-            this.btnSignUp.BackColor = System.Drawing.Color.Black;
-            this.btnSignUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSignUp.FlatAppearance.BorderSize = 0;
-            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSignUp.ForeColor = System.Drawing.Color.Aqua;
-            this.btnSignUp.Location = new System.Drawing.Point(10, 10);
-            this.btnSignUp.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(217, 43);
-            this.btnSignUp.TabIndex = 1;
-            this.btnSignUp.Text = "SIGN UP";
-            this.btnSignUp.UseVisualStyleBackColor = false;
-            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
-            // 
             // pnContainButtonSignIn
             // 
-            this.pnContainButtonSignIn.BorderColor = System.Drawing.Color.Aqua;
+            this.pnContainButtonSignIn.BorderColor = System.Drawing.Color.Blue;
             this.pnContainButtonSignIn.BorderRadius = 14;
             this.pnContainButtonSignIn.BorderThickness = 2;
             this.pnContainButtonSignIn.Controls.Add(this.btnLogIn);
             this.pnContainButtonSignIn.Location = new System.Drawing.Point(118, 34);
             this.pnContainButtonSignIn.Name = "pnContainButtonSignIn";
-            this.pnContainButtonSignIn.Padding = new System.Windows.Forms.Padding(10);
             this.pnContainButtonSignIn.Size = new System.Drawing.Size(237, 63);
             this.pnContainButtonSignIn.TabIndex = 4;
-            // 
-            // btnLogIn
-            // 
-            this.btnLogIn.BackColor = System.Drawing.Color.Black;
-            this.btnLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogIn.FlatAppearance.BorderSize = 0;
-            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogIn.ForeColor = System.Drawing.Color.Aqua;
-            this.btnLogIn.Location = new System.Drawing.Point(10, 10);
-            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(217, 43);
-            this.btnLogIn.TabIndex = 0;
-            this.btnLogIn.Text = "SIGN IN ";
-            this.btnLogIn.UseVisualStyleBackColor = false;
-            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // pnLoginSignupContent
             // 
@@ -155,9 +119,9 @@ namespace App_Library.Views
             // 
             // lbWellcome
             // 
-            this.lbWellcome.BackColor = System.Drawing.Color.Cyan;
+            this.lbWellcome.BackColor = System.Drawing.Color.DodgerBlue;
             this.lbWellcome.Font = new System.Drawing.Font("Cooper Black", 30F, System.Drawing.FontStyle.Bold);
-            this.lbWellcome.ForeColor = System.Drawing.Color.Teal;
+            this.lbWellcome.ForeColor = System.Drawing.Color.White;
             this.lbWellcome.Location = new System.Drawing.Point(0, 152);
             this.lbWellcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbWellcome.Name = "lbWellcome";
@@ -168,7 +132,7 @@ namespace App_Library.Views
             // 
             // pnHeader
             // 
-            this.pnHeader.BackColor = System.Drawing.Color.Cyan;
+            this.pnHeader.BackColor = System.Drawing.Color.DodgerBlue;
             this.pnHeader.Controls.Add(this.btnClose);
             this.pnHeader.Controls.Add(this.btnMinimize);
             this.pnHeader.Controls.Add(this.btnMaximize);
@@ -184,13 +148,16 @@ namespace App_Library.Views
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Animated = true;
+            this.btnClose.BorderRadius = 3;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnClose.ForeColor = System.Drawing.Color.DarkRed;
             this.btnClose.Location = new System.Drawing.Point(419, 10);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(29, 22);
@@ -238,6 +205,7 @@ namespace App_Library.Views
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(46, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -253,7 +221,7 @@ namespace App_Library.Views
             // 
             // gneContentLogin
             // 
-            this.gneContentLogin.BorderRadius = 20;
+            this.gneContentLogin.BorderRadius = 40;
             this.gneContentLogin.TargetControl = this.pnFrameOption;
             // 
             // timerClickButonLogin
@@ -264,17 +232,61 @@ namespace App_Library.Views
             // gneBtnSingIn
             // 
             this.gneBtnSingIn.BorderRadius = 20;
-            this.gneBtnSingIn.TargetControl = this.btnLogIn;
             // 
             // gneBtnSingUp
             // 
             this.gneBtnSingUp.BorderRadius = 40;
-            this.gneBtnSingUp.TargetControl = this.btnSignUp;
             // 
             // timerOpenMainForm
             // 
             this.timerOpenMainForm.Interval = 10;
             this.timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Animated = true;
+            this.btnLogIn.BorderColor = System.Drawing.Color.Blue;
+            this.btnLogIn.BorderRadius = 8;
+            this.btnLogIn.BorderThickness = 3;
+            this.btnLogIn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogIn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogIn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogIn.FillColor = System.Drawing.Color.White;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLogIn.ForeColor = System.Drawing.Color.Blue;
+            this.btnLogIn.HoverState.FillColor = System.Drawing.Color.Blue;
+            this.btnLogIn.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLogIn.Location = new System.Drawing.Point(0, 0);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(237, 63);
+            this.btnLogIn.TabIndex = 4;
+            this.btnLogIn.Text = "LOG IN ";
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
+            // 
+            // btnSignUp
+            // 
+            this.btnSignUp.Animated = true;
+            this.btnSignUp.BorderColor = System.Drawing.Color.Blue;
+            this.btnSignUp.BorderRadius = 8;
+            this.btnSignUp.BorderThickness = 3;
+            this.btnSignUp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSignUp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSignUp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSignUp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSignUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSignUp.FillColor = System.Drawing.Color.White;
+            this.btnSignUp.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold);
+            this.btnSignUp.ForeColor = System.Drawing.Color.Blue;
+            this.btnSignUp.HoverState.FillColor = System.Drawing.Color.Blue;
+            this.btnSignUp.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnSignUp.Location = new System.Drawing.Point(0, 0);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(237, 63);
+            this.btnSignUp.TabIndex = 5;
+            this.btnSignUp.Text = "SIGN - UP";
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // SplashForm
             // 
@@ -306,8 +318,6 @@ namespace App_Library.Views
         private Panel pnSubLogin;
         public Panel pnFrameOption;
         private Panel pnLoginSignupContent;
-        private Button btnSignUp;
-        private Button btnLogIn;
         private Label lbWellcome;
         public Panel pnHeader;
         private PictureBox btnMinimize;
@@ -324,6 +334,8 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Panel pnContainButtonSignUp;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2Button btnSignUp;
+        private Guna.UI2.WinForms.Guna2Button btnLogIn;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
     }

@@ -3,6 +3,7 @@ using App_Library.Services;
 using App_Library.Views.Main.CollectionShop;
 using App_Library.Views.ToolerForm;
 using App_Library.Views.UserView.CollectionHome;
+using App_Library.Views.UserView.CollectionShop;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -214,30 +215,45 @@ namespace App_Library.Views
 
         private async void btnBuy_Click(object sender, EventArgs e)
         {
-            User user =await ( new UserService()).GetCurrentUserAsync();
-            BookSold bookSold = new BookSold()
+            bool confirm = false;
+            using (var alert = new PaymentForm(book))
             {
-                BookId = book.Id,
-                UserId = user.Id,
-                Username = user.Username,
-                Status = "Pending",
-                Slug = book.Slug,
-                Title = book.Title,
-                Email = user.Email,
-                Image = book.Image,
-                Genre = book.Genre,
-                Price = book.Price,
-            };
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Show();
-            String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
-            loadingForm.Close();
-            (new AlertSuccess("Your book is pedding")).ShowDialog();            
+                alert.ShowDialog();
+                confirm = alert.ConfirmResult;
+            }
+            if (confirm)
+            {
+                LoadingForm loading = new LoadingForm();
+                loading.Show();
+                User user = await (new UserService()).GetCurrentUserAsync();
+                BookSold bookSold = new BookSold()
+                {
+                    BookId = book.Id,
+                    UserId = user.Id,
+                    Username = user.Username,
+                    Status = "Pending",
+                    Slug = book.Slug,
+                    Title = book.Title,
+                    Email = user.Email,
+                    Image = book.Image,
+                    Genre = book.Genre,
+                    Price = book.Price,
+                };
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.Show();
+                String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
+                loadingForm.Close();
+                shop.refreshData();
+                loading.Close();
+                (new AlertSuccess("Your book is pedding")).ShowDialog();
+            }
+                      
         }
+
         Form formAct;
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
-            activeFormChild(shop.parent.pnContent, new NewShopMain(shop.parent), null,ref formAct);
+            activeFormChild(shop.controller.pnContent, new NewShopMain(shop.controller), null,ref formAct);
         }
 
         private void btnPending_Paint(object sender, PaintEventArgs e)
@@ -248,7 +264,17 @@ namespace App_Library.Views
         private void lbBtnPedding_Click(object sender, EventArgs e)
         {
 
-            shop.parent.nextPageToHistory(sender);
+            shop.controller.nextPageToHistory(sender);
+        }
+
+        private void pnReadBook_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnReadBook_Click(object sender, EventArgs e)
+        {
+            (new PdfViewerForm(book.PdfUrl)).ShowDialog();
         }
     }
 }

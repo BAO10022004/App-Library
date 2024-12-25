@@ -47,8 +47,9 @@
             // 
             // lbNameBook
             // 
+            this.lbNameBook.BackColor = System.Drawing.Color.Transparent;
             this.lbNameBook.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameBook.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lbNameBook.ForeColor = System.Drawing.Color.White;
             this.lbNameBook.Location = new System.Drawing.Point(85, 5);
             this.lbNameBook.Name = "lbNameBook";
             this.lbNameBook.Size = new System.Drawing.Size(407, 40);
@@ -60,7 +61,7 @@
             // lbAuthor
             // 
             this.lbAuthor.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAuthor.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lbAuthor.ForeColor = System.Drawing.Color.White;
             this.lbAuthor.Location = new System.Drawing.Point(85, 45);
             this.lbAuthor.Name = "lbAuthor";
             this.lbAuthor.Size = new System.Drawing.Size(407, 40);
@@ -73,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.DarkBlue;
             this.ClientSize = new System.Drawing.Size(500, 100);
             this.Controls.Add(this.picImage);
             this.Controls.Add(this.lbAuthor);

@@ -53,7 +53,7 @@
             this.btnGrid.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGrid.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnGrid.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGrid.FillColor = System.Drawing.Color.Orange;
+            this.btnGrid.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnGrid.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGrid.ForeColor = System.Drawing.Color.White;
             this.btnGrid.HoverState.FillColor = System.Drawing.Color.DarkOrange;
@@ -73,7 +73,7 @@
             this.btnList.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnList.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnList.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnList.FillColor = System.Drawing.Color.Orange;
+            this.btnList.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnList.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnList.ForeColor = System.Drawing.Color.White;
             this.btnList.HoverState.FillColor = System.Drawing.Color.DarkOrange;
@@ -98,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.BackColor = System.Drawing.Color.LightYellow;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1089, 561);
             this.Controls.Add(this.pnContent);
             this.Controls.Add(this.guna2Panel1);

@@ -35,11 +35,11 @@ namespace App_Library.Views.Main.CollectionShop
         Form formHotDeal;
         // size properties
         // check button option view  click
-        internal MainForm parent;
+        internal MainForm controller;
         // Save main form 
         FlowLayoutPanel pnSaveForm = new FlowLayoutPanel();
 
-        public NewShopMain(MainForm _parent)
+        public NewShopMain(MainForm controller)
         {
             _bookService = new BookService();
             _bookSoldService = new BookSoldService();
@@ -54,7 +54,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnProperties.TabIndex = 1;
             this.pnProperties.Visible = false;
 
-            this.parent = _parent;
+            this.controller = controller;
 
         }
 
@@ -108,7 +108,7 @@ namespace App_Library.Views.Main.CollectionShop
             else
             {
                 listPanelAllBook = ((await Task.WhenAll(listTask)).ToList());
-                listBookSold = await parent.getListSold();
+                listBookSold = await controller.getListSold();
 
                 formAd = new AdForm(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);
@@ -164,7 +164,7 @@ namespace App_Library.Views.Main.CollectionShop
         Form actFormProperti;
         public void openProp(PropertiesBookForm form)
         {
-            activeFormChild(parent.pnContent, form, null, ref actFormProperti);
+            activeFormChild(controller.pnContent, form, null, ref actFormProperti);
         }
         internal async void bookClick(Book book, PanelBook panelBook = null)
         {
@@ -184,7 +184,7 @@ namespace App_Library.Views.Main.CollectionShop
 
             if (panelBook != null)
             {
-                activeFormChild(parent.pnContent, new AnimationProperties(panelBook, this, form), null, ref actFormProperti);
+                activeFormChild(controller.pnContent, new AnimationProperties(panelBook, this, form), null, ref actFormProperti);
             }
             else
             {
@@ -214,10 +214,10 @@ namespace App_Library.Views.Main.CollectionShop
             ReSize();
         }
 
-        private void txtSearch_Click(object sender, EventArgs e)
-        {
-
-        }
+         public  void refreshData()
+            {
+                controller.dataBind();
+            }
         public Guna2Panel createPanelSearch(Book book, int index)
         {
             Form form = null;
@@ -318,7 +318,7 @@ namespace App_Library.Views.Main.CollectionShop
         private async void btnViewAllBook_Click(object sender, EventArgs e)
         {
             listBook =await _bookService.GetBooksAsync();
-            activeFormChild(parent.pnContent, new ViewBookForm(this, listBook), null, ref actFormProperti);
+            activeFormChild(controller.pnContent, new ViewBookForm(this, listBook), null, ref actFormProperti);
         }
 
         private async void picSearch_Click_1(object sender, EventArgs e)
@@ -327,7 +327,7 @@ namespace App_Library.Views.Main.CollectionShop
 
             List<Book> result = (await _bookService.SearchBooksAsync(txtSearch.Text)).Books;
            
-            activeFormChild(parent.pnContent, new ViewBookForm(this, result), null, ref actFormProperti);
+            activeFormChild(controller.pnContent, new ViewBookForm(this, result), null, ref actFormProperti);
         }
 
         private async void txtSearch_TextChanged(object sender, EventArgs e)

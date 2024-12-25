@@ -47,7 +47,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FloralWhite;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gray;
@@ -60,10 +60,10 @@
             // 
             // lbMain
             // 
-            this.lbMain.BackColor = System.Drawing.Color.FloralWhite;
+            this.lbMain.BackColor = System.Drawing.Color.White;
             this.lbMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbMain.Font = new System.Drawing.Font("Cooper Black", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMain.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.lbMain.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lbMain.Location = new System.Drawing.Point(0, 0);
             this.lbMain.Name = "lbMain";
             this.lbMain.Size = new System.Drawing.Size(1089, 119);
@@ -73,7 +73,7 @@
             // 
             // pnMain
             // 
-            this.pnMain.BackColor = System.Drawing.Color.FloralWhite;
+            this.pnMain.BackColor = System.Drawing.Color.White;
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(0, 119);
             this.pnMain.Name = "pnMain";

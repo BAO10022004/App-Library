@@ -80,7 +80,7 @@
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(222, 23);
             this.lbPrice.TabIndex = 2;
-            this.lbPrice.Text = "1";
+            this.lbPrice.Text = "Price";
             this.lbPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbInfo
@@ -91,7 +91,7 @@
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(224, 21);
             this.lbInfo.TabIndex = 1;
-            this.lbInfo.Text = "label1";
+            this.lbInfo.Text = "Author Name";
             this.lbInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbNameBook
@@ -102,14 +102,14 @@
             this.lbNameBook.Name = "lbNameBook";
             this.lbNameBook.Size = new System.Drawing.Size(227, 28);
             this.lbNameBook.TabIndex = 0;
-            this.lbNameBook.Text = "label1";
+            this.lbNameBook.Text = "Book Name";
             this.lbNameBook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BookItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(250, 380);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

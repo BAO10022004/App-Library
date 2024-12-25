@@ -20,6 +20,7 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using static Guna.UI2.Native.WinApi;
@@ -45,7 +46,7 @@ namespace App_Library.Views
         //Dictionary<Control, Form> formDictionary;
         //Form currentForm;
 
-        Dictionary<Control, bool> isClick;
+        Dictionary<System.Windows.Controls.Control, bool> isClick;
         //SplashForm Parent;
         public MainForm(SplashForm _Parent)
         {
@@ -55,14 +56,14 @@ namespace App_Library.Views
             //_starsRating = new StarsRatingService();
             books = new List<Book>();
             //listBookAd = new List<Panel>();
-            isClick = new Dictionary<Control, bool>();
+            isClick = new Dictionary<System.Windows.Controls.Control, bool>();
             //Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
             //this.Parent = _Parent;
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            bookSold = GetBooksInProgressByOnGiaBao(await (new UserService()).GetCurrentUserAsync());
+            dataBind();
             // Hiển thị thông tin người dùng hiện tại
             var currentUser = await _userService.GetCurrentUserAsync();
             Session.CurentUser = currentUser;
@@ -77,7 +78,6 @@ namespace App_Library.Views
                 this.picAvatar.Image = global::App_Library.Properties.Resources.account;
             }
 
-            homeForm = new StockForm(this);
             shopForm = new NewShopMain(this);
 
             // Hiển thị sidebar
@@ -124,7 +124,6 @@ namespace App_Library.Views
             formDes.Show();
         }
 
-
         Form actForm;
         private void btnLogOut_Click(object sender, EventArgs e)
         {
@@ -133,7 +132,10 @@ namespace App_Library.Views
             Program.sp = new SplashForm();
             Program.sp.ShowDialog();
         }
-
+        public async void dataBind()
+        {
+            bookSold = GetBooksInProgressByOnGiaBao(await(new UserService()).GetCurrentUserAsync());
+        }
         private void btnLogOut_MouseHover(object sender, EventArgs e)
         {
             pnContainLogOut.BorderColor = Color.Blue;
@@ -168,7 +170,7 @@ namespace App_Library.Views
             AuthService db = new AuthService();
 
             // Thực hiện đăng nhập một lần
-            bool result = await db.Login("khoa", "$2a$11$t/oDyvOVo7cqOhdZ/wS/I.XDp78gBFz/zLU1/fzFUcuDZxe5ErvUW", null);
+            bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
 
             if (!result)
             {

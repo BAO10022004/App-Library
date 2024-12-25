@@ -66,12 +66,12 @@ namespace App_Library.Views
             // 
             // btnLogIn
             // 
-            this.btnLogIn.BackColor = System.Drawing.Color.Aqua;
+            this.btnLogIn.BackColor = System.Drawing.Color.Blue;
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogIn.FlatAppearance.BorderSize = 0;
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogIn.ForeColor = System.Drawing.Color.Teal;
+            this.btnLogIn.ForeColor = System.Drawing.Color.White;
             this.btnLogIn.Location = new System.Drawing.Point(75, 260);
             this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogIn.Name = "btnLogIn";
@@ -83,7 +83,7 @@ namespace App_Library.Views
             // 
             // pnMainContentLogin
             // 
-            this.pnMainContentLogin.BackColor = System.Drawing.Color.Black;
+            this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
             this.pnMainContentLogin.Controls.Add(this.MessegePassword);
             this.pnMainContentLogin.Controls.Add(this.MessegeUsername);
             this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
@@ -105,7 +105,7 @@ namespace App_Library.Views
             this.MessegePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegePassword.FillColor = System.Drawing.Color.Black;
+            this.MessegePassword.FillColor = System.Drawing.Color.White;
             this.MessegePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegePassword.ForeColor = System.Drawing.Color.Red;
             this.MessegePassword.Image = global::App_Library.Properties.Resources.mark;
@@ -120,11 +120,12 @@ namespace App_Library.Views
             // 
             // MessegeUsername
             // 
+            this.MessegeUsername.BorderColor = System.Drawing.Color.White;
             this.MessegeUsername.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.MessegeUsername.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegeUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegeUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegeUsername.FillColor = System.Drawing.Color.Black;
+            this.MessegeUsername.FillColor = System.Drawing.Color.White;
             this.MessegeUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegeUsername.ForeColor = System.Drawing.Color.Red;
             this.MessegeUsername.Image = global::App_Library.Properties.Resources.mark;
@@ -222,7 +223,7 @@ namespace App_Library.Views
             // 
             // txbPassword
             // 
-            this.txbPassword.BackColor = System.Drawing.Color.Black;
+            this.txbPassword.BackColor = System.Drawing.Color.White;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.txbPassword.ForeColor = System.Drawing.Color.DarkGray;
@@ -253,7 +254,7 @@ namespace App_Library.Views
             // 
             // txbUserName
             // 
-            this.txbUserName.BackColor = System.Drawing.Color.Black;
+            this.txbUserName.BackColor = System.Drawing.Color.White;
             this.txbUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUserName.ForeColor = System.Drawing.Color.DarkGray;
@@ -272,7 +273,7 @@ namespace App_Library.Views
             this.lbCreateAccount.AutoSize = true;
             this.lbCreateAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbCreateAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbCreateAccount.ForeColor = System.Drawing.Color.Aqua;
+            this.lbCreateAccount.ForeColor = System.Drawing.Color.Blue;
             this.lbCreateAccount.Location = new System.Drawing.Point(75, 224);
             this.lbCreateAccount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbCreateAccount.Name = "lbCreateAccount";
@@ -288,7 +289,7 @@ namespace App_Library.Views
             this.lbForgotPassword.AutoSize = true;
             this.lbForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbForgotPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbForgotPassword.ForeColor = System.Drawing.Color.Aqua;
+            this.lbForgotPassword.ForeColor = System.Drawing.Color.Blue;
             this.lbForgotPassword.Location = new System.Drawing.Point(261, 226);
             this.lbForgotPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbForgotPassword.Name = "lbForgotPassword";

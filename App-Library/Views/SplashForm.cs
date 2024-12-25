@@ -124,7 +124,7 @@ namespace App_Library.Views
             //}
             //else
             //{
-            Program.sp.pnHeader.BackColor = Color.DarkGray;
+            Program.sp.pnHeader.BackColor = Color.WhiteSmoke;
             timerOpenMainForm.Stop();
             Size = new Size(1280, 720);
             PnSubLogin.Controls.Clear();

@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lnMoreSeen = new System.Windows.Forms.Label();
             this.pnContainComment = new Guna.UI2.WinForms.Guna2Panel();
+            this.txbComment = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnContainToolComment = new System.Windows.Forms.Panel();
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnMainComment = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.txbComment = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.pnMainComment = new Guna.UI2.WinForms.Guna2Panel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.pnContainComment.SuspendLayout();
             this.pnContainToolComment.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.guna2Panel8.SuspendLayout();
             this.pnMainComment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,6 +57,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(65, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(1, 0);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2CirclePictureBox1.TabIndex = 0;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // lnMoreSeen
             // 
@@ -79,6 +90,29 @@
             this.pnContainComment.Name = "pnContainComment";
             this.pnContainComment.Size = new System.Drawing.Size(735, 63);
             this.pnContainComment.TabIndex = 2;
+            // 
+            // txbComment
+            // 
+            this.txbComment.BorderColor = System.Drawing.Color.Cyan;
+            this.txbComment.BorderRadius = 15;
+            this.txbComment.BorderThickness = 2;
+            this.txbComment.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txbComment.DefaultText = "";
+            this.txbComment.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txbComment.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txbComment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txbComment.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txbComment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txbComment.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txbComment.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txbComment.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txbComment.Location = new System.Drawing.Point(0, 0);
+            this.txbComment.Name = "txbComment";
+            this.txbComment.PasswordChar = '\0';
+            this.txbComment.PlaceholderText = "";
+            this.txbComment.SelectedText = "";
+            this.txbComment.Size = new System.Drawing.Size(735, 63);
+            this.txbComment.TabIndex = 0;
             // 
             // pnContainToolComment
             // 
@@ -113,69 +147,6 @@
             this.guna2Panel8.Size = new System.Drawing.Size(735, 37);
             this.guna2Panel8.TabIndex = 2;
             // 
-            // pnMainComment
-            // 
-            this.pnMainComment.Controls.Add(this.guna2Panel7);
-            this.pnMainComment.Controls.Add(this.panel1);
-            this.pnMainComment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMainComment.Location = new System.Drawing.Point(0, 0);
-            this.pnMainComment.Margin = new System.Windows.Forms.Padding(2);
-            this.pnMainComment.Name = "pnMainComment";
-            this.pnMainComment.Size = new System.Drawing.Size(800, 100);
-            this.pnMainComment.TabIndex = 2;
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(1, 0);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2CirclePictureBox1.TabIndex = 0;
-            this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // txbComment
-            // 
-            this.txbComment.BorderColor = System.Drawing.Color.Cyan;
-            this.txbComment.BorderRadius = 15;
-            this.txbComment.BorderThickness = 2;
-            this.txbComment.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txbComment.DefaultText = "";
-            this.txbComment.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txbComment.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txbComment.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txbComment.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txbComment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txbComment.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txbComment.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txbComment.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txbComment.Location = new System.Drawing.Point(0, 0);
-            this.txbComment.Name = "txbComment";
-            this.txbComment.PasswordChar = '\0';
-            this.txbComment.PlaceholderText = "";
-            this.txbComment.SelectedText = "";
-            this.txbComment.Size = new System.Drawing.Size(735, 63);
-            this.txbComment.TabIndex = 0;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Animated = true;
-            this.btnSave.BorderRadius = 5;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.Blue;
-            this.btnSave.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(531, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 28);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // guna2Button1
             // 
             this.guna2Button1.Animated = true;
@@ -197,6 +168,36 @@
             this.guna2Button1.Text = "CANCEL";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Animated = true;
+            this.btnSave.BorderRadius = 5;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.Blue;
+            this.btnSave.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(531, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(89, 28);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "SAVE";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // pnMainComment
+            // 
+            this.pnMainComment.BackColor = System.Drawing.Color.White;
+            this.pnMainComment.Controls.Add(this.guna2Panel7);
+            this.pnMainComment.Controls.Add(this.panel1);
+            this.pnMainComment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnMainComment.Location = new System.Drawing.Point(0, 0);
+            this.pnMainComment.Margin = new System.Windows.Forms.Padding(2);
+            this.pnMainComment.Name = "pnMainComment";
+            this.pnMainComment.Size = new System.Drawing.Size(800, 100);
+            this.pnMainComment.TabIndex = 2;
+            // 
             // CommentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,13 +210,13 @@
             this.Text = "CommentEdit";
             this.Load += new System.EventHandler(this.CommentEdit_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.pnContainComment.ResumeLayout(false);
             this.pnContainToolComment.ResumeLayout(false);
             this.pnContainToolComment.PerformLayout();
             this.guna2Panel7.ResumeLayout(false);
             this.guna2Panel8.ResumeLayout(false);
             this.pnMainComment.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

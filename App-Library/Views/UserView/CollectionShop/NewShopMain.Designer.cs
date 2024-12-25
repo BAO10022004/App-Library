@@ -36,6 +36,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.geSearch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnSearchShop = new Guna.UI2.WinForms.Guna2Panel();
             this.pnMainSearch = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnResultSearch = new System.Windows.Forms.FlowLayoutPanel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.picSearch = new System.Windows.Forms.PictureBox();
@@ -61,7 +62,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.pnContainSearch = new Guna.UI2.WinForms.Guna2Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
-            this.pnResultSearch = new System.Windows.Forms.FlowLayoutPanel();
             this.pnSearchShop.SuspendLayout();
             this.pnMainSearch.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
@@ -97,8 +97,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // pnSearchShop
             // 
-            this.pnSearchShop.BackColor = System.Drawing.Color.MintCream;
-            this.pnSearchShop.BorderColor = System.Drawing.Color.PaleGreen;
+            this.pnSearchShop.BackColor = System.Drawing.Color.LightSkyBlue;
             this.pnSearchShop.BorderRadius = 26;
             this.pnSearchShop.BorderThickness = 3;
             this.pnSearchShop.Controls.Add(this.pnMainSearch);
@@ -110,7 +109,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // pnMainSearch
             // 
-            this.pnMainSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pnMainSearch.BackColor = System.Drawing.Color.Transparent;
             this.pnMainSearch.Controls.Add(this.pnResultSearch);
             this.pnMainSearch.Controls.Add(this.txtSearch);
             this.pnMainSearch.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -119,6 +118,14 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnMainSearch.Padding = new System.Windows.Forms.Padding(10);
             this.pnMainSearch.Size = new System.Drawing.Size(505, 82);
             this.pnMainSearch.TabIndex = 1;
+            // 
+            // pnResultSearch
+            // 
+            this.pnResultSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnResultSearch.Location = new System.Drawing.Point(10, 56);
+            this.pnResultSearch.Name = "pnResultSearch";
+            this.pnResultSearch.Size = new System.Drawing.Size(485, 16);
+            this.pnResultSearch.TabIndex = 0;
             // 
             // txtSearch
             // 
@@ -147,7 +154,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderThickness = 4;
             this.guna2Panel1.Controls.Add(this.picSearch);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -181,7 +188,7 @@ namespace App_Library.Views.Main.CollectionShop
             // pnMainForm
             // 
             this.pnMainForm.AutoScroll = true;
-            this.pnMainForm.BackColor = System.Drawing.Color.Honeydew;
+            this.pnMainForm.BackColor = System.Drawing.Color.Transparent;
             this.pnMainForm.Controls.Add(this.pnAd);
             this.pnMainForm.Controls.Add(this.pnNewItem);
             this.pnMainForm.Controls.Add(this.pnBestDeal);
@@ -231,7 +238,7 @@ namespace App_Library.Views.Main.CollectionShop
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.White;
-            this.guna2Panel3.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel3.BorderColor = System.Drawing.Color.RoyalBlue;
             this.guna2Panel3.BorderRadius = 10;
             this.guna2Panel3.BorderThickness = 3;
             this.guna2Panel3.Controls.Add(this.label1);
@@ -245,7 +252,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label1.Location = new System.Drawing.Point(60, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 31);
@@ -305,7 +312,7 @@ namespace App_Library.Views.Main.CollectionShop
             // guna2Panel5
             // 
             this.guna2Panel5.BackColor = System.Drawing.Color.White;
-            this.guna2Panel5.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel5.BorderColor = System.Drawing.Color.RoyalBlue;
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.BorderThickness = 3;
             this.guna2Panel5.Controls.Add(this.label2);
@@ -319,7 +326,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(60, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 31);
@@ -351,7 +358,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // pnContainAllBook
             // 
-            this.pnContainAllBook.BackColor = System.Drawing.Color.Honeydew;
+            this.pnContainAllBook.BackColor = System.Drawing.Color.White;
             this.pnContainAllBook.Controls.Add(this.guna2Button1);
             this.pnContainAllBook.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnContainAllBook.Location = new System.Drawing.Point(0, 0);
@@ -365,10 +372,10 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Honeydew;
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
             this.guna2Button1.FocusedColor = System.Drawing.Color.Green;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Green;
+            this.guna2Button1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.guna2Button1.Location = new System.Drawing.Point(466, 6);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(180, 45);
@@ -395,19 +402,11 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnSearch.Size = new System.Drawing.Size(1030, 100);
             this.pnSearch.TabIndex = 6;
             // 
-            // pnResultSearch
-            // 
-            this.pnResultSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnResultSearch.Location = new System.Drawing.Point(10, 56);
-            this.pnResultSearch.Name = "pnResultSearch";
-            this.pnResultSearch.Size = new System.Drawing.Size(485, 16);
-            this.pnResultSearch.TabIndex = 0;
-            // 
             // NewShopMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1030, 680);
             this.Controls.Add(this.pnMainForm);
             this.Controls.Add(this.pnContainSearch);

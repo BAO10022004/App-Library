@@ -78,7 +78,7 @@
             // 
             // pnMainContentLogin
             // 
-            this.pnMainContentLogin.BackColor = System.Drawing.Color.Black;
+            this.pnMainContentLogin.BackColor = System.Drawing.Color.White;
             this.pnMainContentLogin.Controls.Add(this.btnSignInGG);
             this.pnMainContentLogin.Controls.Add(this.MessegeConfirm);
             this.pnMainContentLogin.Controls.Add(this.MessegePassword);
@@ -146,7 +146,7 @@
             this.MessegeConfirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegeConfirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegeConfirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegeConfirm.FillColor = System.Drawing.Color.Black;
+            this.MessegeConfirm.FillColor = System.Drawing.Color.White;
             this.MessegeConfirm.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegeConfirm.ForeColor = System.Drawing.Color.Red;
             this.MessegeConfirm.Image = global::App_Library.Properties.Resources.mark;
@@ -165,7 +165,7 @@
             this.MessegePassword.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegePassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegePassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegePassword.FillColor = System.Drawing.Color.Black;
+            this.MessegePassword.FillColor = System.Drawing.Color.White;
             this.MessegePassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegePassword.ForeColor = System.Drawing.Color.Red;
             this.MessegePassword.Image = global::App_Library.Properties.Resources.mark;
@@ -184,7 +184,7 @@
             this.MessegeUsername.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegeUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegeUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegeUsername.FillColor = System.Drawing.Color.Black;
+            this.MessegeUsername.FillColor = System.Drawing.Color.White;
             this.MessegeUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegeUsername.ForeColor = System.Drawing.Color.Red;
             this.MessegeUsername.Image = global::App_Library.Properties.Resources.mark;
@@ -204,7 +204,7 @@
             this.MessegeEmail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.MessegeEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.MessegeEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.MessegeEmail.FillColor = System.Drawing.Color.Black;
+            this.MessegeEmail.FillColor = System.Drawing.Color.White;
             this.MessegeEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MessegeEmail.ForeColor = System.Drawing.Color.Red;
             this.MessegeEmail.Image = global::App_Library.Properties.Resources.mark;
@@ -259,7 +259,7 @@
             // 
             // txbConfirmPassword
             // 
-            this.txbConfirmPassword.BackColor = System.Drawing.Color.Black;
+            this.txbConfirmPassword.BackColor = System.Drawing.Color.White;
             this.txbConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbConfirmPassword.ForeColor = System.Drawing.Color.DarkGray;
@@ -289,7 +289,7 @@
             // 
             // txbUsername
             // 
-            this.txbUsername.BackColor = System.Drawing.Color.Black;
+            this.txbUsername.BackColor = System.Drawing.Color.White;
             this.txbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbUsername.ForeColor = System.Drawing.Color.DarkGray;
@@ -333,7 +333,7 @@
             // 
             // txbPassword
             // 
-            this.txbPassword.BackColor = System.Drawing.Color.Black;
+            this.txbPassword.BackColor = System.Drawing.Color.White;
             this.txbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbPassword.ForeColor = System.Drawing.Color.DarkGray;
@@ -363,7 +363,7 @@
             // 
             // txbEmail
             // 
-            this.txbEmail.BackColor = System.Drawing.Color.Black;
+            this.txbEmail.BackColor = System.Drawing.Color.White;
             this.txbEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbEmail.ForeColor = System.Drawing.Color.DarkGray;
@@ -379,11 +379,11 @@
             // 
             // btnSignUp
             // 
-            this.btnSignUp.BackColor = System.Drawing.Color.Aqua;
+            this.btnSignUp.BackColor = System.Drawing.Color.Blue;
             this.btnSignUp.FlatAppearance.BorderSize = 0;
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Cooper Black", 14.25F);
-            this.btnSignUp.ForeColor = System.Drawing.Color.Teal;
+            this.btnSignUp.ForeColor = System.Drawing.Color.White;
             this.btnSignUp.Location = new System.Drawing.Point(75, 322);
             this.btnSignUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnSignUp.Name = "btnSignUp";

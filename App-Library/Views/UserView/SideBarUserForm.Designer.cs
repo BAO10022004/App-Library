@@ -41,7 +41,7 @@
             this.pnSideBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnSideBar.BackColor = System.Drawing.Color.White;
+            this.pnSideBar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnSideBar.Controls.Add(this.guna2Button2);
             this.pnSideBar.Controls.Add(this.btnHistory);
             this.pnSideBar.Controls.Add(this.btnStore);

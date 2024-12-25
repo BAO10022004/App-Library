@@ -100,7 +100,7 @@ namespace App_Library.Views.UserView.CollectionShop
         Form formAct;
         private void btnBack_Click(object sender, EventArgs e)
         {
-            activeFormChild(controller.parent.pnContent, new NewShopMain(controller.parent), null, ref formAct);
+            activeFormChild(controller.controller.pnContent, new NewShopMain(controller.controller), null, ref formAct);
         }
     }
 }

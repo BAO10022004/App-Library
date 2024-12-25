@@ -48,6 +48,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Controls.Add(this.pnAdMain);
             this.flowLayoutPanel1.Controls.Add(this.picSubAd1);
             this.flowLayoutPanel1.Controls.Add(this.picSubAd2);
@@ -59,7 +60,7 @@
             // 
             // pnAdMain
             // 
-            this.pnAdMain.BackColor = System.Drawing.Color.Red;
+            this.pnAdMain.BackColor = System.Drawing.Color.Snow;
             this.pnAdMain.Location = new System.Drawing.Point(0, 0);
             this.pnAdMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnAdMain.Name = "pnAdMain";

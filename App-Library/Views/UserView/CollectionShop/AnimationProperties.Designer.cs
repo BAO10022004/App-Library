@@ -37,6 +37,7 @@
             // picImage
             // 
             this.picImage.BackColor = System.Drawing.Color.Honeydew;
+            this.picImage.FillColor = System.Drawing.Color.LightGray;
             this.picImage.ImageRotate = 0F;
             this.picImage.Location = new System.Drawing.Point(563, 308);
             this.picImage.Name = "picImage";
@@ -53,7 +54,7 @@
             // AnimationProperties
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1030, 680);
             this.Controls.Add(this.picImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

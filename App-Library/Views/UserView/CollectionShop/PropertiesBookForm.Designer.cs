@@ -229,7 +229,7 @@
             // guna2Panel4
             // 
             this.guna2Panel4.BackColor = System.Drawing.Color.White;
-            this.guna2Panel4.BorderColor = System.Drawing.Color.Green;
+            this.guna2Panel4.BorderColor = System.Drawing.Color.RoyalBlue;
             this.guna2Panel4.BorderRadius = 10;
             this.guna2Panel4.BorderThickness = 3;
             this.guna2Panel4.Controls.Add(this.label2);
@@ -243,7 +243,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Green;
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(60, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 31);
@@ -561,7 +561,7 @@
             // 
             this.lbBtnPedding.AutoSize = true;
             this.lbBtnPedding.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbBtnPedding.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbBtnPedding.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lbBtnPedding.Location = new System.Drawing.Point(28, 22);
             this.lbBtnPedding.Name = "lbBtnPedding";
             this.lbBtnPedding.Size = new System.Drawing.Size(119, 24);
@@ -582,17 +582,20 @@
             this.pnReadBook.Size = new System.Drawing.Size(172, 69);
             this.pnReadBook.TabIndex = 1;
             this.pnReadBook.Visible = false;
+            this.pnReadBook.Click += new System.EventHandler(this.pnReadBook_Click);
+            this.pnReadBook.Paint += new System.Windows.Forms.PaintEventHandler(this.pnReadBook_Paint);
             // 
             // lbReadBook
             // 
             this.lbReadBook.AutoSize = true;
             this.lbReadBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbReadBook.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbReadBook.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lbReadBook.Location = new System.Drawing.Point(50, 22);
             this.lbReadBook.Name = "lbReadBook";
             this.lbReadBook.Size = new System.Drawing.Size(66, 24);
             this.lbReadBook.TabIndex = 0;
             this.lbReadBook.Text = "READ";
+            this.lbReadBook.Click += new System.EventHandler(this.pnReadBook_Click);
             // 
             // btnBuy
             // 
@@ -626,7 +629,7 @@
             // 
             this.lbBuy.AutoSize = true;
             this.lbBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbBuy.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lbBuy.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lbBuy.Location = new System.Drawing.Point(72, 22);
             this.lbBuy.Name = "lbBuy";
             this.lbBuy.Size = new System.Drawing.Size(50, 24);
@@ -763,7 +766,7 @@
             // PropertiesBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1011, 480);
             this.Controls.Add(this.guna2Panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;

@@ -31,27 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.pnContainSearch = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
-            this.pnSearchShop = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnMainSearch = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.picSearch = new System.Windows.Forms.PictureBox();
             this.geSearch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.geButtonSearch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.geTextBoxSerch = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainFlow = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnContain = new System.Windows.Forms.FlowLayoutPanel();
             this.pnFilter = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDeleteSortPrice = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnDeleteSort = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnSortPrice = new Guna.UI2.WinForms.Guna2Button();
             this.btnSortName = new Guna.UI2.WinForms.Guna2Button();
-            this.pnContain = new System.Windows.Forms.FlowLayoutPanel();
             this.pnContainSearch.SuspendLayout();
-            this.pnSearchShop.SuspendLayout();
-            this.pnMainSearch.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
             this.pnMain.SuspendLayout();
             this.pnContainFlow.SuspendLayout();
             this.pnFilter.SuspendLayout();
@@ -61,7 +52,6 @@
             // 
             this.pnContainSearch.BackColor = System.Drawing.Color.Transparent;
             this.pnContainSearch.Controls.Add(this.btnBack);
-            this.pnContainSearch.Controls.Add(this.pnSearchShop);
             this.pnContainSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnContainSearch.Location = new System.Drawing.Point(0, 0);
             this.pnContainSearch.Name = "pnContainSearch";
@@ -75,7 +65,7 @@
             this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBack.FillColor = System.Drawing.Color.Honeydew;
+            this.btnBack.FillColor = System.Drawing.Color.White;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Image = global::App_Library.Properties.Resources.arrow__1_;
@@ -86,87 +76,17 @@
             this.btnBack.TabIndex = 3;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // pnSearchShop
-            // 
-            this.pnSearchShop.BackColor = System.Drawing.Color.MintCream;
-            this.pnSearchShop.BorderColor = System.Drawing.Color.PaleGreen;
-            this.pnSearchShop.BorderRadius = 26;
-            this.pnSearchShop.BorderThickness = 3;
-            this.pnSearchShop.Controls.Add(this.pnMainSearch);
-            this.pnSearchShop.Controls.Add(this.guna2Panel1);
-            this.pnSearchShop.Location = new System.Drawing.Point(257, 12);
-            this.pnSearchShop.Name = "pnSearchShop";
-            this.pnSearchShop.Size = new System.Drawing.Size(581, 62);
-            this.pnSearchShop.TabIndex = 2;
-            // 
-            // pnMainSearch
-            // 
-            this.pnMainSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pnMainSearch.Controls.Add(this.txtSearch);
-            this.pnMainSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnMainSearch.Location = new System.Drawing.Point(0, 0);
-            this.pnMainSearch.Name = "pnMainSearch";
-            this.pnMainSearch.Size = new System.Drawing.Size(505, 62);
-            this.pnMainSearch.TabIndex = 2;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.White;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.White;
-            this.txtSearch.Location = new System.Drawing.Point(6, 7);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(6, 7, 6, 20);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Lime;
-            this.txtSearch.PlaceholderText = "";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(493, 46);
-            this.txtSearch.TabIndex = 0;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.guna2Panel1.BorderThickness = 4;
-            this.guna2Panel1.Controls.Add(this.picSearch);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel1.Location = new System.Drawing.Point(505, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(76, 62);
-            this.guna2Panel1.TabIndex = 1;
-            // 
-            // picSearch
-            // 
-            this.picSearch.BackColor = System.Drawing.Color.Honeydew;
-            this.picSearch.Image = global::App_Library.Properties.Resources.search;
-            this.picSearch.Location = new System.Drawing.Point(6, 7);
-            this.picSearch.Name = "picSearch";
-            this.picSearch.Size = new System.Drawing.Size(59, 48);
-            this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picSearch.TabIndex = 0;
-            this.picSearch.TabStop = false;
-            // 
             // geSearch
             // 
             this.geSearch.BorderRadius = 50;
-            this.geSearch.TargetControl = this.pnSearchShop;
             // 
             // geButtonSearch
             // 
             this.geButtonSearch.BorderRadius = 30;
-            this.geButtonSearch.TargetControl = this.picSearch;
             // 
             // geTextBoxSerch
             // 
             this.geTextBoxSerch.BorderRadius = 40;
-            this.geTextBoxSerch.TargetControl = this.txtSearch;
             // 
             // pnMain
             // 
@@ -187,6 +107,15 @@
             this.pnContainFlow.Size = new System.Drawing.Size(1030, 516);
             this.pnContainFlow.TabIndex = 1;
             // 
+            // pnContain
+            // 
+            this.pnContain.AutoScroll = true;
+            this.pnContain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContain.Location = new System.Drawing.Point(0, 0);
+            this.pnContain.Name = "pnContain";
+            this.pnContain.Size = new System.Drawing.Size(1030, 516);
+            this.pnContain.TabIndex = 0;
+            // 
             // pnFilter
             // 
             this.pnFilter.Controls.Add(this.btnDeleteSortPrice);
@@ -206,7 +135,7 @@
             this.btnDeleteSortPrice.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDeleteSortPrice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDeleteSortPrice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDeleteSortPrice.FillColor = System.Drawing.Color.Honeydew;
+            this.btnDeleteSortPrice.FillColor = System.Drawing.Color.White;
             this.btnDeleteSortPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDeleteSortPrice.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteSortPrice.Location = new System.Drawing.Point(229, 13);
@@ -226,7 +155,7 @@
             this.btnDeleteSort.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnDeleteSort.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDeleteSort.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDeleteSort.FillColor = System.Drawing.Color.Honeydew;
+            this.btnDeleteSort.FillColor = System.Drawing.Color.White;
             this.btnDeleteSort.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDeleteSort.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteSort.Location = new System.Drawing.Point(100, 13);
@@ -242,7 +171,7 @@
             // btnSortPrice
             // 
             this.btnSortPrice.Animated = true;
-            this.btnSortPrice.BorderColor = System.Drawing.Color.Green;
+            this.btnSortPrice.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnSortPrice.BorderRadius = 20;
             this.btnSortPrice.BorderThickness = 3;
             this.btnSortPrice.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -263,7 +192,7 @@
             // btnSortName
             // 
             this.btnSortName.Animated = true;
-            this.btnSortName.BorderColor = System.Drawing.Color.Green;
+            this.btnSortName.BorderColor = System.Drawing.Color.RoyalBlue;
             this.btnSortName.BorderRadius = 20;
             this.btnSortName.BorderThickness = 3;
             this.btnSortName.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -281,18 +210,10 @@
             this.btnSortName.TabIndex = 0;
             this.btnSortName.Click += new System.EventHandler(this.btnSortName_Click);
             // 
-            // pnContain
-            // 
-            this.pnContain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContain.Location = new System.Drawing.Point(0, 0);
-            this.pnContain.Name = "pnContain";
-            this.pnContain.Size = new System.Drawing.Size(1030, 516);
-            this.pnContain.TabIndex = 0;
-            // 
             // ViewBookForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1030, 680);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.pnContainSearch);
@@ -301,10 +222,6 @@
             this.Text = "ViewBookForm";
             this.Load += new System.EventHandler(this.ViewBookForm_Load);
             this.pnContainSearch.ResumeLayout(false);
-            this.pnSearchShop.ResumeLayout(false);
-            this.pnMainSearch.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
             this.pnMain.ResumeLayout(false);
             this.pnContainFlow.ResumeLayout(false);
             this.pnFilter.ResumeLayout(false);
@@ -315,11 +232,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel pnContainSearch;
-        private Guna.UI2.WinForms.Guna2Panel pnSearchShop;
-        private System.Windows.Forms.FlowLayoutPanel pnMainSearch;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.PictureBox picSearch;
         private Guna.UI2.WinForms.Guna2Elipse geSearch;
         private Guna.UI2.WinForms.Guna2Elipse geButtonSearch;
         private Guna.UI2.WinForms.Guna2Elipse geTextBoxSerch;

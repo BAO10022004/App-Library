@@ -180,7 +180,7 @@
             // 
             // pnOptionSort
             // 
-            this.pnOptionSort.BackColor = System.Drawing.Color.Honeydew;
+            this.pnOptionSort.BackColor = System.Drawing.Color.White;
             this.pnOptionSort.Controls.Add(this.pnDate);
             this.pnOptionSort.Controls.Add(this.pnFavorite);
             this.pnOptionSort.Location = new System.Drawing.Point(606, 236);
@@ -338,7 +338,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Honeydew;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(970, 635);
             this.Controls.Add(this.pnAddComment);
             this.Controls.Add(this.pnListComment);

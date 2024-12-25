@@ -566,12 +566,6 @@
     <Compile Include="Views\UserView\CollectionShop\AnimationProperties.Designer.cs">
       <DependentUpon>AnimationProperties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserView\CollectionShop\BookForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionShop\BookForm.Designer.cs">
-      <DependentUpon>BookForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\UserView\CollectionShop\BookItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -607,6 +601,12 @@
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\NewShopMain.Designer.cs">
       <DependentUpon>NewShopMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserView\CollectionShop\PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\PropertiesBookForm.cs">
       <SubType>Form</SubType>
@@ -766,9 +766,6 @@
     <EmbeddedResource Include="Views\UserView\CollectionShop\AnimationProperties.resx">
       <DependentUpon>AnimationProperties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionShop\BookForm.resx">
-      <DependentUpon>BookForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\BookItem.resx">
       <DependentUpon>BookItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -786,6 +783,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\NewShopMain.resx">
       <DependentUpon>NewShopMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\PropertiesBookForm.resx">
       <DependentUpon>PropertiesBookForm.cs</DependentUpon>
@@ -840,6 +840,15 @@
     <Content Include="Images\cross.png" />
     <Content Include="Images\OIP.jpg" />
     <Content Include="mongocrypt.dll" />
+    <None Include="Resources\pie-chart.png" />
+    <None Include="Resources\user %283%29.png" />
+    <None Include="Resources\seo.png" />
+    <None Include="Resources\approve.png" />
+    <None Include="Resources\time-management.png" />
+    <None Include="Resources\upload-file.png" />
+    <None Include="Resources\OIP %281%29.jpg" />
+    <None Include="Resources\momo_icon_square_pinkbg_RGB.png" />
+    <None Include="Resources\payment.jpg" />
     <Content Include="TextFile1.txt" />
     <None Include="Resources\cheap.png" />
     <None Include="Resources\money-growth.png" />
