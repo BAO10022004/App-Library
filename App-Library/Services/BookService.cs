@@ -45,8 +45,8 @@ namespace App_Library.Services
                 throw new Exception($"Error initializing AuthService: {ex.Message}", ex);
             }
         }
-            // Lấy danh sách sách
-            public async Task<List<Book>> GetBooksAsync()
+        // Lấy danh sách sách
+        public async Task<List<Book>> GetBooksAsync()
         {
             var response = await _httpClient.GetAsync("api/books");
             if (response.IsSuccessStatusCode)
@@ -59,7 +59,7 @@ namespace App_Library.Services
         // Lấy sách theo Slug
         public async Task<Book> GetBookBySlugAsync(string slug)
         {
-            if(slug == null)
+            if (slug == null)
             {
                 return null;
             }

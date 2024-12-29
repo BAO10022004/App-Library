@@ -50,8 +50,8 @@ namespace App_Library.Services
             }
         }
 
-            // Tạo comment
-            public async Task<Comment> CreateCommentAsync(Comment comment)
+        // Tạo comment
+        public async Task<Comment> CreateCommentAsync(Comment comment)
         {
             var response = await _httpClient.PostAsJsonAsync("api/comments", comment);
             if (response.IsSuccessStatusCode)

@@ -102,7 +102,7 @@ namespace App_Library.Views.AdminView.CollectionBooks
             {
                 btnTrangTruoc.Enabled = false;
                 btnTrangKe.Enabled = false;
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (count + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, 30 * count + 45);
             }
             else
             {
@@ -110,7 +110,11 @@ namespace App_Library.Views.AdminView.CollectionBooks
                 {
                     btnTrangKe.Enabled = true;
                 }
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (countLine + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, 30 * countLine + 45);
+            }
+            if (pnContent.Size.Height > this.Size.Height - pnHeader.Size.Height)
+            {
+                pnContent.Size = new Size(pnContent.Size.Width, this.Size.Height - pnHeader.Size.Height - pnFooter.Size.Height);
             }
             lblSoTrang.Text = $"{curentPage}/{totalPage}";
         }

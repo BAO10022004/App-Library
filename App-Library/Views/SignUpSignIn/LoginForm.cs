@@ -217,7 +217,7 @@ namespace App_Library.Views
                 timerLeaveGG.Stop();
             }
         }
-       
+
         // Bấm quên password
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
@@ -250,14 +250,19 @@ namespace App_Library.Views
 
         private void txtUserName_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtUserName.Text.Equals("Username") ||!txtUserName.Text.Trim().Equals(string.Empty))
-            {
-                txtUserName.BorderColor = Color.Blue;
-            }
-            if(txtUserName.Text.Equals("Username")|| txtUserName.Text.Trim().Equals(string.Empty))
+            txtUserName.BorderColor = Color.DarkGray;
+        }
+
+        private void txtUserName_MouseHover(object sender, EventArgs e)
+        {
+            txtUserName.BorderColor = Color.Blue;
+        }
+
+        private void txtUserName_Leave(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == string.Empty)
             {
                 txtUserName.Text = "Username";
-                txtUserName.BorderColor = Color.DarkGray;
                 txtUserName.ForeColor = Color.DarkGray;
             }
         }
@@ -285,16 +290,20 @@ namespace App_Library.Views
 
         private void txtPassword_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtPassword.Text.Equals("Password") || !txtPassword.Text.Trim().Equals(string.Empty))
-            {
-                txtPassword.BorderColor = Color.Blue;
-            }
-            if (txtPassword.Text.Equals("Password") || txtPassword.Text.Trim().Equals(string.Empty))
+            txtPassword.BorderColor = Color.DarkGray;
+        }
+        private void txtPassword_MouseHover(object sender, EventArgs e)
+        {
+            txtPassword.BorderColor = Color.Blue;
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == string.Empty)
             {
                 txtPassword.Text = "Password";
-                txtPassword.BorderColor = Color.DarkGray;
-                txtPassword.ForeColor = Color.DarkGray;
                 txtPassword.PasswordChar = '\0';
+                txtPassword.ForeColor = Color.DarkGray;
             }
         }
     }

@@ -379,14 +379,19 @@ namespace App_Library.Views
 
         private void txtEmail_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtEmail.Text.Equals("Email") || !txtEmail.Text.Trim().Equals(string.Empty))
-            {
-                txtEmail.BorderColor = Color.Blue;
-            }
-            if (txtEmail.Text.Equals("Email") || txtEmail.Text.Trim().Equals(string.Empty))
+            txtEmail.BorderColor = Color.DarkGray;
+        }
+
+        private void txtEmail_MouseHover(object sender, EventArgs e)
+        {
+            txtEmail.BorderColor = Color.Blue;
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == string.Empty)
             {
                 txtEmail.Text = "Email";
-                txtEmail.BorderColor = Color.DarkGray;
                 txtEmail.ForeColor = Color.DarkGray;
             }
         }
@@ -402,14 +407,19 @@ namespace App_Library.Views
         }
         private void txtUserName_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtUsername.Text.Equals("Username") || !txtUsername.Text.Trim().Equals(string.Empty))
-            {
-                txtUsername.BorderColor = Color.Blue;
-            }
-            if (txtUsername.Text.Equals("Username") || txtUsername.Text.Trim().Equals(string.Empty))
+            txtUsername.BorderColor = Color.DarkGray;
+        }
+
+        private void txtUsername_MouseHover(object sender, EventArgs e)
+        {
+            txtUsername.BorderColor = Color.Blue;
+        }
+
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == string.Empty)
             {
                 txtUsername.Text = "Username";
-                txtUsername.BorderColor = Color.DarkGray;
                 txtUsername.ForeColor = Color.DarkGray;
             }
         }
@@ -425,16 +435,21 @@ namespace App_Library.Views
         }
         private void txtPassword_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtPassword.Text.Equals("Password") || !txtPassword.Text.Trim().Equals(string.Empty))
-            {
-                txtPassword.BorderColor = Color.Blue;
-            }
-            if (txtPassword.Text.Equals("Password") || txtPassword.Text.Trim().Equals(string.Empty))
+            txtPassword.BorderColor = Color.DarkGray;
+        }
+
+        private void txtPassword_MouseHover(object sender, EventArgs e)
+        {
+            txtPassword.BorderColor = Color.Blue;
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == string.Empty)
             {
                 txtPassword.Text = "Password";
-                txtPassword.BorderColor = Color.DarkGray;
-                txtPassword.ForeColor = Color.DarkGray;
                 txtPassword.PasswordChar = '\0';
+                txtPassword.ForeColor = Color.DarkGray;
             }
         }
 
@@ -450,16 +465,21 @@ namespace App_Library.Views
         }
         private void txtConfirm_MouseLeave(object sender, EventArgs e)
         {
-            if (!txtConfirm.Text.Equals("Confirm") || !txtConfirm.Text.Trim().Equals(string.Empty))
-            {
-                txtConfirm.BorderColor = Color.Blue;
-            }
-            if (txtConfirm.Text.Equals("Confirm") || txtConfirm.Text.Trim().Equals(string.Empty))
+            txtConfirm.BorderColor = Color.DarkGray;
+        }
+
+        private void txtConfirm_MouseHover(object sender, EventArgs e)
+        {
+            txtConfirm.BorderColor = Color.Blue;
+        }
+
+        private void txtConfirm_Leave(object sender, EventArgs e)
+        {
+            if (txtConfirm.Text == string.Empty)
             {
                 txtConfirm.Text = "Confirm";
-                txtConfirm.BorderColor = Color.DarkGray;
-                txtConfirm.ForeColor = Color.DarkGray;
                 txtConfirm.PasswordChar = '\0';
+                txtConfirm.ForeColor = Color.DarkGray;
             }
         }
 

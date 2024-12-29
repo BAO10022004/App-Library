@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace App_Library.Views.AdminView.CollectionHistory
 {
@@ -55,6 +56,17 @@ namespace App_Library.Views.AdminView.CollectionHistory
                 return;
             }
 
+            if (!string.IsNullOrWhiteSpace(txbTimKiem.Text) && txbTimKiem.Text != "Search")
+            {
+                var fillterSearch = _bookSolds.Where(n => n.Id.Contains(txbTimKiem.Text) || n.Title.Contains(txbTimKiem.Text) || n.Username.Contains(txbTimKiem.Text) || n.Email.Contains(txbTimKiem.Text) || n.Status.Contains(txbTimKiem.Text)).ToList();
+                if (fillterSearch == null)
+                {
+                    MessageBox.Show("Không tìm thấy kết quả");
+                    return;
+                }
+                _bookSolds = fillterSearch;
+            }
+
             var columnName = cbbCot.SelectedItem.ToString();
             var sortOrder = cbbSapXep.SelectedItem.ToString();
             if (sortOrder == "Tăng dần")
@@ -81,7 +93,7 @@ namespace App_Library.Views.AdminView.CollectionHistory
             {
                 btnTrangTruoc.Enabled = false;
                 btnTrangKe.Enabled = false;
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (count + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, 30 * count + 45);
             }
             else
             {
@@ -89,7 +101,11 @@ namespace App_Library.Views.AdminView.CollectionHistory
                 {
                     btnTrangKe.Enabled = true;
                 }
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (countLine + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, 30 * countLine + 45);
+            }
+            if (pnContent.Size.Height > this.Size.Height - pnHeader.Size.Height)
+            {
+                pnContent.Size = new Size(pnContent.Size.Width, this.Size.Height - pnHeader.Size.Height - pnFooter.Size.Height);
             }
             lblSoTrang.Text = $"{curentPage}/{totalPage}";
         }
@@ -157,7 +173,7 @@ namespace App_Library.Views.AdminView.CollectionHistory
 
         private async void btnTimKiem_ClickAsync(object sender, EventArgs e)
         {
-            _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+            _bookSolds = await _bookSoldService.GetBooksSoldAsync();
             LoadData();
         }
 
@@ -165,7 +181,7 @@ namespace App_Library.Views.AdminView.CollectionHistory
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                _bookSolds = await _bookSoldService.GetPendingBooksSoldAsync();
+                _bookSolds = await _bookSoldService.GetBooksSoldAsync();
                 LoadData();
             }
         }

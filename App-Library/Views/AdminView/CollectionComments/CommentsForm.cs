@@ -16,7 +16,8 @@ namespace App_Library.Views.AdminView.CollectionComments
     {
         private CommentService _commentService;
         private List<Comment> _comments;
-        private BindingList<Comment> _commentsBindingList;
+        //private BindingList<Comment> _commentsBindingList;
+        private BindingList<CommentView> _commentsBindingList;
         private int curentPage = 1;
         private int countLine = 0;
         private float totalPage = 0;
@@ -27,7 +28,7 @@ namespace App_Library.Views.AdminView.CollectionComments
 
             cbbSoDong.SelectedIndex = 0;
             cbbSapXep.SelectedIndex = 0;
-            cbbCot.DataSource = typeof(Comment).GetProperties().Select(prop => prop.Name).ToList();
+            cbbCot.DataSource = typeof(CommentView).GetProperties().Select(prop => prop.Name).ToList();
             cbbCot.SelectedIndex = 0;
 
             if (curentPage == 1)
@@ -69,6 +70,11 @@ namespace App_Library.Views.AdminView.CollectionComments
 
             var columnName = cbbCot.SelectedItem.ToString();
             var sortOrder = cbbSapXep.SelectedItem.ToString();
+            if (columnName == "Like")
+            {
+                columnName = "NumberOfLikes";
+            }
+
             if (sortOrder == "Tăng dần")
             {
                 _comments = _comments.OrderBy(c => c.GetType().GetProperty(columnName)?.GetValue(c, null)).ToList();
@@ -78,15 +84,16 @@ namespace App_Library.Views.AdminView.CollectionComments
                 _comments = _comments.OrderByDescending(c => c.GetType().GetProperty(columnName)?.GetValue(c, null)).ToList();
             }
 
-            //var lstCommentView = _comments.Select(n => new CommentView() { Id = n.Id, Content = n.Content, UserId = n.UserId, Like = n.NumberOfLikes, Time = n.UpdatedAt.ToString() }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
-            var lstCommentView = _comments.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
-            _commentsBindingList = new BindingList<Comment>(lstCommentView);
+            var lstCommentView = _comments.Select(n => new CommentView() { Id = n.Id, Content = n.Content, UserId = n.UserId, Like = n.NumberOfLikes, Time = n.UpdatedAt.ToString() }).Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            //var lstCommentView = _comments.Skip(countLine * (curentPage - 1)).Take(countLine).ToList();
+            //_commentsBindingList = new BindingList<Comment>(lstCommentView);
+            _commentsBindingList = new BindingList<CommentView>(lstCommentView);
 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.Columns["CommentID"].DataPropertyName = "Id";
             dataGridView.Columns["Comments"].DataPropertyName = "Content";
             dataGridView.Columns["UserID"].DataPropertyName = "UserId";
-            dataGridView.Columns["Like"].DataPropertyName = "NumberOfLikes";
+            dataGridView.Columns["Like"].DataPropertyName = "Like";
             dataGridView.Columns["Time"].DataPropertyName = "Time";
             dataGridView.Columns["Action"].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
             dataGridView.Columns["Action"].Width = 100;
@@ -96,7 +103,7 @@ namespace App_Library.Views.AdminView.CollectionComments
             {
                 btnTrangTruoc.Enabled = false;
                 btnTrangKe.Enabled = false;
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (count + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, (30 * count) + 45);
             }
             else
             {
@@ -104,7 +111,11 @@ namespace App_Library.Views.AdminView.CollectionComments
                 {
                     btnTrangKe.Enabled = true;
                 }
-                pnContent.Size = new Size(pnContent.Size.Width, 30 * (countLine + 1) + 40);
+                pnContent.Size = new Size(pnContent.Size.Width, (30 * countLine) + 45);
+            }
+            if (pnContent.Size.Height > this.Size.Height - pnHeader.Size.Height)
+            {
+                pnContent.Size = new Size(pnContent.Size.Width, this.Size.Height - pnHeader.Size.Height - pnFooter.Size.Height);
             }
             lblSoTrang.Text = $"{curentPage}/{totalPage}";
         }
@@ -182,7 +193,8 @@ namespace App_Library.Views.AdminView.CollectionComments
                 if (result == DialogResult.Yes)
                 {
                     //var commentDelete = _comments.Where(n => n.Id == id).Select(n => new CommentView() { Id = n.Id, Content = n.Content, UserId = n.UserId, Like = n.NumberOfLikes, Time = n.UpdatedAt.ToString() }).Skip(countLine * (curentPage - 1)).FirstOrDefault();
-                    var commentDelete = _comments.Where(n => n.Id == id).FirstOrDefault();
+                    //var commentDelete = _comments.Where(n => n.Id == id).FirstOrDefault();
+                    var commentDelete = _commentsBindingList.Where(n => n.Id == id).FirstOrDefault();
                     var checkDelete = await _commentService.DeleteCommentAsync(id);
                     if (checkDelete)
                     {

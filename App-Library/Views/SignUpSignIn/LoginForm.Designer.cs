@@ -34,25 +34,25 @@ namespace App_Library.Views
             this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnLogIn = new System.Windows.Forms.Button();
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
+            this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.MessegePassword = new Guna.UI2.WinForms.Guna2Button();
             this.MessegeUsername = new Guna.UI2.WinForms.Guna2Button();
             this.btnSignInGG = new Guna.UI2.WinForms.Guna2Panel();
             this.picGG = new System.Windows.Forms.PictureBox();
             this.lbGG = new System.Windows.Forms.Label();
             this.lbOr = new System.Windows.Forms.Label();
-            this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
             this.lbCreateAccount = new System.Windows.Forms.Label();
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerEyeOpen = new System.Windows.Forms.Timer(this.components);
             this.timerHoverGg = new System.Windows.Forms.Timer(this.components);
             this.timerLeaveGG = new System.Windows.Forms.Timer(this.components);
-            this.txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnMainContentLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.btnSignInGG.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picGG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.SuspendLayout();
             // 
             // gnBtnLogin
@@ -95,6 +95,77 @@ namespace App_Library.Views
             this.pnMainContentLogin.Name = "pnMainContentLogin";
             this.pnMainContentLogin.Size = new System.Drawing.Size(460, 475);
             this.pnMainContentLogin.TabIndex = 4;
+            // 
+            // picEye
+            // 
+            this.picEye.FillColor = System.Drawing.Color.Black;
+            this.picEye.Image = global::App_Library.Properties.Resources.eye;
+            this.picEye.ImageRotate = 0F;
+            this.picEye.Location = new System.Drawing.Point(344, 163);
+            this.picEye.Name = "picEye";
+            this.picEye.Size = new System.Drawing.Size(32, 29);
+            this.picEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEye.TabIndex = 5;
+            this.picEye.TabStop = false;
+            this.picEye.Click += new System.EventHandler(this.picEye_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtPassword.BorderRadius = 10;
+            this.txtPassword.BorderThickness = 2;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.DefaultText = "Password";
+            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.Blue;
+            this.txtPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.txtPassword.ForeColor = System.Drawing.Color.DarkGray;
+            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.Blue;
+            this.txtPassword.Location = new System.Drawing.Point(75, 154);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.Blue;
+            this.txtPassword.PlaceholderText = "";
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(310, 47);
+            this.txtPassword.TabIndex = 28;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
+            this.txtPassword.MouseLeave += new System.EventHandler(this.txtPassword_MouseLeave);
+            this.txtPassword.MouseHover += new System.EventHandler(this.txtPassword_MouseHover);
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtUserName.BorderRadius = 10;
+            this.txtUserName.BorderThickness = 2;
+            this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUserName.DefaultText = "Username";
+            this.txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtUserName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUserName.FocusedState.BorderColor = System.Drawing.Color.Blue;
+            this.txtUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.txtUserName.ForeColor = System.Drawing.Color.DarkGray;
+            this.txtUserName.HoverState.BorderColor = System.Drawing.Color.Blue;
+            this.txtUserName.Location = new System.Drawing.Point(75, 75);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.PasswordChar = '\0';
+            this.txtUserName.PlaceholderForeColor = System.Drawing.Color.Blue;
+            this.txtUserName.PlaceholderText = "";
+            this.txtUserName.SelectedText = "";
+            this.txtUserName.Size = new System.Drawing.Size(310, 47);
+            this.txtUserName.TabIndex = 27;
+            this.txtUserName.Click += new System.EventHandler(this.txtUserName_Click);
+            this.txtUserName.Leave += new System.EventHandler(this.txtUserName_Leave);
+            this.txtUserName.MouseLeave += new System.EventHandler(this.txtUserName_MouseLeave);
+            this.txtUserName.MouseHover += new System.EventHandler(this.txtUserName_MouseHover);
             // 
             // MessegePassword
             // 
@@ -190,19 +261,6 @@ namespace App_Library.Views
             this.lbOr.Text = "OR";
             this.lbOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // picEye
-            // 
-            this.picEye.FillColor = System.Drawing.Color.Black;
-            this.picEye.Image = global::App_Library.Properties.Resources.eye;
-            this.picEye.ImageRotate = 0F;
-            this.picEye.Location = new System.Drawing.Point(344, 163);
-            this.picEye.Name = "picEye";
-            this.picEye.Size = new System.Drawing.Size(32, 29);
-            this.picEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEye.TabIndex = 5;
-            this.picEye.TabStop = false;
-            this.picEye.Click += new System.EventHandler(this.picEye_Click);
-            // 
             // lbCreateAccount
             // 
             this.lbCreateAccount.AutoSize = true;
@@ -254,60 +312,6 @@ namespace App_Library.Views
             this.timerLeaveGG.Interval = 1;
             this.timerLeaveGG.Tick += new System.EventHandler(this.timerLeaveGG_Tick);
             // 
-            // txtUserName
-            // 
-            this.txtUserName.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtUserName.BorderRadius = 10;
-            this.txtUserName.BorderThickness = 2;
-            this.txtUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUserName.DefaultText = "Username";
-            this.txtUserName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtUserName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUserName.FocusedState.BorderColor = System.Drawing.Color.Blue;
-            this.txtUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.txtUserName.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtUserName.HoverState.BorderColor = System.Drawing.Color.Blue;
-            this.txtUserName.Location = new System.Drawing.Point(75, 75);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.PasswordChar = '\0';
-            this.txtUserName.PlaceholderForeColor = System.Drawing.Color.Blue;
-            this.txtUserName.PlaceholderText = "";
-            this.txtUserName.SelectedText = "";
-            this.txtUserName.Size = new System.Drawing.Size(310, 47);
-            this.txtUserName.TabIndex = 27;
-            this.txtUserName.Click += new System.EventHandler(this.txtUserName_Click);
-            this.txtUserName.MouseLeave += new System.EventHandler(this.txtUserName_MouseLeave);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtPassword.BorderRadius = 10;
-            this.txtPassword.BorderThickness = 2;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.DefaultText = "Password";
-            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.Blue;
-            this.txtPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.txtPassword.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.Blue;
-            this.txtPassword.Location = new System.Drawing.Point(75, 154);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '\0';
-            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.Blue;
-            this.txtPassword.PlaceholderText = "";
-            this.txtPassword.SelectedText = "";
-            this.txtPassword.Size = new System.Drawing.Size(310, 47);
-            this.txtPassword.TabIndex = 28;
-            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
-            this.txtPassword.MouseLeave += new System.EventHandler(this.txtPassword_MouseLeave);
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -323,9 +327,9 @@ namespace App_Library.Views
             this.Text = "LoginForm";
             this.pnMainContentLogin.ResumeLayout(false);
             this.pnMainContentLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).EndInit();
             this.btnSignInGG.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picGG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEye)).EndInit();
             this.ResumeLayout(false);
 
         }
