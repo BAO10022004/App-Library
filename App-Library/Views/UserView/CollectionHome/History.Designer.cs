@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnNextShop = new Guna.UI2.WinForms.Guna2Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbMain = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnNextShop = new Guna.UI2.WinForms.Guna2Button();
             this.pnMain.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,48 @@
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(1089, 561);
             this.pnMain.TabIndex = 3;
+            // 
+            // btnNextShop
+            // 
+            this.btnNextShop.Animated = true;
+            this.btnNextShop.AnimatedGIF = true;
+            this.btnNextShop.BorderColor = System.Drawing.Color.White;
+            this.btnNextShop.BorderRadius = 20;
+            this.btnNextShop.BorderThickness = 4;
+            this.btnNextShop.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextShop.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNextShop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNextShop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNextShop.FillColor = System.Drawing.Color.White;
+            this.btnNextShop.Font = new System.Drawing.Font("Cooper Black", 14.25F);
+            this.btnNextShop.ForeColor = System.Drawing.Color.Blue;
+            this.btnNextShop.HoverState.BorderColor = System.Drawing.Color.White;
+            this.btnNextShop.HoverState.FillColor = System.Drawing.Color.Blue;
+            this.btnNextShop.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnNextShop.HoverState.Image = global::App_Library.Properties.Resources.nextAnimation__2_2;
+            this.btnNextShop.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnNextShop.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnNextShop.Location = new System.Drawing.Point(415, 169);
+            this.btnNextShop.Name = "btnNextShop";
+            this.btnNextShop.Size = new System.Drawing.Size(311, 85);
+            this.btnNextShop.TabIndex = 1;
+            this.btnNextShop.Text = "GO TO THE STORE";
+            this.btnNextShop.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnNextShop.Click += new System.EventHandler(this.btnNextShop_Click);
+            this.btnNextShop.MouseLeave += new System.EventHandler(this.btnNextShop_MouseLeave);
+            this.btnNextShop.MouseHover += new System.EventHandler(this.btnNextShop_MouseHover);
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1089, 131);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "YOUR HISTORY IS EMPTY !!! ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // guna2Panel1
             // 
@@ -86,51 +128,11 @@
             this.lbMain.Text = "HISTORY";
             this.lbMain.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1089, 131);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "YOUR HISTORY IS EMPTY !!! ";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // btnNextShop
-            // 
-            this.btnNextShop.Animated = true;
-            this.btnNextShop.AnimatedGIF = true;
-            this.btnNextShop.BorderColor = System.Drawing.Color.MistyRose;
-            this.btnNextShop.BorderRadius = 20;
-            this.btnNextShop.BorderThickness = 4;
-            this.btnNextShop.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNextShop.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNextShop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNextShop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNextShop.FillColor = System.Drawing.Color.MistyRose;
-            this.btnNextShop.Font = new System.Drawing.Font("Cooper Black", 14.25F);
-            this.btnNextShop.ForeColor = System.Drawing.Color.Salmon;
-            this.btnNextShop.HoverState.BorderColor = System.Drawing.Color.Salmon;
-            this.btnNextShop.HoverState.Image = global::App_Library.Properties.Resources.nextAnimation__2_2;
-            this.btnNextShop.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnNextShop.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnNextShop.Location = new System.Drawing.Point(415, 169);
-            this.btnNextShop.Name = "btnNextShop";
-            this.btnNextShop.Size = new System.Drawing.Size(311, 85);
-            this.btnNextShop.TabIndex = 1;
-            this.btnNextShop.Text = "GO TO THE STORE";
-            this.btnNextShop.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnNextShop.Click += new System.EventHandler(this.btnNextShop_Click);
-            this.btnNextShop.MouseLeave += new System.EventHandler(this.btnNextShop_MouseLeave);
-            this.btnNextShop.MouseHover += new System.EventHandler(this.btnNextShop_MouseHover);
-            // 
             // History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MistyRose;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1089, 680);
             this.Controls.Add(this.pnMain);
             this.Controls.Add(this.guna2Panel1);

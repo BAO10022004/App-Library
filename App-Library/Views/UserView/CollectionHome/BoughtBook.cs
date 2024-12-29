@@ -26,7 +26,7 @@ namespace App_Library.Views.UserView.CollectionHome
         {
             InitializeComponent();
             this.booksBold = booksBold;
-            pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count % 3) + 1) * 302);    
+            pnContent.AutoScrollMinSize = new Size(0, ((booksBold.Count % 3) + 1) * 302);   
         }
 
         private void BoughtBook_Resize(object sender, EventArgs e)
@@ -37,10 +37,15 @@ namespace App_Library.Views.UserView.CollectionHome
         Form actForm;
         private void BoughtBook_Load(object sender, EventArgs e)
         {
-            for (int i= 0 ;i< booksBold.Count; i++)
+            if(!(booksBold == null )||! (booksBold.Count == 0))
             {
-                pnContent.Controls.Add(createPanel(booksBold[i], i));
+                pnContent.Controls.Clear();
+                for (int i = 0; i < booksBold.Count; i++)
+                {
+                    pnContent.Controls.Add(createPanel(booksBold[i], i));
+                }
             }
+            
         }
         
          Guna2Panel createPanel(Book book, int index)
@@ -56,7 +61,7 @@ namespace App_Library.Views.UserView.CollectionHome
         {
             Form form = null;
             Guna2Panel gn = new Guna2Panel();
-            gn.Size = new System.Drawing.Size(1080, 250);
+            gn.Size = new System.Drawing.Size(1000, 250);
             gn.TabIndex = index;
             activeFormChild(gn, new BookItemList(book), null, ref form);
             return gn;
@@ -94,5 +99,6 @@ namespace App_Library.Views.UserView.CollectionHome
                 isViewGrid = false;
             }
         }
+
     }
 }

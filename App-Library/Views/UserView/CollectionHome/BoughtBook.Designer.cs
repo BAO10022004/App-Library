@@ -56,7 +56,7 @@
             this.btnGrid.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnGrid.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnGrid.ForeColor = System.Drawing.Color.White;
-            this.btnGrid.HoverState.FillColor = System.Drawing.Color.DarkOrange;
+            this.btnGrid.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnGrid.Image = global::App_Library.Properties.Resources.grid;
             this.btnGrid.ImageSize = new System.Drawing.Size(30, 30);
             this.btnGrid.Location = new System.Drawing.Point(12, 12);
@@ -76,7 +76,7 @@
             this.btnList.FillColor = System.Drawing.Color.RoyalBlue;
             this.btnList.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnList.ForeColor = System.Drawing.Color.White;
-            this.btnList.HoverState.FillColor = System.Drawing.Color.DarkOrange;
+            this.btnList.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnList.Image = global::App_Library.Properties.Resources.list;
             this.btnList.ImageSize = new System.Drawing.Size(30, 30);
             this.btnList.Location = new System.Drawing.Point(93, 12);

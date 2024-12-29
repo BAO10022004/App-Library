@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pnListProcessing = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnBookName = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,20 +41,35 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pnTime = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.pnListProcessing = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.pnBookName.SuspendLayout();
             this.pnAuthor.SuspendLayout();
             this.pnPrice.SuspendLayout();
             this.pnStatus.SuspendLayout();
             this.pnTime.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.pnListProcessing);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 64);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1089, 497);
+            this.guna2Panel1.TabIndex = 1;
+            // 
+            // pnListProcessing
+            // 
+            this.pnListProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnListProcessing.Location = new System.Drawing.Point(0, 0);
+            this.pnListProcessing.Name = "pnListProcessing";
+            this.pnListProcessing.Size = new System.Drawing.Size(1089, 497);
+            this.pnListProcessing.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.MistyRose;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Controls.Add(this.pnBookName);
             this.flowLayoutPanel1.Controls.Add(this.pnAuthor);
             this.flowLayoutPanel1.Controls.Add(this.pnPrice);
@@ -61,7 +78,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1073, 64);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1089, 64);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // pnBookName
@@ -76,7 +93,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
+            this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(295, 61);
@@ -97,7 +114,7 @@
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Firebrick;
+            this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(225, 61);
@@ -117,7 +134,7 @@
             // 
             this.lbPrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbPrice.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrice.ForeColor = System.Drawing.Color.Firebrick;
+            this.lbPrice.ForeColor = System.Drawing.Color.Blue;
             this.lbPrice.Location = new System.Drawing.Point(0, 0);
             this.lbPrice.Name = "lbPrice";
             this.lbPrice.Size = new System.Drawing.Size(158, 61);
@@ -137,7 +154,7 @@
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Firebrick;
+            this.label4.ForeColor = System.Drawing.Color.Blue;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 61);
@@ -157,7 +174,7 @@
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Firebrick;
+            this.label5.ForeColor = System.Drawing.Color.Blue;
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(210, 61);
@@ -165,28 +182,11 @@
             this.label5.Text = "TIME STAMP";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.pnListProcessing);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 64);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1073, 447);
-            this.guna2Panel1.TabIndex = 1;
-            // 
-            // pnListProcessing
-            // 
-            this.pnListProcessing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnListProcessing.Location = new System.Drawing.Point(0, 0);
-            this.pnListProcessing.Name = "pnListProcessing";
-            this.pnListProcessing.Size = new System.Drawing.Size(1073, 447);
-            this.pnListProcessing.TabIndex = 0;
-            // 
             // HistoryForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(1073, 511);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1089, 561);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -194,13 +194,13 @@
             this.Text = "HistoryForm";
             this.Load += new System.EventHandler(this.HistoryForm_Load);
             this.Resize += new System.EventHandler(this.HistoryForm_Resize);
+            this.guna2Panel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.pnBookName.ResumeLayout(false);
             this.pnAuthor.ResumeLayout(false);
             this.pnPrice.ResumeLayout(false);
             this.pnStatus.ResumeLayout(false);
             this.pnTime.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -165,26 +165,23 @@ namespace App_Library.Views
             string usernameCurrent = _user.Username;
             string passwordCurrent = _user.PasswordHash;
             string id = _user.Id;
-
-            // Tạo đối tượng dịch vụ và login
+            if (!Program.checkLoginGG)
+            {
+                passwordCurrent = Program.password;
+                usernameCurrent = Program.username;
+            }
             AuthService db = new AuthService();
-
-            // Thực hiện đăng nhập một lần
             bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
-
             if (!result)
             {
-                MessageBox.Show("hi");
-                // Nếu không đăng nhập admin thành công, cố gắng đăng nhập người dùng bình thường
                 result = await db.Login(usernameCurrent, passwordCurrent, null);
                 if (!result)
                 {
-                    return null; // Trả về null nếu đăng nhập thất bại
+                    return null;
                 }
             }
-
-            // Lấy thông tin người dùng từ service mà không cần phải gọi ToList()
             var user = (await (new UserService()).GetUsersAsync()).Find(u => u.Username == usernameCurrent);
+           
             if (user == null)
             {
                 await db.Login(usernameCurrent, passwordCurrent, null);

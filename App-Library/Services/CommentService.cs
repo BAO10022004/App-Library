@@ -13,6 +13,8 @@ using static Google.Apis.Requests.BatchRequest;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using System.IO;
+using FirebaseAdmin.Messaging;
+using System.Windows;
 
 namespace App_Library.Services
 {
@@ -76,12 +78,19 @@ namespace App_Library.Services
         }
 
         // Thích hoặc bỏ thích comment
-        public async Task<Comment> LikeCommentAsync(string commentId)
+        public async Task LikeCommentAsync(string commentId)
         {
-            var response = await _httpClient.PostAsync($"api/comments/{commentId}/likes", null);
-            response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<Comment>(responseBody);
+            var response = await _httpClient.PostAsync($"/api/comments/{commentId}/likes", null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var updatedComment = await response.Content.ReadFromJsonAsync<Comment>();
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(error);
+            }
         }
 
         // Chỉnh sửa comment

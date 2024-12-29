@@ -182,8 +182,6 @@ namespace App_Library.Views.ToolerForm
             {
                 MessageBox.Show(ex.Message);
             }
-            parent.btnRemind.Text = string.Empty;
-            parent.btnRemind.Image = App_Library.Properties.Resources.Animation___1734104585214;
         }
         public  bool sendMailOtp(string body, string mailTo)
         {

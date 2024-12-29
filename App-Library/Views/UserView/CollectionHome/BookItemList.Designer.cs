@@ -55,7 +55,7 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Yellow;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderRadius = 20;
             this.guna2Panel1.BorderThickness = 3;
             this.guna2Panel1.Controls.Add(this.pnContainInfoBook);
@@ -63,7 +63,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(13);
             this.guna2Panel1.Size = new System.Drawing.Size(1080, 250);
             this.guna2Panel1.TabIndex = 0;
             // 
@@ -74,10 +74,10 @@
             this.pnContainInfoBook.Controls.Add(this.guna2Panel3);
             this.pnContainInfoBook.Controls.Add(this.btnRead);
             this.pnContainInfoBook.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContainInfoBook.Location = new System.Drawing.Point(170, 5);
+            this.pnContainInfoBook.Location = new System.Drawing.Point(178, 13);
             this.pnContainInfoBook.Name = "pnContainInfoBook";
             this.pnContainInfoBook.Padding = new System.Windows.Forms.Padding(5);
-            this.pnContainInfoBook.Size = new System.Drawing.Size(905, 240);
+            this.pnContainInfoBook.Size = new System.Drawing.Size(889, 224);
             this.pnContainInfoBook.TabIndex = 1;
             // 
             // pnNameBook
@@ -146,9 +146,9 @@
             this.btnRead.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnRead.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRead.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRead.FillColor = System.Drawing.Color.Orange;
+            this.btnRead.FillColor = System.Drawing.Color.Blue;
             this.btnRead.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnRead.ForeColor = System.Drawing.Color.Black;
+            this.btnRead.ForeColor = System.Drawing.Color.White;
             this.btnRead.HoverState.FillColor = System.Drawing.Color.DarkOrange;
             this.btnRead.HoverState.Image = global::App_Library.Properties.Resources.nextAnimation__2_1;
             this.btnRead.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -165,9 +165,9 @@
             this.picBook.BorderRadius = 20;
             this.picBook.Dock = System.Windows.Forms.DockStyle.Left;
             this.picBook.ImageRotate = 0F;
-            this.picBook.Location = new System.Drawing.Point(5, 5);
+            this.picBook.Location = new System.Drawing.Point(13, 13);
             this.picBook.Name = "picBook";
-            this.picBook.Size = new System.Drawing.Size(165, 240);
+            this.picBook.Size = new System.Drawing.Size(165, 224);
             this.picBook.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBook.TabIndex = 0;
             this.picBook.TabStop = false;
@@ -175,7 +175,7 @@
             // BookItemList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1080, 250);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

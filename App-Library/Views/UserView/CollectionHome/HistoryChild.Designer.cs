@@ -39,7 +39,6 @@
             this.lbPrice = new System.Windows.Forms.Label();
             this.pnStatus = new System.Windows.Forms.Panel();
             this.lbStatus = new System.Windows.Forms.Label();
-            this.btnRemind = new Guna.UI2.WinForms.Guna2Button();
             this.pnTime = new Guna.UI2.WinForms.Guna2Panel();
             this.lbTime = new System.Windows.Forms.Label();
             this.pnMain.SuspendLayout();
@@ -64,12 +63,11 @@
             this.pnMain.Controls.Add(this.pnAuthor);
             this.pnMain.Controls.Add(this.pnPrice);
             this.pnMain.Controls.Add(this.pnStatus);
-            this.pnMain.Controls.Add(this.btnRemind);
             this.pnMain.Controls.Add(this.pnTime);
             this.pnMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMain.Location = new System.Drawing.Point(0, 0);
             this.pnMain.Name = "pnMain";
-            this.pnMain.Size = new System.Drawing.Size(1025, 64);
+            this.pnMain.Size = new System.Drawing.Size(916, 64);
             this.pnMain.TabIndex = 0;
             // 
             // pnBookName
@@ -161,27 +159,6 @@
             this.lbStatus.Text = "STATUS";
             this.lbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnRemind
-            // 
-            this.btnRemind.Animated = true;
-            this.btnRemind.AnimatedGIF = true;
-            this.btnRemind.AutoRoundedCorners = true;
-            this.btnRemind.BorderRadius = 22;
-            this.btnRemind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRemind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRemind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRemind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRemind.FillColor = System.Drawing.Color.White;
-            this.btnRemind.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.btnRemind.ForeColor = System.Drawing.Color.Blue;
-            this.btnRemind.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnRemind.Location = new System.Drawing.Point(901, 8);
-            this.btnRemind.Name = "btnRemind";
-            this.btnRemind.Size = new System.Drawing.Size(112, 47);
-            this.btnRemind.TabIndex = 17;
-            this.btnRemind.Text = "REMIND";
-            this.btnRemind.Click += new System.EventHandler(this.btnRemind_Click);
-            // 
             // pnTime
             // 
             this.pnTime.Controls.Add(this.lbTime);
@@ -189,17 +166,18 @@
             this.pnTime.ForeColor = System.Drawing.Color.DimGray;
             this.pnTime.Location = new System.Drawing.Point(719, 5);
             this.pnTime.Name = "pnTime";
-            this.pnTime.Size = new System.Drawing.Size(176, 50);
+            this.pnTime.Size = new System.Drawing.Size(185, 50);
             this.pnTime.TabIndex = 16;
             // 
             // lbTime
             // 
+            this.lbTime.BackColor = System.Drawing.Color.White;
             this.lbTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F);
             this.lbTime.ForeColor = System.Drawing.Color.DimGray;
             this.lbTime.Location = new System.Drawing.Point(0, 0);
             this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(176, 50);
+            this.lbTime.Size = new System.Drawing.Size(185, 50);
             this.lbTime.TabIndex = 4;
             this.lbTime.Text = "TIME STAMP";
             this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,8 +186,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(1025, 64);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(916, 64);
             this.Controls.Add(this.pnMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HistoryChild";
@@ -239,7 +217,6 @@
         private System.Windows.Forms.Label lbStatus;
         private Guna.UI2.WinForms.Guna2Panel pnTime;
         private System.Windows.Forms.Label lbTime;
-        public Guna.UI2.WinForms.Guna2Button btnRemind;
         private System.Windows.Forms.Timer timer1;
     }
 }

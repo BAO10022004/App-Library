@@ -21,8 +21,6 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         {
             InitializeComponent();
             this.user = user;
-            if (user == null)
-                //nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
             nextPage(new ChangePasswordCollection.ConfirmPasswordForm(user, this));
         }
 

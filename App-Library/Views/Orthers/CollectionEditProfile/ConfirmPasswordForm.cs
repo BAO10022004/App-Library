@@ -30,7 +30,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             this.parent = parent;
             this.user = user;
             authService = new AuthService();
-            this.forgotPass = user == null;
+            this.forgotPass = user == null ?true : this.forgotPass = false;
+
             if (forgotPass)
             {
                 lbPassword.Text = "EMAIL";
@@ -66,7 +67,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             else
             {
                 btnNext.Width = 170;
-                btnNext.Location = new Point(413, 513);
+                btnNext.Location = new Point(413, 458);
                 timerHHoverNext.Stop();
             }
         }
@@ -88,7 +89,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile.ChangePasswordCollecti
             else
             {
                 btnNext.Width = 80;
-                btnNext.Location = new Point(503, 513);
+                btnNext.Location = new Point(503, 458);
                 timerLeave.Stop();
             }
         }

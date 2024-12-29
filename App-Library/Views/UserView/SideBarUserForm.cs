@@ -90,7 +90,7 @@ namespace App_Library.Views.UserView
         private async void lbStore_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new StockForm(_mainForm, await _mainForm.getListSold()), e);
+            _mainForm.activeFormChildForMainForm(new StockForm(this, await _mainForm.getListSold()), e);
         }
         private async void btnHistory_Click(object sender, EventArgs e)
         {

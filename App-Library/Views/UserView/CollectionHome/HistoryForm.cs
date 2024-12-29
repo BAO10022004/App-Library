@@ -37,10 +37,9 @@ namespace App_Library.Views.UserView.CollectionHome
         }
         private void HistoryForm_Load(object sender, EventArgs e)
         {
-            
             for(int i=0; i< BookSolds.Count; i++)
             {
-                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i],1000, i));
+                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i],this.Width -100, i));
             }
             pnListProcessing.AutoScroll = true;
             pnListProcessing.AutoScrollMinSize = new System.Drawing.Size(0, 64 * BookSolds.Count);
@@ -52,7 +51,7 @@ namespace App_Library.Views.UserView.CollectionHome
             {
                 Form form = null;
                 
-                gn.Size = new System.Drawing.Size(1023, 64);
+                gn.Size = new System.Drawing.Size(width, 64);
                 gn.Name = bookSold.Title;
                 gn.TabIndex = index;
                 activeFormChild(gn, new HistoryChild(this, bookSold), null, ref form);
@@ -67,16 +66,18 @@ namespace App_Library.Views.UserView.CollectionHome
 
         private void HistoryForm_Resize(object sender, EventArgs e)
         {
-            pnBookName.Width =Convert.ToInt32(this.Width * 0.226);
+            pnBookName.Width = Convert.ToInt32(this.Width * 0.226);
             pnAuthor.Width = Convert.ToInt32(this.Width * 0.166);
             pnPrice.Width = Convert.ToInt32(this.Width * 0.14);
             pnStatus.Width = Convert.ToInt32(this.Width * 0.13);
-            pnListProcessing.Controls.Clear();
             pnTime.Width = Convert.ToInt32(this.Width * 0.19);
-            for (int i = 0; i < BookSolds.Count; i++)
-            {
-                pnListProcessing.Controls.Add(this.createPanel(BookSolds[i], this.Width-80, i));
-            }
+            pnListProcessing.Width = this.Width;
+            //pnListProcessing.Controls.Clear();
+            
+            //for (int i = 0; i < BookSolds.Count; i++)
+            //{
+            //    pnListProcessing.Controls.Add(this.createPanel(BookSolds[i], this.Width - 50, i));
+            //}
             pnListProcessing.AutoScroll = true;
             pnListProcessing.AutoScrollMinSize = new System.Drawing.Size(0, 64 * BookSolds.Count);
         }

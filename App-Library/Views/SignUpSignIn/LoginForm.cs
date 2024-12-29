@@ -40,22 +40,22 @@ namespace App_Library.Views
         //}
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            List<TextBox> listCotrol = new List<TextBox>();
-            listCotrol.Add(txbUserName);
-            listCotrol.Add(txbPassword);
+            List<Guna2TextBox> listCotrol = new List<Guna2TextBox>();
+            listCotrol.Add(txtUserName);
+            listCotrol.Add(txtPassword);
             Dictionary<Control, bool> checkValid = new Dictionary<Control, bool>();
             Dictionary<Control, Guna2Button> messegeError = new Dictionary<Control, Guna2Button>();
-            foreach (TextBox item in listCotrol)
+            foreach (Guna2TextBox item in listCotrol)
             {
                 checkValid[item] = false;
                 switch (item.Name)
                 {
-                    case "txbUserName":
+                    case "txtUserName":
                         {
                             messegeError.Add(item, MessegeUsername);
                             break;
                         }
-                    case "txbPassword":
+                    case "txtPassword":
                         {
                             messegeError.Add(item, MessegePassword);
                             break;
@@ -63,34 +63,35 @@ namespace App_Library.Views
                 }
                 messegeError[item].Text = "";
             }
-            checkValid[txbUserName] = checkUsername(messegeError[txbUserName]);
-            checkValid[txbPassword] = checkPassword(messegeError[txbPassword]);
+            checkValid[txtUserName] = checkUsername(messegeError[txtUserName]);
+            checkValid[txtPassword] = checkPassword(messegeError[txtPassword]);
 
-            MessegeUsername.Visible = !checkValid[txbUserName];
-            MessegePassword.Visible = !checkValid[txbPassword];
+            MessegeUsername.Visible = !checkValid[txtUserName];
+            MessegePassword.Visible = !checkValid[txtPassword];
 
             bool check = true;
             listCotrol.ForEach(x => check = (check && checkValid[x]));
             if (check)
             {
-                bool checkLoginSuccess = await _authService.LoginAsync(txbUserName.Text, txbPassword.Text, this);
+                bool checkLoginSuccess = await _authService.LoginAsync(txtUserName.Text, txtPassword.Text, this);
                 if (checkLoginSuccess)
                 {
+                    Program.username = txtUserName.Text;
+                    Program.password = txtPassword.Text;
                     Program.checkLoginGG = false;
                     _splashForm.OpenMainForm();
                 }
             }
-            //else
-            //{
-            //    listCotrol.ForEach(x =>
-            //    {
-            //        if (!checkValid[x])
-            //        {
-            //            Guna2Panel pn = FindControlContainer(this.Controls, x) as Guna2Panel;
-            //            pn.BorderColor = Color.Red;
-            //        }
-            //    });
-            //}
+            else
+            {
+                listCotrol.ForEach(x =>
+                {
+                    if (!checkValid[x])
+                    {
+                        x.BorderColor = Color.Red;
+                    }
+                });
+            }
         }
 
         private async void btnSignInGG_Click(object sender, EventArgs e)
@@ -107,7 +108,7 @@ namespace App_Library.Views
         private bool checkUsername(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbUserName.Text) || txbUserName.Text == "Username")
+            if (string.IsNullOrWhiteSpace(txtUserName.Text) || txtUserName.Text == "Username")
             {
                 messege.Text = "Please enter username";
                 return false;
@@ -122,7 +123,7 @@ namespace App_Library.Views
         private bool checkPassword(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbPassword.Text) || txbPassword.Text == "Password")
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text == "Password")
             {
                 messege.Text = "Please enter password";
                 return false;
@@ -138,53 +139,14 @@ namespace App_Library.Views
         {
             _splashForm.OpentSignup();
         }
-
-        private void txbUserName_Click(object sender, EventArgs e)
-        {
-            if (txbUserName.Text == "Username")
-            {
-                txbUserName.Text = string.Empty;
-                txbUserName.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbUserName_Leave(object sender, EventArgs e)
-        {
-            if (txbUserName.Text == string.Empty)
-            {
-                txbUserName.Text = "Username";
-                txbUserName.ForeColor = Color.DarkGray;
-                gnPanelLogIn.BorderColor = Color.DarkGray;
-            }
-        }
-
-        private void txbPassword_Click(object sender, EventArgs e)
-        {
-            if (txbPassword.Text == "Password")
-            {
-                txbPassword.Text = string.Empty;
-                txbPassword.PasswordChar = '*';
-                txbPassword.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbPassword_Leave(object sender, EventArgs e)
-        {
-            if (txbPassword.Text == string.Empty)
-            {
-                txbPassword.Text = "Password";
-                txbPassword.PasswordChar = '\0';
-                txbPassword.ForeColor = Color.DarkGray;
-            }
-        }
         void closeEye()
         {
             try
             {
                 this.picEye.Image = global::App_Library.Properties.Resources.eye;
-                if (!(txbPassword.Text == "Password"))
+                if (!(txtPassword.Text == "Password"))
                 {
-                    txbPassword.PasswordChar = '*';
+                    txtPassword.PasswordChar = '*';
                 }
                 picEye.Click += new EventHandler(this.picEye_Click);
             }
@@ -198,7 +160,7 @@ namespace App_Library.Views
             try
             {
                 this.picEye.Image = global::App_Library.Properties.Resources.eye_slash;
-                txbPassword.PasswordChar = '\0';
+                txtPassword.PasswordChar = '\0';
                 timerEyeOpen.Start();
                 picEye.Click -= new EventHandler(this.picEye_Click);
             }
@@ -255,32 +217,7 @@ namespace App_Library.Views
                 timerLeaveGG.Stop();
             }
         }
-
-        private void txbUserName_MouseHover(object sender, EventArgs e)
-        {
-            gnPanelLogIn.BorderColor = Color.Aqua;
-        }
-
-        private void gnPanelLogIn_MouseLeave(object sender, EventArgs e)
-        {
-            if (txbUserName.Text.Equals("User Name") || txbUserName.Text.Equals(""))
-            {
-                gnPanelLogIn.BorderColor = Color.DarkGray;
-            }
-        }
-
-        private void txbPassword_MouseHover(object sender, EventArgs e)
-        {
-            gnPanelPassword.BorderColor = Color.Aqua;
-        }
-
-        private void txbPassword_MouseLeave(object sender, EventArgs e)
-        {
-            if (txbPassword.Text.Equals("Password") || txbPassword.Text.Equals(""))
-            {
-                gnPanelPassword.BorderColor = Color.DarkGray;
-            }
-        }
+       
         // Bấm quên password
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
@@ -309,6 +246,56 @@ namespace App_Library.Views
         {
             Label lb = sender as Label;
             lb.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        private void txtUserName_MouseLeave(object sender, EventArgs e)
+        {
+            if (!txtUserName.Text.Equals("Username") ||!txtUserName.Text.Trim().Equals(string.Empty))
+            {
+                txtUserName.BorderColor = Color.Blue;
+            }
+            if(txtUserName.Text.Equals("Username")|| txtUserName.Text.Trim().Equals(string.Empty))
+            {
+                txtUserName.Text = "Username";
+                txtUserName.BorderColor = Color.DarkGray;
+                txtUserName.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtUserName_Click(object sender, EventArgs e)
+        {
+            if (txtUserName.Text == "Username")
+            {
+                txtUserName.Text = string.Empty;
+                txtUserName.ForeColor = Color.Blue;
+                txtUserName.BorderColor = Color.Blue;
+            }
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Text = string.Empty;
+                txtPassword.ForeColor = Color.Blue;
+                txtPassword.BorderColor = Color.Blue;
+                txtPassword.PasswordChar = '*';
+            }
+        }
+
+        private void txtPassword_MouseLeave(object sender, EventArgs e)
+        {
+            if (!txtPassword.Text.Equals("Password") || !txtPassword.Text.Trim().Equals(string.Empty))
+            {
+                txtPassword.BorderColor = Color.Blue;
+            }
+            if (txtPassword.Text.Equals("Password") || txtPassword.Text.Trim().Equals(string.Empty))
+            {
+                txtPassword.Text = "Password";
+                txtPassword.BorderColor = Color.DarkGray;
+                txtPassword.ForeColor = Color.DarkGray;
+                txtPassword.PasswordChar = '\0';
+            }
         }
     }
 }

@@ -31,15 +31,15 @@ namespace App_Library.Views.UserView.CollectionHome
 
         private void History_Load(object sender, EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Show();
-            if (books.Count > 0)
+            
+            
+            if(books != null)
             {
-                loadingForm.Close();
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.Show();
                 pnMain.Controls.Clear();
-              
-               
                 activeFormChild(pnMain, new HistoryForm(books), null, ref actForm);
+                loadingForm.Close();
             }
         }
         private void btnNextShop_MouseHover(object sender, EventArgs e)

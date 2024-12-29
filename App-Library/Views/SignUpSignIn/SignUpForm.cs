@@ -45,34 +45,34 @@ namespace App_Library.Views
 
         private async void btnSignUp_Click(object sender, EventArgs e)
         {
-            List<TextBox> listCotrol = new List<TextBox>();
-            listCotrol.Add(txbEmail);
-            listCotrol.Add(txbUsername);
-            listCotrol.Add(txbPassword);
-            listCotrol.Add(txbConfirmPassword);
+            List<Guna2TextBox> listCotrol = new List<Guna2TextBox>();
+            listCotrol.Add(txtEmail);
+            listCotrol.Add(txtUsername);
+            listCotrol.Add(txtPassword);
+            listCotrol.Add(txtConfirm);
             Dictionary<Control, bool> checkValid = new Dictionary<Control, bool>();
             Dictionary<Control, Guna2Button> messegeError = new Dictionary<Control, Guna2Button>();
-            foreach (TextBox item in listCotrol)
+            foreach (Guna2TextBox item in listCotrol)
             {
                 checkValid[item] = true;
                 switch (item.Name)
                 {
-                    case "txbEmail":
+                    case "txtEmail":
                         {
                             messegeError.Add(item, MessegeEmail);
                             break;
                         }
-                    case "txbUsername":
+                    case "txtUsername":
                         {
                             messegeError.Add(item, MessegeUsername);
                             break;
                         }
-                    case "txbPassword":
+                    case "txtPassword":
                         {
                             messegeError.Add(item, MessegePassword);
                             break;
                         }
-                    case "txbConfirmPassword":
+                    case "txtConfirm":
                         {
                             messegeError.Add(item, MessegeConfirm);
                             break;
@@ -81,32 +81,32 @@ namespace App_Library.Views
                 messegeError[item].Text = "";
             }
 
-            checkValid[txbEmail] = checkEmail(messegeError[txbEmail]);
-            checkValid[txbUsername] = checkUsername(messegeError[txbUsername]);
-            checkValid[txbPassword] = checkPassword(messegeError[txbPassword]);
-            checkValid[txbConfirmPassword] = checkConfirmPassword(messegeError[txbConfirmPassword]);
+            checkValid[txtEmail] = checkEmail(messegeError[txtEmail]);
+            checkValid[txtUsername] = checkUsername(messegeError[txtUsername]);
+            checkValid[txtPassword] = checkPassword(messegeError[txtPassword]);
+            checkValid[txtConfirm] = checkConfirmPassword(messegeError[txtConfirm]);
 
-            MessegeEmail.Visible = !checkValid[txbEmail];
-            MessegeUsername.Visible = !checkValid[txbUsername];
-            MessegePassword.Visible = !checkValid[txbPassword];
-            MessegeConfirm.Visible = !checkValid[txbConfirmPassword];
+            MessegeEmail.Visible = !checkValid[txtEmail];
+            MessegeUsername.Visible = !checkValid[txtUsername];
+            MessegePassword.Visible = !checkValid[txtPassword];
+            MessegeConfirm.Visible = !checkValid[txtConfirm];
 
             bool check = true;
             listCotrol.ForEach(x => check = (check && checkValid[x]));
             if (check)
             {
-                var result = await _authService.SignUpAsync(txbUsername.Text, txbEmail.Text, txbPassword.Text);
+                var result = await _authService.SignUpAsync(txtUsername.Text, txtEmail.Text, txtPassword.Text);
                 if (result.Equals("Success"))
                 {
                     _splashForm.OpentLogin();
                 }
                 else if (result.Equals("Username already exists"))
                 {
-                    messegeError[txbUsername].Text = result;
+                    messegeError[txtUsername].Text = result;
                 }
                 else if (result.Equals("Email already exists"))
                 {
-                    messegeError[txbEmail].Text = result;
+                    messegeError[txtEmail].Text = result;
                 }
             }
             else
@@ -115,8 +115,7 @@ namespace App_Library.Views
                 {
                     if (!checkValid[x])
                     {
-                        Guna2Panel pn = FindControlContainer(this.Controls, x) as Guna2Panel;
-                        pn.BorderColor = Color.Red;
+                        x.BorderColor = Color.Red;
                     }
                 });
             }
@@ -136,14 +135,14 @@ namespace App_Library.Views
         private bool checkEmail(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbEmail.Text) || txbEmail.Text == "Email")
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) || txtEmail.Text == "Email")
             {
                 messege.Text = "Please enter email";
                 return false;
             }
             // Kiểm tra định dạng
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(txbEmail.Text, emailPattern))
+            if (!Regex.IsMatch(txtEmail.Text, emailPattern))
             {
                 messege.Text = "Email format incorrect";
                 return false;
@@ -157,24 +156,24 @@ namespace App_Library.Views
         private bool checkUsername(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbUsername.Text) || txbUsername.Text == "Username")
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || txtUsername.Text == "Username")
             {
                 messege.Text = "Please enter username";
                 return false;
             }
-            else if (txbUsername.Text.Length < 3)
+            else if (txtUsername.Text.Length < 3)
             {
                 messege.Text = "Username must be at least 3 characters long";
                 return false;
             }
-            else if (txbUsername.Text.Length > 20)
+            else if (txtUsername.Text.Length > 20)
             {
                 messege.Text = "Username must be less than 20 characters long";
                 return false;
             }
             // Kiểm tra định dạng
             var namePattern = @"^[a-zA-Z0-9\s]+$";
-            if (!Regex.IsMatch(txbUsername.Text, namePattern))
+            if (!Regex.IsMatch(txtUsername.Text, namePattern))
             {
                 messege.Text = "Username must contain only letters, numbers and spaces, no special characters";
                 return false;
@@ -188,24 +187,24 @@ namespace App_Library.Views
         private bool checkPassword(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbPassword.Text) || txbPassword.Text == "Password")
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text == "Password")
             {
                 messege.Text = "Please enter password";
                 return false;
             }
-            else if (txbPassword.Text.Length < 5)
+            else if (txtPassword.Text.Length < 5)
             {
                 messege.Text = "Password must be at least 5 characters long";
                 return false;
             }
-            else if (txbPassword.Text.Length > 20)
+            else if (txtPassword.Text.Length > 20)
             {
                 messege.Text = "Password must be less than 20 characters long";
                 return false;
             }
             // Kiểm tra định dạng
             var passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
-            if (!Regex.IsMatch(txbPassword.Text, passwordPattern))
+            if (!Regex.IsMatch(txtPassword.Text, passwordPattern))
             {
                 messege.Text = "Password must contain uppercase, lowercase, numbers and special characters";
                 return false;
@@ -219,12 +218,12 @@ namespace App_Library.Views
         private bool checkConfirmPassword(Guna2Button messege)
         {
             // Kiểm tra rổng
-            if (string.IsNullOrWhiteSpace(txbConfirmPassword.Text) || txbConfirmPassword.Text == "Confirm Password")
+            if (string.IsNullOrWhiteSpace(txtConfirm.Text) || txtConfirm.Text == "Confirm Password")
             {
                 messege.Text = "Please confirm password";
                 return false;
             }
-            if (!txbConfirmPassword.Text.Equals(txbPassword.Text))
+            if (!txtConfirm.Text.Equals(txtPassword.Text))
             {
                 messege.Text = "Password confirm incorrect";
                 return false;
@@ -233,81 +232,6 @@ namespace App_Library.Views
             {
                 messege.Text = "";
                 return true;
-            }
-        }
-
-        private void txbEmail_Click(object sender, EventArgs e)
-        {
-            if (txbEmail.Text == "Email")
-            {
-                txbEmail.Text = string.Empty;
-                txbEmail.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbEmail_Leave(object sender, EventArgs e)
-        {
-            if (txbEmail.Text == string.Empty)
-            {
-                txbEmail.Text = "Email";
-                txbEmail.ForeColor = Color.DarkGray;
-            }
-        }
-        private void txbUsername_Click(object sender, EventArgs e)
-        {
-            if (txbUsername.Text == "Username")
-            {
-                txbUsername.Text = string.Empty;
-                txbUsername.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbUsername_Leave(object sender, EventArgs e)
-        {
-            if (txbUsername.Text == string.Empty)
-            {
-                txbUsername.Text = "Username";
-                txbUsername.ForeColor = Color.DarkGray;
-            }
-        }
-
-        private void txbPassword_Click(object sender, EventArgs e)
-        {
-            if (txbPassword.Text == "Password")
-            {
-                txbPassword.Text = string.Empty;
-                txbPassword.PasswordChar = '*';
-                txbPassword.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbPassword_Leave(object sender, EventArgs e)
-        {
-            if (txbPassword.Text == string.Empty)
-            {
-                txbPassword.Text = "Password";
-                txbPassword.PasswordChar = '\0';
-                txbPassword.ForeColor = Color.DarkGray;
-            }
-        }
-
-        private void txbConfirmPassword_Click(object sender, EventArgs e)
-        {
-            if (txbConfirmPassword.Text == "Confirm Password")
-            {
-                txbConfirmPassword.Text = string.Empty;
-                txbConfirmPassword.PasswordChar = '*';
-                txbConfirmPassword.ForeColor = Color.Aqua;
-            }
-        }
-
-        private void txbConfirmPassword_Leave(object sender, EventArgs e)
-        {
-            if (txbConfirmPassword.Text == string.Empty)
-            {
-                txbConfirmPassword.Text = "Confirm Password";
-                txbConfirmPassword.PasswordChar = '\0';
-                txbConfirmPassword.ForeColor = Color.DarkGray;
             }
         }
         // Sự kiện bấm vào mắt ở Password
@@ -328,17 +252,17 @@ namespace App_Library.Views
                 pic.Image = global::App_Library.Properties.Resources.eye_slash;
                 if (pic.Name.Contains("Confirm"))
                 {
-                    if (!(txbConfirmPassword.Text == "Confirm Password"))
+                    if (!(txtConfirm.Text == "Confirm Password"))
                     {
-                        txbConfirmPassword.PasswordChar = '*';
+                        txtConfirm.PasswordChar = '*';
                     }
                     picEyeOfConfirm.Click += new EventHandler(this.picEyeOfConfirm_Click);
                 }
                 else
                 {
-                    if (!(txbPassword.Text == "Password"))
+                    if (!(txtPassword.Text == "Password"))
                     {
-                        txbPassword.PasswordChar = '*';
+                        txtPassword.PasswordChar = '*';
                     }
                     picEyeOfPass.Click += new EventHandler(this.picEyeOfPass_Click);
                 }
@@ -355,13 +279,13 @@ namespace App_Library.Views
                 pic.Image = global::App_Library.Properties.Resources.eye;
                 if (pic.Name.Contains("Confirm"))
                 {
-                    txbConfirmPassword.PasswordChar = '\0';
+                    txtConfirm.PasswordChar = '\0';
                     timerOpenEyeForConfirm.Start();
                     picEyeOfConfirm.Click -= new EventHandler(this.picEyeOfConfirm_Click);
                 }
                 else
                 {
-                    txbPassword.PasswordChar = '\0';
+                    txtPassword.PasswordChar = '\0';
                     timerOpenEyeForPassWord.Start();
                     picEyeOfPass.Click -= new EventHandler(this.picEyeOfPass_Click);
                 }
@@ -453,22 +377,101 @@ namespace App_Library.Views
             }
         }
 
-        private void txbEmail_MouseHover_1(object sender, EventArgs e)
+        private void txtEmail_MouseLeave(object sender, EventArgs e)
         {
-            Guna2Panel pn = new Guna2Panel();
-            TextBox lb = sender as TextBox;
-            foreach (Control control in pnMainContentLogin.Controls)
+            if (!txtEmail.Text.Equals("Email") || !txtEmail.Text.Trim().Equals(string.Empty))
             {
-                if (control is Guna2Panel)
-                {
-                    if (control.Name.Contains(lb.Name.Substring(3)))
-                    {
-                        pn = control as Guna2Panel;
-                    }
-                }
+                txtEmail.BorderColor = Color.Blue;
             }
+            if (txtEmail.Text.Equals("Email") || txtEmail.Text.Trim().Equals(string.Empty))
+            {
+                txtEmail.Text = "Email";
+                txtEmail.BorderColor = Color.DarkGray;
+                txtEmail.ForeColor = Color.DarkGray;
+            }
+        }
 
-            pn.BorderColor = Color.Aqua;
+        private void txtEmail_Click(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "Email")
+            {
+                txtEmail.Text = string.Empty;
+                txtEmail.ForeColor = Color.Blue;
+                txtEmail.BorderColor = Color.Blue;
+            }
+        }
+        private void txtUserName_MouseLeave(object sender, EventArgs e)
+        {
+            if (!txtUsername.Text.Equals("Username") || !txtUsername.Text.Trim().Equals(string.Empty))
+            {
+                txtUsername.BorderColor = Color.Blue;
+            }
+            if (txtUsername.Text.Equals("Username") || txtUsername.Text.Trim().Equals(string.Empty))
+            {
+                txtUsername.Text = "Username";
+                txtUsername.BorderColor = Color.DarkGray;
+                txtUsername.ForeColor = Color.DarkGray;
+            }
+        }
+
+        private void txtUserName_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "Username")
+            {
+                txtUsername.Text = string.Empty;
+                txtUsername.ForeColor = Color.Blue;
+                txtUsername.BorderColor = Color.Blue;
+            }
+        }
+        private void txtPassword_MouseLeave(object sender, EventArgs e)
+        {
+            if (!txtPassword.Text.Equals("Password") || !txtPassword.Text.Trim().Equals(string.Empty))
+            {
+                txtPassword.BorderColor = Color.Blue;
+            }
+            if (txtPassword.Text.Equals("Password") || txtPassword.Text.Trim().Equals(string.Empty))
+            {
+                txtPassword.Text = "Password";
+                txtPassword.BorderColor = Color.DarkGray;
+                txtPassword.ForeColor = Color.DarkGray;
+                txtPassword.PasswordChar = '\0';
+            }
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Text = string.Empty;
+                txtPassword.ForeColor = Color.Blue;
+                txtPassword.BorderColor = Color.Blue;
+                txtPassword.PasswordChar = '*';
+            }
+        }
+        private void txtConfirm_MouseLeave(object sender, EventArgs e)
+        {
+            if (!txtConfirm.Text.Equals("Confirm") || !txtConfirm.Text.Trim().Equals(string.Empty))
+            {
+                txtConfirm.BorderColor = Color.Blue;
+            }
+            if (txtConfirm.Text.Equals("Confirm") || txtConfirm.Text.Trim().Equals(string.Empty))
+            {
+                txtConfirm.Text = "Confirm";
+                txtConfirm.BorderColor = Color.DarkGray;
+                txtConfirm.ForeColor = Color.DarkGray;
+                txtConfirm.PasswordChar = '\0';
+            }
+        }
+
+        private void txtConfirm_Click(object sender, EventArgs e)
+        {
+            if (txtConfirm.Text == "Confirm")
+            {
+                txtConfirm.Text = string.Empty;
+                txtConfirm.ForeColor = Color.Blue;
+                txtConfirm.BorderColor = Color.Blue;
+                txtConfirm.PasswordChar = '*';
+            }
         }
     }
 }

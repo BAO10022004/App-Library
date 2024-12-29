@@ -42,26 +42,17 @@ namespace App_Library.Views.UserView.CollectionHome
             else
             {
                 lbStatus.ForeColor = System.Drawing.Color.Green;
-                btnRemind.Visible = false;  
             }
-                
-            
-
         }
 
         private void HistoryChild_Resize(object sender, EventArgs e)
         {
-            this.Width = myParent.Width;
-            pnBookName.Width = Convert.ToInt32(this.Width * 0.226);
-            pnAuthor.Width = Convert.ToInt32(this.Width * 0.166);
-            pnPrice.Width = Convert.ToInt32(this.Width * 0.10);
-            pnStatus.Width = Convert.ToInt32(this.Width * 0.17);
-            pnTime.Width = Convert.ToInt32(this.Width * 0.19);
-        }
-        private void btnRemind_Click(object sender, EventArgs e)
-        {
-            sendMailRemind(bookSold.Username, bookSold.Title, this);
-            timer1.Start();
+            //this.Width = myParent.Width;
+            //pnBookName.Width = Convert.ToInt32(this.Width * 0.226);
+            //pnAuthor.Width = Convert.ToInt32(this.Width * 0.166);
+            //pnPrice.Width = Convert.ToInt32(this.Width * 0.10);
+            //pnStatus.Width = Convert.ToInt32(this.Width * 0.17);
+            //pnTime.Width = Convert.ToInt32(this.Width * 0.19);
         }
         int countDown = 4;
         private void timer1_Tick(object sender, EventArgs e)
@@ -73,8 +64,6 @@ namespace App_Library.Views.UserView.CollectionHome
             else
             {
                 countDown = 4;
-                btnRemind.Text = "REMIND";
-                btnRemind.Image = null;
                 timer1.Stop();
             }
         }

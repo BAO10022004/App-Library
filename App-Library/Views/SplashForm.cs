@@ -46,7 +46,7 @@ namespace App_Library.Views
         // Bấm nút đăng nhập
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            playMusic("click.wav");
+            
             timerClickButonLogin.Start();
         }
         // Bấm nút đăng ký

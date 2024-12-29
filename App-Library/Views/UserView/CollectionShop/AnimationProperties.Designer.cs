@@ -36,10 +36,10 @@
             // 
             // picImage
             // 
-            this.picImage.BackColor = System.Drawing.Color.Honeydew;
+            this.picImage.BackColor = System.Drawing.Color.White;
             this.picImage.FillColor = System.Drawing.Color.LightGray;
             this.picImage.ImageRotate = 0F;
-            this.picImage.Location = new System.Drawing.Point(563, 308);
+            this.picImage.Location = new System.Drawing.Point(578, 307);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(186, 262);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

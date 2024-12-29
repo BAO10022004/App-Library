@@ -12,7 +12,8 @@ namespace App_Library
     internal static class Program
     {
         static public SplashForm sp;
-        static public User user;
+        static public string username;
+        static public string password;
         static public List<Panel> ListBookAd;
         static public List<Book> books;
         static public bool checkLoginGG = false;

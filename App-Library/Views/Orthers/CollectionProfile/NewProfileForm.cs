@@ -38,11 +38,12 @@ namespace App_Library.Views.Orthers.CollectionProfile
         }
         private async void NewProfileForm_Load(object sender, EventArgs e)
         {
-            lbEmail.Text = Session.CurentUser.Email;
-            lbUsername.Text = Session.CurentUser.Username;
+            user =await (new UserService()).GetCurrentUserAsync();
+            lbEmail.Text = user.Email;
+            lbUsername.Text = user.Username;
             try
             {
-                picAvatar.Load(Session.CurentUser.PhotoURL);
+                picAvatar.Load(user.PhotoURL);
             }
             catch (Exception ex)
             {

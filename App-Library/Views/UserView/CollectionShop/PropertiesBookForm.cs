@@ -91,27 +91,38 @@ namespace App_Library.Views
             var getUserId = (await( new UserService()).GetCurrentUserAsync()).Id;
             var getBookId = book.Id;
             var getBookBought = shop.listBookSold;
-            foreach (var item in getBookBought)
+            if(getBookBought != null)
             {
-                if (item.BookId.Equals(getBookId) && item.UserId.Equals(getUserId))
+                foreach (var item in getBookBought)
                 {
-                    pnReadBook.Location = btnBuy.Location;
-                    pnReadBook.Visible = true;
-                    btnBuy.Visible = false;
-                    btnPending.Visible = false;
+                    if (item.BookId.Equals(getBookId) && item.UserId.Equals(getUserId))
+                    {
+                        pnReadBook.Location = btnBuy.Location;
+                        pnReadBook.Visible = true;
+                        btnBuy.Visible = false;
+                        btnPending.Visible = false;
+                    }
                 }
+                foreach (var item in bookSolds)
+                {
+                    if (item.BookId.Equals(getBookId) && item.Status == "Pending")
+                    {
+                        btnPending.Location = btnBuy.Location;
+                        btnPending.Visible = true;
+                        btnBuy.Visible = false;
+                        pnReadBook.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                pnReadBook.Visible = false;
+                btnBuy.Visible = true;
+                btnPending.Visible = false;
             }
             
-            foreach(var item in bookSolds)
-            {
-                if (item.BookId.Equals(getBookId) && item.Status == "Pending")
-                {
-                    btnPending.Location = btnBuy.Location;
-                    btnPending.Visible = true;
-                    btnBuy.Visible = false;
-                    pnReadBook.Visible = false;
-                }
-            }
+            
+            
             CommentService _commentDb = new CommentService();
             comments = new List<Comment>();
             comments = await _commentDb.GetBookCommentsAsync(book.Id);
@@ -239,13 +250,15 @@ namespace App_Library.Views
                     Genre = book.Genre,
                     Price = book.Price,
                 };
-                LoadingForm loadingForm = new LoadingForm();
-                loadingForm.Show();
+                
                 String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
-                loadingForm.Close();
                 shop.refreshData();
                 loading.Close();
                 (new AlertSuccess("Your book is pedding")).ShowDialog();
+                btnPending.Location = btnBuy.Location;
+                btnPending.Visible = true;
+                btnBuy.Visible = false;
+                pnReadBook.Visible = false;
             }
                       
         }

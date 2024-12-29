@@ -1,17 +1,10 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
-using App_Library.Views.Main.CollectionShop;
-using App_Library.Views.Orthers.CollectionProfile;
 using App_Library.Views.ToolerForm;
+using App_Library.Views.UserView;
 using App_Library.Views.UserView.CollectionHome;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace App_Library.Views
@@ -19,17 +12,17 @@ namespace App_Library.Views
     public partial class StockForm : FormHelper
     {
         BookSoldService bookSoldService;
-        MainForm main;
+        SideBarUserForm controller;
         Form actForm;
         List<BookSold> listBook;
         private readonly AuthService _authService;
-        public StockForm(MainForm main , List<BookSold> listBook)
+        public StockForm(SideBarUserForm controller , List<BookSold> listBook)
         {
-            this.Size = main.Size;
             InitializeComponent();
             bookSoldService = new BookSoldService();
+            this.listBook = new List<BookSold>();
             this.listBook = listBook;   
-            this.main = main;
+            this.controller = controller;
             
         }
 
@@ -37,12 +30,28 @@ namespace App_Library.Views
         {
             BookService bookService = new BookService();
             List<Book> listBookBought = new List<Book>();
-            foreach (var book in listBook)
+            if(listBook == null || listBook.Count == 0)
             {
-                if(book.Status.Equals("Approved"))
-                    listBookBought.Add(await (new BookService()).GetBookBySlugAsync(book.Slug));
+                
             }
-            activeFormChild(pnMain, new BoughtBook(listBookBought), null, ref actForm);
+            else
+            {
+                foreach (var book in listBook)
+                {
+                    if (book.Status.Equals("Approved"))
+                        listBookBought.Add(await (new BookService()).GetBookBySlugAsync(book.Slug));
+                }
+                if(!( listBookBought.Count == 0))
+                {
+                    pnMain.Controls.Clear();
+                    activeFormChild(pnContent, new BoughtBook(listBookBought), null, ref actForm);
+                }
+            }
+        }
+
+        private void btnNextShop_Click(object sender, EventArgs e)
+        {
+            controller.lbHome_Click(controller.btnHome, e);
         }
     }
 }

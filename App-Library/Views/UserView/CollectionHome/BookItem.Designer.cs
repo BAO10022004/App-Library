@@ -57,9 +57,10 @@
             this.btnRead.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRead.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRead.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRead.FillColor = System.Drawing.Color.SteelBlue;
+            this.btnRead.FillColor = System.Drawing.Color.Blue;
             this.btnRead.Font = new System.Drawing.Font("Bauhaus 93", 12F);
-            this.btnRead.ForeColor = System.Drawing.Color.AliceBlue;
+            this.btnRead.ForeColor = System.Drawing.Color.White;
+            this.btnRead.HoverState.FillColor = System.Drawing.Color.Orange;
             this.btnRead.Location = new System.Drawing.Point(0, 0);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(200, 34);
@@ -83,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FloralWhite;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(200, 300);
             this.Controls.Add(this.pnContainRead);
             this.Controls.Add(this.picBook);
