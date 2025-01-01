@@ -33,7 +33,6 @@ namespace App_Library.Views
         {
             this.pnContent = new System.Windows.Forms.Panel();
             this.pnMain = new Guna.UI2.WinForms.Guna2Panel();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnLeft = new System.Windows.Forms.Panel();
             this.pnSideBar = new System.Windows.Forms.Panel();
@@ -45,6 +44,7 @@ namespace App_Library.Views
             this.pnContainLogOut = new Guna.UI2.WinForms.Guna2Panel();
             this.picLogOut = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnLogOut = new Guna.UI2.WinForms.Guna2Button();
+            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnMain.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.pnLeft.SuspendLayout();
@@ -74,13 +74,6 @@ namespace App_Library.Views
             this.pnMain.Name = "pnMain";
             this.pnMain.Size = new System.Drawing.Size(1280, 680);
             this.pnMain.TabIndex = 0;
-            // 
-            // profileToolStripMenuItem
-            // 
-            this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
-            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
-            this.profileToolStripMenuItem.Text = "Profile";
             // 
             // guna2Panel1
             // 
@@ -190,7 +183,7 @@ namespace App_Library.Views
             this.pnContainLogOut.Location = new System.Drawing.Point(3, 63);
             this.pnContainLogOut.Name = "pnContainLogOut";
             this.pnContainLogOut.Padding = new System.Windows.Forms.Padding(10);
-            this.pnContainLogOut.Size = new System.Drawing.Size(248, 68);
+            this.pnContainLogOut.Size = new System.Drawing.Size(240, 68);
             this.pnContainLogOut.TabIndex = 0;
             this.pnContainLogOut.MouseLeave += new System.EventHandler(this.pnContainLogOut_MouseLeave);
             // 
@@ -223,11 +216,18 @@ namespace App_Library.Views
             this.btnLogOut.ImageSize = new System.Drawing.Size(40, 40);
             this.btnLogOut.Location = new System.Drawing.Point(9, 11);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(228, 48);
+            this.btnLogOut.Size = new System.Drawing.Size(220, 48);
             this.btnLogOut.TabIndex = 18;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             this.btnLogOut.MouseHover += new System.EventHandler(this.btnLogOut_MouseHover);
+            // 
+            // profileToolStripMenuItem
+            // 
+            this.profileToolStripMenuItem.Image = global::App_Library.Properties.Resources.account;
+            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.profileToolStripMenuItem.Text = "Profile";
             // 
             // MainForm
             // 

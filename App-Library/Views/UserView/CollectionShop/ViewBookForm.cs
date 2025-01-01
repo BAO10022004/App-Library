@@ -17,8 +17,10 @@ namespace App_Library.Views.UserView.CollectionShop
 
     public partial class ViewBookForm : FormHelper
     {
-        bool SortnameAz;
-        bool SortPrice;
+        bool SortnameAz = false;
+        bool SortnameZa = false;
+        bool SortPriceIncrease = false;
+        bool SortPriceReduce = false;
         List<Book> data;
         List<Book> dataSource;
         NewShopMain controller;
@@ -27,26 +29,29 @@ namespace App_Library.Views.UserView.CollectionShop
             InitializeComponent();
             this.data = models;
             this.controller = controller;
-            SortnameAz = true;
-            SortPrice = true;
             dataSource = models;
         }
 
         private void btnSortName_Click(object sender, EventArgs e)
         {
-
-            SortnameAz = !SortnameAz;
-            if (SortnameAz)
+            btnDeleteSortPrice.Visible = false;
+            if((!SortnameAz && !SortnameZa) || SortnameZa)
             {
+                SortnameAz = true;
+                SortnameZa = false;
                 this.btnSortName.Image = global::App_Library.Properties.Resources.sort_az__1_;
-                refeshView(data.OrderBy(book => book.Title).ToList());
+                data = data.OrderByDescending(book => book.Title).ToList();
+                refeshView(data);
             }
-            else
+            else 
             {
+                SortnameZa = true;
+                SortnameAz = false;
                 this.btnSortName.Image = global::App_Library.Properties.Resources.sort_az;
-                refeshView(data.OrderByDescending(book => book.Title).ToList());
+                data = data.OrderBy(book => book.Title).ToList();
+                refeshView(data);
             }
-            btnDeleteSort.Visible = true;
+             btnDeleteSort.Visible = true;
         }
 
         private void ViewBookForm_Load(object sender, EventArgs e)
@@ -70,16 +75,22 @@ namespace App_Library.Views.UserView.CollectionShop
 
         private void btnSortPrice_Click(object sender, EventArgs e)
         {
-            SortPrice = !SortPrice;
-            if (SortPrice)
+            btnDeleteSort.Visible = false;
+            if ((!SortPriceIncrease && !SortPriceReduce) || SortPriceIncrease)
             {
+                SortPriceReduce = true;
+                SortPriceIncrease = false;
                 this.btnSortPrice.Image = global::App_Library.Properties.Resources.money_growth;
-                refeshView(data.OrderByDescending(book => book.Price).ToList());
+                data = data.OrderBy(book => book.Price).ToList();
+                refeshView(data);
             }
             else
             {
+                SortPriceReduce = false;
+                SortPriceIncrease = true;
                 this.btnSortPrice.Image = global::App_Library.Properties.Resources.cheap;
-                refeshView(data.OrderBy(book => book.Price).ToList());
+                data = data.OrderByDescending(book => book.Price).ToList();
+                refeshView(data);
             }
             btnDeleteSortPrice.Visible = true;
             
@@ -87,12 +98,20 @@ namespace App_Library.Views.UserView.CollectionShop
 
         private void btnDeleteSort_Click(object sender, EventArgs e)
         {
+            SortnameAz = false;
+            SortnameZa = false;
+            SortPriceIncrease = false;
+            SortPriceReduce = false;
             refeshView(dataSource);
             btnDeleteSort.Visible = false;
             this.btnSortName.Image = global::App_Library.Properties.Resources.sort_az;
         }
         private void btnDeleteSortForPrice_Click(object sender, EventArgs e)
         {
+            SortnameAz = false;
+            SortnameZa = false;
+            SortPriceIncrease = false;
+            SortPriceReduce = false;
             refeshView(dataSource);
             btnDeleteSortPrice.Visible = false;
             this.btnSortPrice.Image = global::App_Library.Properties.Resources.cheap;

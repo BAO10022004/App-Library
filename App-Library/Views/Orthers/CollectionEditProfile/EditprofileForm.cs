@@ -74,7 +74,9 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if(!txbUsername.Equals(currentUser.Username) && !txbEmail.Equals(currentUser.Email))
+            currentUser =await( new UserService()).GetCurrentUserAsync();
+            
+            if(!txbUsername.Text.Equals(currentUser.Username) && !txbEmail.Text.Equals(currentUser.Email))
             {
                 bool checkMail = true;
                 LoadingForm loadingForm = new LoadingForm();
@@ -134,10 +136,9 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             string passwordCurrent = _user.PasswordHash;
             string idCurrent = _user.Id;
             AuthService db = new AuthService();
-            bool result = await db.Login("admin", "$2a$11$Bp2mVgzF725XP7WU/WXWXO4I2QxL9tWkNWqqmYU/d7Nvyz/SOdDRm", null);
+            bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
             if (!result)
             {
-                MessageBox.Show(result.ToString());
                 await db.Login(usernameCurrent, passwordCurrent, null);
                 return false;
             }

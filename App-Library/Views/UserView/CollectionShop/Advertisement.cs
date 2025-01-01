@@ -20,12 +20,14 @@ namespace App_Library.Views.Main.CollectionShop
         internal Book book ;
         NewShopMain shopMain;
         Dictionary<Image, Book> mapBanner;
-        public Advertisement(Image img, Book book,  NewShopMain shop)
+        Color color;
+        public Advertisement(Image img, Book book,  NewShopMain shop, Color color)
         {
             InitializeComponent();
             this.book = book;
             picImageBook.Image = img;
             this.shopMain = shop;
+            this.color = color;
         }
 
         private void Advertisement_Load(object sender, EventArgs e)
@@ -36,6 +38,43 @@ namespace App_Library.Views.Main.CollectionShop
         private void picImageBook_Click(object sender, EventArgs e)
         {
             shopMain.bookClick(book);
+        }
+
+        private void timerHover_Tick(object sender, EventArgs e)
+        {
+            int target = 250;
+            int current = pnMain.ShadowShift;
+
+            int delta = Math.Max(1, (target - current) / 10); 
+
+            if (current < target)
+            {
+                pnMain.ShadowShift += delta;
+            }
+            else
+            {
+                pnMain.ShadowShift = target; 
+                timerHover.Stop();
+            }
+        }
+
+
+        private void picImageBook_MouseHover(object sender, EventArgs e)
+        {
+            
+            pnMain.ShadowShift = 50;
+            pnMain.ShadowColor = color; 
+            timerHover.Start();
+        }
+
+        private void picImageBook_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void picImageBook_MouseLeave_1(object sender, EventArgs e)
+        {
+            pnMain.ShadowColor = Color.White;
         }
     }
 }

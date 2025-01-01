@@ -56,7 +56,7 @@
             // 
             // pnMain
             // 
-            this.pnMain.BorderColor = System.Drawing.Color.Firebrick;
+            this.pnMain.BorderColor = System.Drawing.Color.Blue;
             this.pnMain.BorderRadius = 10;
             this.pnMain.BorderThickness = 2;
             this.pnMain.Controls.Add(this.pnBookName);

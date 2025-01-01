@@ -475,6 +475,12 @@
     <Compile Include="Views\Orthers\CollectionSetting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SignUpSignIn\AnimationOpenLoginWithGG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SignUpSignIn\AnimationOpenLoginWithGG.Designer.cs">
+      <DependentUpon>AnimationOpenLoginWithGG.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToolerForm\AlertConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -542,17 +548,11 @@
     <Compile Include="Views\UserView\CollectionHome\History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserView\CollectionRequest\RequestForm.cs">
+    <Compile Include="Views\UserView\CollectionShop\AdFormNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UserView\CollectionRequest\RequestForm.Designer.cs">
-      <DependentUpon>RequestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionShop\AdForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\UserView\CollectionShop\AdForm.Designer.cs">
-      <DependentUpon>AdForm.cs</DependentUpon>
+    <Compile Include="Views\UserView\CollectionShop\AdFormNew.Designer.cs">
+      <DependentUpon>AdFormNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserView\CollectionShop\Advertisement.cs">
       <SubType>Form</SubType>
@@ -721,6 +721,9 @@
     <EmbeddedResource Include="Views\Orthers\CollectionSetting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignUpSignIn\AnimationOpenLoginWithGG.resx">
+      <DependentUpon>AnimationOpenLoginWithGG.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ToolerForm\AlertConfirm.resx">
       <DependentUpon>AlertConfirm.cs</DependentUpon>
     </EmbeddedResource>
@@ -754,11 +757,8 @@
     <EmbeddedResource Include="Views\UserView\CollectionHome\History.resx">
       <DependentUpon>History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionRequest\RequestForm.resx">
-      <DependentUpon>RequestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserView\CollectionShop\AdForm.resx">
-      <DependentUpon>AdForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserView\CollectionShop\AdFormNew.resx">
+      <DependentUpon>AdFormNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserView\CollectionShop\Advertisement.resx">
       <DependentUpon>Advertisement.cs</DependentUpon>

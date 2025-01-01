@@ -2,6 +2,7 @@
 using App_Library.Services;
 using App_Library.Views.Orthers.CollectionEditProfile;
 using App_Library.Views.SignIn;
+using App_Library.Views.SignUpSignIn;
 using App_Library.Views.ToolerForm;
 using DnsClient.Protocol;
 using Guna.UI2.WinForms;
@@ -96,6 +97,7 @@ namespace App_Library.Views
 
         private async void btnSignInGG_Click(object sender, EventArgs e)
         {
+            (new AnimationOpenLoginWithGG()).ShowDialog();
             var googleLoginForm = new GoogleLoginForm();
             bool checkLoginSuccess = await googleLoginForm.GoogleSignInAndSaveUserAsync(_splashForm);
             if (checkLoginSuccess)
@@ -190,16 +192,26 @@ namespace App_Library.Views
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (picGG.Location.X < lbGG.Width / 2)
+            int targetX = lbGG.Width / 2; // Mục tiêu di chuyển
+            int currentX = picGG.Location.X;
+
+            // Tính delta dựa trên khoảng cách còn lại
+            int delta = Math.Max(1, (targetX - currentX) / 10);
+
+            if (currentX < targetX)
             {
-                picGG.Location = new Point(picGG.Location.X + 5, lbGG.Location.Y);
+                // Di chuyển hình ảnh với delta chậm dần
+                picGG.Location = new Point(currentX + delta, picGG.Location.Y);
             }
             else
             {
+                // Đảm bảo hình ảnh ở đúng vị trí mục tiêu và dừng timer
+                picGG.Location = new Point(targetX, picGG.Location.Y);
                 lbGG.Text = "";
                 timerHoverGg.Stop();
             }
         }
+
         private void lbGG_MouseLeave(object sender, EventArgs e)
         {
             timerHoverGg.Stop();

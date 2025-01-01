@@ -28,6 +28,8 @@ namespace App_Library.Views.Main.CollectionShop
         private readonly BookService _bookService;
         private readonly BookSoldService _bookSoldService;
         internal List<BookSold> listBookSold;
+        List<Book> listBookNewItem;
+        List<Book> listBookBestDeal;
         //Process Bar
         Guna2ProgressIndicator guna2ProgressIndicator;
         //Control
@@ -110,29 +112,30 @@ namespace App_Library.Views.Main.CollectionShop
                 listPanelAllBook = ((await Task.WhenAll(listTask)).ToList());
                 listBookSold = await controller.getListSold();
 
-                formAd = new AdForm(this);
+                formAd = new AdFormNew(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);
                 var books = await (new BookService()).GetBooksAsync();
                 var bookNewItem = books.OrderBy(book => book.CreatedAt).ToList();
                 flowpnNewItem.AutoScroll = true;
-                flowpnNewItem.AutoScrollMinSize = new Size((books.Count + 1) * 400, 400);
+                flowpnNewItem.AutoScrollMinSize = new Size((7 + 1) * 250, 400);
                 for (int i = 0; i < 7; i++)
                 {
                     flowpnNewItem.Controls.Add(createPanel(bookNewItem[i], i, pnNewItem));
                 }
+                listBookNewItem = bookNewItem;
                 var bookHotDeal = books.OrderBy(book => book.Price).ToList();
                 flowpnBestDeal.AutoScroll = true;
-                flowpnBestDeal.AutoScrollMinSize = new Size((bookHotDeal.Count + 1) * 300, 400);
-                for (int i = 0; i < bookHotDeal.Count; i++)
+                flowpnBestDeal.AutoScrollMinSize = new Size((7 + 1) * 250, 400);
+                for (int i = 0; i < 7; i++)
                 {
                     flowpnBestDeal.Controls.Add(createPanel(bookHotDeal[i], i, pnBestDeal));
                 }
+                listBookBestDeal = bookHotDeal;
                 guna2ProgressIndicator.Stop();
                 this.Controls.Remove(guna2ProgressIndicator);
 
                 this.Controls.Remove(this.pnProperties);
 
-                flowpnNewItem.AutoScrollMinSize = new Size((books.Count + 1) * 400, 400);
                 ReSize();
                 int h = 0;
                 foreach (Control control in pnMainForm.Controls)
@@ -323,9 +326,7 @@ namespace App_Library.Views.Main.CollectionShop
 
         private async void picSearch_Click_1(object sender, EventArgs e)
         {
-
-
-            List<Book> result = (await _bookService.SearchBooksAsync(txtSearch.Text)).Books;
+            List<Book> result = (await _bookService.SearchBooksAsync(txtSearch.Text, "desc", null, 0, 20)).Books;
            
             activeFormChild(controller.pnContent, new ViewBookForm(this, result), null, ref actFormProperti);
         }
@@ -359,6 +360,41 @@ namespace App_Library.Views.Main.CollectionShop
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
            txtSearch_TextChanged(sender, e);
+        }
+
+        private void btnNewItem_MouseHover(object sender, EventArgs e)
+        {
+            btnNewItem.ImageAlign = HorizontalAlignment.Right;
+            btnNewItem.Image = global::App_Library.Properties.Resources.nextAnimation__2_;
+        }
+
+        private void btnNewItem_MouseLeave(object sender, EventArgs e)
+        {
+            btnNewItem.ImageAlign = HorizontalAlignment.Center;
+            btnNewItem.Image = global::App_Library.Properties.Resources.new_17204014;
+        }
+
+        private void btnNewItem_Click(object sender, EventArgs e)
+        {
+            activeFormChild(controller.pnContent, new ViewBookForm(this, listBookNewItem), null, ref actFormProperti);
+        }
+
+        private void btnBestDeal_MouseLeave(object sender, EventArgs e)
+        {
+            btnBestDeal.ImageAlign = HorizontalAlignment.Center;
+            btnBestDeal.Image = global::App_Library.Properties.Resources.hot_sale_17905376;
+        }
+
+        private void btnBestDeal_Click(object sender, EventArgs e)
+        {
+            activeFormChild(controller.pnContent, new ViewBookForm(this, listBookBestDeal), null, ref actFormProperti);
+
+        }
+
+        private void btnBestDeal_MouseHover(object sender, EventArgs e)
+        {
+            btnBestDeal.ImageAlign = HorizontalAlignment.Right;
+            btnBestDeal.Image = global::App_Library.Properties.Resources.nextAnimation__2_;
         }
     }
 }

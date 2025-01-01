@@ -47,13 +47,12 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnContainAd = new Guna.UI2.WinForms.Guna2Panel();
             this.pnNewItem = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnNewItem = new Guna.UI2.WinForms.Guna2Button();
             this.flowpnNewItem = new System.Windows.Forms.FlowLayoutPanel();
             this.pnBestDeal = new Guna.UI2.WinForms.Guna2Panel();
             this.flowpnBestDeal = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnBestDeal = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -70,8 +69,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnAd.SuspendLayout();
             this.pnNewItem.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.pnBestDeal.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
@@ -228,49 +225,37 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // guna2Panel2
             // 
-            this.guna2Panel2.Controls.Add(this.guna2Panel3);
+            this.guna2Panel2.Controls.Add(this.btnNewItem);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1030, 70);
             this.guna2Panel2.TabIndex = 0;
             // 
-            // guna2Panel3
+            // btnNewItem
             // 
-            this.guna2Panel3.BackColor = System.Drawing.Color.White;
-            this.guna2Panel3.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.guna2Panel3.BorderRadius = 10;
-            this.guna2Panel3.BorderThickness = 3;
-            this.guna2Panel3.Controls.Add(this.label1);
-            this.guna2Panel3.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel3.Location = new System.Drawing.Point(13, 3);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(250, 61);
-            this.guna2Panel3.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label1.Location = new System.Drawing.Point(60, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "NEW ITEMS";
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackgroundImage = global::App_Library.Properties.Resources.Screenshot_2024_12_13_003940;
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.new_17204014;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(7, 7);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(47, 46);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
+            this.btnNewItem.Animated = true;
+            this.btnNewItem.AnimatedGIF = true;
+            this.btnNewItem.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewItem.BorderRadius = 10;
+            this.btnNewItem.BorderThickness = 3;
+            this.btnNewItem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNewItem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNewItem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNewItem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNewItem.FillColor = System.Drawing.Color.White;
+            this.btnNewItem.Font = new System.Drawing.Font("Cooper Black", 20.25F);
+            this.btnNewItem.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnNewItem.Image = global::App_Library.Properties.Resources.new_17204014;
+            this.btnNewItem.ImageSize = new System.Drawing.Size(47, 46);
+            this.btnNewItem.Location = new System.Drawing.Point(7, 6);
+            this.btnNewItem.Name = "btnNewItem";
+            this.btnNewItem.Size = new System.Drawing.Size(250, 61);
+            this.btnNewItem.TabIndex = 1;
+            this.btnNewItem.Text = "NEW ITEMS";
+            this.btnNewItem.Click += new System.EventHandler(this.btnNewItem_Click);
+            this.btnNewItem.MouseLeave += new System.EventHandler(this.btnNewItem_MouseLeave);
+            this.btnNewItem.MouseHover += new System.EventHandler(this.btnNewItem_MouseHover);
             // 
             // flowpnNewItem
             // 
@@ -302,12 +287,38 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.Controls.Add(this.btnBestDeal);
             this.guna2Panel4.Controls.Add(this.guna2Panel5);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel4.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(1030, 70);
             this.guna2Panel4.TabIndex = 0;
+            // 
+            // btnBestDeal
+            // 
+            this.btnBestDeal.Animated = true;
+            this.btnBestDeal.AnimatedGIF = true;
+            this.btnBestDeal.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnBestDeal.BorderRadius = 10;
+            this.btnBestDeal.BorderThickness = 3;
+            this.btnBestDeal.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBestDeal.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBestDeal.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBestDeal.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBestDeal.FillColor = System.Drawing.Color.White;
+            this.btnBestDeal.Font = new System.Drawing.Font("Cooper Black", 20.25F);
+            this.btnBestDeal.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnBestDeal.Image = global::App_Library.Properties.Resources.hot_sale_17905376;
+            this.btnBestDeal.ImageSize = new System.Drawing.Size(47, 46);
+            this.btnBestDeal.Location = new System.Drawing.Point(10, 3);
+            this.btnBestDeal.Name = "btnBestDeal";
+            this.btnBestDeal.Size = new System.Drawing.Size(250, 61);
+            this.btnBestDeal.TabIndex = 2;
+            this.btnBestDeal.Text = "BEST DEAL";
+            this.btnBestDeal.Click += new System.EventHandler(this.btnBestDeal_Click);
+            this.btnBestDeal.MouseLeave += new System.EventHandler(this.btnBestDeal_MouseLeave);
+            this.btnBestDeal.MouseHover += new System.EventHandler(this.btnBestDeal_MouseHover);
             // 
             // guna2Panel5
             // 
@@ -319,7 +330,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.guna2Panel5.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel5.Location = new System.Drawing.Point(7, 6);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(250, 61);
+            this.guna2Panel5.Size = new System.Drawing.Size(0, 0);
             this.guna2Panel5.TabIndex = 1;
             // 
             // label2
@@ -423,9 +434,6 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnAd.ResumeLayout(false);
             this.pnNewItem.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.pnBestDeal.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
@@ -459,9 +467,6 @@ namespace App_Library.Views.Main.CollectionShop
         private Guna.UI2.WinForms.Guna2Panel pnContainAd;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.FlowLayoutPanel flowpnNewItem;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private System.Windows.Forms.Label label2;
@@ -472,5 +477,7 @@ namespace App_Library.Views.Main.CollectionShop
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Panel pnMainSearch;
         private System.Windows.Forms.FlowLayoutPanel pnResultSearch;
+        private Guna.UI2.WinForms.Guna2Button btnNewItem;
+        private Guna.UI2.WinForms.Guna2Button btnBestDeal;
     }
 }

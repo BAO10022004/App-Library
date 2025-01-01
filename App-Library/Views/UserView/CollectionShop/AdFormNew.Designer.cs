@@ -1,6 +1,8 @@
-﻿namespace App_Library.Views.Main.CollectionShop
+﻿using System;
+
+namespace App_Library.Views.UserView.CollectionShop
 {
-    partial class AdForm
+    partial class AdFormNew
     {
         /// <summary>
         /// Required designer variable.
@@ -19,6 +21,13 @@
             }
             base.Dispose(disposing);
         }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
 
         #region Windows Form Designer generated code
 
@@ -69,9 +78,10 @@
             // 
             // picSubAd1
             // 
-            this.picSubAd1.Location = new System.Drawing.Point(547, 3);
+            this.picSubAd1.Location = new System.Drawing.Point(547, 13);
+            this.picSubAd1.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
             this.picSubAd1.Name = "picSubAd1";
-            this.picSubAd1.Size = new System.Drawing.Size(220, 350);
+            this.picSubAd1.Size = new System.Drawing.Size(220, 320);
             this.picSubAd1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picSubAd1.TabIndex = 1;
             this.picSubAd1.TabStop = false;
@@ -79,9 +89,10 @@
             // 
             // picSubAd2
             // 
-            this.picSubAd2.Location = new System.Drawing.Point(773, 3);
+            this.picSubAd2.Location = new System.Drawing.Point(773, 13);
+            this.picSubAd2.Margin = new System.Windows.Forms.Padding(3, 13, 3, 3);
             this.picSubAd2.Name = "picSubAd2";
-            this.picSubAd2.Size = new System.Drawing.Size(220, 350);
+            this.picSubAd2.Size = new System.Drawing.Size(220, 320);
             this.picSubAd2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picSubAd2.TabIndex = 2;
             this.picSubAd2.TabStop = false;
@@ -102,14 +113,14 @@
             this.ElipseForSubAd2.BorderRadius = 50;
             this.ElipseForSubAd2.TargetControl = this.picSubAd2;
             // 
-            // AdForm
+            // AdFormNew
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(997, 350);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AdForm";
+            this.Name = "AdFormNew";
             this.Text = "AdForm";
             this.Load += new System.EventHandler(this.AdForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -118,6 +129,8 @@
             this.ResumeLayout(false);
 
         }
+
+       
 
         #endregion
         private System.Windows.Forms.Timer timerAd;
@@ -128,5 +141,7 @@
         private Guna.UI2.WinForms.Guna2Elipse ElipseForSubAd2;
         private System.Windows.Forms.PictureBox picSubAd1;
         private System.Windows.Forms.PictureBox picSubAd2;
+
+        #endregion
     }
 }

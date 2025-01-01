@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,55 +56,90 @@ namespace App_Library.Views
             timerClickButtonSignUp.Start();
         }
 
-        private void movePanelConten()
-        {
-            if (lbWellcome.Location.Y > 30)
-            {
-                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - ((160 - 30) / 50));
-            }
-            if (pnFrameOption.Location.Y > 125)
-            {
-                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - ((385 - 125) / 50));
-            }
-            if (pnLoginSignupContent.Location.Y > 0)
-            {
-                pnLoginSignupContent.Location = new Point(pnLoginSignupContent.Location.X, pnLoginSignupContent.Location.Y - ((200 - 0) / 50));
-            }
-        }
-
         private void timerSignUp_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y > 30 || pnFrameOption.Location.Y > 130 || pnLoginSignupContent.Location.Y > 0)
+            double speedFactor = 0.1; // Hệ số tốc độ ban đầu (nhỏ hơn = nhanh hơn lúc đầu).
+
+            bool isAnimating = false;
+
+            if (lbWellcome.Location.Y > 30)
             {
-                movePanelConten();
+                int delta = Math.Max((int)((lbWellcome.Location.Y - 30) * speedFactor), 1);
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
             }
-            else
+
+            if (pnFrameOption.Location.Y > 125)
             {
+                int delta = Math.Max((int)((pnFrameOption.Location.Y - 125) * speedFactor), 1);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
+            }
+
+            if (pnLoginSignupContent.Location.Y > 0)
+            {
+                int delta = Math.Max((int)(pnLoginSignupContent.Location.Y * speedFactor), 1);
+                pnLoginSignupContent.Location = new Point(pnLoginSignupContent.Location.X, pnLoginSignupContent.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
+            }
+
+            if (!isAnimating)
+            {
+                // Khi tất cả các animation hoàn tất
                 pnFrameOption.Controls.Remove(pnContainButtonSignIn);
                 pnFrameOption.Controls.Remove(pnContainButtonSignUp);
                 timerClickButtonSignUp.Stop();
                 lbWellcome.Text = "SIGN - UP";
                 this.activeFormChild(this.pnLoginSignupContent, new SignUpForm(this), sender);
-                return;
             }
         }
 
+
         private void timerClickButonLogin_Tick(object sender, EventArgs e)
         {
-            if (lbWellcome.Location.Y > 30 || pnFrameOption.Location.Y > 130 || pnLoginSignupContent.Location.Y > 0)
+            double speedFactor = 0.1; // Hệ số tốc độ ban đầu (nhỏ hơn = nhanh hơn lúc đầu).
+
+            bool isAnimating = false;
+
+            if (lbWellcome.Location.Y > 30)
             {
-                movePanelConten();
+                int delta = Math.Max((int)((lbWellcome.Location.Y - 30) * speedFactor), 1);
+                lbWellcome.Location = new Point(lbWellcome.Location.X, lbWellcome.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
             }
-            else
+
+            if (pnFrameOption.Location.Y > 125)
             {
+                int delta = Math.Max((int)((pnFrameOption.Location.Y - 125) * speedFactor), 1);
+                pnFrameOption.Location = new Point(pnFrameOption.Location.X, pnFrameOption.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
+            }
+
+            if (pnLoginSignupContent.Location.Y > 0)
+            {
+                int delta = Math.Max((int)(pnLoginSignupContent.Location.Y * speedFactor), 1);
+                pnLoginSignupContent.Location = new Point(pnLoginSignupContent.Location.X, pnLoginSignupContent.Location.Y - delta);
+                speedFactor += 0.02; // Giảm tốc theo thời gian.
+                isAnimating = true;
+            }
+
+            if (!isAnimating)
+            {
+                // Khi tất cả các animation hoàn tất
                 pnFrameOption.Controls.Remove(pnContainButtonSignIn);
                 pnFrameOption.Controls.Remove(pnContainButtonSignUp);
                 timerClickButonLogin.Stop();
                 lbWellcome.Text = "SIGN - IN";
                 this.activeFormChild(this.pnLoginSignupContent, new LoginForm(this), sender);
-                return;
             }
         }
+
+
 
         Form actForm;
         public void LogOut()
@@ -113,29 +149,46 @@ namespace App_Library.Views
 
         private void timerOpenMainForm_Tick(object sender, EventArgs e)
         {
-            //if (Location.X > 0)
-            //{
-            //    int y = Location.Y - 5;
-            //    Location = new Point((550 / 62 * y), y);
-            //    //if (Size.Height < 900 && Size.Width < 1400)
-            //    //{
-            //    //    Size = new Size(Size.Width + 50, Size.Height);
-            //    //}
-            //}
-            //else
-            //{
-            Program.sp.pnHeader.BackColor = Color.WhiteSmoke;
-            timerOpenMainForm.Stop();
-            Size = new Size(1280, 720);
-            PnSubLogin.Controls.Clear();
 
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            Location = new Point(screenWidth / 2 - 1280 / 2, screenHeight / 2 - 720 / 2);
-            this.activeFormChild(this.PnSubLogin, new MainForm(this), sender);
-            //Console.WriteLine($"1 {PnSubLogin.Size.Width}, {PnSubLogin.Size.Height}");
-            //Console.WriteLine($"0 {Size.Width}, {Size.Height}");
-            //}
+            Size sizeTarget = new Size(1280, 720);
+            Point locationTarget = new Point(screenWidth / 2 - 1280 / 2, screenHeight / 2 - 720 / 2);
+            this.BackColor = Color.WhiteSmoke;
+
+            // Lấy kích thước và vị trí hiện tại của Form
+            int currentWidth = this.Width;
+            int currentHeight = this.Height;
+            int currentX = this.Location.X;
+            int currentY = this.Location.Y;
+
+            // Tính toán gia tốc cho kích thước và vị trí
+            int deltaWidth = Math.Max(1, (sizeTarget.Width - currentWidth) / 5);  // Tăng tốc độ thay đổi
+            int deltaHeight = Math.Max(1, (sizeTarget.Height - currentHeight) / 5);  // Tăng tốc độ thay đổi
+            int deltaX = Math.Max(1, (currentX - locationTarget.X) / 5);  // Tăng tốc độ thay đổi
+            int deltaY = Math.Max(1, (currentY - locationTarget.Y) / 5);  // Tăng tốc độ thay đổi
+
+            // Cập nhật kích thước và vị trí đồng thời
+            if (currentWidth < sizeTarget.Width || currentHeight < sizeTarget.Height || currentX > locationTarget.X || currentY > locationTarget.Y)
+            {
+                this.Size = new Size(
+                    Math.Min(currentWidth + deltaWidth, sizeTarget.Width),
+                    Math.Min(currentHeight + deltaHeight, sizeTarget.Height)
+                );
+
+                this.Location = new Point(
+                    Math.Max(locationTarget.X, currentX - deltaX),
+                    Math.Max(locationTarget.Y, currentY - deltaY)
+                );
+            }
+            else
+            {
+                Program.sp.pnHeader.BackColor = Color.WhiteSmoke;
+                timerOpenMainForm.Stop();
+                this.Size = sizeTarget;  // Đặt kích thước cuối cùng
+                this.Location = locationTarget;  // Đặt vị trí cuối cùng
+                this.activeFormChild(this.PnSubLogin, new MainForm(this), sender);
+            }
 
         }
         // Mở Form LogIn
@@ -153,6 +206,7 @@ namespace App_Library.Views
         // Mở Form chính
         public void OpenMainForm()
         {
+            PnSubLogin.Controls.Clear();
             timerOpenMainForm.Start();
         }
 

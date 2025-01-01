@@ -32,7 +32,10 @@ namespace App_Library.Views
         {
             this.components = new System.ComponentModel.Container();
             this.gnBtnLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnLogIn = new System.Windows.Forms.Button();
+            this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.timerEyeOpen = new System.Windows.Forms.Timer(this.components);
+            this.timerHoverGg = new System.Windows.Forms.Timer(this.components);
+            this.timerLeaveGG = new System.Windows.Forms.Timer(this.components);
             this.pnMainContentLogin = new System.Windows.Forms.Panel();
             this.picEye = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,12 +46,9 @@ namespace App_Library.Views
             this.picGG = new System.Windows.Forms.PictureBox();
             this.lbGG = new System.Windows.Forms.Label();
             this.lbOr = new System.Windows.Forms.Label();
+            this.btnLogIn = new System.Windows.Forms.Button();
             this.lbCreateAccount = new System.Windows.Forms.Label();
             this.lbForgotPassword = new System.Windows.Forms.Label();
-            this.gnBtnSignInGG = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.timerEyeOpen = new System.Windows.Forms.Timer(this.components);
-            this.timerHoverGg = new System.Windows.Forms.Timer(this.components);
-            this.timerLeaveGG = new System.Windows.Forms.Timer(this.components);
             this.pnMainContentLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.btnSignInGG.SuspendLayout();
@@ -60,22 +60,24 @@ namespace App_Library.Views
             this.gnBtnLogin.BorderRadius = 30;
             this.gnBtnLogin.TargetControl = this.btnLogIn;
             // 
-            // btnLogIn
+            // gnBtnSignInGG
             // 
-            this.btnLogIn.BackColor = System.Drawing.Color.Blue;
-            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogIn.FlatAppearance.BorderSize = 0;
-            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogIn.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogIn.ForeColor = System.Drawing.Color.White;
-            this.btnLogIn.Location = new System.Drawing.Point(75, 260);
-            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(310, 47);
-            this.btnLogIn.TabIndex = 13;
-            this.btnLogIn.Text = "LOG IN";
-            this.btnLogIn.UseVisualStyleBackColor = false;
-            this.btnLogIn.Click += new System.EventHandler(this.btnLogin_Click);
+            this.gnBtnSignInGG.BorderRadius = 30;
+            // 
+            // timerEyeOpen
+            // 
+            this.timerEyeOpen.Interval = 200;
+            this.timerEyeOpen.Tick += new System.EventHandler(this.timerEyeOpen_Tick);
+            // 
+            // timerHoverGg
+            // 
+            this.timerHoverGg.Interval = 1;
+            this.timerHoverGg.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timerLeaveGG
+            // 
+            this.timerLeaveGG.Interval = 1;
+            this.timerLeaveGG.Tick += new System.EventHandler(this.timerLeaveGG_Tick);
             // 
             // pnMainContentLogin
             // 
@@ -261,6 +263,23 @@ namespace App_Library.Views
             this.lbOr.Text = "OR";
             this.lbOr.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnLogIn
+            // 
+            this.btnLogIn.BackColor = System.Drawing.Color.Blue;
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.FlatAppearance.BorderSize = 0;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogIn.ForeColor = System.Drawing.Color.White;
+            this.btnLogIn.Location = new System.Drawing.Point(75, 260);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(310, 47);
+            this.btnLogIn.TabIndex = 13;
+            this.btnLogIn.Text = "LOG IN";
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // lbCreateAccount
             // 
             this.lbCreateAccount.AutoSize = true;
@@ -292,25 +311,6 @@ namespace App_Library.Views
             this.lbForgotPassword.Click += new System.EventHandler(this.lbForgotPassword_Click);
             this.lbForgotPassword.MouseLeave += new System.EventHandler(this.lbForgotPassword_MouseLeave);
             this.lbForgotPassword.MouseHover += new System.EventHandler(this.lbForgotPassword_MouseHover);
-            // 
-            // gnBtnSignInGG
-            // 
-            this.gnBtnSignInGG.BorderRadius = 30;
-            // 
-            // timerEyeOpen
-            // 
-            this.timerEyeOpen.Interval = 200;
-            this.timerEyeOpen.Tick += new System.EventHandler(this.timerEyeOpen_Tick);
-            // 
-            // timerHoverGg
-            // 
-            this.timerHoverGg.Interval = 1;
-            this.timerHoverGg.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timerLeaveGG
-            // 
-            this.timerLeaveGG.Interval = 1;
-            this.timerLeaveGG.Tick += new System.EventHandler(this.timerLeaveGG_Tick);
             // 
             // LoginForm
             // 

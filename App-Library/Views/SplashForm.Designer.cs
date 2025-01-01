@@ -35,7 +35,9 @@ namespace App_Library.Views
             this.pnSubLogin = new System.Windows.Forms.Panel();
             this.pnFrameOption = new System.Windows.Forms.Panel();
             this.pnContainButtonSignUp = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnSignUp = new Guna.UI2.WinForms.Guna2Button();
             this.pnContainButtonSignIn = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnLogIn = new Guna.UI2.WinForms.Guna2Button();
             this.pnLoginSignupContent = new System.Windows.Forms.Panel();
             this.lbWellcome = new System.Windows.Forms.Label();
             this.pnHeader = new System.Windows.Forms.Panel();
@@ -51,8 +53,6 @@ namespace App_Library.Views
             this.gneBtnSingUp = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerOpenMainForm = new System.Windows.Forms.Timer(this.components);
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.btnLogIn = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSignUp = new Guna.UI2.WinForms.Guna2Button();
             this.pnSubLogin.SuspendLayout();
             this.pnFrameOption.SuspendLayout();
             this.pnContainButtonSignUp.SuspendLayout();
@@ -98,6 +98,29 @@ namespace App_Library.Views
             this.pnContainButtonSignUp.Size = new System.Drawing.Size(237, 63);
             this.pnContainButtonSignUp.TabIndex = 5;
             // 
+            // btnSignUp
+            // 
+            this.btnSignUp.Animated = true;
+            this.btnSignUp.BorderColor = System.Drawing.Color.Blue;
+            this.btnSignUp.BorderRadius = 8;
+            this.btnSignUp.BorderThickness = 3;
+            this.btnSignUp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSignUp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSignUp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSignUp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSignUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSignUp.FillColor = System.Drawing.Color.White;
+            this.btnSignUp.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold);
+            this.btnSignUp.ForeColor = System.Drawing.Color.Blue;
+            this.btnSignUp.HoverState.FillColor = System.Drawing.Color.Blue;
+            this.btnSignUp.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnSignUp.Location = new System.Drawing.Point(0, 0);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(237, 63);
+            this.btnSignUp.TabIndex = 5;
+            this.btnSignUp.Text = "SIGN - UP";
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            // 
             // pnContainButtonSignIn
             // 
             this.pnContainButtonSignIn.BorderColor = System.Drawing.Color.Blue;
@@ -108,6 +131,29 @@ namespace App_Library.Views
             this.pnContainButtonSignIn.Name = "pnContainButtonSignIn";
             this.pnContainButtonSignIn.Size = new System.Drawing.Size(237, 63);
             this.pnContainButtonSignIn.TabIndex = 4;
+            // 
+            // btnLogIn
+            // 
+            this.btnLogIn.Animated = true;
+            this.btnLogIn.BorderColor = System.Drawing.Color.Blue;
+            this.btnLogIn.BorderRadius = 8;
+            this.btnLogIn.BorderThickness = 3;
+            this.btnLogIn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogIn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogIn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogIn.FillColor = System.Drawing.Color.White;
+            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnLogIn.ForeColor = System.Drawing.Color.Blue;
+            this.btnLogIn.HoverState.FillColor = System.Drawing.Color.Blue;
+            this.btnLogIn.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLogIn.Location = new System.Drawing.Point(0, 0);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(237, 63);
+            this.btnLogIn.TabIndex = 4;
+            this.btnLogIn.Text = "LOG IN ";
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // pnLoginSignupContent
             // 
@@ -239,54 +285,8 @@ namespace App_Library.Views
             // 
             // timerOpenMainForm
             // 
-            this.timerOpenMainForm.Interval = 10;
+            this.timerOpenMainForm.Interval = 1;
             this.timerOpenMainForm.Tick += new System.EventHandler(this.timerOpenMainForm_Tick);
-            // 
-            // btnLogIn
-            // 
-            this.btnLogIn.Animated = true;
-            this.btnLogIn.BorderColor = System.Drawing.Color.Blue;
-            this.btnLogIn.BorderRadius = 8;
-            this.btnLogIn.BorderThickness = 3;
-            this.btnLogIn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogIn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogIn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogIn.FillColor = System.Drawing.Color.White;
-            this.btnLogIn.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnLogIn.ForeColor = System.Drawing.Color.Blue;
-            this.btnLogIn.HoverState.FillColor = System.Drawing.Color.Blue;
-            this.btnLogIn.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnLogIn.Location = new System.Drawing.Point(0, 0);
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(237, 63);
-            this.btnLogIn.TabIndex = 4;
-            this.btnLogIn.Text = "LOG IN ";
-            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
-            // 
-            // btnSignUp
-            // 
-            this.btnSignUp.Animated = true;
-            this.btnSignUp.BorderColor = System.Drawing.Color.Blue;
-            this.btnSignUp.BorderRadius = 8;
-            this.btnSignUp.BorderThickness = 3;
-            this.btnSignUp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignUp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignUp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSignUp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSignUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSignUp.FillColor = System.Drawing.Color.White;
-            this.btnSignUp.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold);
-            this.btnSignUp.ForeColor = System.Drawing.Color.Blue;
-            this.btnSignUp.HoverState.FillColor = System.Drawing.Color.Blue;
-            this.btnSignUp.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnSignUp.Location = new System.Drawing.Point(0, 0);
-            this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(237, 63);
-            this.btnSignUp.TabIndex = 5;
-            this.btnSignUp.Text = "SIGN - UP";
-            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // SplashForm
             // 
