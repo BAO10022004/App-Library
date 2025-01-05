@@ -38,7 +38,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             _userService = new UserService();
             this.parent = parent;
         }
-        private  async void EditprofileForm_Load(object sender, EventArgs e)
+        private async void EditprofileForm_Load(object sender, EventArgs e)
         {
             currentUser = await _userService.GetCurrentUserAsync();
             try
@@ -57,7 +57,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             }
             txbEmail.Text = Session.CurentUser.Email;
             txbUsername.Text = Session.CurentUser.Username;
-           
+
 
             updateBookDTO.PhotoURL = currentUser.PhotoURL;
             updateBookDTO.Email = currentUser.Email;
@@ -70,66 +70,66 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 txbEmail.ReadOnly = true;
             }
         }
-        
+
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            currentUser =await( new UserService()).GetCurrentUserAsync();
-            if(txbEmail.Text.Equals(currentUser.Email) && txbUsername.Text.Equals(currentUser.Username) && updateBookDTO.PhotoURL.Equals(currentUser.PhotoURL))
+            currentUser = await (new UserService()).GetCurrentUserAsync();
+            if (txbEmail.Text.Equals(currentUser.Email) && txbUsername.Text.Equals(currentUser.Username) && updateBookDTO.PhotoURL.Equals(currentUser.PhotoURL))
             {
                 return;
 
             }
-                bool checkMail = true;
-                LoadingForm loadingForm = new LoadingForm();
+            bool checkMail = true;
+            LoadingForm loadingForm = new LoadingForm();
 
-                loadingForm.Show();
-                bool checkUsername = await checkUsernameOutLimit(currentUser, txbUsername.Text);
-                // check Mail
-                var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-                checkMail = Regex.IsMatch(txbEmail.Text, emailPattern);
-                if (!checkMail)
+            loadingForm.Show();
+            bool checkUsername = await checkUsernameOutLimit(currentUser, txbUsername.Text);
+            // check Mail
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            checkMail = Regex.IsMatch(txbEmail.Text, emailPattern);
+            if (!checkMail)
+            {
+                // Đóng LoadingForm khi thành công
+                loadingForm.Hide();
+                loadingForm.Close();
+                txbEmail.BorderColor = Color.Red;
+                (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
+            }
+            if (!txbUsername.Text.Equals(currentUser.Username) && !checkUsername)
+            {
+                loadingForm.Hide();
+                loadingForm.Close();
+                txbUsername.BorderColor = Color.Red;
+                (new AlertFail(" Fail" + "\n" + "Username is exist")).ShowDialog();
+            }
+            if (checkMail && checkUsername)
+            {
+                bool confirm = false;
+                using (var alert = (new AlertConfirm()))
                 {
-                    // Đóng LoadingForm khi thành công
-                    loadingForm.Hide();
-                    loadingForm.Close();
-                    txbEmail.BorderColor = Color.Red;
-                    (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
+                    alert.ShowDialog();
+                    confirm = alert.ConfirmResult;
                 }
-                if (!checkUsername)
+                loadingForm.Hide();
+                loadingForm.Close();
+                if (confirm)
                 {
-                    loadingForm.Hide();
-                    loadingForm.Close();
-                    txbUsername.BorderColor = Color.Red;
-                    (new AlertFail(" Fail" + "\n" + "Username is exist")).ShowDialog();
-                }
-                if (checkMail && checkUsername)
-                {
-                    bool confirm = false;
-                    using (var alert = (new AlertConfirm()))
+
+                    updateBookDTO.Email = txbEmail.Text;
+                    updateBookDTO.Username = txbUsername.Text;
+                    if (await _userService.UpdateUserAsync(currentUser.Id, updateBookDTO))
                     {
-                        alert.ShowDialog();
-                        confirm = alert.ConfirmResult;
-                    }
-                    loadingForm.Hide();
-                    loadingForm.Close();
-                    if (confirm)
-                    {
-                        
-                        updateBookDTO.Email = txbEmail.Text;
-                        updateBookDTO.Username = txbUsername.Text;
-                        if (await _userService.UpdateUserAsync(currentUser.Id, updateBookDTO))
-                        {
-                            Program.sp.Hide();
-                            Program.sp = new SplashForm();
-                            Program.sp.ShowDialog();
-                        }
+                        Program.sp.Hide();
+                        Program.sp = new SplashForm();
+                        Program.sp.ShowDialog();
                     }
                 }
-                txbUsername.Text = currentUser.Username;
-                txbEmail.Text = currentUser.Email;
-            
-            
+            }
+            txbUsername.Text = currentUser.Username;
+            txbEmail.Text = currentUser.Email;
+
+
         }
 
         public static async Task<bool> checkUsernameOutLimit(User _user, string username)
@@ -149,7 +149,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 var listAccount = await (new UserService()).GetUsersAsync();
                 foreach (var user in listAccount)
                 {
-                    if (user.Username.Equals(username) &&! user.Id.Equals(idCurrent))
+                    if (user.Username.Equals(username) && !user.Id.Equals(idCurrent))
                     {
                         await db.Login(usernameCurrent, passwordCurrent, null);
                         return false;
