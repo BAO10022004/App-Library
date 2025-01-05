@@ -45,7 +45,7 @@ namespace App_Library.Views
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.btnMaximize = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbLogo = new System.Windows.Forms.Label();
             this.timerClickButtonSignUp = new System.Windows.Forms.Timer(this.components);
             this.gneContentLogin = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.timerClickButonLogin = new System.Windows.Forms.Timer(this.components);
@@ -183,7 +183,7 @@ namespace App_Library.Views
             this.pnHeader.Controls.Add(this.btnMinimize);
             this.pnHeader.Controls.Add(this.btnMaximize);
             this.pnHeader.Controls.Add(this.pictureBox1);
-            this.pnHeader.Controls.Add(this.label1);
+            this.pnHeader.Controls.Add(this.lbLogo);
             this.pnHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnHeader.Location = new System.Drawing.Point(0, 0);
             this.pnHeader.Margin = new System.Windows.Forms.Padding(0);
@@ -248,17 +248,17 @@ namespace App_Library.Views
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // lbLogo
             // 
-            this.label1.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(46, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "READ BOOK APP";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbLogo.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLogo.ForeColor = System.Drawing.Color.White;
+            this.lbLogo.Location = new System.Drawing.Point(46, 6);
+            this.lbLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbLogo.Name = "lbLogo";
+            this.lbLogo.Size = new System.Drawing.Size(183, 32);
+            this.lbLogo.TabIndex = 1;
+            this.lbLogo.Text = "READ BOOK APP";
+            this.lbLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timerClickButtonSignUp
             // 
@@ -323,7 +323,6 @@ namespace App_Library.Views
         private PictureBox btnMinimize;
         private PictureBox btnMaximize;
         private PictureBox pictureBox1;
-        private Label label1;
         private Timer timerClickButtonSignUp;
         private Guna.UI2.WinForms.Guna2Elipse gneContentLogin;
         private Timer timerClickButonLogin;
@@ -336,6 +335,7 @@ namespace App_Library.Views
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private Guna.UI2.WinForms.Guna2Button btnSignUp;
         private Guna.UI2.WinForms.Guna2Button btnLogIn;
+        public Label lbLogo;
 
         public Panel PnSubLogin { get => pnSubLogin; set => pnSubLogin = value; }
     }

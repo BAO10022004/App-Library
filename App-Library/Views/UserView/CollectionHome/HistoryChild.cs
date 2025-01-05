@@ -34,14 +34,18 @@ namespace App_Library.Views.UserView.CollectionHome
             lbPrice.Text = book.Price + "$";
             lbTime.Text ="  " + bookSold.CreatedAt.ToString();
             lbStatus.Text = bookSold.Status;
-            if (!bookSold.Status.Equals("Approved"))
+            if (bookSold.Status.Equals("Approved"))
             {
-                lbStatus.ForeColor = System.Drawing.Color.Red;
+                lbStatus.ForeColor = System.Drawing.Color.Green;
              
+            }
+            else if(bookSold.Status.Equals("Pending"))
+            {
+                lbStatus.ForeColor = System.Drawing.Color.Yellow;
             }
             else
             {
-                lbStatus.ForeColor = System.Drawing.Color.Green;
+                lbStatus.ForeColor = System.Drawing.Color.Red;
             }
         }
 

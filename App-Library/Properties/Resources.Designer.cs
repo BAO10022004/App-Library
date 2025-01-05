@@ -1481,5 +1481,15 @@ namespace App_Library.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6197401443194_7ccab543d9580cf63cf43fd6429308d4 {
+            get {
+                object obj = ResourceManager.GetObject("z6197401443194_7ccab543d9580cf63cf43fd6429308d4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

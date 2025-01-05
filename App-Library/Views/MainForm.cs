@@ -41,7 +41,6 @@ namespace App_Library.Views
         SideBarUserForm sidebar;
         // compunent shop 
         //List<Panel> listBookAd;
-        List<Book> books;
         Task<List<BookSold>> bookSold;
         //Dictionary<Control, Form> formDictionary;
         //Form currentForm;
@@ -54,7 +53,6 @@ namespace App_Library.Views
             _userService = new UserService();
             _bookService = new BookService();
             //_starsRating = new StarsRatingService();
-            books = new List<Book>();
             //listBookAd = new List<Panel>();
             isClick = new Dictionary<System.Windows.Controls.Control, bool>();
             //Console.WriteLine($"2 {pnContent.Size.Width}, {pnContent.Size.Height}");
@@ -95,17 +93,20 @@ namespace App_Library.Views
                 activeFormChildForMainForm(shopForm, e);
             }
 
-            books = await _bookService.GetBooksAsync();
             
             //MessageBox.Show((await bookSold).Count.ToString());
         }
        
-        public async Task< List<BookSold>> getListSold()
+        public  async Task<List<BookSold>> getListForBoughtBook()
         {
             
+            return (await bookSold).Select(x => x). Where(x => x.Status.Equals("Approved") || x.Status.Equals("Pending")).ToList();
+        }
+        public async Task<List<BookSold>> getListForHistory()
+        {
+
             return await bookSold;
         }
-
         Form formShopMain;
         Form ActForm;
         public void activeFormChildForMainForm(Form formDes, object obj)
@@ -141,21 +142,17 @@ namespace App_Library.Views
             pnContainLogOut.BorderColor = Color.Blue;
             picLogOut.Visible = true;
         }
-
+        public async void nextPageToHistory(object e)
+        {
+            activeFormChildForMainForm(new History(sidebar, await this.getListForBoughtBook()), e);
+        }
         private void pnContainLogOut_MouseLeave(object sender, EventArgs e)
         {
             pnContainLogOut.BorderColor = Color.Black;
             picLogOut.Visible = false;
         }
-        public async void nextPageToHistory(object e)
-        {
-            activeFormChildForMainForm(new History(sidebar,await bookSold), e);
-        }
+       
 
-        private void profileToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         { }
@@ -171,7 +168,7 @@ namespace App_Library.Views
                 usernameCurrent = Program.username;
             }
             AuthService db = new AuthService();
-            bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
+            bool result = await db.Login("demoApp2", "demoApp2@", null);
             if (!result)
             {
                 result = await db.Login(usernameCurrent, passwordCurrent, null);
@@ -188,7 +185,7 @@ namespace App_Library.Views
                 return null;
             }
             List<BookSold> list = await (new BookSoldService()).GetBooksSoldAsync();
-            var filteredBooks = list.Where(b => b.UserId == id && (b.Status == "Pending" || b.Status == "Approved")).ToList();
+            var filteredBooks = list.Where(b => b.UserId == id).ToList();
 
             await db.Login(usernameCurrent, passwordCurrent, null);
             return filteredBooks;
