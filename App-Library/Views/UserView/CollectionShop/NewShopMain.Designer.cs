@@ -202,14 +202,14 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnAd.Controls.Add(this.pnContainAd);
             this.pnAd.Location = new System.Drawing.Point(3, 3);
             this.pnAd.Name = "pnAd";
-            this.pnAd.Size = new System.Drawing.Size(1030, 350);
+            this.pnAd.Size = new System.Drawing.Size(1030, 450);
             this.pnAd.TabIndex = 2;
             // 
             // pnContainAd
             // 
-            this.pnContainAd.Location = new System.Drawing.Point(4, 0);
+            this.pnContainAd.Location = new System.Drawing.Point(0, 0);
             this.pnContainAd.Name = "pnContainAd";
-            this.pnContainAd.Size = new System.Drawing.Size(1011, 347);
+            this.pnContainAd.Size = new System.Drawing.Size(1030, 450);
             this.pnContainAd.TabIndex = 0;
             // 
             // pnNewItem
@@ -217,7 +217,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnNewItem.BackColor = System.Drawing.Color.Transparent;
             this.pnNewItem.Controls.Add(this.guna2Panel2);
             this.pnNewItem.Controls.Add(this.flowpnNewItem);
-            this.pnNewItem.Location = new System.Drawing.Point(0, 356);
+            this.pnNewItem.Location = new System.Drawing.Point(0, 456);
             this.pnNewItem.Margin = new System.Windows.Forms.Padding(0);
             this.pnNewItem.Name = "pnNewItem";
             this.pnNewItem.Size = new System.Drawing.Size(1030, 500);
@@ -271,7 +271,7 @@ namespace App_Library.Views.Main.CollectionShop
             this.pnBestDeal.BackColor = System.Drawing.Color.Transparent;
             this.pnBestDeal.Controls.Add(this.flowpnBestDeal);
             this.pnBestDeal.Controls.Add(this.guna2Panel4);
-            this.pnBestDeal.Location = new System.Drawing.Point(0, 856);
+            this.pnBestDeal.Location = new System.Drawing.Point(0, 956);
             this.pnBestDeal.Margin = new System.Windows.Forms.Padding(0);
             this.pnBestDeal.Name = "pnBestDeal";
             this.pnBestDeal.Size = new System.Drawing.Size(1030, 500);
@@ -361,7 +361,7 @@ namespace App_Library.Views.Main.CollectionShop
             // 
             this.guna2Panel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel6.Controls.Add(this.pnContainAllBook);
-            this.guna2Panel6.Location = new System.Drawing.Point(0, 1356);
+            this.guna2Panel6.Location = new System.Drawing.Point(0, 1456);
             this.guna2Panel6.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel6.Name = "guna2Panel6";
             this.guna2Panel6.Size = new System.Drawing.Size(1030, 70);

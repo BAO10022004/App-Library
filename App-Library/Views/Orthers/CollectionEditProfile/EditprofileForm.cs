@@ -75,9 +75,11 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         private async void btnSave_Click(object sender, EventArgs e)
         {
             currentUser =await( new UserService()).GetCurrentUserAsync();
-            
-            if(!txbUsername.Text.Equals(currentUser.Username) && !txbEmail.Text.Equals(currentUser.Email))
+            if(txbEmail.Text.Equals(currentUser.Email) && txbUsername.Text.Equals(currentUser.Username) && updateBookDTO.PhotoURL.Equals(currentUser.PhotoURL))
             {
+                return;
+
+            }
                 bool checkMail = true;
                 LoadingForm loadingForm = new LoadingForm();
 
@@ -126,7 +128,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 }
                 txbUsername.Text = currentUser.Username;
                 txbEmail.Text = currentUser.Email;
-            }
+            
             
         }
 

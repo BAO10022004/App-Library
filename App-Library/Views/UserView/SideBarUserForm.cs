@@ -6,6 +6,8 @@ using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace App_Library.Views.UserView
@@ -55,17 +57,17 @@ namespace App_Library.Views.UserView
         private async void lbStore_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new StockForm(this, await _mainForm.getListSold()), e);
+            _mainForm.activeFormChildForMainForm(new StockForm(this,await _mainForm.getListForBoughtBook()), e);
         }
         private async void btnHistory_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new History(this,await _mainForm.getListSold()), e);
+            _mainForm.activeFormChildForMainForm(new History(this,await _mainForm.getListForHistory()), e);
         }
         private async void guna2Button2_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);
-            _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm, await _mainForm.getListSold()), e);
+            _mainForm.activeFormChildForMainForm(new NewProfileForm(_mainForm, await _mainForm.getListForBoughtBook()), e);
         }
         
     }

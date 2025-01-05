@@ -110,7 +110,7 @@ namespace App_Library.Views.Main.CollectionShop
             else
             {
                 listPanelAllBook = ((await Task.WhenAll(listTask)).ToList());
-                listBookSold = await controller.getListSold();
+                listBookSold = await controller.getListForBoughtBook();
 
                 formAd = new AdFormNew(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);

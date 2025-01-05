@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
             this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             this.lbPrice = new System.Windows.Forms.Label();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5lbGence = new System.Windows.Forms.Label();
             this.lbNameAuthor = new System.Windows.Forms.Label();
             this.lbNameBook = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowPanel1.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2ShadowPanel1
@@ -69,6 +69,68 @@
             this.guna2ShadowPanel1.ShadowShift = 20;
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(1071, 633);
             this.guna2ShadowPanel1.TabIndex = 0;
+            // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.Controls.Add(this.label1);
+            this.guna2Panel4.Controls.Add(this.guna2PictureBox1);
+            this.guna2Panel4.Controls.Add(this.btnClose);
+            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel4.Location = new System.Drawing.Point(20, 20);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(1031, 89);
+            this.guna2Panel4.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(45)))), ((int)(((byte)(139)))));
+            this.label1.Location = new System.Drawing.Point(83, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(268, 33);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Pay with e-wallets";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.momo_icon_square_pinkbg_RGB;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(12, 20);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(65, 60);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 8;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Animated = true;
+            this.btnClose.BorderRadius = 3;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.btnClose.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnClose.Location = new System.Drawing.Point(970, 29);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(49, 39);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Location = new System.Drawing.Point(20, 106);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1031, 507);
+            this.guna2Panel1.TabIndex = 6;
             // 
             // guna2Panel3
             // 
@@ -135,7 +197,7 @@
             // 
             // guna2PictureBox2
             // 
-            this.guna2PictureBox2.Image = global::App_Library.Properties.Resources.payment;
+            this.guna2PictureBox2.Image = global::App_Library.Properties.Resources.z6197401443194_7ccab543d9580cf63cf43fd6429308d4;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(142, 3);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
@@ -143,15 +205,6 @@
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 0;
             this.guna2PictureBox2.TabStop = false;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.guna2Panel3);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Location = new System.Drawing.Point(20, 106);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1031, 507);
-            this.guna2Panel1.TabIndex = 6;
             // 
             // guna2Panel2
             // 
@@ -202,59 +255,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Order Information";
             // 
-            // guna2Panel4
-            // 
-            this.guna2Panel4.Controls.Add(this.label1);
-            this.guna2Panel4.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel4.Controls.Add(this.btnClose);
-            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel4.Location = new System.Drawing.Point(20, 20);
-            this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(1031, 89);
-            this.guna2Panel4.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(45)))), ((int)(((byte)(139)))));
-            this.label1.Location = new System.Drawing.Point(83, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 33);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Pay with e-wallets";
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::App_Library.Properties.Resources.momo_icon_square_pinkbg_RGB;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(12, 20);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(65, 60);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 8;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Animated = true;
-            this.btnClose.BorderRadius = 3;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnClose.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnClose.Location = new System.Drawing.Point(970, 29);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(49, 39);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "X";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,14 +267,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaymentForm";
             this.guna2ShadowPanel1.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

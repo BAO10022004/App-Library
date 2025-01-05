@@ -126,7 +126,7 @@ namespace App_Library.Services
             loadingForm.Hide();
             loadingForm.Close();
 
-            (new AlertFail("SignUp Fail")).ShowDialog();
+            (new AlertFail(await response.Content.ReadAsStringAsync())).ShowDialog();
             return await response.Content.ReadAsStringAsync();
         }
 

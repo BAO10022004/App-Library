@@ -184,6 +184,7 @@ namespace App_Library.Views
             else
             {
                 Program.sp.pnHeader.BackColor = Color.WhiteSmoke;
+                Program.sp.lbLogo.ForeColor = Color.RoyalBlue;
                 timerOpenMainForm.Stop();
                 this.Size = sizeTarget;  // Đặt kích thước cuối cùng
                 this.Location = locationTarget;  // Đặt vị trí cuối cùng

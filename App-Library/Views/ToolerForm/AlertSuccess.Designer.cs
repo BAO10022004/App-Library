@@ -48,14 +48,13 @@
             // 
             this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2CirclePictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.Image = global::App_Library.Properties.Resources.Animation___1734101867809;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(114, 1);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(104, 2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(127, 120);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 5;
             this.guna2CirclePictureBox1.TabStop = false;
