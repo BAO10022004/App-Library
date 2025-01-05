@@ -31,17 +31,19 @@
             this.pnContainRead = new Guna.UI2.WinForms.Guna2Panel();
             this.btnRead = new Guna.UI2.WinForms.Guna2Button();
             this.picBook = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pnContainRead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBook)).BeginInit();
             this.SuspendLayout();
             // 
             // pnContainRead
             // 
             this.pnContainRead.BackColor = System.Drawing.Color.Transparent;
+           // this.pnContainRead.Controls.Add(this.btnRead);
             this.pnContainRead.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnContainRead.Location = new System.Drawing.Point(10, 256);
+            this.pnContainRead.Location = new System.Drawing.Point(10, 259);
             this.pnContainRead.Name = "pnContainRead";
             this.pnContainRead.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.pnContainRead.Size = new System.Drawing.Size(180, 34);
+            this.pnContainRead.Size = new System.Drawing.Size(180, 31);
             this.pnContainRead.TabIndex = 1;
             this.pnContainRead.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContainRead_Paint);
             this.pnContainRead.MouseLeave += new System.EventHandler(this.pnNoSee_MouseLeave);
@@ -49,21 +51,22 @@
             // 
             // btnRead
             // 
-            this.btnRead.BorderColor = System.Drawing.Color.Navy;
-            this.btnRead.BorderRadius = 9;
-            this.btnRead.BorderThickness = 1;
+            this.btnRead.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnRead.BorderRadius = 5;
+            this.btnRead.BorderThickness = 2;
             this.btnRead.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnRead.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnRead.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnRead.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnRead.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRead.FillColor = System.Drawing.Color.Blue;
-            this.btnRead.Font = new System.Drawing.Font("Bauhaus 93", 12F);
-            this.btnRead.ForeColor = System.Drawing.Color.White;
-            this.btnRead.HoverState.FillColor = System.Drawing.Color.Orange;
-            this.btnRead.Location = new System.Drawing.Point(0, 0);
+            this.btnRead.FillColor = System.Drawing.Color.White;
+            this.btnRead.Font = new System.Drawing.Font("Cooper Black", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRead.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btnRead.HoverState.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnRead.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnRead.Location = new System.Drawing.Point(0, 5);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(200, 34);
+            this.btnRead.Size = new System.Drawing.Size(180, 26);
             this.btnRead.TabIndex = 0;
             this.btnRead.Text = "READ";
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
@@ -94,6 +97,7 @@
             this.Text = "BookItem";
             this.Load += new System.EventHandler(this.BookItem_Load);
             this.MouseLeave += new System.EventHandler(this.pnNoSee_MouseLeave);
+            this.pnContainRead.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBook)).EndInit();
             this.ResumeLayout(false);
 

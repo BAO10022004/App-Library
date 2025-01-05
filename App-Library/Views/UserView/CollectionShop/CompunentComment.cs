@@ -103,6 +103,7 @@ namespace App_Library.Views.Main.CollectionShop
                     Comment.Likes = comment.Likes;
                 }
             }
+            lbNumberLike.Text = Comment.NumberOfLikes.ToString();
             if (Comment.Likes != null)
             {
                 foreach (string id in Comment.Likes)
@@ -110,10 +111,13 @@ namespace App_Library.Views.Main.CollectionShop
                     if (id.Equals(currentUser.Id))
                     {
                         pictureBox3.Image = App_Library.Properties.Resources.like__2_;
+                        return;
                     }
+                    
                 }
             }
-            lbNumberLike.Text = Comment.NumberOfLikes.ToString();
+            pictureBox3.Image = App_Library.Properties.Resources.like;
+
         }
         private async void btnDelete_Click(object sender, EventArgs e)
         {

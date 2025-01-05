@@ -63,7 +63,7 @@ namespace App_Library.Views.Main.CollectionShop
         {
             
             pnMain.ShadowShift = 50;
-            pnMain.ShadowColor = color; 
+            pnMain.ShadowColor = Color.RoyalBlue; 
             timerHover.Start();
         }
 

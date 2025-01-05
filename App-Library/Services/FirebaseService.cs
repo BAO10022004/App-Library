@@ -58,7 +58,6 @@ namespace App_Library.Services
                 try
                 {
                     var downloadUrl = await uploadTask; // URL trả về từ Firebase Storage
-                    MessageBox.Show(downloadUrl);
                     return downloadUrl;  // URL này có thể sử dụng trực tiếp
                 }
                 catch (Exception ex)

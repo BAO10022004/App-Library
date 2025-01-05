@@ -859,7 +859,6 @@
     <None Include="Resources\momo_icon_square_pinkbg_RGB.png" />
     <None Include="Resources\payment.jpg" />
     <None Include="Resources\z6197401443194_7ccab543d9580cf63cf43fd6429308d4.jpg" />
-    <Content Include="TextFile1.txt" />
     <None Include="Resources\cheap.png" />
     <None Include="Resources\money-growth.png" />
     <None Include="Resources\low-price.png" />

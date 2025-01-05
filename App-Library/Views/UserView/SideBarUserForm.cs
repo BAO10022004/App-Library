@@ -48,6 +48,10 @@ namespace App_Library.Views.UserView
                 }
             }
         }
+        public void setIsClick()
+        {
+            setIsClick(btnHistory);
+        }
         public void lbHome_Click(object sender, EventArgs e)
         {
             setIsClick(sender as Control);

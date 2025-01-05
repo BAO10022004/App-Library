@@ -33,6 +33,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             InitializeComponent();
             _userService = new UserService();
             this.parent = parent;
+            
         }
         private async void EditprofileForm_Load(object sender, EventArgs e)
         {
@@ -52,7 +53,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             }
             txbEmail.Text = Session.CurentUser.Email;
             txbUsername.Text = Session.CurentUser.Username;
-
+            updateBookDTO.PhotoURL = Session.CurentUser.PhotoURL;
             if (Program.checkLoginGG)
             {
                 txbEmail.Enabled = true;
@@ -64,53 +65,61 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            LoadingForm loadingForm = new LoadingForm();
-            loadingForm.Show();
-
-            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!txbEmail.Text.Equals(Session.CurentUser.Email))
+            if (txbUsername.Text.Equals(Session.CurentUser.Username) && txbEmail.Text.Equals(Session.CurentUser.Email) && Session.CurentUser.PhotoURL.Equals(updateBookDTO.PhotoURL))
             {
-                if (Regex.IsMatch(txbEmail.Text, emailPattern))
+                activeFormChild(parent.mainForm.pnContent, new NewProfileForm(parent), null, ref actForm2);
+            }
+            else
+            {
+                LoadingForm loadingForm = new LoadingForm();
+                loadingForm.Show();
+
+                var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                if (!txbEmail.Text.Equals(Session.CurentUser.Email))
                 {
-                    updateBookDTO.Email = txbEmail.Text;
+                    if (Regex.IsMatch(txbEmail.Text, emailPattern))
+                    {
+                        updateBookDTO.Email = txbEmail.Text;
+                    }
+                    else
+                    {
+                        loadingForm.Hide();
+                        loadingForm.Close();
+                        txbEmail.BorderColor = Color.Red;
+                        (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
+                        return;
+                    }
                 }
-                else
+                if (!txbUsername.Text.Equals(Session.CurentUser.Username))
                 {
-                    loadingForm.Hide();
-                    loadingForm.Close();
-                    txbEmail.BorderColor = Color.Red;
-                    (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
-                    return;
+                    updateBookDTO.Username = txbUsername.Text;
+                }
+
+                loadingForm.Hide();
+                loadingForm.Close();
+
+                bool confirm = false;
+                using (var alert = (new AlertConfirm()))
+                {
+                    alert.ShowDialog();
+                    confirm = alert.ConfirmResult;
+                }
+
+                if (confirm)
+                {
+                    if (await _userService.UpdateUserAsync(Session.CurentUser.Id, updateBookDTO))
+                    {
+                        Program.sp.Hide();
+                        Program.sp = new SplashForm();
+                        Program.sp.ShowDialog();
+                    }
+                    else
+                    {
+                        (new AlertFail("Fail" + "\n" + "Username is exist")).ShowDialog();
+                    }
                 }
             }
-            if (!txbUsername.Text.Equals(Session.CurentUser.Username))
-            {
-                updateBookDTO.Username = txbUsername.Text;
-            }
-
-            loadingForm.Hide();
-            loadingForm.Close();
-
-            bool confirm = false;
-            using (var alert = (new AlertConfirm()))
-            {
-                alert.ShowDialog();
-                confirm = alert.ConfirmResult;
-            }
-
-            if (confirm)
-            {
-                if (await _userService.UpdateUserAsync(Session.CurentUser.Id, updateBookDTO))
-                {
-                    Program.sp.Hide();
-                    Program.sp = new SplashForm();
-                    Program.sp.ShowDialog();
-                }
-                else
-                {
-                    (new AlertFail("Fail" + "\n" + "Username is exist")).ShowDialog();
-                }
-            }
+            
         }
 
 

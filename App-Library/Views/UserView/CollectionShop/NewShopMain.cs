@@ -115,7 +115,7 @@ namespace App_Library.Views.Main.CollectionShop
                 formAd = new AdFormNew(this);
                 activeFormChild(pnContainAd, formAd, null, ref actForm1);
                 var books = await (new BookService()).GetBooksAsync();
-                var bookNewItem = books.OrderBy(book => book.CreatedAt).ToList();
+                var bookNewItem = books.OrderByDescending(book => book.CreatedAt).ToList();
                 flowpnNewItem.AutoScroll = true;
                 flowpnNewItem.AutoScrollMinSize = new Size((7 + 1) * 250, 400);
                 for (int i = 0; i < 7; i++)

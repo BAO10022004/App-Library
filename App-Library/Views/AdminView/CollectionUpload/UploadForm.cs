@@ -46,6 +46,8 @@ namespace App_Library.Views.AdminView.CollectionUpload
 
         private async void btnSubmit_Click(object sender, EventArgs e)
         {
+            LoadingForm loadingForm = new LoadingForm();
+            loadingForm.Show();
             if (CheckTitle() && CheckAuthor() && CheckGenre() && CheckPubYear() && CheckPrice() && CheckContent())
             {
                 string urlImage = "", urlFile = "";
@@ -57,7 +59,7 @@ namespace App_Library.Views.AdminView.CollectionUpload
                 {
                     urlFile = await _firebase.UploadFileAsync(txtPathFile.Text, "pdfs");
                 }
-
+        
                 var book = new Book
                 {
                     Username = txtUsername.Text,
@@ -70,10 +72,13 @@ namespace App_Library.Views.AdminView.CollectionUpload
                     Image = urlImage,
                     PdfUrl = urlFile
                 };
-
+               
                 var result = await _bookService.PostBookAsync(book);
+                loadingForm.Hide();
+                loadingForm.Close();
                 if (result)
                 {
+                    new AlertSuccess("Upload Success").ShowDialog();
                     //MessageBox.Show("dang thanh conog");
                     txtUsername.Text = string.Empty;
                     txtTitle.Text = string.Empty;

@@ -116,7 +116,6 @@ namespace App_Library.Services
             // Nếu đăng nhập thất bại, đóng LoadingForm
             loadingForm.Hide();
             loadingForm.Close();
-            (new AlertFail($"Fail\n{response.Content.ReadAsStringAsync()}")).ShowDialog();
             return false;
         }
         // Tắc người dùng

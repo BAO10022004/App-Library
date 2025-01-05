@@ -288,5 +288,11 @@ namespace App_Library.Views
         {
             (new PdfViewerForm(book.PdfUrl)).ShowDialog();
         }
+
+        private void lbBtnPedding_Click_1(object sender, EventArgs e)
+        {
+            shop.controller.nextPageToHistory(sender);
+            
+        }
     }
 }

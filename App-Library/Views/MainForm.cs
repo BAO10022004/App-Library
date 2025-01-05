@@ -96,7 +96,10 @@ namespace App_Library.Views
             
             //MessageBox.Show((await bookSold).Count.ToString());
         }
-       
+        public void setIsClick()
+        {
+            sidebar.setIsClick();
+        }
         public  async Task<List<BookSold>> getListForBoughtBook()
         {
             
@@ -107,6 +110,7 @@ namespace App_Library.Views
 
             return await bookSold;
         }
+
         Form formShopMain;
         Form ActForm;
         public void activeFormChildForMainForm(Form formDes, object obj)
@@ -145,6 +149,7 @@ namespace App_Library.Views
         public async void nextPageToHistory(object e)
         {
             activeFormChildForMainForm(new History(sidebar, await this.getListForBoughtBook()), e);
+            sidebar.setIsClick();
         }
         private void pnContainLogOut_MouseLeave(object sender, EventArgs e)
         {
