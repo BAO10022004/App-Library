@@ -31,9 +31,7 @@ namespace App_Library.Views.UserView.CollectionHome
 
         private void History_Load(object sender, EventArgs e)
         {
-            
-            
-            if(books != null)
+            if(books != null && books.Count != 0)
             {
                 LoadingForm loadingForm = new LoadingForm();
                 loadingForm.Show();

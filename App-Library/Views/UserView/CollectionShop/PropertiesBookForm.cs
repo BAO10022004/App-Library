@@ -26,7 +26,7 @@ namespace App_Library.Views
     public partial class PropertiesBookForm : FormHelper
     {
         List<System.Windows.Forms.Panel> listPanelRecommed = new List<Panel>();
-        Book book;int ranting;
+        Book book; int ranting;
         NewShopMain shop;
         List<Comment> comments;
         List<BookSold> bookSolds;
@@ -44,7 +44,7 @@ namespace App_Library.Views
             LoadingForm loadingForm = new LoadingForm();
             loadingForm.Show();
             int count = 0;
-            foreach(PictureBox pic in pnRating.Controls)
+            foreach (PictureBox pic in pnRating.Controls)
             {
                 count++;
                 if (count <= ranting)
@@ -60,25 +60,25 @@ namespace App_Library.Views
             catch (Exception)
             {
                 // Nếu có lỗi khi tải ảnh, có thể đặt ảnh mặc định hoặc để trống
-               // return null; // Ảnh trống kích thước 300x335
+                // return null; // Ảnh trống kích thước 300x335
             }
             lblNameProduct.Text = book.Title;
 
             lblAuthor.Text = book.Author;
             lblGenre.Text = book.Genre;
-            lblPrice.Text = book.Price+ "$";
+            lblPrice.Text = book.Price + "$";
             lblPublishYear.Text = book.PublishedYear.ToString();
             lblContent.Text = book.Content;
             pnNameBook.Width = lblNameProduct.Width + 20;
-            pnRating.Location =new Point( pnNameBook.Location.X + pnNameBook.Width, pnRating.Location.Y);
+            pnRating.Location = new Point(pnNameBook.Location.X + pnNameBook.Width, pnRating.Location.Y);
             // Recommend
-            var books =await (new BookService()).GetBooksAsync();
-            
-            for(int i=0; i<4; i++ )
+            var books = await (new BookService()).GetBooksAsync();
+
+            for (int i = 0; i < 4; i++)
             {
                 var book = books[(new Random()).Next(books.Count)];
                 books.Remove(book);
-                flowpnRecommed.Controls.Add(shop.createPanel( book,i, null));
+                flowpnRecommed.Controls.Add(shop.createPanel(book, i, null));
             }
             // fixed scroll
             int HEIGHT = 0;
@@ -88,10 +88,10 @@ namespace App_Library.Views
             }
             pnDescription.Height = HEIGHT;
             // set button Buy
-            var getUserId = (await( new UserService()).GetCurrentUserAsync()).Id;
+            var getUserId = (await (new UserService()).GetCurrentUserAsync()).Id;
             var getBookId = book.Id;
             var getBookBought = shop.listBookSold;
-            if(getBookBought != null)
+            if (getBookBought != null)
             {
                 foreach (var item in getBookBought)
                 {
@@ -120,9 +120,9 @@ namespace App_Library.Views
                 btnBuy.Visible = true;
                 btnPending.Visible = false;
             }
-            
-            
-            
+
+
+
             CommentService _commentDb = new CommentService();
             comments = new List<Comment>();
             comments = await _commentDb.GetBookCommentsAsync(book.Id);
@@ -130,7 +130,7 @@ namespace App_Library.Views
             activeFormChild(pnToolComment, new CommentForm(book, shop), null, ref formComment);
             loadingForm.Close();
         }
-        
+
 
         Form form;
         Form formComment;
@@ -141,17 +141,17 @@ namespace App_Library.Views
 
         private void guna2Panel4_MouseHover(object sender, EventArgs e)
         {
-            if(sender is Guna2Panel)
+            if (sender is Guna2Panel)
             {
                 Guna2Panel panelSender = (Guna2Panel)sender;
                 panelSender.FillColor = panelSender.BorderColor;
-                foreach(Control control in panelSender.Controls)
+                foreach (Control control in panelSender.Controls)
                 {
                     if (control is Label)
                     {
                         control.ForeColor = Color.White;
                     }
-                    control.BackColor = panelSender.FillColor;  
+                    control.BackColor = panelSender.FillColor;
                 }
             }
         }
@@ -194,11 +194,11 @@ namespace App_Library.Views
             pnMainPropertiesBook.Size = new Size(Width, pnMainPropertiesBook.Height);
             pnInfoBook.Size = new Size(Width, pnInfoBook.Height);
             guna2Panel2.Size = new Size(Width, guna2Panel2.Height);
-            foreach(Control control in pnMainPropertiesBook.Controls)
+            foreach (Control control in pnMainPropertiesBook.Controls)
             {
                 control.Size = new Size(pnMainPropertiesBook.Width, control.Height);
             }
-            if(btnBuy.Visible == true)
+            if (btnBuy.Visible == true)
             {
                 btnBuy.Location = new Point((pnContainButtonBuy.Width - btnBuy.Width) / 2, (pnContainButtonBuy.Height - btnBuy.Height) / 2);
             }
@@ -211,7 +211,7 @@ namespace App_Library.Views
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void pnMainInfoBook_Resize(object sender, EventArgs e)
@@ -250,23 +250,23 @@ namespace App_Library.Views
                     Genre = book.Genre,
                     Price = book.Price,
                 };
-                
+
                 String mes = await (new BookSoldService()).CreateBookSoldAsync(bookSold);
                 shop.refreshData();
                 loading.Close();
-                (new AlertSuccess("Your book is pedding")).ShowDialog();
+                (new AlertSuccess("Your book is pending")).ShowDialog();
                 btnPending.Location = btnBuy.Location;
                 btnPending.Visible = true;
                 btnBuy.Visible = false;
                 pnReadBook.Visible = false;
             }
-                      
+
         }
 
         Form formAct;
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
-            activeFormChild(shop.controller.pnContent, new NewShopMain(shop.controller), null,ref formAct);
+            activeFormChild(shop.controller.pnContent, new NewShopMain(shop.controller), null, ref formAct);
         }
 
         private void btnPending_Paint(object sender, PaintEventArgs e)
@@ -276,7 +276,6 @@ namespace App_Library.Views
 
         private void lbBtnPedding_Click(object sender, EventArgs e)
         {
-
             shop.controller.nextPageToHistory(sender);
         }
 

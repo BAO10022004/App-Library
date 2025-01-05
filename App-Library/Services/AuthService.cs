@@ -133,8 +133,8 @@ namespace App_Library.Services
         // Lấy người dùng theo email
         public async Task<User> GetUserByEmail(string email)
         {
-            var request = new {Email = email};
-            var response = await _httpClient.PostAsJsonAsync("api/auth/getUserByEmail",request);
+            var request = new { Email = email };
+            var response = await _httpClient.PostAsJsonAsync("api/auth/getUserByEmail", request);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<User>();
         }

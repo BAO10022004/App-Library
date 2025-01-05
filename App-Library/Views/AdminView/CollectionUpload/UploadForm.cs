@@ -1,5 +1,6 @@
 ﻿using App_Library.Models;
 using App_Library.Services;
+using App_Library.Views.ToolerForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace App_Library.Views.AdminView.CollectionUpload
 {
@@ -71,11 +74,19 @@ namespace App_Library.Views.AdminView.CollectionUpload
                 var result = await _bookService.PostBookAsync(book);
                 if (result)
                 {
-                    MessageBox.Show("dang thanh conog");
+                    //MessageBox.Show("dang thanh conog");
+                    txtUsername.Text = string.Empty;
+                    txtTitle.Text = string.Empty;
+                    txtAuthor.Text = string.Empty;
+                    txtGenre.Text = string.Empty;
+                    nudPubYear.Value = 0;
+                    nudPirce.Value = 0;
+                    txtContent.Text = string.Empty;
                 }
                 else
                 {
-                    MessageBox.Show("dang thaats bai");
+                    //MessageBox.Show("dang thaats bai");
+                    (new AlertFail("Upload Fail")).ShowDialog();
                 }
             }
         }

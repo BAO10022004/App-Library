@@ -11,6 +11,7 @@ using System.Net.Http.Json;
 using System.Windows;
 using System.IO;
 using Newtonsoft.Json;
+using App_Library.Views.ToolerForm;
 
 namespace App_Library.Services
 {
@@ -93,11 +94,27 @@ namespace App_Library.Services
         // Cập nhật sách
         public async Task<Book> UpdateBookAsync(string id, UpdateBookDTO updateBookDTO)
         {
+            // Tạo LoadingForm
+            LoadingForm loadingForm = new LoadingForm();
+
+            // Hiển thị LoadingForm ngay lập tức
+            loadingForm.Show();
+
             var response = await _httpClient.PutAsJsonAsync($"api/books/update/{id}", updateBookDTO);
             if (response.IsSuccessStatusCode)
             {
+                // Đóng LoadingForm khi thành công
+                loadingForm.Hide();
+                loadingForm.Close();
+
+                (new AlertSuccess("Success")).ShowDialog();
                 return await response.Content.ReadFromJsonAsync<Book>();
             }
+
+            // Nếu đăng nhập thất bại, đóng LoadingForm
+            loadingForm.Hide();
+            loadingForm.Close();
+            
             throw new Exception("Không thể cập nhật sách.");
         }
 

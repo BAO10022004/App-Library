@@ -22,10 +22,10 @@ namespace App_Library.Views.Main.CollectionShop
 
         private async void CompunentComment_LoadAsync(object sender, EventArgs e)
         {
-           
+
             UserService userService = new UserService();
             user = await userService.GetUserByUsernameAsync(Comment.UserId);
-            if(user != null)
+            if (user != null)
             {
 
                 try
@@ -36,7 +36,7 @@ namespace App_Library.Views.Main.CollectionShop
                 {
                 }
                 lbNameComment.Text = user.Username;
-                
+
                 lbCreateAt.Text = Comment.CreatedAt.ToString();
                 lbComment.Text = Comment.Content;
                 if (lbComment.Text.Length > 100)
@@ -46,17 +46,17 @@ namespace App_Library.Views.Main.CollectionShop
                 }
                 int abs = pnContainComment.Height - lbComment.Height + 20;
                 this.Height -= abs;
-                User currentUser =await( new UserService()).GetCurrentUserAsync();
-                if(!Comment.UserId.Equals(currentUser.Id))
+                User currentUser = await (new UserService()).GetCurrentUserAsync();
+                if (!Comment.UserId.Equals(currentUser.Id))
                 {
                     btnDelete.Visible = false;
                     btnEdit.Visible = false;
                 }
-                if(Comment.Likes != null)
+                if (Comment.Likes != null)
                 {
-                    foreach(string id in Comment.Likes)
+                    foreach (string id in Comment.Likes)
                     {
-                        if(id.Equals(currentUser.Id))
+                        if (id.Equals(currentUser.Id))
                         {
                             pictureBox3.Image = App_Library.Properties.Resources.like__2_;
 
@@ -72,7 +72,7 @@ namespace App_Library.Views.Main.CollectionShop
         {
             int abs = pnContainComment.Height;
             lbComment.Text = Comment.Content;
-            this.Height += (pnContainComment.Height - abs );
+            this.Height += (pnContainComment.Height - abs);
         }
 
         private void pictureBox3_MouseHover(object sender, EventArgs e)
@@ -80,25 +80,27 @@ namespace App_Library.Views.Main.CollectionShop
             pictureBox3.Image = App_Library.Properties.Resources.like__2_;
         }
 
-        private  void pictureBox3_MouseLeave(object sender, EventArgs e)
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
         {
-            if(!userLiked)
-                     pictureBox3.Image = App_Library.Properties.Resources.like;
+            if (!userLiked)
+                pictureBox3.Image = App_Library.Properties.Resources.like;
+            else
+                pictureBox3.Image = App_Library.Properties.Resources.like__2_;
         }
 
         private async void pictureBox3_Click(object sender, EventArgs e)
         {
             User currentUser = await (new UserService()).GetCurrentUserAsync();
-            userLiked = true;
+            userLiked = !userLiked;
             CommentService commentService = new CommentService();
             await commentService.LikeCommentAsync(Comment.Id);
             var listComment = await (new CommentService()).GetBookCommentsAsync(Comment.BookId);
-            foreach(Comment comment in listComment)
+            foreach (Comment comment in listComment)
             {
-                if(comment.Id == Comment.Id)
+                if (comment.Id == Comment.Id)
                 {
                     Comment.NumberOfLikes = comment.NumberOfLikes;
-                    Comment.Likes = comment.Likes;  
+                    Comment.Likes = comment.Likes;
                 }
             }
             if (Comment.Likes != null)
@@ -115,7 +117,7 @@ namespace App_Library.Views.Main.CollectionShop
         }
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-          bool result =  await  parent.deleteComment(Comment.Id);
+            bool result = await parent.deleteComment(Comment.Id);
             if (result)
             {
                 (new AlertSuccess("Delete comment success")).ShowDialog();

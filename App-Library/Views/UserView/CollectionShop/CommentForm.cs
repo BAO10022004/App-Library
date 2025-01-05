@@ -111,12 +111,13 @@ namespace App_Library.Views.Main.CollectionShop
                 UserService userService = new UserService();
                 comment.UserId = (await userService.GetCurrentUserAsync()).Id;
                 comment.BookId = book.Id;
-                comment.Likes = null;
+                comment.Likes = new string[] { };
 
                 await dbComments.CreateCommentAsync(comment);
                 refeshFrame();
                 //shop.bookClick(book);
                 loadingForm.Close();
+                txbComment.Text = "Add Comment ...";
             }
             
         }

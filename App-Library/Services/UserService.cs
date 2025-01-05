@@ -103,11 +103,10 @@ namespace App_Library.Services
             // Hiển thị LoadingForm ngay lập tức
             loadingForm.Show();
             var response = await _httpClient.PutAsJsonAsync($"api/users/update/{id}", updatedUser);
-            Session.CurentUser = await response.Content.ReadFromJsonAsync<User>();
+            //Session.CurentUser = await response.Content.ReadFromJsonAsync<User>();
             // Sau khi hoàn thành yêu cầu HTTP, kiểm tra kết quả
             if (response.IsSuccessStatusCode)
             {
-
                 // Đóng LoadingForm khi thành công
                 loadingForm.Hide();
                 loadingForm.Close();
@@ -117,7 +116,7 @@ namespace App_Library.Services
             // Nếu đăng nhập thất bại, đóng LoadingForm
             loadingForm.Hide();
             loadingForm.Close();
-            (new AlertFail(" Fail")).ShowDialog();
+            (new AlertFail($"Fail\n{response.Content.ReadAsStringAsync()}")).ShowDialog();
             return false;
         }
         // Tắc người dùng

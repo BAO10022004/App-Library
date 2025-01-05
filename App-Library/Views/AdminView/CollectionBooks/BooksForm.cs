@@ -192,6 +192,8 @@ namespace App_Library.Views.AdminView.CollectionBooks
                 var book = _books.Where(n => n.Id == id).FirstOrDefault();
                 var updateForm = new UpdateBookForm(book);
                 updateForm.ShowDialog();
+                _books = await _bookService.GetBooksAsync();
+                LoadData();
             }
             // Xóa sách
             if (e.ColumnIndex == dataGridView.Columns["Action2"].Index && e.RowIndex >= 0)

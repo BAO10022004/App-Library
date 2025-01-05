@@ -554,7 +554,6 @@
             this.btnPending.Size = new System.Drawing.Size(172, 69);
             this.btnPending.TabIndex = 2;
             this.btnPending.Visible = false;
-            this.btnPending.Click += new System.EventHandler(this.lbBtnPedding_Click);
             this.btnPending.Paint += new System.Windows.Forms.PaintEventHandler(this.btnPending_Paint);
             // 
             // lbBtnPedding
@@ -567,7 +566,6 @@
             this.lbBtnPedding.Size = new System.Drawing.Size(119, 24);
             this.lbBtnPedding.TabIndex = 0;
             this.lbBtnPedding.Text = "PENDING...";
-            this.lbBtnPedding.Click += new System.EventHandler(this.lbBtnPedding_Click);
             // 
             // pnReadBook
             // 

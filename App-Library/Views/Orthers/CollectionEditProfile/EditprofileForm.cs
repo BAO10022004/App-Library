@@ -25,12 +25,8 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
     {
         private User currentUser;
         private UserService _userService;
-        //private static readonly string firebaseStorageUrl = "https://firebasestorage.googleapis.com/v0/b/reading-book-web.appspot.com/o/";
-        //private static readonly string filePath = @"path\to\your\image.jpg";  // Đường dẫn đến file ảnh
         UpdateUserDTO updateBookDTO = new UpdateUserDTO();
         NewProfileForm parent;
-        //private static readonly string fileName = "image.jpg";
-        //string pathImage = "";
 
         public EditprofileForm(NewProfileForm parent)
         {
@@ -40,12 +36,11 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         }
         private async void EditprofileForm_Load(object sender, EventArgs e)
         {
-            currentUser = await _userService.GetCurrentUserAsync();
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var imageBytes = await client.GetByteArrayAsync(currentUser.PhotoURL);
+                    var imageBytes = await client.GetByteArrayAsync(Session.CurentUser.PhotoURL);
                     using (var ms = new System.IO.MemoryStream(imageBytes))
                     {
                         picAvatar.Image = System.Drawing.Image.FromStream(ms);
@@ -58,107 +53,66 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
             txbEmail.Text = Session.CurentUser.Email;
             txbUsername.Text = Session.CurentUser.Username;
 
-
-            updateBookDTO.PhotoURL = currentUser.PhotoURL;
-            updateBookDTO.Email = currentUser.Email;
-            updateBookDTO.Username = currentUser.Username;
-            updateBookDTO.PasswordHash = currentUser.PasswordHash;
-
             if (Program.checkLoginGG)
             {
                 txbEmail.Enabled = true;
                 txbEmail.ReadOnly = true;
             }
+
         }
 
         Form actForm;
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            currentUser = await (new UserService()).GetCurrentUserAsync();
-            if (txbEmail.Text.Equals(currentUser.Email) && txbUsername.Text.Equals(currentUser.Username) && updateBookDTO.PhotoURL.Equals(currentUser.PhotoURL))
-            {
-                return;
-
-            }
-            bool checkMail = true;
             LoadingForm loadingForm = new LoadingForm();
-
             loadingForm.Show();
-            bool checkUsername = await checkUsernameOutLimit(currentUser, txbUsername.Text);
-            // check Mail
+
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            checkMail = Regex.IsMatch(txbEmail.Text, emailPattern);
-            if (!checkMail)
+            if (!txbEmail.Text.Equals(Session.CurentUser.Email))
             {
-                // Đóng LoadingForm khi thành công
-                loadingForm.Hide();
-                loadingForm.Close();
-                txbEmail.BorderColor = Color.Red;
-                (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
-            }
-            if (!txbUsername.Text.Equals(currentUser.Username) && !checkUsername)
-            {
-                loadingForm.Hide();
-                loadingForm.Close();
-                txbUsername.BorderColor = Color.Red;
-                (new AlertFail(" Fail" + "\n" + "Username is exist")).ShowDialog();
-            }
-            if (checkMail && checkUsername)
-            {
-                bool confirm = false;
-                using (var alert = (new AlertConfirm()))
+                if (Regex.IsMatch(txbEmail.Text, emailPattern))
                 {
-                    alert.ShowDialog();
-                    confirm = alert.ConfirmResult;
-                }
-                loadingForm.Hide();
-                loadingForm.Close();
-                if (confirm)
-                {
-
                     updateBookDTO.Email = txbEmail.Text;
-                    updateBookDTO.Username = txbUsername.Text;
-                    if (await _userService.UpdateUserAsync(currentUser.Id, updateBookDTO))
-                    {
-                        Program.sp.Hide();
-                        Program.sp = new SplashForm();
-                        Program.sp.ShowDialog();
-                    }
                 }
-            }
-            txbUsername.Text = currentUser.Username;
-            txbEmail.Text = currentUser.Email;
-
-
-        }
-
-        public static async Task<bool> checkUsernameOutLimit(User _user, string username)
-        {
-            string usernameCurrent = _user.Username;
-            string passwordCurrent = _user.PasswordHash;
-            string idCurrent = _user.Id;
-            AuthService db = new AuthService();
-            bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
-            if (!result)
-            {
-                await db.Login(usernameCurrent, passwordCurrent, null);
-                return false;
-            }
-            else
-            {
-                var listAccount = await (new UserService()).GetUsersAsync();
-                foreach (var user in listAccount)
+                else
                 {
-                    if (user.Username.Equals(username) && !user.Id.Equals(idCurrent))
-                    {
-                        await db.Login(usernameCurrent, passwordCurrent, null);
-                        return false;
-                    }
+                    loadingForm.Hide();
+                    loadingForm.Close();
+                    txbEmail.BorderColor = Color.Red;
+                    (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
+                    return;
                 }
-                await db.Login(usernameCurrent, passwordCurrent, null);
-                return true;
+            }
+            if (!txbUsername.Text.Equals(Session.CurentUser.Username))
+            {
+                updateBookDTO.Username = txbUsername.Text;
+            }
+
+            loadingForm.Hide();
+            loadingForm.Close();
+
+            bool confirm = false;
+            using (var alert = (new AlertConfirm()))
+            {
+                alert.ShowDialog();
+                confirm = alert.ConfirmResult;
+            }
+
+            if (confirm)
+            {
+                if (await _userService.UpdateUserAsync(Session.CurentUser.Id, updateBookDTO))
+                {
+                    Program.sp.Hide();
+                    Program.sp = new SplashForm();
+                    Program.sp.ShowDialog();
+                }
+                else
+                {
+                    (new AlertFail("Fail" + "\n" + "Username is exist")).ShowDialog();
+                }
             }
         }
+
 
         private async void picEdit_Click(object sender, EventArgs e)
         {
@@ -170,7 +124,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 {
                     string filePath = openFileDialog.FileName;
                     FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-                    var user = currentUser;
+                    var user = Session.CurentUser;
                     string idToken = user.Id; // Lấy ID token của người dùng đã đăng nhập
 
                     // Kết nối tới Firebase Storage
@@ -227,5 +181,6 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         {
             activeFormChild(parent.mainForm.pnContent, new NewProfileForm(parent), null, ref actForm2);
         }
+
     }
 }
