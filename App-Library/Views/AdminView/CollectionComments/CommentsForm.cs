@@ -56,6 +56,7 @@ namespace App_Library.Views.AdminView.CollectionComments
                     return;
                 }
                 _comments = fillterSearch;
+                curentPage = 1;
             }
 
             var count = _comments.Count;
@@ -99,11 +100,11 @@ namespace App_Library.Views.AdminView.CollectionComments
             dataGridView.Columns["Action"].Width = 100;
             dataGridView.DataSource = _commentsBindingList;
 
-            if (countLine > count)
+            if(countLine > count)
             {
                 btnTrangTruoc.Enabled = false;
                 btnTrangKe.Enabled = false;
-                pnContent.Size = new Size(pnContent.Size.Width, (30 * count) + 45);
+                pnContent.Size = new Size(pnContent.Size.Width, (dataGridView.Rows[0].Height * count) + 30 + pnFooter.Size.Height);
             }
             else
             {
@@ -111,11 +112,11 @@ namespace App_Library.Views.AdminView.CollectionComments
                 {
                     btnTrangKe.Enabled = true;
                 }
-                pnContent.Size = new Size(pnContent.Size.Width, (30 * countLine) + 45);
+                pnContent.Size = new Size(pnContent.Size.Width, (dataGridView.Rows[0].Height * countLine) + 30 + pnFooter.Size.Height);
             }
             if (pnContent.Size.Height > this.Size.Height - pnHeader.Size.Height)
             {
-                pnContent.Size = new Size(pnContent.Size.Width, this.Size.Height - pnHeader.Size.Height - pnFooter.Size.Height);
+                pnContent.Size = new Size(pnContent.Size.Width, this.Size.Height - pnHeader.Size.Height);
             }
             lblSoTrang.Text = $"{curentPage}/{totalPage}";
         }

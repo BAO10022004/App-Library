@@ -45,13 +45,6 @@
             this.pnHeader = new System.Windows.Forms.Panel();
             this.txbTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.dataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.cbbSoDong = new System.Windows.Forms.ComboBox();
-            this.lblSoDong = new System.Windows.Forms.Label();
-            this.btnTrangTruoc = new System.Windows.Forms.Button();
-            this.btnTrangKe = new System.Windows.Forms.Button();
-            this.lblSoTrang = new System.Windows.Forms.Label();
-            this.pnFooter = new System.Windows.Forms.Panel();
-            this.pnContent = new Guna.UI2.WinForms.Guna2Panel();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bookname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +53,13 @@
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Action2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cbbSoDong = new System.Windows.Forms.ComboBox();
+            this.lblSoDong = new System.Windows.Forms.Label();
+            this.btnTrangTruoc = new System.Windows.Forms.Button();
+            this.btnTrangKe = new System.Windows.Forms.Button();
+            this.lblSoTrang = new System.Windows.Forms.Label();
+            this.pnFooter = new System.Windows.Forms.Panel();
+            this.pnContent = new Guna.UI2.WinForms.Guna2Panel();
             this.contextMenuStrip.SuspendLayout();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -264,6 +264,64 @@
             this.dataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // TimeStamp
+            // 
+            this.TimeStamp.FillWeight = 66.1519F;
+            this.TimeStamp.HeaderText = "Time Stamp";
+            this.TimeStamp.Name = "TimeStamp";
+            // 
+            // Bookname
+            // 
+            this.Bookname.FillWeight = 66.1519F;
+            this.Bookname.HeaderText = "Book\'s name";
+            this.Bookname.Name = "Bookname";
+            // 
+            // Price
+            // 
+            this.Price.FillWeight = 66.1519F;
+            this.Price.HeaderText = "Price ($)";
+            this.Price.Name = "Price";
+            // 
+            // Username
+            // 
+            this.Username.FillWeight = 66.1519F;
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Email
+            // 
+            this.Email.FillWeight = 66.1519F;
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Action
+            // 
+            this.Action.FillWeight = 50F;
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Action.Text = "Approve";
+            this.Action.UseColumnTextForButtonValue = true;
+            // 
+            // Action2
+            // 
+            this.Action2.FillWeight = 50F;
+            this.Action2.HeaderText = "";
+            this.Action2.Name = "Action2";
+            this.Action2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Action2.Text = "Reject";
+            this.Action2.UseColumnTextForButtonValue = true;
+            // 
             // cbbSoDong
             // 
             this.cbbSoDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -353,64 +411,6 @@
             this.pnContent.Name = "pnContent";
             this.pnContent.Size = new System.Drawing.Size(1010, 350);
             this.pnContent.TabIndex = 23;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // TimeStamp
-            // 
-            this.TimeStamp.FillWeight = 66.1519F;
-            this.TimeStamp.HeaderText = "Time Stamp";
-            this.TimeStamp.Name = "TimeStamp";
-            // 
-            // Bookname
-            // 
-            this.Bookname.FillWeight = 66.1519F;
-            this.Bookname.HeaderText = "Book\'s name";
-            this.Bookname.Name = "Bookname";
-            // 
-            // Price
-            // 
-            this.Price.FillWeight = 66.1519F;
-            this.Price.HeaderText = "Price ($)";
-            this.Price.Name = "Price";
-            // 
-            // Username
-            // 
-            this.Username.FillWeight = 66.1519F;
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Email
-            // 
-            this.Email.FillWeight = 66.1519F;
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Action
-            // 
-            this.Action.FillWeight = 50F;
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Action.Text = "Approve";
-            this.Action.UseColumnTextForButtonValue = true;
-            // 
-            // Action2
-            // 
-            this.Action2.FillWeight = 50F;
-            this.Action2.HeaderText = "";
-            this.Action2.Name = "Action2";
-            this.Action2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Action2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Action2.Text = "Reject";
-            this.Action2.UseColumnTextForButtonValue = true;
             // 
             // PendingForm
             // 

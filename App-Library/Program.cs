@@ -27,10 +27,11 @@ namespace App_Library
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             sp = new SplashForm();
-            Application.Run(sp);
+            //Application.Run(sp);
             //Application.Run(new PdfViewerForm());
             //Application.Run(new GoogleLoginForm());
             //Application.Run(new Form1());
+            Application.Run(new TestForm());
         }
     }
 }
