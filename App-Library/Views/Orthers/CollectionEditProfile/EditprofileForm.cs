@@ -96,14 +96,17 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                     txbEmail.BorderColor = Color.Red;
                     (new AlertFail(" Fail" + "\n" + "Email format incorrect")).ShowDialog();
                 }
-                if (!checkUsername)
+                if (!txbUsername.Text.Equals(currentUser.Username) && !checkUsername)
                 {
                     loadingForm.Hide();
                     loadingForm.Close();
                     txbUsername.BorderColor = Color.Red;
                     (new AlertFail(" Fail" + "\n" + "Username is exist")).ShowDialog();
+                return;
                 }
-                if (checkMail && checkUsername)
+                loadingForm.Hide();
+                loadingForm.Close();
+            if (checkMail && checkUsername)
                 {
                     bool confirm = false;
                     using (var alert = (new AlertConfirm()))
@@ -111,8 +114,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                         alert.ShowDialog();
                         confirm = alert.ConfirmResult;
                     }
-                    loadingForm.Hide();
-                    loadingForm.Close();
+                    
                     if (confirm)
                     {
                         
@@ -136,9 +138,14 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
         {
             string usernameCurrent = _user.Username;
             string passwordCurrent = _user.PasswordHash;
-            string idCurrent = _user.Id;
+            string id = _user.Id;
+            if (!Program.checkLoginGG)
+            {
+                passwordCurrent = Program.password;
+                usernameCurrent = Program.username;
+            }
             AuthService db = new AuthService();
-            bool result = await db.Login("testappuser", "$2a$11$1OI6fJlj5s/4jQYeGEmFqucoLhIUaJlcKjl./EvToy7Fjq.jWpzUG", null);
+            bool result = await db.Login("demoApp2", "demoApp2@", null);
             if (!result)
             {
                 await db.Login(usernameCurrent, passwordCurrent, null);
@@ -149,7 +156,7 @@ namespace App_Library.Views.Orthers.CollectionEditProfile
                 var listAccount = await (new UserService()).GetUsersAsync();
                 foreach (var user in listAccount)
                 {
-                    if (user.Username.Equals(username) &&! user.Id.Equals(idCurrent))
+                    if (user.Username.Equals(username) &&! user.Id.Equals(id))
                     {
                         await db.Login(usernameCurrent, passwordCurrent, null);
                         return false;
